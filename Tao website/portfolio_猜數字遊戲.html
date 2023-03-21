@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜數字遊戲</title>
+    <link rel="stylesheet" href="/css/guessnumber.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div id="header">
+        <div class="logo">
+        </div>
+
+        <div class="nav">
+            <div class="nav-bar">
+                <div class="nav-item about">
+                    <a href="">ABOUT</a>
+                </div>
+                <div class="nav-item">
+                    <a href="">PORTFOLIO</a>
+                </div>
+                <div class="nav-item">
+                    <a href="">CONTACT</a>
+                </div>
+                <div class="nav-item" id="nav-menu">
+                    <p class="nav-menu-icon"><i class='bx bx-menu'></i></p>
+                    <ul class="nav-menu-list">
+                        <a href="#">ABOUT</a>
+                        <a href="#">PORTFOLIO</a>
+                        <a href="#">CONTACT</a>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-body">
+        <div class="game-container">
+            <div class="border-box">
+                <h1>猜數字遊戲</h1>
+                <div class="game-intro-container">
+                    <p>猜一個四位數字，四位數中不會有重複的數字。</p>
+                    <p>每猜一次都可以獲得提示，提示以XAXB的方式進行，</p>
+                    <p>X表示位置正確的數的個數，Y表示數字正確而位置不對的數的個數。</p>
+                </div>
+                <input type="text">
+                <div class="button-container">
+                    <button id="guess-button">猜猜看</button>
+                    <button id="clear-button">再一次</button>
+                </div>
+            </div>
+        </div>
+        <div id="record-box">
+            <ul class="guess"></ul>
+            <ul class="record"></ul>
+        </div>
+    </div>
+
+    <div id="footer">
+
+    </div>
+    <script>
+
+        let answer = {
+            w: Math.floor(Math.random() * 10),
+            x: Math.floor(Math.random() * 10),
+            y: Math.floor(Math.random() * 10),
+            z: Math.floor(Math.random() * 10),
+            NotSame: function(w, x, y, z){
+                while (this.x==this.w) {
+                    this.x = Math.floor(Math.random() * 10);
+                }
+
+                while (this.y==this.w || this.y==this.x) {
+                    this.y = Math.floor(Math.random() * 10);
+                }
+
+                while (this.z==this.w || this.z==this.x || this.z==this.y) {
+                    this.z = Math.floor(Math.random() * 10);
+                }
+            }
+        }
+
+        answer.NotSame(this.w, this.x, this.y, this.z);
+
+        let CorrectAnswer = (`${answer.w}${answer.x}${answer.y}${answer.z}`);
+        console.log(CorrectAnswer);
+
+        let record = [];
+        let guesses = [];
+
+        document.getElementById('guess-button').onclick= function(){
+            
+            let guess = document.getElementsByTagName('input')[0].value;
+            document.getElementById('record-box').innerHTML = '<ul class="guess"></ul>' + '<ul class="record"></ul>';
+
+            if (/^\d{4}$/.test(guess)) {
+
+                guesses.push(guess);
+                let guessList = "";
+                for (let i=0; i<guesses.length ; i++) {
+                    guessList += "<li>" + guesses[i] + "</li>";
+                }
+                document.getElementsByClassName('guess')[0].innerHTML = guessList;
+
+                let A = 0;
+                let B = 0;
+                for (let i=0; i<4 ; i++){
+                    if(guess.charAt(i) == CorrectAnswer.charAt(i)) {
+                        A++;
+                    }else if(CorrectAnswer.includes(guess.charAt(i))){
+                        B++;
+                    }
+                }
+
+                record.push(`${A}A${B}B`);
+                let recordList = "";
+                for (let i=0; i<record.length ; i++) {
+                    recordList += "<li>" + record[i] + "</li>";
+                }
+
+                document.getElementsByClassName('record')[0].innerHTML = recordList;
+                
+                if (A == 4) {
+                    document.getElementById('record-box').innerHTML = "BINGO!";
+                } 
+            } else {
+                document.getElementById('record-box').innerHTML = "請輸入四位數字";
+            }
+        }
+
+        document.getElementById('clear-button').onclick = function(){
+
+            document.getElementById('record-box').innerHTML = '<ul class="guess"></ul>' + '<ul class="record"></ul>';
+            document.getElementsByClassName('guess')[0].innerHTML = "";
+            document.getElementsByClassName('record')[0].innerHTML = "";
+            let guessList = "";
+            let recordList = "";
+            record = [];
+            guesses = [];
+            
+            function generateNewNumber() {
+                answer.w = Math.floor(Math.random() * 10);
+                answer.x = Math.floor(Math.random() * 10);
+                answer.y = Math.floor(Math.random() * 10);
+                answer.z = Math.floor(Math.random() * 10);
+                answer.NotSame(this.w, this.x, this.y, this.z);
+                CorrectAnswer = `${answer.w}${answer.x}${answer.y}${answer.z}`;
+                console.log(CorrectAnswer);
+            }
+            generateNewNumber();
+        }
+    </script>
+</body>
+</html>

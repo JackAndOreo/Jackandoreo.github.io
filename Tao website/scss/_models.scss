@@ -1,0 +1,182 @@
+@import "../scss/variables";
+
+#header {
+    margin: 0 auto; 
+    max-width: $max-width;
+    min-width: 670px;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+
+    background-color: $bg-color;
+
+    .logo {
+        width: 75px;
+        height: 65px;
+        background-image: url(/img/temparoricon.png);
+        background-position: center;
+        background-size: cover;
+        margin-left: 15px;
+    }
+
+    .nav {
+        width: 485px;
+        height: 65px;
+
+        .nav-bar {
+            font-family: $eng-font;
+            font-weight: $font-medium;
+            font-size: $big-font-size;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: 5px;
+            .nav-item {
+                text-align: center;
+                width: 130px;
+                height: 65px;
+                line-height: 85px;
+                &:hover {
+                    font-weight: $font-bold;
+                }
+                &:first-child {
+                    border-left: $side-border;
+                }
+                a {
+                    color: $font-color;
+                }
+            }
+            #nav-menu {
+                display: none;
+                i {
+                    font-size: $bigger-font-size;
+                }
+                .nav-menu-list a {
+                   display: none;
+                }
+            }
+        }
+    }
+}
+
+#main-body {
+    border-top: $horrizon-border;
+    border-bottom: $horrizon-border;
+    min-width: 670px;
+    overflow: hidden;
+}
+
+#footer {
+    max-width: $max-width;
+    min-width: 670px;
+    margin: 0 auto;
+    background-color: $bg-color;
+    height: 60px;
+}
+
+@media screen and (max-width: 1200px) {
+    #header {
+        transition: 1.5s;
+        .logo {
+            margin-left: 20px;
+            transition: 1.2s;
+        }
+        .nav {
+            width: 480px;
+            margin-right: 15px;
+            transition: 1.2s;
+        }
+    }
+}
+
+@media screen and (max-width: 1048px) {
+    #header {  
+        .nav {
+            .nav-bar {
+                .nav-item {
+                    &:first-child {
+                        border: none;
+                    }
+                }
+            }    
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #header {
+        .nav {
+            margin-right: 0;
+            transition: 2s;
+            .nav-bar {
+                display: flex;
+                justify-content: end !important;
+                position: relative;
+                .nav-item {
+                    display: none;
+                }
+                #nav-menu {
+                    display: inline-block !important;
+
+                    &:hover {
+                        font-weight: $font-medium !important;
+                        ul {
+                            a {
+                                display: inline-block !important;
+                            }
+                        }
+                    }
+                    p {
+                        height: inherit;
+                        cursor: pointer;
+                    }
+                    ul {
+                        position: absolute;
+                        top: 65px;
+                        display: flex;
+                        flex-direction: column;
+                        a {
+                            display: inline-block;
+                            font-size: $normal-font-size;
+                            height: 57px !important;
+                            width: 130px !important;
+                            line-height: 55px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// HTML CODE
+
+// <div id="header">
+// <div class="logo"></div>
+// <div class="nav">
+//     <div class="nav-bar">
+//         <div class="nav-item about">
+//             <a href="">ABOUT</a>
+//         </div>
+//         <div class="nav-item">
+//             <a href="">PORTFOLIO</a>
+//         </div>
+//         <div class="nav-item">
+//             <a href="">CONTACT</a>
+//         </div>
+//         <div class="nav-item" id="nav-menu">
+//             <p class="nav-menu-icon"><i class='bx bx-menu'></i></p>
+//             <ul class="nav-menu-list">
+//                 <a href="#">ABOUT</a>
+//                 <a href="#">PORTFOLIO</a>
+//                 <a href="#">CONTACT</a>
+//             </ul>           
+//         </div>
+//     </div>
+// </div>
+// </div>
+// <div id="main-body"></div>
+// <div id="footer">
+// <div class="copyright"></div>
+// </div>
