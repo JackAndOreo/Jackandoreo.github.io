@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./css/calculator.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="jquery-3.6.3.min.js"></script>
+</head>
+    <div id="header">
+        <div class="logo"></div>
+        <div class="nav">
+            <div class="nav-bar">
+                <div class="nav-item about">
+                    <a href="">ABOUT</a>
+                </div>
+                <div class="nav-item">
+                    <a href="">PORTFOLIO</a>
+                </div>
+                <div class="nav-item">
+                    <a href="">CONTACT</a>
+                </div>
+                <div class="nav-item" id="nav-menu">
+                    <p class="nav-menu-icon"><i class='bx bx-menu'></i></p>
+                    <ul class="nav-menu-list">
+                        <a href="#">ABOUT</a>
+                        <a href="#">PORTFOLIO</a>
+                        <a href="#">CONTACT</a>
+                    </ul>           
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-body">
+        <div class="calc-container">
+            <div class="guide-text">
+                <div class="text">計算過程</div>
+                <div class="text">輸入框</div>
+                <div class="text">計算結果</div>
+                <span class="placeholder">計算過程</span>
+                <span class="placeholder-2">輸入框</span>
+                <span class="placeholder-3">計算結果</span>
+            </div>
+            <div class="calculator">
+                <input id="calc-input" type="text" name="">
+                <button id="calc-plus" class="calc-button">&plus;</button>
+                <button id="calc-minus" class="calc-button">&minus;</button>
+                <button id="calc-multi" class="calc-button">&times;</button>
+                <button id="calc-divide" class="calc-button">&divide;</button>
+                <button id="calc-ac" class="clear-button"><i class='bx bxs-trash'></i></button>
+                <button id="calc-equal" class="equal-button">&equals;</button>
+
+                <div id="calc-preview"></div>
+                <div id="calc-result"></div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="copyright"></div>
+    </div>
+<body>
+    <script>
+        const input = document.getElementById('calc-input');
+
+        const preview = document.getElementById('calc-preview');
+        const plus = document.getElementById('calc-plus');
+        const minus = document.getElementById('calc-minus');
+        const multiply = document.getElementById('calc-multi');
+        const divide = document.getElementById('calc-divide');
+        const clear = document.getElementById('calc-ac');
+        const equal = document.getElementById('calc-equal');
+
+        const result = document.getElementById('calc-result');
+
+        let inputArray = [];
+
+        clear.onclick = function clear() {
+            input.value = "";
+            preview.textContent = "";
+            document.getElementById('calc-result').textContent = "";
+            inputArray = [];
+        }
+
+        plus.onclick = function plus() {
+            const currentValue = input.value;
+
+            if (!$.isNumeric(currentValue)) {
+                result.textContent = "Please enter a valid number.";
+                return;
+            }
+
+            const currentResult = parseFloat(result.textContent || 0);    
+            const newValue = parseFloat(currentValue);
+
+            if (preview.textContent != "") {
+                preview.textContent = (`${preview.textContent}${input.value}+`);
+            } else {
+                preview.textContent = (`${input.value}+`);
+            }
+
+            if (result.textContent == "") {
+                result.textContent = currentValue;
+            } else if (inputArray[inputArray.length - 1] == '+') {  
+                result.textContent = currentResult + newValue;
+            } else if (inputArray[inputArray.length - 1] == '-') {
+                result.textContent = currentResult - newValue;
+            } else if (inputArray[inputArray.length - 1] == '*'){
+                result.textContent = currentResult * newValue;
+            } else if (inputArray[inputArray.length - 1] == '/'){
+                result.textContent = currentResult / newValue;
+            }
+
+            inputArray.push(newValue, '+');
+            input.value = "";
+        }
+
+        minus.onclick = function minus() {
+            const currentValue = input.value;
+
+            if (!$.isNumeric(currentValue)) {
+                result.textContent = "Please enter a valid number.";
+                return;
+            }
+
+            const currentResult = parseFloat(result.textContent || 0);    
+            const newValue = parseFloat(currentValue);
+
+            if (preview.textContent != "") {
+                preview.textContent = (`${preview.textContent}${input.value}-`);
+            } else {
+                preview.textContent = (`${input.value}-`);
+            }
+            
+            if (result.textContent == "") {
+                result.textContent = currentValue;
+            } else if (inputArray[inputArray.length - 1] == '+') {  
+                result.textContent = currentResult + newValue;
+            } else if (inputArray[inputArray.length - 1] == '-') {
+                result.textContent = currentResult - newValue;
+            } else if (inputArray[inputArray.length - 1] == '*'){
+                result.textContent = currentResult * newValue;
+            } else if (inputArray[inputArray.length - 1] == '/'){
+                result.textContent = currentResult / newValue;
+            }
+
+            inputArray.push(newValue, '-');
+            input.value = "";
+        }
+
+        multiply.onclick = function multiply() {
+            const currentValue = input.value;
+
+            if (!$.isNumeric(currentValue)) {
+                result.textContent = "Please enter a valid number.";
+                return;
+            }
+
+            const currentResult = parseFloat(result.textContent || 0);    
+            const newValue = parseFloat(currentValue);
+
+            if (preview.textContent != "") {
+                preview.textContent = (`(${preview.textContent}${input.value})*`);
+            } else {
+                preview.textContent = (`${input.value}*`);
+            }
+            
+            if (result.textContent == "") {
+                result.textContent = currentValue;
+            } else if (inputArray[inputArray.length - 1] == '+') {  
+                result.textContent = currentResult + newValue;
+            } else if (inputArray[inputArray.length - 1] == '-') {
+                result.textContent = currentResult - newValue;
+            } else if (inputArray[inputArray.length - 1] == '*'){
+                result.textContent = currentResult * newValue;
+            } else if (inputArray[inputArray.length - 1] == '/'){
+                result.textContent = currentResult / newValue;
+            }
+
+            inputArray.push(newValue, '*');
+            input.value = "";
+        }
+
+        divide.onclick = function divide() {
+            const currentValue = input.value;
+
+            if (!$.isNumeric(currentValue)) {
+                result.textContent = "Please enter a valid number.";
+                return;
+            }
+
+            const currentResult = parseFloat(result.textContent || 0);    
+            const newValue = parseFloat(currentValue);
+
+            if (preview.textContent != "") {
+                preview.textContent = (`(${preview.textContent}${input.value})/`);
+            } else {
+                preview.textContent = (`${input.value}/`);
+            }
+            
+            if (result.textContent == "") {
+                result.textContent = currentValue;
+            } else if (inputArray[inputArray.length - 1] == '+') {  
+                result.textContent = currentResult + newValue;
+            } else if (inputArray[inputArray.length - 1] == '-') {
+                result.textContent = currentResult - newValue;
+            } else if (inputArray[inputArray.length - 1] == '*'){
+                result.textContent = currentResult * newValue;
+            } else if (inputArray[inputArray.length - 1] == '/'){
+                result.textContent = currentResult / newValue;
+            }
+
+            inputArray.push(newValue, '/');
+            input.value = "";
+        }   
+
+        equal.onclick = function equal() {
+
+            const previewText = preview.textContent;
+            const currentValue = input.value;
+
+            if (!$.isNumeric(currentValue)) {
+                result.textContent = "Please enter a valid number.";
+                return;
+            }
+
+            preview.textContent = (`${previewText}${input.value}=`);
+
+            const currentResult = parseFloat(result.textContent || 0); 
+            const newValue = parseFloat(currentValue);
+            
+            if (inputArray[inputArray.length - 1] == '+') {  
+                result.textContent = currentResult + newValue;
+            } else if (inputArray[inputArray.length - 1] == '-') {
+                result.textContent = currentResult - newValue;
+            } else if (inputArray[inputArray.length - 1] == '*'){
+                result.textContent = currentResult * newValue;
+            } else if (inputArray[inputArray.length - 1] == '/'){
+                result.textContent = currentResult / newValue;
+            }
+
+            input.value = "";
+        }
+
+    </script>
+</body>
+</html>

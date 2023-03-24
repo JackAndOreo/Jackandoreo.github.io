@@ -29,7 +29,7 @@
             width: 300px;
             height: 300px;
             margin: -30% 0 0 -30%;
-            background-image: url("/img/BGMOVE4.HEIC");
+            background-image: url("../img/BGMOVE4.HEIC");
             z-index: -1;
             animation: bgmove 50s infinite linear forwards;
         }
@@ -37,7 +37,7 @@
             width: 500px;
             height: 500px;
             margin: -30% -30% 0 0;
-            background-image: url("/img/BGMOVE3.HEIC");
+            background-image: url("../img/BGMOVE3.HEIC");
             z-index: -2;
             animation: bgmove2 40s infinite linear forwards;
         }
@@ -45,7 +45,7 @@
             width: 350px;
             height: 350px;
             margin: -30% 0 0 -30%;
-            background-image: url("/img/BGMOVE2.jpg");
+            background-image: url("../img/BGMOVE2.jpg");
             z-index: -3;
             animation: bgmove3 50s infinite linear forwards;
         }
@@ -53,7 +53,7 @@
             width: 200px;
             height: 200px;
             margin: -30% -30% 0 0;
-            background-image: url("/img/BGMOVE1.HEIC");
+            background-image: url("../img/BGMOVE1.HEIC");
             z-index: -4;
             animation: bgmove4 40s infinite ease-out forwards;
         }
@@ -61,7 +61,7 @@
             width: 300px;
             height: 300px;
             margin: -30% -30% 0 0;
-            background-image: url("/img/BGMOVE5.HEIC");
+            background-image: url("../img/BGMOVE5.HEIC");
             z-index: -3;
             animation: bgmove5 35s infinite ease-out forwards;
         }
@@ -70,7 +70,7 @@
             width: 250px;
             height: 250px;
             margin: -30% -30% 0 0;
-            background-image: url("/img/BGMOVE6.HEIC");
+            background-image: url("../img/BGMOVE6.HEIC");
             z-index: -2;
             animation: bgmove5 50s infinite ease-out forwards;
         }
@@ -215,7 +215,7 @@
             opacity: .8;
         }
         .red {
-            background-image: url("/img/SPIN1.jpg");
+            background-image: url("../img/SPIN1.jpg");
         }
         .spin-card-2 {
             z-index: 3;
@@ -224,7 +224,7 @@
             opacity: .8;
         }   
         .yellow {
-            background-image: url("/img/SPIN2.jpeg");
+            background-image: url("../img/SPIN2.jpeg");
         }
         .spin-card-3 {
             z-index: 4;
@@ -233,7 +233,7 @@
             opacity: .9;
         }
         .green {
-            background-image: url("/img/SPIN3.JPG");
+            background-image: url("../img/SPIN3.JPG");
         }
         .spin-card-4 {
             z-index: 5;
@@ -242,7 +242,7 @@
             opacity: 1;
         }
         .blue {
-            background-image: url("/img/SPIN4.HEIC");
+            background-image: url("../img/SPIN4.HEIC");
         }
         .spin-card-5 {
             z-index: 3;
@@ -251,7 +251,7 @@
             opacity: .9;
         }
         .purple {
-            background-image: url("/img/SPIN5.JPG");
+            background-image: url("../img/SPIN5.JPG");
         }  
     }
 }
