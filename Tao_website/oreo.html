@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/oreo.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <script src="jquery-3.6.3.min.js"></script> -->
+</head>
+<body>
+    <div id="header">
+        <div class="logo"></div>
+        <div class="nav">
+            <div class="nav-bar">
+                <div class="nav-item about">
+                    <a href="">ABOUT</a>
+                </div>
+                <div class="nav-item">
+                    <a href="">PORTFOLIO</a>
+                </div>
+                <div class="nav-item">
+                    <a href="">CONTACT</a>
+                </div>
+                <div class="nav-item" id="nav-menu">
+                    <p class="nav-menu-icon"><i class='bx bx-menu'></i></p>
+                    <ul class="nav-menu-list">
+                        <a href="#">ABOUT</a>
+                        <a href="#">PORTFOLIO</a>
+                        <a href="#">CONTACT</a>
+                    </ul>           
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-body">
+        <div class="bg-oreo-container">
+            <div id="bg-oreo">
+                <div class="circle circle-1"></div>
+                <div class="circle circle-2"></div>
+                <div class="circle circle-3"></div>
+                <div class="circle circle-4"></div>
+                <div class="circle circle-5"></div>
+                <div class="circle circle-6"></div>        
+            </div>
+        </div>
+            
+        <div id="oreo-text">
+            <div class="text-box">紀念OREO</div>
+        </div>
+        <div id="spin-oreo">
+            <div id="spin-container">
+                <div class="spin-card spin-card-1 red"></div>
+                <div class="spin-card spin-card-2 yellow"></div>
+                <div class="spin-card spin-card-3 green"></div>
+                <div class="spin-card spin-card-4 blue"></div>
+                <div class="spin-card spin-card-5 purple"></div>
+            </div>
+            <button id="spin-button" onclick="spin()"><i class='bx bxs-chevron-right'></i></button>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="copyright"></div>
+    </div>
+
+    <script type="text/javascript">
+
+        function spin() {
+            
+            let a = document.getElementsByClassName('spin-card-1')[0];
+            let b = document.getElementsByClassName('spin-card-2')[0];
+            let c = document.getElementsByClassName('spin-card-3')[0];
+            let d = document.getElementsByClassName('spin-card-4')[0];
+            let e = document.getElementsByClassName('spin-card-5')[0];
+
+            a.classList.add('spin-card-5');
+            a.classList.remove('spin-card-1');
+
+            b.classList.add('spin-card-1');
+            b.classList.remove('spin-card-2');
+
+            c.classList.add('spin-card-2');
+            c.classList.remove('spin-card-3');
+
+            d.classList.add('spin-card-3');
+            d.classList.remove('spin-card-4');
+
+            e.classList.add('spin-card-4');
+            e.classList.remove('spin-card-5');
+        }
+        
+    </script>
+</body>
+</html>
