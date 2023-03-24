@@ -35,7 +35,7 @@
                 text-align: center;
                 width: 130px;
                 height: 65px;
-                line-height: 85px;
+                line-height: 80px;
                 &:hover {
                     font-weight: $font-bold;
                 }
@@ -114,6 +114,7 @@
                 position: relative;
                 .nav-item {
                     display: none;
+                    line-height: 85px;
                 }
                 #nav-menu {
                     display: inline-block !important;

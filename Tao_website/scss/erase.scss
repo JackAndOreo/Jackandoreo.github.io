@@ -1,0 +1,74 @@
+@import "../scss/settings";
+@import "../scss/models";
+
+#main-body {
+    .guessgame-container {
+        max-width: $max-width;
+        margin: 0 auto;
+        background-color: $bg-color;
+        display: flex;
+        flex-direction: column;
+        font-family: $chinese-font;
+
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            height: 140px;
+
+            .guessgame-title {
+                margin: 0 auto;
+                width: 300px;
+                text-align: center;
+                font-size: $biggest-font-size;
+                font-weight: $font-bold;
+            }
+    
+            input {
+                width: 140px;
+                height: 35px;
+                line-height: 35px;
+                margin: 10px auto;
+                font-size: $normal-font-size;
+                text-align: center;
+            }
+    
+            .btn-container {
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                height: 40px;
+                width: 200px;
+                
+                .guessgame-button {
+                    font-size: $small-font-size;
+                    height: 30px;
+                    width: 60px;
+                    text-align: center;
+                }
+            }
+        }
+
+        .picture {
+            position: relative;
+            margin: 0 auto;
+            width: 480px;
+            height: 480px;
+            background-image: url("../img/POKEMON001.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+    
+            .mask {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 3000px;
+                height: 3000px;
+                background: radial-gradient(circle at center, transparent, transparent, rgba(61, 61, 61, 0) 30px, #332E30 70px);
+                pointer-events: none;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}

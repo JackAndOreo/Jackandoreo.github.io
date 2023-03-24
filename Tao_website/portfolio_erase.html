@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/erase.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="logo"></div>
+        <div class="nav">
+            <div class="nav-bar">
+                <div class="nav-item about">
+                    <a href="">ABOUT</a>
+                </div>
+                <div class="nav-item">
+                    <a href="">PORTFOLIO</a>
+                </div>
+                <div class="nav-item">
+                    <a href="">CONTACT</a>
+                </div>
+                <div class="nav-item" id="nav-menu">
+                    <p class="nav-menu-icon"><i class='bx bx-menu'></i></p>
+                    <ul class="nav-menu-list">
+                        <a href="#">ABOUT</a>
+                        <a href="#">PORTFOLIO</a>
+                        <a href="#">CONTACT</a>
+                    </ul>           
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-body">
+        <div class="guessgame-container">
+            <div class="text-container">
+                <div class="guessgame-title">猜猜寶可夢遊戲</div>
+                <input type="text" class="guess-input" placeholder="猜猜我是誰">
+                <div class="btn-container">
+                    <button class="guessgame-button" id="guess">猜猜看</button>
+                    <button class="guessgame-button" id="switch">再一次</button>
+                </div>
+            </div>
+            <div class="picture">
+                <div class="mask"></div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="copyright"></div>
+    </div>
+    <script>
+        class Ball {
+            constructor(_element, _mouseX = 0, _mouseY = 0, _ballX = 0, _ballY = 0, _bgX = 1500, _bgY = 1500) {
+                this.element = _element;
+                this.mouseX = _mouseX;
+                this.mouseY = _mouseY;
+
+                this.ballX = _ballX;
+                this.ballY = _ballY;
+
+                this.strength = 0.05;
+
+                this.bgX = _bgX;
+                this.bgY = _bgY;
+            }
+
+            static getCssValue(element, cssName) {
+                const root_style = getComputedStyle(element);
+                return root_style.getPropertyValue(cssName);
+            }
+
+            delayMotion() {
+                
+                let distance_x = this.mouseX - this.ballX;
+                distance_x *= this.strength;
+                this.ballX += distance_x;
+                let distance_y = this.mouseY - this.ballY;
+                distance_y *= this.strength;
+                this.ballY += distance_y;
+
+                const mask = document.querySelector(".mask");
+
+
+                const pic = document.getElementsByClassName('picture')[0];
+                const gameLeft = document.getElementsByClassName('guessgame-container')[0];
+                const headerHeight = document.getElementById('header');
+                const textHeight = document.getElementsByClassName('text-container')[0];
+
+                const centerX = this.ballX - this.bgX - parseInt(Ball.getCssValue(pic, "margin-left")) - parseInt(Ball.getCssValue(gameLeft, "margin-left"));
+                const centerY = this.ballY - this.bgY - parseInt(Ball.getCssValue(headerHeight, "height")) - parseInt(Ball.getCssValue(textHeight, "height"));
+                mask.style.backgroundPositionX = centerX + "px";
+                mask.style.backgroundPositionY = centerY + "px";
+
+                requestAnimationFrame(this.delayMotion.bind(this));
+            }
+        }
+
+        const myBall = new Ball();
+    
+        document.addEventListener("mousemove", e => {
+            myBall.mouseX = e.clientX;
+            myBall.mouseY = e.clientY;
+        });
+        
+        myBall.delayMotion();
+
+        let pokemonPic = [
+            "img/POKEMON001.png",
+            "img/POKEMON002.png",
+            "img/POKEMON003.png",
+            "img/POKEMON004.png",
+            "img/POKEMON005.png",
+            "img/POKEMON006.png",
+            "img/POKEMON007.png",
+            "img/POKEMON008.png",
+            "img/POKEMON009.png",
+            "img/POKEMON010.png",
+            "img/POKEMON011.png",
+            "img/POKEMON012.png",
+            "img/POKEMON013.png",
+            "img/POKEMON014.png",
+            "img/POKEMON015.png",
+            "img/POKEMON016.png",
+            "img/POKEMON017.png",
+            "img/POKEMON018.png",
+            "img/POKEMON019.png",
+            "img/POKEMON020.png"
+        ];
+
+        let x = parseInt(Math.random() * 20);
+
+        const udpate = function() {
+            x = parseInt(Math.random() * 20);
+
+            $('.picture').css(
+                "background-image", `url(${pokemonPic[x]})`
+            )
+        }
+
+        udpate();
+
+        $('#switch').click(function() {
+
+            x = parseInt(Math.random() * 20);
+
+            $('.picture').css(
+                "background-image", `url(${pokemonPic[x]})`
+            )
+        });
+
+        let pokemonName = [
+            "小小象",
+            "海豹球",
+            "卡比獸",
+            "蚊香蛙",
+            "拉普拉斯",
+            "炎帝",
+            "夢幻",
+            "洛奇亞",
+            "小火龍",
+            "妙蛙花",
+            "小拉達",
+            "水箭龜",
+            "皮卡丘",
+            "小拳石",
+            "大岩蛇",
+            "比雕",
+            "巴大胡",
+            "狩獵鳳蝶",
+            "菊草葉",
+            "太陽珊瑚"
+        ];
+
+        $('#guess').click(function() {
+
+            if ($('.guess-input').val() == pokemonName[x]) {
+                alert ("答對了！");
+            }
+        
+        });
+    </script>
+</body>
+</html>
