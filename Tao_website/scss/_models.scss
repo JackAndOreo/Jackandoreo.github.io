@@ -120,7 +120,7 @@
                     display: inline-block !important;
 
                     &:hover {
-                        font-weight: $font-medium !important;
+                        font-weight: $font-medium;
                         ul {
                             a {
                                 display: inline-block !important;
@@ -143,6 +143,9 @@
                             width: 130px !important;
                             line-height: 55px;
                             text-align: center;
+                            &:hover {
+                                font-weight: $font-bold !important;
+                            }
                         }
                     }
                 }

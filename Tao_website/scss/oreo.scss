@@ -164,13 +164,11 @@
 }
 
 #oreo-text {
-    height: 50px;
-    max-width: $max-width;
     background-color: $bg-color;
     position: absolute;
-    top: 350px;
-    right: calc((100vw - $max-width) / 2);
-    left: calc((100vw - $max-width) / 2);
+    top: 345px;
+    right: calc((100vw - $max-width - 16px) / 2);
+    left: calc((100vw - $max-width - 16px) / 2);
     display: grid;
     .text-box {
         font-family: $chinese-font;
@@ -185,8 +183,8 @@
     background-color: $bg-color;
     position: absolute;
     bottom: 400px;
-    right: calc((100vw - $max-width) / 2);
-    left: calc((100vw - $max-width) / 2);
+    right: calc((100vw - $max-width - 16px) / 2);
+    left: calc((100vw - $max-width - 16px) / 2);
     display: flex;
     justify-content: center;
 

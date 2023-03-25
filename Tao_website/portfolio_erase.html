@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>猜猜寶可夢</title>
     <link rel="stylesheet" href="./css/erase.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="jquery-3.6.3.min.js"></script>
@@ -134,8 +134,7 @@
         let x = parseInt(Math.random() * 20);
 
         const udpate = function() {
-            x = parseInt(Math.random() * 20);
-
+            
             $('.picture').css(
                 "background-image", `url(${pokemonPic[x]})`
             )
