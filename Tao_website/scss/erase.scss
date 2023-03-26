@@ -13,13 +13,13 @@
         .text-container {
             display: flex;
             flex-direction: column;
-            height: 140px;
+            padding: 8px 0 10px 0;
 
             .guessgame-title {
                 margin: 0 auto;
                 width: 300px;
                 text-align: center;
-                font-size: $biggest-font-size;
+                font-size: $bigger-font-size;
                 font-weight: $font-bold;
             }
     
@@ -27,7 +27,7 @@
                 width: 140px;
                 height: 35px;
                 line-height: 35px;
-                margin: 10px auto;
+                margin: 10px auto 8px auto;
                 font-size: $normal-font-size;
                 text-align: center;
             }
@@ -36,7 +36,7 @@
                 margin: 0 auto;
                 display: flex;
                 justify-content: space-between;
-                height: 40px;
+                height: 30px;
                 width: 200px;
                 
                 .guessgame-button {
@@ -79,9 +79,8 @@
         .guessgame-container {
             min-width: 670px;
             .text-container {
-                height: 120px;
                 transition: 2s;
-                padding-bottom: 5px;
+                padding-bottom: 10px;
                 .guessgame-title {
                     font-size: $bigger-font-size;
                     transition: 2s;

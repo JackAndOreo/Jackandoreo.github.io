@@ -11,25 +11,28 @@
 </head>
 <body>
     <div id="header">
-        <div class="logo"></div>
+        <div>
+            <a href="../Tao_website/index.html" class="logo"></a>
+        </div>
+
         <div class="nav">
             <div class="nav-bar">
                 <div class="nav-item about">
-                    <a href="">ABOUT</a>
+                    <a href="../Tao_website/about.html">ABOUT</a>
                 </div>
                 <div class="nav-item">
                     <a href="">PORTFOLIO</a>
                 </div>
                 <div class="nav-item">
-                    <a href="">CONTACT</a>
+                    <a href="#">CONTACT</a>
                 </div>
                 <div class="nav-item" id="nav-menu">
                     <p class="nav-menu-icon"><i class='bx bx-menu'></i></p>
                     <ul class="nav-menu-list">
-                        <a href="#">ABOUT</a>
+                        <a href="../Tao_website/about.html">ABOUT</a>
                         <a href="#">PORTFOLIO</a>
                         <a href="#">CONTACT</a>
-                    </ul>           
+                    </ul>
                 </div>
             </div>
         </div>
@@ -50,7 +53,7 @@
         </div>
     </div>
     <div id="footer">
-        <div class="copyright"></div>
+        <div class="copyright">&copy; BY TAO ALL RIGHTS RESERVED</div>
     </div>
     <script>
         class Ball {
@@ -179,7 +182,7 @@
             if ($('.guess-input').val() == pokemonName[x]) {
                 alert ("答對了！");
             } else if ($('.guess-input').val() != pokemonName[x]) {
-                alert ("答錯了！再接再勵！");   
+                alert ("答錯了！可惜！");   
             }
         
         });

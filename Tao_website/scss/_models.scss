@@ -11,12 +11,13 @@
     background-color: $bg-color;
 
     .logo {
-        width: 75px;
+        display: block;
+        width: 69px;
         height: 65px;
-        background-image: url("../img/temparoricon.png");
+        background-image: url("../img/SHIBAICON.png");
         background-position: center;
         background-size: cover;
-        margin-left: 15px;
+        margin-left: 25px;
     }
 
     .nav {
@@ -72,6 +73,13 @@
     margin: 0 auto;
     background-color: $bg-color;
     height: 60px;
+    .copyright {
+        font-family: $chinese-font;
+        font-size: $small-font-size;
+        color: $right-color;
+        text-align: center;
+        padding-top: 1rem;
+    }
 }
 
 @media screen and (max-width: 1200px) {
