@@ -9,9 +9,9 @@
         background-color: $bg-color;
         border-left: $side-border;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
         column-gap: 1.5rem;
-        row-gap: 2rem;
+        row-gap: 1.5rem;
         padding: 2rem;
 
         .works-box {

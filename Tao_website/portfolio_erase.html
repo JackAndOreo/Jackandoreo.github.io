@@ -168,7 +168,7 @@
             "小拳石",
             "大岩蛇",
             "比雕",
-            "巴大胡",
+            "巴大蝶",
             "狩獵鳳蝶",
             "菊草葉",
             "太陽珊瑚"
@@ -178,6 +178,8 @@
 
             if ($('.guess-input').val() == pokemonName[x]) {
                 alert ("答對了！");
+            } else if ($('.guess-input').val() != pokemonName[x]) {
+                alert ("答錯了！再接再勵！");   
             }
         
         });

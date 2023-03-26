@@ -73,3 +73,56 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    #main-body {
+        .guessgame-container {
+            min-width: 670px;
+            .text-container {
+                height: 120px;
+                transition: 2s;
+                padding-bottom: 5px;
+                .guessgame-title {
+                    font-size: $bigger-font-size;
+                    transition: 2s;
+                }
+        
+                input {
+                    height: 30px;
+                    line-height: 30px;
+                    margin: 3px auto 7px auto;
+                    transition: 2s;
+                }
+        
+                .btn-container {
+                    height: 30px;
+                    transition: 2s;
+                }
+            }
+    
+            .picture {
+                position: relative;
+                margin: 0 auto;
+                width: 420px;
+                height: 420px;
+                background-image: url("../img/POKEMON001.png");
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                overflow: hidden;
+                border-radius: 26px;
+        
+                .mask {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 3000px;
+                    height: 3000px;
+                    background: radial-gradient(circle at center, transparent, transparent, rgba(61, 61, 61, 0) 30px, #332E30 70px);
+                    pointer-events: none;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
+}
