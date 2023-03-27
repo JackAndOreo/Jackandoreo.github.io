@@ -7,8 +7,11 @@
     <title>Tao's Website</title>
     <link rel="stylesheet" href="./css/index.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="jquery-3.6.3.min.js"></script>
 </head>
 <body>
+    <div id="pop-bg"></div>
+
     <div id="header">
         <div>
             <a href="../Tao_website/index.html" class="logo"></a>
@@ -20,22 +23,33 @@
                     <a href="../Tao_website/about.html">ABOUT</a>
                 </div>
                 <div class="nav-item">
-                    <a href="">PORTFOLIO</a>
+                    <a href="../Tao_website/portfolio_historywork.html">PORTFOLIO</a>
                 </div>
                 <div class="nav-item">
-                    <a href="#">CONTACT</a>
+                    <a href="#" class="pop-btn">CONTACT</a>
                 </div>
                 <div class="nav-item" id="nav-menu">
                     <p class="nav-menu-icon"><i class='bx bx-menu'></i></p>
                     <ul class="nav-menu-list">
                         <a href="../Tao_website/about.html">ABOUT</a>
-                        <a href="#">PORTFOLIO</a>
-                        <a href="#">CONTACT</a>
+                        <a href="../Tao_website/portfolio_historywork.html">PORTFOLIO</a>
+                        <a href="#" class="pop-btn">CONTACT</a>
                     </ul>
                 </div>
             </div>
         </div>
+        <div id="pop-container">
+            <div class="pop-box">
+                <div class="pop-text">
+                    <div class="pop-title">CONTACT ME</div>
+                    <div class="pop-email">jackh0517@gmail.com</div>
+                </div>
+                <div class="pop-img"></div>
+                <div class="pop-close"><i class='bx bx-x-circle' ></i></div>
+            </div>
+        </div>
     </div>
+
     <div id="main-body">
         <div id="banner">
             <div class="banner-parent-1">
@@ -124,7 +138,7 @@
         </div>
         <div id="ending">
             <div class="ending-box">
-                <div class="ending-title">簡單的自我介紹</div>
+                <div class="ending-title">簡介</div>
                 <div class="ending-text">我是Jack，是一名自學的前端工程師。 而自小進入全英語安親班，耳濡目染之中奠基了對英語學習的興趣與基石；並持續深化英文聽說讀寫水平，且順利地在TOEIC檢定取得金色證書。</div>
             </div>
         </div>
@@ -132,5 +146,16 @@
     <div id="footer">
         <div class="copyright">&copy; BY TAO ALL RIGHTS RESERVED</div>
     </div>
+    <script>
+        $(".pop-btn").click(function() {
+            $("#pop-container").css("display", "flex");
+            $("#pop-bg").css("display", "block");
+        });
+
+        $(".pop-close").click(function() {
+            $("#pop-container").css("display", "none");
+            $("#pop-bg").css("display", "none");
+        })
+    </script>
 </body>
 </html>
