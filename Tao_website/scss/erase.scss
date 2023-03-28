@@ -78,53 +78,39 @@
     #main-body {
         .guessgame-container {
             min-width: $min-width;
-            height: 750px;
+            height: 720px;
             .text-container {
-                height: 230px;
-                padding-top: 35px;
+                height: 215px;
+                padding-top: 20px;
                 transition: 2s;
-                padding-bottom: 30px;
+                padding-bottom: 20px;
                 .guessgame-title {
                     font-size: $bigger-font-size;
                     margin-bottom: 20px;
                     transition: 2s;
                 }
         
-                input {
+                .guess-input {
                     height: 50px;
                     line-height: 50px;
-                    margin: 5px auto 20px auto;
+                    margin: 0 auto 20px auto;
                     transition: 2s;
                 }
         
                 .btn-container {
                     height: 40px;
                     transition: 2s;
+                    .guessgame-button {
+                        height: 40px;
+                    }
                 }
             }
     
             .picture {
-                position: relative;
-                margin: 0 auto;
-                width: 420px;
-                height: 420px;
+                width: 400px;
+                height: 400px;
                 background-image: url("../img/POKEMON001.png");
-                background-position: center;
-                background-size: cover;
-                background-repeat: no-repeat;
-                overflow: hidden;
-                border-radius: 26px;
-        
-                .mask {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 3000px;
-                    height: 3000px;
-                    background: radial-gradient(circle at center, transparent, transparent, rgba(61, 61, 61, 0) 30px, #332E30 70px);
-                    pointer-events: none;
-                    background-repeat: no-repeat;
-                }
+                border-radius: 25px;
             }
         }
     }

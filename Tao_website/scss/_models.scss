@@ -264,6 +264,8 @@
                         ul {
                             a {
                                 display: inline-block !important;
+                                background-color: $bg-color;
+                                border-top: 3px solid $border-color;
                             }
                         }
                     }
@@ -297,7 +299,35 @@
 @media screen and (max-width: 670px) {
     #header {  
         #pop-container {
-            left: 28px;
+            width: 400px;
+            height: 200px;
+            border-radius: 25px;
+            left: calc((100vw - 400px - 15px) / 2);
+            transition: 2s;
+            .pop-box {
+                column-gap: 20px;
+                .pop-text {
+                    .pop-email {
+                        font-size: $normal-font-size;
+                        transition: 2s;
+                    }
+                }
+                .pop-img {
+                    display: none;
+                }
+                .pop-close {
+                    right: -76px;
+                    top: -42px;
+                    transition: 2s;
+                    font-size: $bigger-font-size;
+                }
+            }
         }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #pop-container {
+        left: 10px !important;
     }
 }

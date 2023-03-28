@@ -138,7 +138,7 @@
     #main-body {
         #resume-container {
             .profile-container {
-                min-width: $min-width;
+                min-width: 670px;
                 .profile-picture {
                     justify-content: center;
                     margin: 0 0;
@@ -149,6 +149,65 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media screen and (max-width: 670px) {
+    #main-body {
+        #resume-container {
+            .profile-container {
+                min-width: 420px;
+                padding: 20px 0;
+                height: 570px;
+                .profile-picture {
+                    justify-content: center;
+                    margin: 0 auto;
+                    transition: 2s;
+                    padding: 0;
+                    flex-direction: column;
+                    height: 100%;
+                    .basic-intro {
+                        text-align: center;
+                        transition: 2s;
+                    }
+                    p {
+                        padding: .4rem 0;
+                        transition: 2s;
+                    }
+                    .pic {
+                        margin: 10px auto 5px auto;
+                    }
+                }
+            }
+            .resume-text {
+                padding: 20px 40px;
+                font-size: $normal-font-size;
+                .paragraph {
+                    padding: 25px 0;
+                    line-height: 2.7rem;
+                }
+                .experience {
+                    margin: 20px 0 -5px 0;
+                    width: 500px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: baseline;
+                    span {
+                        font-size: $small-font-size;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .experience {
+        display: flex;
+        flex-direction: column;
+        span {
+            padding-top: 5px;
         }
     }
 }
