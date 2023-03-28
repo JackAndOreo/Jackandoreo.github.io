@@ -19,7 +19,7 @@
         background-color: $bg-color;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        padding: 2.5rem 3rem;
+        padding: 2.5rem;
         border-right: $side-border;
     }
     .extend-work-box {
@@ -29,7 +29,7 @@
         display: flex;
         align-items: center;
         box-shadow: 0 0 10px black;
-        margin: 0 10px;
+        margin: 0 5px;
         &:hover {
             width: 450px;
             border-radius: 20px;
@@ -44,7 +44,6 @@
             display: block;
             min-width: 250px;
             height: inherit;
-            background-color: lightskyblue;
         }
         .extend-text {
             width: 200px;
@@ -150,6 +149,89 @@
             border-left: none;
             padding: 40px 20px;
             transition: 2s;
+        }
+    }
+}
+
+@media screen and (max-width: 1048px) {
+    #main-body {
+        .extend-work-container {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            row-gap: 3rem;
+            transition: 2s;
+        }
+        .extend-work-box {
+            width: 500px;
+            height: 740px;
+            overflow: hidden;
+            margin: 0 auto;
+            transition: 2s;
+            &:hover {
+                width: 840px;
+                border-radius: 30px;
+                .extend-img {
+                    border-radius: 30px;
+                }
+            }
+            .extend-img {
+                min-width: 500px;
+                transition: 2s;
+            }
+            .extend-text {
+                width: 340px;
+                font-size: $bigger-font-size;
+                transition: 2s;
+                p {
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 908px) {
+    #main-body {
+        #extend-work-title {
+            border-left: none;
+            font-size: $bigger-font-size;
+            transition: 2s;
+        }
+        .extend-work-container {
+            border-right: none;
+        }
+        .extend-work-box {
+            width: 300px;
+            height: 444px;
+            overflow: hidden;
+            margin: 0 auto;
+            transition: 3s;
+            &:hover {
+                width: 500px;
+                border-radius: 20px;
+                .extend-img {
+                    border-radius: 20px;
+                }
+            }
+            .extend-img {
+                min-width: 300px;
+            }
+            .extend-text {
+                width: 200px;
+                font-size: $big-font-size;
+                transition: 3s;
+            }
+        }
+        #history-work-title {
+            border-left: none;
+            font-size: $bigger-font-size;
+            transition: 2s;
+            p {
+                font-size: 1rem;
+                margin-top: 16px;
+                transition: 1s;
+            }
         }
     }
 }
