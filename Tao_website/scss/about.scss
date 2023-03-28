@@ -138,7 +138,7 @@
     #main-body {
         #resume-container {
             .profile-container {
-                min-width: 670px;
+                min-width: $min-width;
                 .profile-picture {
                     justify-content: center;
                     margin: 0 0;

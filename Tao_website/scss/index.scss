@@ -460,7 +460,7 @@
             .text {
                 font-size: $big-font-size;
                 transition: 3s;
-                width: 670px;
+                width: $min-width;
             }
         }
         #courses {
@@ -473,7 +473,7 @@
         }
         #ending { 
             .ending-box {
-                min-width: 670px;
+                min-width: $min-width;
                 padding: 35px 20px 25px 20px;
                 transition: 2s;
                 .ending-title {
@@ -499,7 +499,7 @@
     #main-body {
         #review-container {
             .review {
-                min-width: 670px;
+                min-width: $min-width;
                 .review-box {
                     height: 302px;
                     grid-template-columns: 302px 1fr;

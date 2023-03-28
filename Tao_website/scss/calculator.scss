@@ -146,7 +146,7 @@
 
 @media screen and (max-width: 768px) {
     .calc-container {
-        min-width: 670px;
+        min-width: $min-width;
         min-height: 653px;
         .guide-text {
             width: 0;

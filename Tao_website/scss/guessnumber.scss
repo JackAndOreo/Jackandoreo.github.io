@@ -110,7 +110,7 @@
 
 @media screen and (max-width: 768px) {
     .border-box {
-        width: 670px !important;
+        width: $min-width !important;
         transition: 2s;
     }
     #record-box {

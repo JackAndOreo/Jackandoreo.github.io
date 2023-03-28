@@ -291,7 +291,7 @@
 
 @media screen and (max-width: 768px) {
     #oreo-text {
-        min-width: 670px !important;
+        min-width: $min-width !important;
         position: absolute;
         top: 350px;
         right: 0;
@@ -303,7 +303,7 @@
     }
     
     #spin-oreo {
-        min-width: 670px !important;
+        min-width: $min-width !important;
         position: absolute;
         bottom: 400px;
         right: 0;
