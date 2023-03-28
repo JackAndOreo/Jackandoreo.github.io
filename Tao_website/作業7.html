@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/作業7.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;400;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>EBAY</title>
+</head>
+<body>
+    <header>
+        <div id="header">
+            <div class="sign-in">
+                <p>
+                    <span>Hi!</span>
+                    <a href="#">Sign in</a>
+                    <span class="hid-2">or</span>
+                    <a href="#" class="hid-2">register</a>
+                </p>
+                <a href="#" class="hid-3">Daily Deals</a>
+                <a href="#" class="hid-3">Help&Contact</a>
+            </div>
+            <div class="header-menu">
+                <a href="#">Ship to</a>
+                <a href="#">Sell</a>
+                <a href="#" class="hid">Watchlist<i class='bx bx-chevron-down'></i></a> 
+                <!-- 注意這邊如果想要做下拉式選單，大概率不會使用到a標籤
+                這時候就要注意會有水平對齊的問題，可以使用div包裹住再用align-item -->
+                <a href="#">My eBay<i class='bx bx-chevron-down'></i></a>   
+                <a href="#"><i class='bx bx-bell header-menu-icon'></i></a>  
+                <a href="#"><i class='bx bx-cart-alt header-menu-icon'></i></a>  
+            </div>
+        </div>
+    </header>
+
+    <section class="main-body">
+        <div id="search-bar">
+            <div class="nav-ul">
+                <div class="icon"><img src="img/EBAYlogo.png" alt=""></div>
+                <p class="icon-font">
+                    <a href="" class="category-text">Shop by category</a>
+                    <i class='bx bx-chevron-down'></i>
+                </p>
+                <form action="" class="search-form">
+                    <div class="input-placeholder">
+                        <input type="search" class="input">
+                        <div class="placeholder">
+                            <i class='bx bx-search'></i>
+                            <span>Search for anything</span>
+                        </div>
+                    </div>
+                    <div class="categories">
+                        <select name="categories" id="">
+                            <option value="All Categories">All Categories</option>
+                            <option value="All Categories">All Categories</option>
+                            <option value="All Categories">All Categories</option>
+                            <option value="All Categories">All Categories</option>
+                            <option value="All Categories">All Categories</option>
+                        </select>
+                        <i class='bx bx-chevron-down'></i>
+                    </div>
+                    <button type="submit" class="search-button"><i class='bx bx-search'></i><span>Search</span></button>
+                    <a href="#" class="advanced">Advanced</a>
+                </form>
+            </div>
+        </div>
+        <div id="nav">
+            <div id="nav-bar">
+                <div class="nav-item item-1 active"><a href="#">Home</a></div>
+                <div class="nav-item item-2"><a href="#"><i class='bx bxs-heart'></i> Favorites</a></div>
+                <div class="nav-item item-3"><a href="#">Electronics</a></div>
+                <div class="nav-item item-4"><a href="#">Fashion</a></div>
+                <div class="nav-item item-5"><a href="#">Health & Beauty</a></div>
+                <div class="nav-item item-6"><a href="#">Home & Garden</a></div>
+                <div class="nav-item item-7"><a href="#">Sports</a></div>
+                <div class="nav-item item-8"><a href="#">Collectibles and Art</a></div>
+                <div class="nav-item item-9"><a href="#">Industrial equipment</a></div>
+                <div class="nav-item item-10"><a href="#">Motors</a></div>
+                <div class="nav-item item-11"><a href="#">Deals</a></div>
+                <div class="nav-item item-12"><a href="#">Sell</a></div>
+                <span class="nav-item item-13"><a href="#">More<i class='bx bx-chevron-down'></i></a></span>
+            </div>
+        </div>
+        <div id="banner">
+            <div class="banner-parent-1">
+                <div class="banner-1"></div>
+            </div>
+            <div class="banner-parent-2">
+                <div class="banner-2"></div>
+            </div>
+            <div class="banner-parent-3">
+                <div class="banner-3"></div>
+            </div>
+        </div>
+        <div id="collection-title">Today's Featured Collections</div>
+        <div id="collection-container">
+            <div class="collection-box">
+                <div class="main-photo"></div>
+                <div class="photo-list-1"></div>
+                <div class="photo-list-2"></div>
+                <div class="photo-list-3"></div>
+                <div class="main-description">
+                    <p class="descript-title">In a Flash</p>
+                    <p class="descript-text">Make new memories with instant cameras like a Fuji Instax Mini 25, a Leica Sofort, or a Polaroid instant-print camera—plus a Lomo'Instant Automat from Lomography.</p>
+                </div>
+                <div class="shop-list-1">15 items</div>
+                <div class="list-line"></div>
+                <div class="shop-list-2">by ebaytecheditor</div>
+                <div class="list-line-2"></div>
+                <div class="shop-list-3"><a href="#">Shop now</a></div>
+            </div>
+            <div class="collection-box">
+                <div class="main-photo"></div>
+                <div class="photo-list-1"></div>
+                <div class="photo-list-2"></div>
+                <div class="photo-list-3"></div>
+                <!-- 技巧：可以用容器包裹，這樣就不用寫那麼多grid-area -->
+                <div class="main-description">
+                    <p class="descript-title">In a Flash</p>
+                    <p class="descript-text">Make new memories with instant cameras like a Fuji Instax Mini 25, a Leica Sofort, or a Polaroid instant-print camera—plus a Lomo'Instant Automat from Lomography.</p>
+                </div>
+                <div class="shop-list-1">15 items</div>
+                <div class="list-line"></div>
+                <div class="shop-list-2">by ebaytecheditor</div>
+                <div class="list-line-2"></div>
+                <div class="shop-list-3">
+                    <a href="#">Shop now</a>
+                </div>
+            </div>
+        </div>
+        <div id="card">
+            <div class="card-title-container">
+                <div class="card-h-title">Hot product</div>
+                <p class="see-all">
+                    <span>See all </span>
+                    <i class='bx bx-right-arrow-alt' ></i>
+                </p>
+            </div>
+            <div class="card-container">
+                <a href="#" class="card-item card-item-1">
+                    <div class="card-pic card-pic-1"></div>
+                    <h3 class="card-title card-title-1">Daily Deals</h3>
+                </a>
+                <a href="#" class="card-item card-item-2">
+                    <div class="card-pic card-pic-2"></div>
+                    <h3 class="card-title card-title-2">Collectibles</h3>
+                </a>
+                <a href="#" class="card-item card-item-3">
+                    <div class="card-pic card-pic-3"></div>
+                    <h3 class="card-title card-title-3">Vintage Handbag</h3>
+                </a>
+                <a href="#" class="card-item card-item-4">
+                    <div class="card-pic card-pic-4"></div>
+                    <h3 class="card-title card-title-4">Tech</h3>
+                </a>
+                <a href="#" class="card-item card-item-5">
+                    <div class="card-pic card-pic-5"></div>
+                    <h3 class="card-title card-title-5">Fashion</h3>
+                </a>
+                <a href="#" class="card-item card-item-6">
+                    <div class="card-pic card-pic-6"></div>
+                    <h3 class="card-title card-title-6">Home&Garden</h3>
+                </a>
+                <a href="#" class="card-item card-item-7">
+                    <div class="card-pic card-pic-7"></div>
+                    <h3 class="card-title card-title-7">Seller Center</h3>
+                </a>
+                <div class="hidden-card">
+                    <a href="#" class="card-item card-item-5">
+                        <div class="card-pic card-pic-5"></div>
+                        <h3 class="card-title card-title-5">Fashion</h3>
+                    </a>
+                    <a href="#" class="card-item card-item-6">
+                        <div class="card-pic card-pic-6"></div>
+                        <h3 class="card-title card-title-6">Home&Garden</h3>
+                    </a>
+                    <a href="#" class="card-item card-item-7">
+                        <div class="card-pic card-pic-7"></div>
+                        <h3 class="card-title card-title-7">Seller Center</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div>TTT</div>
+    </footer>
+</body>
+</html>

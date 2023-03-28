@@ -1,0 +1,218 @@
+*, *::after, *::before{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+#header{
+    display:flex;   
+    justify-content: space-between;
+    align-items: center;
+    padding:1rem;
+}
+#header img{
+    width:26px;
+}
+#header .logo img{
+    width:90px;
+}
+#header .self-icon .your-channel{
+    width:30px;
+}
+.header-left{
+    display:flex;
+    align-items: center;
+}
+.list{
+    margin:0 15px;
+}
+.logo{
+    margin:0 15px;
+}
+.self-icon{
+    display:grid;
+    grid-template-columns: repeat(4 , auto);
+    align-items:center;
+    column-gap:1.5rem;
+    margin-right:10px;
+}
+.your-channel{
+    border-radius: 50%;
+}
+.searchbox{
+    display:flex;
+    flex-grow:1;
+    /* 添加此屬性後，該form標籤已經可以自動伸展，但子項目input還需調整 */
+    margin:0 4rem;
+}
+.searchinput{
+    width:100%;
+    font-size:1rem;
+    padding:0.5em;
+    border:1px solid grey;
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+}
+.searchbutton{
+    display:flex;
+    align-items:center;
+    padding:0 1.25rem;
+    border:1px solid grey;
+    border-left:none;
+    background-color:#f8f8f8;
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+    cursor:pointer;
+    /* cursor屬性：滑鼠移過去的顯示 */
+}
+.searchbutton:hover{
+    background-color:#F0F0F0;
+}
+.searchbox a{
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+#mainbody{
+    display:flex;
+    height: calc(100% - 70px);  
+    background: #F9F9F9;
+}
+.sidebar{
+    /* display:grid;
+    grid-template-columns: minmax(auto , 210px);
+    align-items: center; */
+    display:flex;
+    flex-direction: column;
+    width:230px;
+    background: white;
+}
+.sidebar img{
+    width:25px;
+}
+.category{
+    display:flex;
+    align-items:center;
+    font-size: 0.9rem;
+    padding:15px 25px;
+    cursor:pointer;
+    white-space:nowrap;
+}
+.active{
+    background:#E5E5E5;
+    font-weight: 600;
+}
+.category span{
+    margin-left:25px;
+}
+.category:hover{
+    background:#F3F3F3;
+}
+.category:active{
+    background: #E5E5E5;
+    font-weight: 600;
+}
+.active:hover{
+    background: #DDD;
+}
+#videosection{
+    width:calc(100vw - 230px);
+}
+.video-body{
+    display:grid;
+    width:100%;
+    grid-template-columns: repeat(auto-fill , minmax(250px,1fr));
+    column-gap: 1rem;
+    row-gap: 3rem;
+    /* background: #f8f8f8; */
+    /* margin:0 1.5rem; */
+    padding:3rem 1.5rem;
+}
+.video-section{
+    display: grid;
+    grid-template-columns: 10% 40% auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "a a a"
+    "b c c"
+    "b d d"
+    "b e e";
+    column-gap:10px;
+}
+.thumbnail{
+    grid-area: a;
+    position:relative;
+    display:flex;
+}
+.video-channel{
+    grid-area: b;
+    margin-top:1rem;
+}
+.video-topic{
+    grid-area: c;
+    font-weight: 600; 
+    margin-top:1rem;
+}
+.channel-name{
+    grid-area: d;
+    font-size: 0.9rem;
+    line-height: 8px;
+    color:#828282;
+    margin-top:1rem;
+    transition:color 500ms;
+}
+.channel-name:hover{
+    color:#111111;
+    font-weight: 540;
+}
+.views{
+    grid-area: e;
+    color:#828282;
+    margin-top:0.4rem;
+}
+.thumbnail-img{
+    width:100%;
+    height:100%;
+}
+.video-channel-icon{
+    border-radius: 50%;
+    width:32px;
+}
+.thumbnail::before {
+    content: attr(data-duration);
+    /* content屬性只能於before、after使用 */
+    /* attr=attribute=調用屬性 */
+    position: absolute;
+    right:5px;
+    bottom:5px;
+    /* 這邊absolute有配合母項目的position:relative，需注意 */
+    background: black;
+    color: white;
+    border-radius: 0.3rem;
+    padding:0.1rem 0.3rem;
+    font-size: 0.9rem;
+}
+hr {
+    border:0.2px solid lightgray;
+    margin:0 1.5rem 0 1.5rem;
+}
+.video-section-title{
+    display:flex;
+    grid-column: 1 / -1;
+    /* 代表從1~-1，即佔據整行的意思 */
+    justify-content: space-between;
+    align-items: center;
+    margin:-0.5rem 0;
+}
+.video-section-close{
+    border:none;
+    background:none;
+    cursor: pointer;
+    font-size:1.5rem;
+    font-weight: 600;
+    color:#555
+}

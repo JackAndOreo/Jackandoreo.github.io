@@ -1,0 +1,181 @@
+/* Mainbody */
+#mainbody {
+    width: 100%;
+    height: 2545px;
+    margin: 0 auto;
+}
+    /* Banner */
+    #banner {
+        width: 1440px;
+        height: 458px;
+    }
+    /* Partner */
+    #partner {
+        width: 1440px;
+        height: 387px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .partner-title {
+        font-size: 25px;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+    .partner-font {
+        font-size: 15px;
+        color: #969a9b;
+        margin-bottom: 25px;
+    }
+    .partner-logo-table {
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+    .partner-logo-table td {
+        width: 188px;
+        height: 100px;
+        border: 1px solid #ededed;
+        text-align: center;
+    }
+    .partner-logo-table img {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    /* Advantage */
+    #advantage {
+        width: 100%;
+        height: 543px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #1a1b1f;
+    }
+    .advantage-title {
+        font-size: 25px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #fffeff;
+    }
+    .advantage-font {
+        font-size: 15px;
+        color: #fffeff;
+        margin-bottom: 25px;
+    }
+    .advantage-intro-table {
+        width: 1140px;
+        height: 333px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 60px;
+        padding-top: 65px;
+    }
+    .advantage-intro {
+        width: 340px;
+        height: 260px;
+        text-align: center;
+        background-color: #d1d1d1;
+        position: relative;
+        padding-top: 90px;
+    }
+    .advantage-intro img {
+        position: absolute;
+        top: -65px;
+        right: 105px;
+        border-radius: 50%;
+    }
+    .advantage-intro-title {
+        color: #e54142;
+        font-size: 17px;
+        font-weight: 550;
+    }
+    .advantage-intro-font {
+        width: 250px;
+        font-size: 14px;
+        line-height: 29px;
+        padding-top: 20px;
+    }
+    /* Cases */
+    #cases {
+        width: 1440px;
+        height: 810px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .cases-title {
+        font-size: 25px;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+    .cases-font {
+        font-size: 15px;
+        color: #969a9b;
+        margin-bottom: 28px;
+    }
+    .cases-nav {
+        display: flex;
+        text-align: center;
+    }
+    .cases-nav a {
+        display: block;
+        width: 200px;
+        height: 47px;
+        line-height: 40px;
+        background: url(../img/selectbg.png);
+        color: #fdfffe;
+    }
+    #cases .cases-nav-active {
+        background-image: url(../img/select.png);
+    }
+    .cases-sample {
+        width: 1136px;
+        height: 540px;
+        display: grid;
+        grid-template-columns: repeat(3 , 1fr);
+        column-gap: 28px;
+        row-gap: 28px;
+        padding-top: 15px;
+        text-align: center;
+    }
+    .cases-sample-img {
+        width: 360px;
+        height: 256px;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    /* News */
+    #news {
+        width: 100%;
+        height: 347px;
+        background-color: #f2f2f2;
+    }
+    .news-container {
+        width: 1437px;
+        margin: 0 auto;
+        height: 347px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 50px;
+        padding: 0 150px;
+    }
+    .news-title {
+        text-align: left;
+        font-size: 17px;
+        font-weight: 600;  
+        padding: 32px 0 28px 0;
+    }
+    #news li {
+        width: 345px;
+        display: flex;
+        justify-content: space-between;
+        line-height: 28px;
+    }
+    #news ul a, #news span {
+        display: block;
+        margin: 0;
+        font-size: 12px;
+        color: #878789;
+    }
+    .news-more {
+        padding-top: 20px;
+    }

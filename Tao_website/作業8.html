@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/作業8.min.css">
+    <title>考反應遊戲2代</title>
+</head>
+<body>
+    <h1>考考你的反應！</h1>
+    <p>反應時間: <span id="time">0</span> 秒</p>
+    <div id="box"></div>
+
+    <script>
+        let circle = document.getElementById('box');
+        let title = document.getElementsByTagName('h1')[0];
+        let paragraph = document.getElementsByTagName('p')[0];
+
+        let get_fullHeight = function(block) {
+            var height = block.offsetHeight;
+            var style = window.getComputedStyle(block);
+
+            height = height + parseInt(style.marginTop) + parseInt(style.marginBottom);
+            return height;
+        }
+
+        let get_randomRange = function(min, max) {
+            var difference = max - min;
+            var rand = Math.random();
+            rand = Math.floor(rand * difference) + 1 + min;
+            return rand;
+            console.log(rand);
+        }
+
+        let myBox = {
+            display: "none",
+            makebox: function() {
+                let time = Math.random();
+                time = Math.floor(time * 2000) + 1;
+
+                setTimeout(function() {
+
+                    if (Math.random() > 0.5) {
+                        circle.style.borderRadius= "50%";
+                    } else {
+                        circle.style.borderRadius= "0";
+                    }
+
+                    var green = get_randomRange(50, 200);
+                    var blue = get_randomRange(60, 180);
+                    var color = "rgba(155, " + green + ", " + blue + ", 1)";
+                    console.log(color);
+                    circle.style.backgroundColor = color;
+
+                    circle.style.display= "block";
+
+                    var circle_size = get_fullHeight(circle);
+                    var h1_size = get_fullHeight(title);
+                    var p_size = get_fullHeight(paragraph);
+                    var remain_height = circle_size + h1_size + p_size;
+
+                    var distance = Math.floor(Math.random() * (window.innerHeight - remain_height) + 1);
+                    var horrizotal_distance = Math.floor(Math.random() * (window.innerWidth - circle_size) + 1);
+                    console.log(distance);
+
+                    circle.style.top = distance + "px";
+                    circle.style.left = horrizotal_distance + "px";
+
+                    timer.createTime = Date.now();
+                } ,time);
+            }
+        }
+
+        let timer = {
+            clickedTime: 0,
+            createTime: 0,
+            reactionTime: 0
+        }
+
+        circle.onclick = function() {
+            circle.style.display = myBox.display;
+            
+            timer.clickedTime = Date.now(); 
+            timer.reactionTime = (timer.clickedTime - timer.createTime) / 1000; 
+            // 由於計算結果是毫秒 ，所以要除以1000得到秒
+
+            document.getElementById('time').innerHTML = timer.reactionTime;
+
+            myBox.makebox();
+        }
+
+        myBox.makebox();
+    </script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+#head{
+	height:102px;
+	background:white;
+	width:999px;
+	margin:0 auto;
+	border:none;
+}
+	.title{
+		height:29px;
+		width:247px;
+		float:left;
+		margin:39px 0px 34px 20px;
+	}
+	.search{
+		height:27px;
+		width:227px;
+		float:right;
+		margin:39px 20px 34px 0px;
+		background-color:#F1F1F1;
+		border:1px solid #BABABA;
+	}
+	.schbox{
+		background:#F1F1F1;		
+		border-color:#BABABA;
+		height:27px;
+		width:185px;
+		border:none;
+		float:left;
+		font-size:11px;
+		padding-left:15px;
+		
+	}
+	.schbox2{
+		background:url(../img/srch.png) no-repeat left center;
+		height:27px;
+		width:27px;
+		border:none;
+		float:right;
+		padding-right:6px;
+	}
+	
+#navigation{
+	height:60px;
+	background:#303030;
+	width:999px;
+	margin:0 auto;
+	border:none;
+	font-size: 13px;
+}
+	.nav{
+	height:60px;
+	background:#303030;
+	width:119px;
+	color:white;
+	text-align: center;
+	line-height:60px;
+	border-right:1px solid #4a4a4a;
+	margin:0px;
+	}
+	.nav1{
+	height:60px;
+	background:#303030;
+	width:112px;
+	color:white;
+	text-align:right;
+	line-height:60px;
+	border-right:1px solid #4a4a4a;
+	margin:0px;
+	padding-right:28px;
+	}
+	.nav2{
+	height:60px;
+	background:#303030;
+	width:112px;
+	color:white;
+	text-align:left;
+	line-height:60px;
+	margin:0px;
+	padding-left:28px;
+	}
+a{
+	text-decoration:none;
+	color:white;
+}
+	/* 老師作法
+	#navigation ul li
+	指定id:navigation中的ul中的li
+	{
+		float:left;
+		list-style:none;
+		消除列表點點
+		width:120px;
+		height:60px;
+		text-align:center;
+		border-right:1px solid #4a4a4a;
+		line-height:60px;
+		font-size:13px;
+		
+	}
+} */
+#banner{
+	height:465px;
+	width:999px;
+	margin:0 auto;
+}
+#news1{
+	height:242px;
+	background:#fbfbfb;
+	width:979px;
+	margin:0 auto;
+	padding:0px 0px 0px 20px;
+	display: flex;
+	font-size:20px;
+}
+	.announ1{
+		background:#fbfbfb;
+		width:478px;
+		height:242px;
+	}
+	#ann1t{
+		padding-top:31px;
+		padding-bottom:23px;
+	}
+	.news{
+		display:flex;
+		justify-content:flex-end;
+		width:478px;
+	}
+	.newlis{
+		flex:auto;
+	}
+	.time{
+		padding-right:25px;
+		padding-top:21px;
+		color:#a5a5a5;
+		flex:none;
+		width:99px;
+	}
+	.announ1 a{
+		color:#535353;
+	}
+	.announ1 ul li{
+		list-style: inside;
+		list-style-image:url(../img/newlist.png);
+		font-size:13px;
+		line-height:23px;
+		color:#535353;
+		width:454px;
+	}
+	.announ1 span{
+		list-style: none;
+		font-size:11px;
+		color:#535353;
+		float:right;
+	}
+	.announ2{
+		background:#e5e5e5;
+		width:242px;
+		height:242px;
+	}
+	.ann2{
+		padding:31px 0px 0px 23px;
+		font-size:20px;
+	}
+	#ann2intro{
+		font-size:15px;
+		line-height:27px;
+	}
+	#ann2intro2{
+		font-size:12px;
+	}
+	.ann22{
+		padding:11px 25px 0px 23px;
+	}
+	#ann2intro3{
+		width:198px;
+		font-size:12px;
+		color:#929292;
+		line-height:22px;
+	}
+	.announ3{
+		width:259px;
+		height:242px;
+		background:no-repeat #fbfbfb url(../img/pot.png) right bottom;
+	}
+	.ann3{
+		width:190px;
+		height:40px;
+		font-size:12px;
+		color:black;
+		line-height:22px;
+		padding:18px 0px 0px 23px;
+	}
+	#morepot{
+		display:flex;
+		align-items: center;
+	}
+	#more{
+		padding-left:23px;
+	}
+	#pot{
+		padding-left:72px;
+	}
+#news2{
+	height:305px;
+	background:#ffffff;
+	width:999px;
+	margin:0 auto;
+}
+	.new2title{
+		padding:31px 0px 15px 20px;
+		font-size:20px;
+	}
+	.newexamp{
+		width:999px;
+		height:190px;
+		padding:0px 0px 42px 0px;
+		background: #ffffff;
+		display:flex;
+	}
+	.examp1{
+		width:214px;
+		height:201px;
+		font-size:12px;
+		line-height: 23px;
+		padding:0px 19px 14px 19px;
+	}
+#menu{
+	height:250px;
+	background:#e5e5e5;
+	width:959px;
+	margin:0 auto;
+	padding:25px 20px 0px 20px;
+	border:none;
+}
+	.sec1{
+		width:454px;
+		height:225px;
+		background:#e5e5e5;
+		float:left;
+	}
+		.ma{
+			background:#c2c2c2;
+			height:1px;
+			border:none;
+			/* 改色透過背景色，更改後會出現兩條顏色的線，需再將舊有邊框移除，
+			 新增新色彩的高度*/
+			 /* 老師作法
+				使用border-bottom直接在div區塊增加下邊線，
+				1px solid 顏色
+			*/
+		}
+		.mt{
+			padding:9px 12px;
+		}
+		#menu td{
+			padding-top:9px;
+			background: #e5e5e5;
+			vertical-align:top;
+		}
+		#menu ul li{
+			list-style-image:url(../img/list.png);
+			list-style-position: inside;
+			font-size:12px;
+			text-align:left;
+			padding-top:9px;
+		}
+		#menu a{
+			color:#5d5d5d;
+		}
+	.sec2{
+		width:153px;
+		height:225px;
+		background:#e5e5e5;
+		float:left;
+		margin-left:50px;
+		
+	}
+	.sec3{
+		width:256px;
+		height:225px;
+		background:#e5e5e5;
+		float:right;
+	}
+#bottom{
+	height:83px;
+	background:white;
+	width:999px;
+	margin:0 auto;
+	display:flex;
+}
+	#bottom a{
+		color: #828282;
+		font-size:11px;
+	}
+	#bottom span{
+		color: #828282;
+		font-size:11px;
+		margin:0px 5px;
+	}
+	#bottom li{
+		list-style:none;
+		float:left;
+		width:60px;
+		text-align:center;
+		font-size:11px;
+	}
+	#bottom .shop{
+		width:80px;
+	}
+	.bot1{
+		width:280px;
+		height:20px;
+		padding:23px 0px 0px 12px;
+		margin:0px;
+		background-color: white;
+	}
+	.bot1 table{
+		width:267px;
+		height:20px;
+		border-right:1px solid :#828282;
+	}
+	.bot1 td{
+		font-size:11px;
+		color:#828282;
+		text-align:center;
+		border-right:1px solid #828282;
+	}
+	.bot2{
+		font-size:11px;
+		color:#828282;
+		padding:24px 12px 0px 0px;
+		width:719px;
+	}
+	.bot2 img{
+		height:13px;
+		width:13px;
+	}
+	.link{
+		float:right;
+		width:595px;
+		text-align: right;
+	}

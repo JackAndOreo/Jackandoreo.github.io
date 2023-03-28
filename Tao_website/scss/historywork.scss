@@ -3,74 +3,142 @@
 
 
 #main-body {
-    #works-container {
+    #extend-work-title {
         max-width: $max-width;
         margin: 0 auto;
         background-color: $bg-color;
+        padding: 30px 0 10px 50px;
+        font-size: $biggest-font-size;
+        font-weight: $font-bold;
+        border-bottom: $side-border;
         border-left: $side-border;
+    }
+    .extend-work-container {
+        max-width: $max-width;
+        margin: 0 auto;
+        background-color: $bg-color;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-        column-gap: 1.5rem;
-        row-gap: 1.5rem;
-        padding: 2rem;
-
-        .works-box {
-            display: flex;
-            flex-direction: column;
-            row-gap: .6rem;
-            height: fit-content;
-            aspect-ratio: 3/5.5;
-            .works-img {
-                width: 100%;
-                height: 85%;
-            }
-            .text {
-                padding: 0 1rem;
-                font-size: $big-font-size;
-                width: 100%;
-                height: 15%;
-                text-align: center;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 2.5rem 3rem;
+        border-right: $side-border;
+    }
+    .extend-work-box {
+        width: 250px;
+        height: 370px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 0 10px black;
+        margin: 0 10px;
+        &:hover {
+            width: 450px;
+            border-radius: 20px;
+            border: 4px solid gray;
+            transition: 3s;
+            .extend-img {
+                border-radius: 20px;
+                transition: 3s;
             }
         }
-        a {
+        .extend-img {
             display: block;
-            width: 100%;
-            height: 100%;
+            min-width: 250px;
+            height: inherit;
+            background-color: lightskyblue;
         }
-        .works-img-1 {
-            background-image: url("../img/作業1.jpg");
-            background-size: cover;
-            background-position: center;
+        .extend-text {
+            width: 200px;
+            padding: .6rem;
+            word-break: keep-all;
+            font-size: $big-font-size;
+            text-align: center;
+            font-weight: $font-regular;
+            p {
+                font-weight: $font-medium;
+                margin-bottom: 10px;
+            }
         }
-        .works-img-2 {
-            background-image: url("../img/作業2.jpg");
-            background-size: cover;
-            background-position: center;
-        }
-        .works-img-3 {
-            background-image: url("../img/作業3.jpg");
-            background-size: cover;
-            background-position: center;
-        }
-        .works-img-4 {
-            background-image: url("../img/作業4.jpg");
-            background-size: cover;
-            background-position: center;
-        }
-        .works-img-5 {
-            background-image: url("../img/作業5.jpg");
-            background-size: cover;
-            background-position: center;
-        }
-        .works-img-6 {
-            background-image: url("../img/作業6.jpg");
-            background-size: cover;
-            background-position: center;
-        }
-        .works-img-7 {
-            background-image: url("../img/作業7.jpg");
-            background-size: cover;
-            background-position: center;
+    }
+    .extend-img-1 {
+        background-image: url("../img/NUMBERGAME.jpg");
+        background-position: center;
+        background-size: cover;
+    }  
+    .extend-img-2 {
+        background-image: url("../img/ERASE.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    .extend-img-3 {
+        background-image: url("../img/CALCULATOR.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    .extend-img-4 {
+        background-image: url("../img/OREO.jpg");
+        background-position: center;
+        background-size: cover;
+    } 
+    .extend-img-5 {
+        background-image: url("../img/API.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    .extend-img-6 {
+        background-image: url("../img/作業1.jpg");
+        background-position: center;
+        background-size: cover;
+    }  
+    .extend-img-7 {
+        background-image: url("../img/作業2.jpg");
+        background-position: center;
+        background-size: cover;
+    }  
+    .extend-img-8 {
+        background-image: url("../img/作業3.jpg");
+        background-position: center;
+        background-size: cover;
+    }  
+    .extend-img-9 {
+        background-image: url("../img/作業4.jpg");
+        background-position: center;
+        background-size: cover;
+    }  
+    .extend-img-10 {
+        background-image: url("../img/作業5.jpg");
+        background-position: center;
+        background-size: cover;
+    }  
+    .extend-img-11 {
+        background-image: url("../img/作業6.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    .extend-img-12 {
+        background-image: url("../img/作業7.jpg");
+        background-position: center;
+        background-size: cover;
+    }   
+    .extend-img-13 {
+        background-image: url("../img/作業8.jpg");
+        background-position: center;
+        background-size: cover;
+    }  
+    
+    #history-work-title {
+        max-width: $max-width;
+        margin: 0 auto;
+        background-color: $bg-color;
+        padding: 30px 50px 10px 50px;
+        font-size: $biggest-font-size;
+        font-weight: $font-bold;
+        border: $side-border;
+        border-right: none;
+        p {
+            float: right;
+            font-size: $big-font-size;
+            font-weight: $font-medium;
+            margin-top: 20px;
         }
     }
 }

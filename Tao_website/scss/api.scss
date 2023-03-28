@@ -1,0 +1,26 @@
+@import "../scss/settings";
+@import "../scss/models";
+
+#api {
+    max-width: $max-width;
+    margin: 0 auto;
+    background-color: $bg-color;
+    display: flex;
+    justify-content: center;
+    #api-container-horizontal {
+        width: 405px;
+        img {
+            height: 270px;
+            width: 405px;
+            display: block;
+        }
+    }
+    #api-container-vertical {
+        width: 180px;
+        img {
+            height: 270px;
+            width: 180px;
+            display: block;
+        }
+    }
+}
