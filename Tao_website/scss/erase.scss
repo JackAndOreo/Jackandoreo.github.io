@@ -78,23 +78,27 @@
     #main-body {
         .guessgame-container {
             min-width: 670px;
+            height: 750px;
             .text-container {
+                height: 230px;
+                padding-top: 35px;
                 transition: 2s;
-                padding-bottom: 10px;
+                padding-bottom: 30px;
                 .guessgame-title {
                     font-size: $bigger-font-size;
+                    margin-bottom: 20px;
                     transition: 2s;
                 }
         
                 input {
-                    height: 30px;
-                    line-height: 30px;
-                    margin: 3px auto 7px auto;
+                    height: 50px;
+                    line-height: 50px;
+                    margin: 5px auto 20px auto;
                     transition: 2s;
                 }
         
                 .btn-container {
-                    height: 30px;
+                    height: 40px;
                     transition: 2s;
                 }
             }
