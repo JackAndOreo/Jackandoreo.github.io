@@ -5,7 +5,7 @@
     
     #banner {
         max-width: $max-width;
-        height: 450px;
+        height: 480px;
         margin: 0 auto;
         display: grid;
         grid-template-areas: 
@@ -140,7 +140,7 @@
                 grid-template-rows: 150px 1fr;
                 column-gap: 4rem;
                 row-gap: 1rem;
-                margin-top: 2rem;
+                margin-top: 3rem;
                 font-family: $chinese-font;
             }
             .review-img {
@@ -288,7 +288,6 @@
 
     #ending {
         max-width: $max-width;
-        height: 360px;
         margin: 0 auto;
         flex-direction: column;
         background-color: $bg-color;
@@ -305,7 +304,6 @@
         }
         
         .ending-box {
-            width: 1160px;
             height: inherit;
             padding: 35px 40px 25px 40px;
             .ending-title {
@@ -320,6 +318,7 @@
                 font-size: $normal-font-size;
                 font-weight: $font-regular;
                 line-height: 2.3rem;
+                overflow-wrap: break-word;
             }
         }
     }
@@ -381,10 +380,6 @@
                 }
             }
         }
-        .ending-box {
-            width: 950px !important;
-            transition: 2s;
-        }
     }
 }
 
@@ -417,11 +412,9 @@
         #ending {
             border-left: none;
             &::before {
-                width: calc(50% + 5px);
+                width: calc(50% + 5.5px);
             }
             .ending-box {
-                width: 800px !important;
-                transition: 2s;
                 .ending-title {
                     font-size: $bigger-font-size;
                     transition: 2s;
@@ -473,22 +466,19 @@
         }
         #ending { 
             .ending-box {
-                min-width: $min-width;
-                padding: 35px 20px 25px 20px;
+                padding: 20px;
                 transition: 2s;
                 .ending-title {
                     height: 60px;
                     font-size: $big-font-size;
                     transition: 2s;
                     line-height: 60px;
-                    width: 630px;
                 }
                 .ending-text {
                     padding-top: 1.5rem;
                     font-size: 1rem;
                     transition: 2s;
                     font-weight: $font-regular;
-                    width: 630px;
                 }
             }
         }
@@ -497,18 +487,98 @@
 
 @media screen and (max-width: 670px) {
     #main-body {
+        #banner {
+            height: 360px;
+            transition: 1s;
+        }
         #review-container {
             .review {
                 min-width: $min-width;
+                padding: 0 15px 48px 15px;
                 .review-box {
-                    height: 302px;
-                    grid-template-columns: 302px 1fr;
+                    column-gap: 0;
+                    grid-template-rows: 80px 1fr;
                 }
                 .review-box-reverse {
-                    height: 302px;
-                    grid-template-columns: 1fr 302px;
+                    column-gap: 0;
+                    grid-template-rows: 80px 1fr;
                 }
+                .review-title {
+                    font-size: $big-font-size;
+                }
+                .review-text {
+                    font-weight: $font-regular;
+                    font-size: $small-font-size;
+                    line-height: 30px;
+                }
+            }
+        }
+        #courses {
+            .courses-box {
+                .courses-title {
+                    font-size: $big-font-size;
+                    transition: 1s;
+                }
+                .icon-list {
+                    .courses-icon {
+                        width: 50px;
+                        height: 50px;
+                        transition: 1s;
+                    }
+                }
+                p {
+                    font-size: $small-font-size;
+                }
+            }
+        }
+    }
+}
 
+@media screen and (max-width: 550px) {
+    #main-body {
+        #banner {
+            height: 300px;
+            transition: 1s;
+        }
+        #text-container {
+            .text {
+                font-size: $normal-font-size;
+            }
+        }
+        #review-container {
+            .review {
+                padding: 0 8px 48px 8px;
+                .review-box {
+                    row-gap: 0;
+                }
+                .review-box-reverse {
+                    row-gap: 0;
+                }
+                .review-title {
+                    line-height: 100px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 490px) {
+    #main-body {
+        #review-container {
+            .review {
+                .review-box {
+                    height: 200px;
+                    grid-template-columns: 200px 1fr;
+                    grid-template-rows: 60px 1fr;
+                }
+                .review-box-reverse {
+                    height: 200px;
+                    grid-template-columns: 1fr 200px;
+                    grid-template-rows: 60px 1fr;
+                }
+                .review-title {
+                    line-height: 80px;
+                }
             }
         }
     }

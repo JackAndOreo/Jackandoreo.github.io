@@ -167,8 +167,9 @@
     background-color: $bg-color;
     position: absolute;
     top: 345px;
-    right: calc((100vw - $max-width - 16px) / 2);
-    left: calc((100vw - $max-width - 16px) / 2);
+    max-width: $max-width;
+    right: calc((100vw - $max-width) / 2);
+    left: calc((100vw - $max-width) / 2);
     display: grid;
     .text-box {
         font-family: $chinese-font;
@@ -183,8 +184,8 @@
     background-color: $bg-color;
     position: absolute;
     bottom: 400px;
-    right: calc((100vw - $max-width - 16px) / 2);
-    left: calc((100vw - $max-width - 16px) / 2);
+    right: calc((100vw - $max-width) / 2);
+    left: calc((100vw - $max-width) / 2);
     display: flex;
     justify-content: center;
 
@@ -314,5 +315,103 @@
         font-size: 4rem;
         padding: 0;
         transition: 2s;
+    }
+}
+
+
+@media screen and (max-width: 670px) {
+    #main-body {
+        height: 900px;
+        min-width: $min-width;
+    }
+    #oreo-text {
+        min-width: $min-width !important;
+        position: absolute;
+        top: 350px;
+        right: 0;
+        left: 0;
+        .text-box {
+            font-size: $normal-font-size;
+            transition: 2s;
+        }
+    }
+    
+    #oreo-text {
+        background-color: $bg-color;
+        position: absolute;
+        top: 345px;
+        min-width: $min-width;
+        right: calc((100vw - $max-width) / 2);
+        left: calc((100vw - $max-width) / 2);
+        .text-box {
+            font-size: $normal-font-size;
+        }
+    }
+    
+    #spin-oreo {
+        height: 100px;
+        min-width: $min-width;
+        bottom: 400px;
+        right: calc((100vw - $max-width) / 2);
+        left: calc((100vw - $max-width) / 2);
+    
+        #spin-container {
+            width: 300px;
+            height: 100px;
+            display: grid;
+            grid-template-columns: 50px 50px 50px 50px 50px;
+            grid-template-areas: "a b c d e";
+            overflow: hidden;
+            transition: 2s;
+            .spin-card {
+                width: 100px;
+                height: 100px;
+                margin-right: -50px;
+            }
+            .spin-card-1 {
+                animation: spin-s-1 2s forwards;
+            }
+            .spin-card-2 {
+                animation: spin-s-2 2s forwards;
+            }   
+            .spin-card-3 {
+                animation: spin-s-3 2s forwards;
+            }
+            .spin-card-4 {
+                animation: spin-s-4 2s forwards;
+            }
+            .spin-card-5 {
+                animation: spin-s-5 2s forwards;
+            }
+        }
+        #spin-button {
+            font-size: 3rem;
+        }
+    }
+}
+
+@keyframes spin-s-1 {
+    100% {
+        transform: translateX(200px);
+    }
+}
+@keyframes spin-s-2 {
+    100% {
+        transform: translateX(-50px);
+    }
+}
+@keyframes spin-s-3 {
+    100% {
+        transform: translateX(-50px);
+    }
+}
+@keyframes spin-s-4 {
+    100% {
+        transform: translateX(-50px);
+    }
+}
+@keyframes spin-s-5 {
+    100% {
+        transform: translateX(-50px);
     }
 }
