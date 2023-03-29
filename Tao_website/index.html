@@ -156,6 +156,22 @@
             $("#pop-container").css("display", "none");
             $("#pop-bg").css("display", "none");
         })
+
+        var isTouchDevice = 'ontouchstart' in document.documentElement;
+
+        if (isTouchDevice) {
+            // if touch device, toggle menu on click
+            $("#nav-menu").click(function() {
+                $(this).toggleClass("active");
+            });
+        } else {
+            // if not touch device, show menu on hover
+            $("#nav-menu").hover(function() {
+                $(".nav-menu-list").stop().slideDown();
+            }, function() {
+                $(".nav-menu-list").stop().slideUp();
+            });
+        }
     </script>
 </body>
 </html>
