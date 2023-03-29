@@ -168,8 +168,8 @@
     position: absolute;
     top: 345px;
     max-width: $max-width;
-    right: calc((100vw - $max-width) / 2);
-    left: calc((100vw - $max-width) / 2);
+    right: calc((100vw - $max-width - 16px) / 2);
+    left: calc((100vw - $max-width - 16px) / 2);
     display: grid;
     .text-box {
         font-family: $chinese-font;
@@ -184,8 +184,8 @@
     background-color: $bg-color;
     position: absolute;
     bottom: 400px;
-    right: calc((100vw - $max-width) / 2);
-    left: calc((100vw - $max-width) / 2);
+    right: calc((100vw - $max-width - 16px) / 2);
+    left: calc((100vw - $max-width - 16px) / 2);
     display: flex;
     justify-content: center;
 
