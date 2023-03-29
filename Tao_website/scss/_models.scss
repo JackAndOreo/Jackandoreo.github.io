@@ -269,16 +269,6 @@
                             }
                         }
                     }
-                    &:active {
-                        font-weight: $font-medium;
-                        ul {
-                            a {
-                                display: inline-block !important;
-                                background-color: $bg-color;
-                                border-top: 3px solid $border-color;
-                            }
-                        }
-                    }
                     p {
                         height: inherit;
                         cursor: pointer;
