@@ -259,7 +259,7 @@
                 #nav-menu {
                     display: inline-block !important;
 
-                    &:hover, &:active {
+                    &:hover {
                         font-weight: $font-medium;
                         ul {
                             a {
