@@ -194,6 +194,21 @@
             $("#pop-container").css("display", "none");
             $("#pop-bg").css("display", "none");
         })
+
+        var isTouchDevice = 'ontouchstart' in document.documentElement;
+
+        if(isTouchDevice) {
+            let extension = document.querySelectorAll('.extend-work-box');
+            if ($(window).width() > 1048) {
+                $(extension).css("width", "450px");
+            } else if ($(window).width() < 550) {   
+                $(extension).css("width", "400px");
+            } else if ($(window).width() < 908) {
+                $(extension).css("width", "500px");
+            } else if ($(window).width() < 1048) {
+                $(extension).css("width", "840px");
+            }
+        }
     </script>
 </body>
 </html>

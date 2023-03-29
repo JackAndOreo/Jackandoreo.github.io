@@ -31,9 +31,9 @@
                 <div class="nav-item" id="nav-menu">
                     <p class="nav-menu-icon"><i class='bx bx-menu'></i></p>
                     <ul class="nav-menu-list">
-                        <a href="../Tao_website/about.html">ABOUT</a>
-                        <a href="../Tao_website/portfolio_historywork.html">PORTFOLIO</a>
-                        <a href="#" class="pop-btn">CONTACT</a>
+                        <a href="../Tao_website/about.html" class="nav-menu-item">ABOUT</a>
+                        <a href="../Tao_website/portfolio_historywork.html" class="nav-menu-item">PORTFOLIO</a>
+                        <a href="#" class="pop-btn" class="nav-menu-item">CONTACT</a>
                     </ul>
                 </div>
             </div>
@@ -157,20 +157,18 @@
             $("#pop-bg").css("display", "none");
         })
 
-        var isTouchDevice = 'ontouchstart' in document.documentElement;
+        // $("#nav-menu").click(function() {
+        //     if ($(this).css("display") === "none") {
+        //         $(this).css("display", "inline-block");
+        //         $(".nav-menu-item").css("display", "inline-block");
+        //     }
+        // });
 
-        if (isTouchDevice) {
-            // if touch device, toggle menu on click
-            $("#nav-menu").click(function() {
-                $(this).toggleClass("active");
-            });
+        var isTouchDevice = 'ontouchstart' in document.documentElement;
+        if (isTouchDevice){
+            alert("YES");
         } else {
-            // if not touch device, show menu on hover
-            $("#nav-menu").hover(function() {
-                $(".nav-menu-list").stop().slideDown();
-            }, function() {
-                $(".nav-menu-list").stop().slideUp();
-            });
+            alert("NO");
         }
     </script>
 </body>
