@@ -23,6 +23,8 @@
     .nav {
         width: 485px;
         height: 65px;
+        position: relative;
+        overflow: hidden;
 
         .nav-bar {
             font-family: $eng-font;
@@ -49,12 +51,34 @@
             }
             #nav-menu {
                 display: none;
+                cursor: pointer;
                 i {
                     font-size: $bigger-font-size;
                 }
-                .nav-menu-list a {
-                   display: none;
-                }
+            }
+        }
+    }
+    .hid-nav-bar {
+        position: absolute;
+        height: 120px;
+        top: 65px;
+        right: 5px;
+        background-color: $bg-color;
+        display: flex;
+        justify-content: end;
+        .hid-nav-box {
+            height: inherit;
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            width: 130px;
+            text-align: center;
+            font-size: $normal-font-size;
+            font-weight: $font-medium;
+            a {
+                color: $font-color;
+                border-top: 2px solid $border-color;
+                line-height: 40px;
+                background-color: $bg-color;
             }
         }
     }
@@ -246,6 +270,14 @@
 @media screen and (max-width: 768px) {
     #header {
         .nav {
+            width: 450px;
+        }
+    }
+}
+
+@media screen and (max-width: 670px) {
+    #header {  
+        .nav {
             margin-right: 0;
             transition: 2s;
             .nav-bar {
@@ -258,47 +290,10 @@
                 }
                 #nav-menu {
                     display: inline-block !important;
-
-                    &:hover {
-                        font-weight: $font-medium;
-                        ul {
-                            a {
-                                display: inline-block !important;
-                                background-color: $bg-color;
-                                border-top: 3px solid $border-color;
-                                z-index: 70;
-                            }
-                        }
-                    }
-                    p {
-                        height: inherit;
-                        cursor: pointer;
-                    }
-                    ul {
-                        position: absolute;
-                        top: 65px;
-                        display: flex;
-                        flex-direction: column;
-                        a {
-                            display: inline-block;
-                            font-size: $normal-font-size;
-                            height: 57px !important;
-                            width: 130px !important;
-                            line-height: 55px;
-                            text-align: center;
-                            &:hover {
-                                font-weight: $font-bold !important;
-                            }
-                        }
                     }
                 }
             }
         }
-    }
-}
-
-@media screen and (max-width: 670px) {
-    #header {  
         #pop-container {
             width: 400px;
             height: 200px;

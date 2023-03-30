@@ -18,7 +18,7 @@
 
         <div class="nav">
             <div class="nav-bar">
-                <div class="nav-item about">
+                <div class="nav-item">
                     <a href="../Tao_website/about.html">ABOUT</a>
                 </div>
                 <div class="nav-item">
@@ -28,15 +28,18 @@
                     <a href="#" class="pop-btn">CONTACT</a>
                 </div>
                 <div class="nav-item" id="nav-menu">
-                    <p class="nav-menu-icon"><i class='bx bx-menu'></i></p>
-                    <ul class="nav-menu-list">
-                        <a href="../Tao_website/about.html">ABOUT</a>
-                        <a href="../Tao_website/portfolio_historywork.html">PORTFOLIO</a>
-                        <a href="#" class="pop-btn">CONTACT</a>
-                    </ul>
+                    <i class='bx bx-menu'></i>
+                </div>
+            </div>
+            <div class="hid-nav-bar">
+                <div class="hid-nav-box">
+                    <a href="../Tao_website/about.html" class="hid-nav-item">ABOUT</a>
+                    <a href="../Tao_website/portfolio_historywork.html" class="hid-nav-item">PORTFOLIO</a>
+                    <a href="#" class="pop-btn" class="hid-nav-item">CONTACT</a>
                 </div>
             </div>
         </div>
+    
         <div id="pop-container">
             <div class="pop-box">
                 <div class="pop-text">
@@ -87,6 +90,31 @@
             $("#pop-container").css("display", "none");
             $("#pop-bg").css("display", "none");
         })
+
+        $("#nav-menu").click(function() {
+
+            if($("#header").css("height") == "191px") {
+                $("#header").animate({
+                    height: "65px",
+                }, {
+                    duration: 800,
+                    easing: "linear"
+                });
+                $(".nav").animate({
+                    height: "65px",
+                }, {
+                    duration: 480,
+                    easing: "linear"
+                });
+            } else {
+                $("#header").animate({
+                    height: "191px",
+                }, 800);
+                $(".nav").animate({
+                    height: "191px",
+                }, 800);
+            }
+        });
 
         const input = document.getElementById('calc-input');
 
