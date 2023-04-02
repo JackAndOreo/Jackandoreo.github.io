@@ -204,22 +204,22 @@
                 $("#header").animate({
                     height: "65px",
                 }, {
-                    duration: 800,
+                    duration: 600,
                     easing: "linear"
                 });
                 $(".nav").animate({
                     height: "65px",
                 }, {
-                    duration: 480,
+                    duration: 300,
                     easing: "linear"
                 });
-            } else {
+            } else if($("#header").css("height") == "65px"){
                 $("#header").animate({
                     height: "191px",
-                }, 800);
+                }, 600);
                 $(".nav").animate({
                     height: "191px",
-                }, 800);
+                }, 600);
             }
         });
 
