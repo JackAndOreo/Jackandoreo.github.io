@@ -188,7 +188,6 @@
         let x = parseInt(Math.random() * 20);
 
         const udpate = function() {
-            
             $('.picture').css(
                 "background-image", `url(${pokemonPic[x]})`
             )
@@ -197,12 +196,8 @@
         udpate();
 
         $('#switch').click(function() {
-
             x = parseInt(Math.random() * 20);
-
-            $('.picture').css(
-                "background-image", `url(${pokemonPic[x]})`
-            )
+            udpate();
         });
 
         let pokemonName = [
