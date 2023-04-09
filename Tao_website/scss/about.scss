@@ -3,7 +3,7 @@
 
 
 #main-body {
-    #resume-container {
+    #about-container {
         max-width: $max-width;
         margin: 0 auto;
         background-color: $bg-color;
@@ -15,7 +15,7 @@
             border-bottom: $side-border;
             border-left: $side-border;
             margin: 0 auto;
-            .profile-picture {
+            .profile-box {
                 max-width: 1171px;
                 margin: 0 60px;
                 height: inherit;
@@ -42,7 +42,7 @@
                 }
             }
         }
-        .resume-text {
+        .about-text {
             padding: 20px 60px;
             font-size: $big-font-size;
             .paragraph {
@@ -61,11 +61,10 @@
 
 @media screen and (max-width: 1200px) {
     #main-body {
-        #resume-container {
+        #about-container {
             .profile-container {
                 border-left: none;
-                .profile-picture {
-                    
+                .profile-box {
                     .pic {
                         margin: 36px 0;
                         transition: 2s;
@@ -78,9 +77,9 @@
 
 @media screen and (max-width: 1048px) {
     #main-body {
-        #resume-container {
+        #about-container {
             .profile-container {
-                .profile-picture {
+                .profile-box {
                     margin: 0 30px;
                     transition: 2s;
                     .pic {
@@ -97,9 +96,9 @@
 
 @media screen and (max-width: 908px) {
     #main-body {
-        #resume-container {
+        #about-container {
             .profile-container {
-                .profile-picture {
+                .profile-box {
                     margin: 0 30px;
                     transition: 2s;
                     padding: 61px 0;
@@ -120,7 +119,7 @@
                     }
                 }
             }
-            .resume-text {
+            .about-text {
                 padding: 10px 35px;
                 font-size: $normal-font-size;
 
@@ -136,10 +135,10 @@
 
 @media screen and (max-width: 768px) {
     #main-body {
-        #resume-container {
+        #about-container {
             .profile-container {
                 min-width: 670px;
-                .profile-picture {
+                .profile-box {
                     justify-content: center;
                     margin: 0 0;
                     transition: 2s;
@@ -155,12 +154,12 @@
 
 @media screen and (max-width: 670px) {
     #main-body {
-        #resume-container {
+        #about-container {
             .profile-container {
                 min-width: 420px;
                 padding: 20px 0;
                 height: 570px;
-                .profile-picture {
+                .profile-box {
                     justify-content: center;
                     margin: 0 auto;
                     transition: 2s;
@@ -180,7 +179,7 @@
                     }
                 }
             }
-            .resume-text {
+            .about-text {
                 padding: 20px 40px;
                 font-size: $normal-font-size;
                 .paragraph {
