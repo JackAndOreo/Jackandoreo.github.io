@@ -183,7 +183,6 @@
                 font-size: $biggest-font-size;
                 text-align: center;
                 line-height: 200px;
-                
             }
             .review-text {
                 grid-area: c;
@@ -193,6 +192,7 @@
             }
             .link-hint {
                 position: absolute;
+                display: none;
                 font-size: 4.5rem;
                 left: 380px;
                 top: 380px;
@@ -207,7 +207,7 @@
             }
             @keyframes hover {
                 100% {
-                    transform: translateX(12px);  
+                    transform: translateX(15px);  
                 }
             }
         }
@@ -403,6 +403,11 @@
                     padding-top: 15px;
                     transition: 2s;
                 }
+                .link-hint {
+                    left: calc(var(--width) * 0.45 * .75);
+                    top: calc(var(--width) * 0.45 * .75);
+                    font-size: 4.2rem;
+                }
             }
         }
     }
@@ -471,6 +476,9 @@
                     font-size: 1rem;
                     line-height: 40px;
                     transition: 2s;
+                }
+                .link-hint {
+                    font-size: 3.3rem;
                 }
             }
         }
@@ -581,6 +589,9 @@
                 }
                 .review-title {
                     line-height: 100px;
+                }
+                .link-hint {
+                    font-size: 2.6rem;
                 }
             }
         }
