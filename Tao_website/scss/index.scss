@@ -117,6 +117,7 @@
             flex-direction: column;
             justify-content: center;
             padding-bottom: 3rem;
+            // position: relative;
             .review-box {
                 display: grid;
                 height: 480px;
@@ -146,10 +147,15 @@
             .review-img {
                 grid-area: a;
                 border-radius: 50%;
+                position: relative;
+                overflow: hidden;
                 &:hover {
                     border-radius: 25%;
                     box-shadow:  0 0 3px black;
                     transition: 1.5s;
+                    .link-hint {
+                        display: block;
+                    }
                 }
             }
             .review-img-1 {
@@ -184,6 +190,25 @@
                 text-align: center;
                 font-size: $big-font-size;
                 line-height: 50px;
+            }
+            .link-hint {
+                position: absolute;
+                font-size: 4.5rem;
+                left: 380px;
+                top: 380px;
+                pointer-events: none;
+                animation: hover 1.5s infinite alternate-reverse;
+            }
+            .link-hint-w {
+                color: $bg-color;
+            }
+            .link-hint-b {
+                color: #3D363C;
+            }
+            @keyframes hover {
+                100% {
+                    transform: translateX(12px);  
+                }
             }
         }
     }
