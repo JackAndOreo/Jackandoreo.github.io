@@ -205,6 +205,10 @@
                     margin-bottom: 15px;
                 }
             }
+            .link-hint {
+                font-size: 5.5rem;
+                right: 15px;
+            }
         }
     }
 }
@@ -239,6 +243,10 @@
                 width: 200px;
                 font-size: $big-font-size;
                 transition: 3s;
+            }
+            .link-hint {
+                font-size: 4.5rem;
+                right: 15px;
             }
         }
         #history-work-title {
@@ -302,6 +310,10 @@
                 p {
                     margin-bottom: 8px;
                 }
+            }
+            .link-hint {
+                font-size: 3.5rem;
+                right: 10px;
             }
         }
     }
