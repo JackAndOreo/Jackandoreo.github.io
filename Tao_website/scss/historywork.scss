@@ -30,6 +30,7 @@
         align-items: center;
         box-shadow: 0 0 10px black;
         margin: 0 5px;
+        position: relative;
         &:hover {
             width: 450px;
             border-radius: 20px;
@@ -38,6 +39,9 @@
             .extend-img {
                 border-radius: 20px;
                 transition: 3s;
+            }
+            .link-hint {
+                display: block;
             }
         }
         .extend-img {
@@ -55,6 +59,20 @@
             p {
                 font-weight: $font-medium;
                 margin-bottom: 10px;
+            }
+        }
+        .link-hint {
+            font-size: 4rem;
+            color: #3D363C;
+            position: absolute;
+            right: 5px;
+            bottom: 0px;
+            display: none;
+            animation: hover 1.5s infinite alternate-reverse;;
+        }
+        @keyframes hover {
+            100% {
+                transform: translateX(20%);  
             }
         }
     }
