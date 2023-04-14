@@ -118,13 +118,13 @@
             }
         }
         .calculator {
-            grid-template-columns: 300px 80px 80px 80px;
+            grid-template-columns: 400px 80px 80px 80px;
             grid-template-rows: repeat(3, 80px);
             transition: 2s;
             #calc-input {
                 line-height: 80px;
-                font-size: $bigger-font-size;
                 transition: 2s;
+                font-size: $big-font-size;
             }
             .calc-button {
                 line-height: 80px;
@@ -133,11 +133,13 @@
                 line-height: 80px;
                 font-size: $bigger-font-size;
                 transition: 2s;
+                font-size: $big-font-size;
             }
             #calc-preview {
                 line-height: 80px;
                 font-size: $bigger-font-size;
                 transition: 2s;
+                font-size: $big-font-size;
             }
         }
     }
@@ -157,42 +159,42 @@
             }
             .placeholder {
                 display: block;
-                width: 100px;
+                width: 90px;
                 height: 30px;
                 line-height: 30px;
-                color: #B5B5B5;
+                color: #a19e9e;
                 position: absolute;
                 font-size: 1.2rem;
                 top: calc(2px + .6rem);
-                left: 10px;
+                left: 18px;
                 text-align: center;
                 background-color: $bg-color;
                 z-index: 80;
             }
             .placeholder-2 {
                 display: block;
-                width: 100px;
+                width: 90px;
                 height: 30px;
                 line-height: 30px;
-                color: #B5B5B5;
+                color: #a19e9e;
                 position: absolute;
                 font-size: 1.2rem;
                 top: calc(2px + .6rem + 100px);
-                left: 10px;
+                left: 18px;
                 text-align: center;
                 background-color: $bg-color;
                 z-index: 80;
             }
             .placeholder-3 {
                 display: block;
-                width: 100px;
+                width: 90px;
                 height: 30px;
                 line-height: 30px;
-                color: #B5B5B5;
+                color: #a19e9e;
                 position: absolute;
                 font-size: 1.2rem;
                 top: calc(2px + .6rem + 100px + 100px);
-                left: 10px;
+                left: 18px;
                 text-align: center;
                 background-color: $bg-color;
                 z-index: 80;
@@ -213,7 +215,7 @@
                 line-height: 80px;
             }
             #calc-result {
-                line-height: 80px;
+                line-height: 100px;
                 position: relative;
             }
             #calc-preview {

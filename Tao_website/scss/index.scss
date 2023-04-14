@@ -402,6 +402,7 @@
                     font-size: $normal-font-size;
                     padding-top: 15px;
                     transition: 2s;
+                    line-height: 45px;
                 }
                 .link-hint {
                     left: calc(var(--width) * 0.45 * .75);
@@ -436,6 +437,7 @@
                 }
                 .review-text {
                     padding-top: 0;
+                    line-height: 42px;
                 }
             }
         }
@@ -474,7 +476,7 @@
                 }
                 .review-text {
                     font-size: 1rem;
-                    line-height: 40px;
+                    line-height: 36px;
                     transition: 2s;
                 }
                 .link-hint {
@@ -589,6 +591,9 @@
                 }
                 .review-title {
                     line-height: 100px;
+                }
+                .review-text {
+                    line-height: 26px;
                 }
                 .link-hint {
                     font-size: 2.6rem;
