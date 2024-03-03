@@ -1,0 +1,13 @@
+@import "../scss/variables";
+
+.df_jc_ac {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg_img {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
