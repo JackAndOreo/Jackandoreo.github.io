@@ -21,8 +21,6 @@
 </head>
 
 <body>
-    <!-- <div id="portfolio_body" class="df_jc_ac"> -->
-    <!-- </div> -->
     <!-- <div class="scene">
         <div class="cube" data-flip="1">
             <div class="face face_1">A 面</div>
@@ -130,13 +128,8 @@
         </div>
     </div>
 
-    <!-- <div class="portfolio_scene">
-        <div class="porfolio_container porfolio_container_1 df_jc_ac"></div>
-        <div class="porfolio_container porfolio_container_2 df_jc_ac"></div>
-        <div class="porfolio_container porfolio_container_3 df_jc_ac"></div>
-        <div class="porfolio_container porfolio_container_4 df_jc_ac"></div>
-        <div class="porfolio_container porfolio_container_5 df_jc_ac"></div>
-    </div> -->
+    <script src="/js/fontControl.js"></script>
+    <script src="/js/deviceDetect.js"></script>
     <script>
 
         $('#rotateButton').off().on('click', function () {
@@ -150,7 +143,7 @@
             cube.css({
                 transform: `rotateY(-${newDegree}deg)`,
             });
-            
+
             cube.data('flip', (currentIndex + 1) % cubelength);
         });
 
@@ -160,11 +153,7 @@
             document.documentElement.style.setProperty('--z-degree-range', zDegreeRange);
         });
 
-    </script>
-
-    <script src="/js/fontControl.js"></script>
-    <script src="/js/deviceDetect.js"></script>
-    <script>
+        // 手機瀏覽控制 Start
 
         class phoneDescription {
             constructor(index, moveData) {
