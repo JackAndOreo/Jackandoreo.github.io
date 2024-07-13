@@ -5,74 +5,9 @@
     --z-degree-range: 700px;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-}
-
-.scene {
-    width: 100vw;
-    height: 100vh;
-    perspective: 1000px;
-}
-
-.cube {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transform: rotateY(0deg);
-    transition: transform 1s;
-}
-
-.face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 2px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    backface-visibility: hidden;
-}
-
-.face_1 {
-    transform: rotateY(0deg) translateZ(500px);
-    background-color: red;
-}
-
-.face_2 {
-    transform: rotateY(72deg) translateZ(500px);
-    background-color: blue;
-}
-
-.face_3 {
-    transform: rotateY(144deg) translateZ(500px);
-    background-color: green;
-}
-
-.face_4 {
-    transform: rotateY(216deg) translateZ(500px);
-    background: yellow;
-}
-
-.face_5 {
-    transform: rotateY(288deg) translateZ(500px);
-    background: orange;
-}
-
 #rotateButton {
     position: absolute;
     z-index: 99;
-
 }
 
 // START
@@ -83,6 +18,10 @@ body {
     width: 100%;
     background-color: lightcyan;
     font-family: var(--chinese-font);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .portfolio_scene {
