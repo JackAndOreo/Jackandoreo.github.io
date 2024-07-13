@@ -1,0 +1,52 @@
+.cardbox_play {
+    background-color: lightblue;
+    width: 400px;
+    height: 240px;
+    margin: 100px auto;
+    display: flex;
+    position: relative;
+    padding: 8px;
+
+    .cardbox {
+        border-top-left-radius: 48px;
+        border-bottom-right-radius: 48px;
+        background-color: lightyellow;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 999;
+    }
+    .squareborder {
+        position: absolute;
+        background-color: #333;
+        height: 50px;
+        width: 50px;
+        opacity: .85;
+    }
+    .righttop {
+        right: -6px;
+        top: -6px;
+    }
+    .leftbtm {
+        left: -6px;
+        bottom: -6px;
+    }
+    .roundborder {
+        position: absolute;
+        background-color: #333;
+        height: 50px;
+        width: 50px;
+        opacity: .85;
+    }
+    .lefttop {
+        left: 0;
+        top: 0;
+        border-top-left-radius: 50px;
+    }
+    .rightbtm {
+        right: 0;
+        bottom: 0;
+        border-bottom-right-radius: 50px;
+    }
+}
+

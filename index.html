@@ -13,6 +13,8 @@
     <meta property="og:description" content="網頁介紹">
     <meta property="og:locale" content="zh_TW">
     <link rel="stylesheet" href="./css/index.min.css">
+    <link rel="stylesheet" href="./css/indexPlug.min.css">
+    <link rel="stylesheet" href="./css/spin.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="/js/jquery-3.7.1.min.js"></script>
 </head>
@@ -29,7 +31,7 @@
             </div>
             <div class="nav_bar df_jc_ac">
                 <div class="nav_item">
-                    <a href="#">About</a>
+                    <a href="about.html">About</a>
                 </div>
                 <div class="nav_item">
                     <a href="#">Portfolio</a>
@@ -45,14 +47,15 @@
     </div>
 
     <div id="main_body" class="df_jc_ac">
+        <div class="linear_background"></div>
         <div class="card_container">
             <div class="left_flip flip bg_img"></div>
             <div class="right_flip flip bg_img"></div>
-            <div class="body_card body_card_1" data-flip="1">
+            <div class="body_card body_card_1 d4stat">
             </div>
-            <div class="body_card body_card_2" data-flip="2">
+            <div class="body_card body_card_2 d4stat">
                 <div class="card_2_img">
-                    <img src="" alt="">
+                    <!-- <img src="" alt=""> -->
                 </div>
                 <div class="card_2_text">
                     This is some text. This is some text. This is some text. This is some text.
@@ -64,28 +67,62 @@
         </div>
         <div id="banner_container">
             <div class="banner_head">
-                <h1 class="header_text">Front-End Developer</h1>
+                <!-- <h1 class="header_text">Front-End Developer</h1> -->
+                <h1 class="header_text"></h1>
+                <div class="typing-text" id="typingText"></div>
             </div>
             <div class="banner_intro">
-                <p class="intro_text">This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.</p>
+                <p class="intro_text">This is some text. This is some text. This is some text. This is some text. This
+                    is some text. This is some text.</p>
             </div>
         </div>
         <div id="footer">
+            <div class="expander_container df_jc_ac">
+                <div class="expander bg_img"></div>
+            </div>
             <div class="copyright">&copy; BY TAO ALL RIGHTS RESERVED</div>
         </div>
     </div>
     <script src="/js/fontControl.js"></script>
+    <script src="/js/typeMachine.js"></script>
+    <script src="/js/flewIn.js"></script>
+    <script src="/js/expander.js"></script>
+    <script src="/js/deviceDetect.js"></script>
     <script>
+        $('.flip').off().on('click', flipCard);
+
         function flipCard() {
             let cards = $('.body_card');
-            for (let card of cards) {
-                let currentFlipValue = $(card).data('flip');
-                console.log(currentFlipValue);
-                console.log(typeof(currentFlipValue));
-                let newValue = currentFlipValue == 1 ? 2 : 1;
-                $(card).data('flip', newValue);
+            for (let i = 0; i < cards.length; i++) {
+                let currentFlipValue = $(cards[i]).attr('flip');
+                if (!currentFlipValue) {
+                    $(cards[i]).attr('flip', i + 1);
+                    $(cards[i]).removeClass('d4stat');
+                } else {
+                    let newValue = currentFlipValue == 1 ? 2 : 1;
+                    $(cards[i]).attr('flip', newValue);
+                }
             }
         }
+
+        let fontVar = [
+            "--enormous-font-size",
+            "--biggest-font-size",
+            "--bigger-font-size",
+            "--big-font-size",
+            "--normal-font-size",
+            "--small-font-size",
+            "--smaller-font-size",
+        ]
+
+        new TypeMachine('.header_text', 'Front-End Developer', 150, 1000);
+
+        new FontCtrl(fontVar, 'rem', 0.9, 1.15, $('#nav_menu'));
+
+        new Expander($('.expander'), ["技能", "作品", "簡介"], "url(/img/dot.png)");
+
+        new DeviceDetector();
     </script>
 </body>
+
 </html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JackAndOreo</title>
+    <meta property="og:title" content="Jackandoreo.github.io">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="縮圖檔">
+    <meta property="og:url" content="網頁路徑">
+    <meta property="og:site_name" content="網頁名稱">
+    <meta property="og:description" content="網頁介紹">
+    <meta property="og:locale" content="zh_TW">
+    <link rel="stylesheet" href="./css/portfolio.min.css">
+    <link rel="stylesheet" href="./css/indexPlug.min.css">
+    <link rel="stylesheet" href="./css/spin.min.css">
+    <link rel="stylesheet" href="./css/newsTicker.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="/js/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <!-- <div id="portfolio_body" class="df_jc_ac"> -->
+    <!-- </div> -->
+    <!-- <div class="scene">
+        <div class="cube" data-flip="1">
+            <div class="face face_1">A 面</div>
+            <div class="face face_2">B 面</div>
+            <div class="face face_3">C 面</div>
+            <div class="face face_4">D 面</div>
+            <div class="face face_5">E 面</div>
+        </div>
+    </div> -->
+    <button id="rotateButton">轉動到 B 面</button>
+
+
+    <div class="portfolio_body">
+        <div class="portfolio_scene">
+            <div class="cube" data-flip="1">
+                <div class="porfolio_container porfolio_container_1 df_jc_ac">
+                    <div class="porfolio_intro_image">
+                        <div class="scroll_hint df_jc_ac">
+                            <div class="scroll_arrow scroll_up bg_img"></div>
+                            <div class="finger bg_img"></div>
+                            <div class="scroll_arrow scroll_down bg_img"></div>
+                        </div>
+                        <div class="phone_box">
+                            <img src="/img/作品集/故宮/故宮－首頁手機板.png" alt="">
+                        </div>
+                        <div class="porfolio_intro_text intro_1 intro_1_1">多個下拉選單，提供幣值、語言、會員中心等功能。</div>
+                        <div class="porfolio_intro_text intro_1 intro_1_2">彈出式進階搜尋功能。</div>
+                        <div class="porfolio_intro_text intro_1 intro_1_3">設計了懸浮的字體大小控制按鈕，並且可以將其縮放至右側。</div>
+                        <div class="porfolio_intro_text intro_1 intro_1_4">開發了可左右自由滑動的商品清單，突破傳統的固定左右滑動數量的限制，提供更流暢的瀏覽體驗。
+                        </div>
+                        <div class="porfolio_intro_text intro_1 intro_1_5">開發了可左右自由滑動的商品清單，突破傳統的固定左右滑動數量的限制，提供更流暢的瀏覽體驗。
+                        </div>
+                    </div>
+                    <div class="pusher"></div>
+                </div>
+                <div class="porfolio_container porfolio_container_2 df_jc_ac">
+                    <div class="porfolio_intro_image">
+                        <div class="scroll_hint df_jc_ac">
+                            <div class="scroll_arrow scroll_up bg_img"></div>
+                            <div class="finger bg_img"></div>
+                            <div class="scroll_arrow scroll_down bg_img"></div>
+                        </div>
+                        <div class="phone_box">
+                            <img src="/img/作品集/故宮/故宮－商品目錄手機.png" alt="">
+                        </div>
+                        <div class="porfolio_intro_text intro_2 intro_2_1">US幣值顯示控制，提供即時的幣值切換功能。</div>
+                        <div class="porfolio_intro_text intro_2 intro_2_2">提供多個商品篩選功能，讓用戶能夠快速找到所需商品。</div>
+                        <div class="porfolio_intro_text intro_2 intro_2_3">透過API資料實現購物按鈕、喜愛按鈕的控制。</div>
+                    </div>
+                    <div class="pusher"></div>
+                </div>
+                <div class="porfolio_container porfolio_container_3 df_jc_ac">
+                    <div class="porfolio_intro_image">
+                        <div class="scroll_hint df_jc_ac">
+                            <div class="scroll_arrow scroll_up bg_img"></div>
+                            <div class="finger bg_img"></div>
+                            <div class="scroll_arrow scroll_down bg_img"></div>
+                        </div>
+                        <div class="phone_box">
+                            <img src="/img/作品集/故宮/故宮－商品說明頁手機.png" alt="">
+                        </div>
+                        <div class="porfolio_intro_text intro_3 intro_3_1">實時切換預覽商品圖片，提供直觀的商品展示效果。</div>
+                        <div class="porfolio_intro_text intro_3 intro_3_2">按照商品數量計算價格和USD價格。並且在達到最高可購買數量時提醒。</div>
+                        <div class="porfolio_intro_text intro_3 intro_3_3">串接社群媒體分享功能。</div>
+                        <div class="porfolio_intro_text intro_3 intro_3_4">懸浮在頂部的說明按鈕功能，快速切換至欲瀏覽區域。</div>
+                        <div class="porfolio_intro_text intro_3 intro_3_5">開發了可左右自由滑動的商品清單，突破傳統的固定左右滑動數量的限制，提供更流暢的瀏覽體驗。
+                        </div>
+                    </div>
+                    <div class="pusher"></div>
+                </div>
+                <div class="porfolio_container porfolio_container_4 df_jc_ac">
+                    <div class="porfolio_intro_image">
+                        <div class="scroll_hint df_jc_ac">
+                            <div class="scroll_arrow scroll_up bg_img"></div>
+                            <div class="finger bg_img"></div>
+                            <div class="scroll_arrow scroll_down bg_img"></div>
+                        </div>
+                        <div class="phone_box">
+                            <img src="/img/作品集/形象頁/形象頁1－手機板.png" alt="">
+                        </div>
+                        <div class="porfolio_intro_text intro_4 intro_4_1">錨點按鈕功能，快速切換至欲瀏覽區域。</div>
+                        <div class="porfolio_intro_text intro_4 intro_4_2">左右飛入動畫效果，為網頁添加動態元素，增強視覺吸引力。</div>
+                        <div class="porfolio_intro_text intro_4 intro_4_3">透過固定背景圖片，當用戶滾動頁面時，可以看到背景圖片的不同部分，提升網頁的視覺深度。
+                        </div>
+                        <div class="porfolio_intro_text intro_4 intro_4_4">左右飛入動畫效果，為網頁添加動態元素，增強視覺吸引力。</div>
+                    </div>
+                    <div class="pusher"></div>
+                </div>
+                <div class="porfolio_container porfolio_container_5 df_jc_ac">
+                    <div class="profolio_left_intro">
+                        其他畫面恕無法公開，以文字代述。
+                    </div>
+                    <div class="profolio_right_intro">
+                        <ul>
+                            <li>自製月曆式行事曆，使用者可以點擊月曆進行排班，並根據API資料在月曆上進行排班標註。</li>
+                            <li>製作列表式行事曆，使用者可以上下滑動瀏覽當前班表，並會在進入頁面時自動滾動到當前日期。</li>
+                            <li>串接API顯示簡易的訂單畫面，點擊後動畫展開，顯示詳盡的商品資料。</li>
+                            <li>使用API資料製作商品的購物畫面，包括尺寸大小選擇、加料選擇、顏色選擇等功能。</li>
+                            <li>使用API資料製作購物訂單的進度條，讓使用者了解訂單的當前進度。</li>
+                            <li>多個後台頁面的製作，利用API資料進行各種數據呈現，包括會員資料列表、公告列表、會員群組管理、使用者後台自製廣告卡及下載等功能。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="portfolio_scene">
+        <div class="porfolio_container porfolio_container_1 df_jc_ac"></div>
+        <div class="porfolio_container porfolio_container_2 df_jc_ac"></div>
+        <div class="porfolio_container porfolio_container_3 df_jc_ac"></div>
+        <div class="porfolio_container porfolio_container_4 df_jc_ac"></div>
+        <div class="porfolio_container porfolio_container_5 df_jc_ac"></div>
+    </div> -->
+    <script>
+
+        $('#rotateButton').off().on('click', function () {
+            let cube = $('.cube');
+            let currentIndex = parseInt(cube.data('flip'));
+            console.log(currentIndex);
+            let cubelength = $('.cube .porfolio_container').length;
+            let spinDegree = 360 / cubelength;
+            let newDegree = currentIndex * spinDegree;
+
+            cube.css({
+                transform: `rotateY(-${newDegree}deg)`,
+            });
+            
+            cube.data('flip', (currentIndex + 1) % cubelength);
+        });
+
+        $(window).on('resize', function () {
+            var zDegreeRange = Math.min(window.innerWidth) * 0.7 + 'px';
+            console.log(zDegreeRange);
+            document.documentElement.style.setProperty('--z-degree-range', zDegreeRange);
+        });
+
+    </script>
+
+    <script src="/js/fontControl.js"></script>
+    <script src="/js/deviceDetect.js"></script>
+    <script>
+
+        class phoneDescription {
+            constructor(index, moveData) {
+                this.index = index;
+                this.moveData = moveData; // Map 
+                this.init();
+            }
+
+            init() {
+                this.updateVisibility();
+                this.onScroll();
+            }
+
+            onScroll() {
+                $(`.porfolio_container_${this.index} .phone_box`).on('scroll', () => {
+                    this.updateVisibility();
+                });
+            }
+
+            updateVisibility() {
+                const scrollTop = $(`.porfolio_container_${this.index} .phone_box`).scrollTop();
+                this.moveData.forEach((data, quantity) => {
+                    let target = $(`.porfolio_container_${this.index} .intro_${this.index}_${quantity}`);
+                    console.log(scrollTop);
+                    if (scrollTop > data.hidePosition) {
+                        target.css({
+                            opacity: 0,
+                            transform: 'translateX(-20px)'
+                        });
+                    } else if (scrollTop > data.scrollPosition) {
+                        target.css({
+                            opacity: 1,
+                            transform: 'translateX(0)'
+                        });
+                    } else {
+                        if (data.scrollPosition === 0) {
+                            target.css({
+                                opacity: 1,
+                                transform: 'translateX(0)'
+                            });
+                        } else {
+                            target.css({
+                                opacity: 0,
+                                transform: 'translateX(0)'
+                            });
+                        }
+                    }
+                });
+            }
+        }
+
+        const phone1Data = new Map([
+            [1, { scrollPosition: 0, hidePosition: 80 }],
+            [2, { scrollPosition: 0, hidePosition: 80 }],
+            [3, { scrollPosition: 0, hidePosition: 100 }],
+            [4, { scrollPosition: 660, hidePosition: 860 }],
+            [5, { scrollPosition: 1660, hidePosition: 1860 }],
+        ]);
+
+        const phone2Data = new Map([
+            [1, { scrollPosition: 0, hidePosition: 60 }],
+            [2, { scrollPosition: 20, hidePosition: 250 }],
+            [3, { scrollPosition: 450, hidePosition: 2400 }],
+        ]);
+
+        const phone3Data = new Map([
+            [1, { scrollPosition: 60, hidePosition: 190 }],
+            [2, { scrollPosition: 200, hidePosition: 450 }],
+            [3, { scrollPosition: 240, hidePosition: 490 }],
+            [4, { scrollPosition: 630, hidePosition: 780 }],
+            [5, { scrollPosition: 2000, hidePosition: 2200 }],
+        ]);
+
+        const phone4Data = new Map([
+            [1, { scrollPosition: 0, hidePosition: 80 }],
+            [2, { scrollPosition: 100, hidePosition: 1100 }],
+            [3, { scrollPosition: 1100, hidePosition: 1500 }],
+            [4, { scrollPosition: 1580, hidePosition: 2580 }],
+        ]);
+
+        new phoneDescription(1, phone1Data);
+        new phoneDescription(2, phone2Data);
+        new phoneDescription(3, phone3Data);
+        new phoneDescription(4, phone4Data);
+
+
+    </script>
+</body>
+
+</html>

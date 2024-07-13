@@ -1,0 +1,15 @@
+/* 處理引入的內容 */
+
+/* 打字機 */
+.typing-text {
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: var(--big-font-size);
+    display: flex;
+}
+
+/* 字體大小控制 */
+
+.FontCtrl {
+    display: none;
+}

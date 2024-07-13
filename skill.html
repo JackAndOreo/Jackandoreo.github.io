@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JackAndOreo</title>
+    <meta property="og:title" content="Jackandoreo.github.io">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="縮圖檔">
+    <meta property="og:url" content="網頁路徑">
+    <meta property="og:site_name" content="網頁名稱">
+    <meta property="og:description" content="網頁介紹">
+    <meta property="og:locale" content="zh_TW">
+    <link rel="stylesheet" href="./css/index.min.css">
+    <link rel="stylesheet" href="./css/indexPlug.min.css">
+    <link rel="stylesheet" href="./css/spin.min.css">
+    <link rel="stylesheet" href="./css/newsTicker.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="/js/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <div id="main_body" class="df_jc_ac">
+        <div class="news_ticker_container">
+            <div class="float_font_container">
+                <div class="news_ticker"></div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <script src="/js/fontControl.js"></script>
+    <script src="/js/deviceDetect.js"></script>
+    <script>
+        new DeviceDetector();
+
+        let putInText = [
+            "HTML",
+            "CSS",
+            "Emmet",
+            "SCSS",
+            "javaScript",
+            "jQuery",
+            "Boostrap",
+            "VUE"
+        ]
+
+        function changeText(i = 0) {
+            $('.news_ticker').text(putInText[i]);
+            $('.news_ticker').addClass("openIn");
+
+            setTimeout(() => {
+                $('.news_ticker').removeClass("openIn");
+                i = (i + 1) % putInText.length;
+                setTimeout(() => {
+                    changeText(i);
+                }, 500);
+            }, 2500);
+        }
+
+        function putInFloatFont() {
+            let html = ``;
+            for (let i = 0; i < putInText.length; i++) {
+                html += `<div class="float_font float_font_${i + 1}">${putInText[i]}</div>`;
+            }
+            $('.float_font_container').append(html);
+        }
+
+        // $(document).ready(() => {
+        //     changeText();
+        //     putInFloatFont();
+        // });
+
+        class Ball {
+            constructor(element, originalX, originalY) {
+                this.element = element;
+                this.originalX = originalX;
+                this.originalY = originalY;
+                this.currentX = originalX;
+                this.currentY = originalY;
+                this.targetX = originalX;
+                this.targetY = originalY;
+                this.strength = 0.05;
+            }
+
+            updatePosition(mouseX, mouseY) {
+                this.targetX = mouseX;
+                this.targetY = mouseY;
+            }
+
+            returnToOriginal() {
+                this.targetX = this.originalX;
+                this.targetY = this.originalY;
+            }
+
+            animate() {
+                const distanceX = (this.targetX - this.currentX) * this.strength;
+                const distanceY = (this.targetY - this.currentY) * this.strength;
+
+                this.currentX += distanceX;
+                this.currentY += distanceY;
+
+                this.element.style.left = `${this.currentX}px`;
+                this.element.style.top = `${this.currentY}px`;
+
+                requestAnimationFrame(this.animate.bind(this));
+            }
+        }
+
+        $(document).ready(function () {
+
+            changeText();
+            putInFloatFont();
+
+            const $container = $('.float_font_container');
+            const $floats = $container.find('.float_font');
+
+            const balls = [];
+
+            $floats.each(function () {
+                const $this = $(this);
+                const offset = $this.position();
+                const ball = new Ball($this[0], offset.left, offset.top);
+                balls.push(ball);
+                ball.animate();
+            });
+
+            $container.on('mousemove', function (e) {
+                const containerOffset = $container.offset();
+                const mouseX = e.pageX - containerOffset.left;
+                const mouseY = e.pageY - containerOffset.top;
+
+                balls.forEach(ball => {
+                    ball.updatePosition(mouseX, mouseY);
+                });
+            });
+
+            $container.on('mouseleave', function () {
+                balls.forEach(ball => {
+                    ball.returnToOriginal();
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>
