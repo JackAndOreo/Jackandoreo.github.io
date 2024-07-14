@@ -21,65 +21,84 @@
 
 <body>
     <div id="api_body" class="df_jc_ac">
-        <div class="api_container">
-            <div class="api_intro">
-                展示如何根據條件利用API內的資料，將其放入對應位置。
-            </div>
-            <div class="photo_container photo_container_1">
-                <div class="container_title">長寬比3:2</div>
-                <div class="container_box wider_pic"></div>
-            </div>
-            <div class="photo_container photo_container_2">
-                <div class="container_title">長寬比2:3</div>
-                <div class="container_box length_pic"></div>
-            </div>
-            <div class="photo_container photo_container_1">
-                <div class="container_title">皆不符合</div>
-                <div class="container_box other_pic"></div>
-            </div>
+        <div class="pokemon_name"></div>
+        <div class="pokemon_order"></div>
+        <div class="pokemon_type"></div>
+        <div class="pokemon_image">
+
         </div>
+        <div class="pokemon_strength">
+
+        </div>
+        <!-- 編號 名稱 屬性 持有道具 體重(G) 圖片(官方圖+動圖) 種族值-->
     </div>
     <script src="/js/fontControl.js"></script>
     <script src="/js/deviceDetect.js"></script>
     <script>
-        const url = "https://api.unsplash.com/photos/?client_id=xivQH_C7HTYo27YAIKhGghkr3CCMF7WNtGw7PqXPIvs";
+        // const url = "https://pokeapi.co/api/v2/type/3";
+        // const url = "https://pokeapi.co/api/v2/pokemon/12/";
 
-        function getData() {
+        function getData(index) {
+            const url = `https://pokeapi.co/api/v2/pokemon/${index}/`;
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
-                    const apiBox = $('.api_container');
-                    const container1 = apiBox.find('.wider_pic');
-                    const container2 = apiBox.find('.length_pic');
-                    const container3 = apiBox.find('.other_pic');
 
-                    const isApproxRatio = (width, height, ratio) => {
-                        const errorMargin = 0.04;
-                        const actualRatio = width / height;
-                        return Math.abs(actualRatio - ratio) / ratio < errorMargin;
-                    };
+                    // 抓名稱
+                    $('.pokemon_name').text(data.name);
 
-                    data.forEach(item => {
-                        const img = $('<img>', {
-                            src: item.urls.regular,
-                            alt: item.alt_description,
-                            title: item.alt_description
-                        });
 
-                        if (isApproxRatio(item.width, item.height, 3 / 2)) {
-                            container1.append(img);
-                        } else if (isApproxRatio(item.width, item.height, 2 / 3)) {
-                            container2.append(img);
-                        } else {
-                            container3.append(img);
+                    // 抓圖片
+
+                    var imgs = data.sprites;
+                    var other = imgs.other.showdown;
+                    var official = imgs.other['official-artwork'];
+                    var version = imgs.versions;
+                    console.log(imgs);
+
+                    for (var key in imgs) {
+                        if (imgs.hasOwnProperty(key)) {
+
+                            if (key !== 'other' && key !== 'versions') {
+                                console.log(key + ": " + imgs[key]);
+                                var imgHtml = `<img src="${imgs[key]}" alt="${key}">`;
+                                $('.pokemon_image').append(imgHtml);
+                            }
                         }
-                    });
+                    }
+
+                    for (var key in other) {
+                        if (other.hasOwnProperty(key)) {
+                            console.log('other - ' + key + ": " + other[key]);
+                            var imgHtml = `<img src="${other[key]}" alt="other - ${key}">`;
+                            $('.pokemon_image').append(imgHtml);
+                        }
+                    }
+
+                    for (var key in official) {
+                        if (official.hasOwnProperty(key)) {
+                            console.log('official - ' + key + ": " + official[key]);
+                            var imgHtml = `<img src="${official[key]}" alt="official - ${key}">`;
+                            $('.pokemon_image').append(imgHtml);
+                        }
+                    }
+
+                    // 抓種族值
+                    var stats = data.stats;
+
+                    for (let i = 0; i < stats.length; i++) {
+                        var html = `<div class="strength" data-strength="${stats[i].stat.name}">
+                                        <div class="strength_title"></div>
+                                        <div class="strength_value">${stats[i].base_stat}</div>
+                                    </div>`;
+                        $('.pokemon_strength').append(html);
+                    }
                 })
                 .catch(error => console.error('Error fetching data:', error));
         }
 
-        getData();
+        getData(12);
     </script>
 </body>
 

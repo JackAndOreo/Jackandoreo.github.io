@@ -1,0 +1,232 @@
+@import "../scss/settings";
+@import "../scss/model";
+
+#pokemon_body {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+}
+
+// 上半部
+
+.top_part {
+    height: 630px;
+    width: 100%;
+    background-color: lightcyan;
+    position: relative;
+}
+
+.pokemonball {
+    position: absolute;
+    bottom: 0;
+    height: 200px;
+    width: 100%;
+    background-color: lightgray;
+    overflow: hidden;
+}
+
+.ball {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-image: url(/img/pokemonbal.png);
+    background-position: 50% 210%;
+}
+
+
+// 圖鑑區塊
+
+
+.handbook_part {
+    width: 100%;
+    background-color: #333;
+    position: relative;
+    padding: 40px;
+}
+
+.book_shadow {
+    background:
+        linear-gradient(to bottom left, #0a141e, transparent 50%),
+        linear-gradient(to bottom right, #0a141e, transparent 50%);
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.book_shadow_2 {
+    background:
+        linear-gradient(to top left, #0a141e, transparent 50%),
+        linear-gradient(to top right, #0a141e, transparent 50%);
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.book_box {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #fff;
+    border-radius: 32px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 12px -3px #fff;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    row-gap: 24px;
+    column-gap: 16px;
+    align-items: center;
+    justify-items: center;
+    padding: 32px 12px;
+}
+
+.book_border {
+    width: 225px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #f0f0f0;
+}
+
+.book {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background-color: #0a141e;
+    box-shadow: 0 0 18px -3px #71c0e8;
+    cursor: pointer;
+}
+
+.pm_text {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 10px;
+    color: #f0f0f0;
+}
+
+.pm_title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 6px;
+    row-gap: 2px;
+}
+
+.pm_order {
+    font-size: var(--small-font-size);
+    font-weight: 600;
+    font-family: var(--eng-font);
+}
+
+.pm_name {
+    font-weight: 500;
+    font-family: var(--chinese-font);
+}
+
+.pm_type {
+    width: 100%;
+    font-weight: 400;
+    font-family: var(--chinese-font);
+    font-size: var(--small-font-size);
+    color: #fff;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 14px 0 12px; 
+}
+
+.type {
+    width: 44%;
+    margin: 0 3%;
+    text-align: center;
+    height: 25px;
+    line-height: 23px;
+    background-color: #333;
+    border-radius: 15px;
+    box-shadow: 0 0 6px -2px #333;
+    text-shadow: 0 0 5px rgba(0, 0, 0, .75);
+}
+
+.type[data-pmtype="一般"] {
+    background-color: rgb(220, 220, 220);
+}
+
+.type[data-pmtype="火"] {
+    background-color: rgb(255, 105, 0);
+}
+
+.type[data-pmtype="水"] {
+    background-color: #14b9ff;
+}
+
+.type[data-pmtype="草"] {
+    background-color: #b4f000;
+}
+
+.type[data-pmtype="電"] {
+    background-color: #ffe100;
+}
+
+.type[data-pmtype="冰"] {
+    background-color: #14f5ff;
+}
+
+.type[data-pmtype="格鬥"] {
+    background-color: #dc6900;
+}
+
+.type[data-pmtype="毒"] {
+    background-color: rgb(190, 120, 190);
+}
+
+.type[data-pmtype="地面"] {
+    background-color: #fac85a;
+}
+
+.type[data-pmtype="飛行"] {
+    background-color: #78dcff;
+}
+
+.type[data-pmtype="超能力"] {
+    background-color: #f08cdc;
+}
+
+.type[data-pmtype="蟲"] {
+    background-color: #46c846;
+}
+
+.type[data-pmtype="岩石"] {
+    background-color: #b48c64;
+}
+
+.type[data-pmtype="幽靈"] {
+    background-color: #a08cff;
+}
+
+.type[data-pmtype="龍"] {
+    background-color: #5078dc;
+}
+
+.type[data-pmtype="惡"] {
+    background-color: #787878;
+}
+
+.type[data-pmtype="鋼"] {
+    background-color: #aac8f0;
+}
+
+.type[data-pmtype="妖精"] {
+    background-color: #ffafdc;
+}
