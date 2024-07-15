@@ -171,15 +171,20 @@ for (let i = 1; i < 152; i++) {
 }
 
 Promise.all(promises).then(() => {
-    var allbooks = $('.book_border');
+    var allbooks = $('.book_border').toArray().sort((a, b) => {
+        return $(a).data('order') - $(b).data('order');
+    });
 
-    allbooks.off('click').on('click', function () {
+    $('#pokemon_body .book_box').empty();
+
+    allbooks.forEach(book => {
+        $('#pokemon_body .book_box').append(book);
+    });
+
+    $('.book_border').off('click').on('click', function () {
         new PopModel({
             target: this,
             showAnimation: true,
-            onShow: function () {
-                console.log('Popup shown');
-            },
             onClose: function () {
                 console.log('Popup closed');
             }
