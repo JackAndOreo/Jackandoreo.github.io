@@ -102,6 +102,12 @@
     background-color: #0a141e;
     box-shadow: 0 0 18px -3px #71c0e8;
     cursor: pointer;
+    color: #f0f0f0;
+    font-family: var(--chinese-font);
+}
+
+.pm_img {
+    grid-area: a;
 }
 
 .pm_text {
@@ -111,7 +117,7 @@
     align-items: center;
     flex-direction: column;
     padding: 0 10px;
-    color: #f0f0f0;
+    grid-area: b;
 }
 
 .pm_title {
@@ -132,27 +138,25 @@
 
 .pm_name {
     font-weight: 500;
-    font-family: var(--chinese-font);
+    font-size: var(--normal-font-size);
 }
 
 .pm_type {
     width: 100%;
     font-weight: 400;
-    font-family: var(--chinese-font);
     font-size: var(--small-font-size);
-    color: #fff;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin: 14px 0 12px; 
+    margin: 14px 0 12px;
 }
 
 .type {
     width: 44%;
     margin: 0 3%;
     text-align: center;
-    height: 25px;
-    line-height: 23px;
+    height: 28px;
+    line-height: 27px;
     background-color: #333;
     border-radius: 15px;
     box-shadow: 0 0 6px -2px #333;
@@ -230,3 +234,109 @@
 .type[data-pmtype="妖精"] {
     background-color: #ffafdc;
 }
+
+// 擴充資訊
+
+.pm_extension {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    row-gap: 6px;
+    grid-area: c;
+    padding: 8px;
+    font-size: var(--small-font-size);
+    text-shadow: 0 0 2px #333;
+    display: none;
+    white-space: nowrap;
+}
+
+.extension {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(56 94 113);
+    border-radius: 12px;
+    box-shadow: 0 0 6px -3px #fff;
+}
+
+.extension_value {
+    height: 30px;
+    background: #f0f0f0;
+    line-height: 29px;
+    width: 94%;
+    margin: 6px auto;
+    border-radius: 8px;
+    color: #333;
+    text-shadow: 0 0 #000;
+}
+
+.strength {
+    display: flex;
+    column-gap: 4px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.strength_value {
+    font-family: var(--eng-font);
+}
+
+.strength::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 8px;
+    background-color: #82bdd0;
+    left: 0;
+    top: 26px;
+    border-radius: 15px;
+}
+
+// 彈出控制
+
+
+.popout_box {
+
+    .book_border {
+        animation: extend 1s forwards;
+        @keyframes extend {
+            0% {
+                width: 225px;
+            }
+            100% {
+                width: 480px;
+            }
+        }
+    }
+    .book {
+        display: grid;
+        grid-template-areas: "a c"
+            "b c";
+        grid-template-columns: 225px auto;
+        justify-content: unset;
+        cursor: unset;
+    }
+    .pm_img {
+        width: 225px;
+    }
+    .pm_text {
+        width: 225px;
+    }
+    .pm_extension {
+        display: flex;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        animation-delay: 0.2s;
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+}
+
