@@ -72,7 +72,6 @@ class PokemonOperation {
 
         $('#pokemon_body .book_box').append(html);
         this.setStatLength();
-        new FollowImg($(`.book_border[data-order="${this.index}"]`), 8, 8, 54, 54);
 
         // onComplete
         if (typeof this.onComplete === 'function') {
@@ -179,6 +178,7 @@ Promise.all(promises).then(() => {
 
     allbooks.forEach(book => {
         $('#pokemon_body .book_box').append(book);
+        new FollowImg($(book), 8, 8, 54, 54);
     });
 
     $('.book_border').off('click').on('click', function () {
