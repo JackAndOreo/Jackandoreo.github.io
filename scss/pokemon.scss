@@ -146,7 +146,7 @@
     font-weight: 400;
     font-size: var(--small-font-size);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     margin: 14px 0 12px;
 }
@@ -163,75 +163,75 @@
     text-shadow: 0 0 5px rgba(0, 0, 0, .75);
 }
 
-.type[data-pmtype="一般"] {
+.type[data-pmtype="Normal"] {
     background-color: rgb(220, 220, 220);
 }
 
-.type[data-pmtype="火"] {
+.type[data-pmtype="Fire"] {
     background-color: rgb(255, 105, 0);
 }
 
-.type[data-pmtype="水"] {
+.type[data-pmtype="Water"] {
     background-color: #14b9ff;
 }
 
-.type[data-pmtype="草"] {
+.type[data-pmtype="Grass"] {
     background-color: #b4f000;
 }
 
-.type[data-pmtype="電"] {
+.type[data-pmtype="Electric"] {
     background-color: #ffe100;
 }
 
-.type[data-pmtype="冰"] {
+.type[data-pmtype="Ice"] {
     background-color: #14f5ff;
 }
 
-.type[data-pmtype="格鬥"] {
+.type[data-pmtype="Fighting"] {
     background-color: #dc6900;
 }
 
-.type[data-pmtype="毒"] {
+.type[data-pmtype="Poison"] {
     background-color: rgb(190, 120, 190);
 }
 
-.type[data-pmtype="地面"] {
+.type[data-pmtype="Ground"] {
     background-color: #fac85a;
 }
 
-.type[data-pmtype="飛行"] {
+.type[data-pmtype="Flying"] {
     background-color: #78dcff;
 }
 
-.type[data-pmtype="超能力"] {
+.type[data-pmtype="Psychic"] {
     background-color: #f08cdc;
 }
 
-.type[data-pmtype="蟲"] {
+.type[data-pmtype="Bug"] {
     background-color: #46c846;
 }
 
-.type[data-pmtype="岩石"] {
+.type[data-pmtype="Rock"] {
     background-color: #b48c64;
 }
 
-.type[data-pmtype="幽靈"] {
+.type[data-pmtype="Ghost"] {
     background-color: #a08cff;
 }
 
-.type[data-pmtype="龍"] {
+.type[data-pmtype="Dragon"] {
     background-color: #5078dc;
 }
 
-.type[data-pmtype="惡"] {
+.type[data-pmtype="Dark"] {
     background-color: #787878;
 }
 
-.type[data-pmtype="鋼"] {
+.type[data-pmtype="Steel"] {
     background-color: #aac8f0;
 }
 
-.type[data-pmtype="妖精"] {
+.type[data-pmtype="Fairy"] {
     background-color: #ffafdc;
 }
 
@@ -266,7 +266,7 @@
     background: #f0f0f0;
     line-height: 29px;
     width: 94%;
-    margin: 6px auto;
+    margin: 4px auto 6px;
     border-radius: 8px;
     color: #333;
     text-shadow: 0 0 #000;
@@ -283,8 +283,7 @@
     font-family: var(--eng-font);
 }
 
-.strength::after {
-    content: "";
+.strength_bar {
     position: absolute;
     width: 100px;
     height: 8px;
@@ -340,3 +339,18 @@
     }
 }
 
+
+// 跟隨動圖
+
+.hover_ball {
+    box-shadow: 0 0 14px -3px #71c0e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hover_ball img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}

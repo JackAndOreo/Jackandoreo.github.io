@@ -31,7 +31,7 @@
             <div class="book_shadow"></div>
             <!-- <div class="book_shadow_2"></div> -->
             <div class="book_box">
-                <div class="book_border df_jc_ac">
+                <!-- <div class="book_border df_jc_ac">
                     <div class="book">
                         <div class="pm_img">
                             <img src="/Tao_website/img/POKEMON001.png" alt="">
@@ -48,7 +48,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="book_border df_jc_ac">
+                <div class="book_border df_jc_ac" data-order="2"
+                    data-gif="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/12.gif">
+                    <div class="pm_gif">
+                        <img src="" alt="">
+                    </div>
                     <div class="book">
                         <div class="pm_img">
                             <img src="/Tao_website/img/POKEMON002.png" alt="">
@@ -100,31 +104,77 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
     <script src="/js/fontControl.js"></script>
     <script src="/js/deviceDetect.js"></script>
     <script src="/js/popModel.js"></script>
+    <script src="/js/pokemonAPI.js"></script>
 
     <script>
 
-        var books = $('.book_border');
+        class FollowImg {
+            constructor(element, mouseX = 10, mouseY = 10, width = 50, height = 50) {
+                this.element = element; // 出現球體的範圍
+                this.mouseX = mouseX; // 距離鼠標的X距離
+                this.mouseY = mouseY;
+                this.width = width;  // 球體的寬度
+                this.height = height;
+                this.hoverBallImg;
+                this.init();
+            }
 
-
-        books.off().on('click', function () {
-            new PopModel({
-                target: this,
-                showAnimation: true,
-                onShow: function () {
-                    console.log('Popup shown');
-                },
-                onClose: function () {
-                    console.log('Popup closed');
+            init() {
+                if ($('.hover_ball').length === 0) {
+                    this.hoverBall = $('<div class="hover_ball"><img src="" alt="hover ball image"></div>').appendTo('body');
+                    this.hoverBall.css({
+                        position: 'absolute',
+                        width: `${this.width}px`,
+                        height: `${this.height}px`,
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        display: 'none',
+                        zIndex: 1000,
+                        backgroundColor: '#fff',
+                    });
+                    this.hoverBallImg = this.hoverBall.find('img');
+                } else {
+                    this.hoverBall = $('.hover_ball');
+                    this.hoverBallImg = this.hoverBall.find('img');
                 }
-            })
-        })
+
+                this.bindEvents();
+            }
+
+            bindEvents() {
+                $(this.element).on('mouseenter', (e) => this.onMouseEnter(e))
+                    .on('mouseleave', (e) => this.onMouseLeave(e))
+                    .on('mousemove', (e) => this.onMouseMove(e));
+            }
+
+            onMouseEnter(e) {
+                const gifUrl = $(e.currentTarget).data('gif');
+                this.hoverBallImg.attr('src', gifUrl);
+                this.hoverBall.show();
+            }
+
+            onMouseLeave(e) {
+                this.hoverBall.hide();
+            }
+
+            onMouseMove(e) {
+                const mouseX = e.pageX;
+                const mouseY = e.pageY;
+                this.hoverBall.css({
+                    top: `${mouseY + this.mouseY}px`,
+                    left: `${mouseX + this.mouseX}px`
+                });
+            }
+        }
+
+
 
 
     </script>
