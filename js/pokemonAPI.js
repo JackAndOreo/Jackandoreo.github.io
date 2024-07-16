@@ -125,7 +125,7 @@ class PokemonOperation {
             var heldName = held[0].item.name.charAt(0).toUpperCase() + held[0].item.name.slice(1);
             heldHtml = `<div class="extension_value" data-held="${heldName}">${heldName}</div>`;
         } else {
-            heldHtml = `<div class="extension_value">None</div>`;
+            heldHtml = `<div class="extension_value">-</div>`;
         }
 
         return heldHtml;
@@ -158,13 +158,19 @@ class PokemonOperation {
             })
         }
     }
+
 }
 
 let promises = [];
+let randomArray = [];
 
 for (let i = 1; i < 152; i++) {
     let promise = new Promise((resolve, reject) => {
         new PokemonOperation(i, resolve);
+        var possibility = Math.random();
+        if (possibility < 0.15 && randomArray.length < 12) {
+            randomArray.push(i);
+        }
     });
     promises.push(promise);
 }
@@ -181,6 +187,19 @@ Promise.all(promises).then(() => {
         new FollowImg($(book), 8, 8, 54, 54);
     });
 
+    console.log(randomArray);
+    // 處理轉圈圈
+    var spinItems = $('.spin_item');
+    for (let i = 0; i < randomArray.length; i++) {
+        var order = randomArray[i];
+        var img = $(`.book_border[data-order="${order}"] .pm_img img`).attr('src');
+        var name = $(`.book_border[data-order="${order}"] .pm_name`).text();
+        var imgHtml = `<img src="${img}" alt="${name}" data-order="${order}">`;
+        $(spinItems[i]).append(imgHtml);
+    }
+
+
+    // 處理POP OUT
     $('.book_border').off('click').on('click', function () {
         new PopModel({
             target: this,

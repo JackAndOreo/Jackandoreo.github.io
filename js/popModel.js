@@ -1,5 +1,5 @@
 class PopModel {
-    constructor({  //positionX Y暫捨棄
+    constructor({  //positionX Y暫捨棄 // onShow // X按鈕待補
         target,
         width = "auto",
         height = "auto",
