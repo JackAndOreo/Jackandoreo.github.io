@@ -18,3 +18,5 @@ class DeviceDetector {
         $("body").addClass(isMobile ? "isMobile" : "notMobile");
     }
 }
+
+new DeviceDetector();

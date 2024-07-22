@@ -168,7 +168,7 @@ for (let i = 1; i < 152; i++) {
     let promise = new Promise((resolve, reject) => {
         new PokemonOperation(i, resolve);
         var possibility = Math.random();
-        if (possibility < 0.15 && randomArray.length < 12) {
+        if (possibility < 0.16 && randomArray.length < 16) {
             randomArray.push(i);
         }
     });
@@ -184,7 +184,11 @@ Promise.all(promises).then(() => {
 
     allbooks.forEach(book => {
         $('#pokemon_body .book_box').append(book);
-        new FollowImg($(book), 8, 8, 54, 54);
+        if ($('body').hasClass('isMobile')) {
+
+        } else {
+            new FollowImg($(book), 8, 8, 54, 54);
+        }
     });
 
     console.log(randomArray);
@@ -196,6 +200,21 @@ Promise.all(promises).then(() => {
         var name = $(`.book_border[data-order="${order}"] .pm_name`).text();
         var imgHtml = `<img src="${img}" alt="${name}" data-order="${order}">`;
         $(spinItems[i]).append(imgHtml);
+    }
+
+    for (let item of spinItems) {
+        let index = $(item).find('img').data('order');
+        console.log(index);
+        let target = ($(`.book_border[data-order="${index}"]`));
+        $(item).off('click').on('click', function() {
+            new PopModel({
+                target: target,
+                showAnimation: true,
+                onClose: function () {
+                    console.log('Popup closed');
+                }
+            });
+        })
     }
 
 

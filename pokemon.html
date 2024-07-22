@@ -48,6 +48,14 @@
                         <div class="spin_item"></div>
                         <div class="spin_item"></div>
                     </div>
+                    <div class="spin_bar spin_bar_7">
+                        <div class="spin_item"></div>
+                        <div class="spin_item"></div>
+                    </div>
+                    <div class="spin_bar spin_bar_8">
+                        <div class="spin_item"></div>
+                        <div class="spin_item"></div>
+                    </div>
                 </div>
             </div>
             <div class="pokemonball df_jc_ac">
@@ -59,6 +67,11 @@
             <div class="book_shadow_2"></div>
             <div class="book_box">
   
+            </div>
+        </div>
+        <div class="bottom_part">
+            <div class="pokemonball df_jc_ac">
+                <div class="ball bg_img"></div>
             </div>
         </div>
     </div>
@@ -115,7 +128,9 @@
             }
 
             onMouseLeave(e) {
+                const ballGifUrl = "/img/ballGif.gif";
                 this.hoverBall.hide();
+                this.hoverBallImg.attr('src', ballGifUrl);
             }
 
             onMouseMove(e) {
