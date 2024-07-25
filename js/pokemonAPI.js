@@ -172,7 +172,7 @@ class PokemonOperation {
 
 let promises = [];
 let randomArray = [];
-let indices = Array.from({length: 151}, (_, i) => i + 1);
+let indices = Array.from({ length: 151 }, (_, i) => i + 1);
 
 
 for (let i = 1; i < 152; i++) {
@@ -229,8 +229,8 @@ Promise.all(promises).then(() => {
             new PopModel({
                 target: target,
                 showAnimation: true,
-                onShow: function() {
-                    $('.popout_box .pm_shiny').off().on('click', function() {
+                onShow: function () {
+                    $('.popout_box .pm_shiny').off().on('click', function () {
                         $('.popout_box .pm_img').toggleClass('switch');
                     })
                 },
@@ -244,11 +244,19 @@ Promise.all(promises).then(() => {
         new PopModel({
             target: this,
             showAnimation: true,
-            onShow: function() {
-                $('.popout_box .pm_shiny').off().on('click', function() {
+            onShow: function () {
+                $('.popout_box .pm_shiny').off().on('click', function () {
                     $('.popout_box .pm_img').toggleClass('switch');
                 })
             },
         });
     });
+
+    // LOADING完成
+    setTimeout(() => {
+        $('#loading_page').hide();
+        $('#pokemon_body').css({
+            display: 'flex',
+        });
+    }, 300);
 });
