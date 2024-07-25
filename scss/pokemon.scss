@@ -341,6 +341,7 @@
     background-color: #333;
     position: relative;
     padding: 40px;
+    transition: height ease-in 5s;
 }
 
 @media screen and (max-width: 840px) {
@@ -412,6 +413,24 @@
 
 .pm_img {
     grid-area: a;
+    position: relative;
+}
+
+.pm_img_shiny {
+    display: none;
+}
+
+.pm_shiny {
+    position: absolute;
+    background-image: url(/img/shiny.png);
+    background-color: #82bdd0;
+    width: 22px;
+    height: 22px;
+    bottom: -12px;
+    right: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0;
 }
 
 .pm_text {
@@ -569,6 +588,13 @@
         width: 88%;
     }
 
+    .pm_shiny {
+        width: 20px;
+        height: 20px;
+        bottom: -20px;
+        right: 6px;
+    }
+
 }
 
 // 擴充資訊
@@ -629,6 +655,7 @@
     border-radius: 15px;
 }
 
+
 // 彈出控制
 
 .popout_box {
@@ -658,6 +685,26 @@
 
     .pm_img {
         width: 225px;
+    }
+
+    .pm_shiny {
+        animation: pmBtnFade 1s forwards; 
+        @keyframes pmBtnFade {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+
+    .switch .pm_img_default {
+        display: none;
+    }
+
+    .switch .pm_img_shiny {
+        display: unset;
     }
 
     .pm_text {

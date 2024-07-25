@@ -1,19 +1,21 @@
 class PopModel {
-    constructor({  //positionX Y暫捨棄 // onShow // X按鈕待補
+    constructor({  // positionX Y暫捨棄 // X按鈕待補
         target,
         width = "auto",
         height = "auto",
         backgroundClose = true,
-        bgColor = 'rgba(0, 0, 0, 0.5)', 
+        bgColor = 'rgba(0, 0, 0, 0.5)',
         showAnimation = true,
-        onClose = null
+        onShow = null,
+        onClose = null,
     }) {
         this.target = target;
         this.width = width;  // 彈出視縮是否要自訂大小
         this.height = height;
-        this.backgroundClose = backgroundClose;  
+        this.backgroundClose = backgroundClose;
         this.bgColor = bgColor;  // 背景色控制
         this.showAnimation = showAnimation;  // 是否動畫
+        this.onShow = onShow;  // 是否自定義開始事件
         this.onClose = onClose;  // 是否自定義關閉事件
         this.init();
     }
@@ -81,11 +83,15 @@ class PopModel {
         }
 
         if (this.showAnimation) {
-            $popoutBackground.fadeIn();
-            $popoutContainer.fadeIn();
+            $popoutBackground.fadeIn(() => {
+                $popoutContainer.fadeIn(() => {
+                    if (this.onShow) this.onShow();
+                });
+            });
         } else {
             $popoutBackground.show();
             $popoutContainer.show();
+            if (this.onShow) this.onShow();
         }
     }
 

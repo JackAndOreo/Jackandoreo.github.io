@@ -40,11 +40,13 @@ class PokemonOperation {
         var abilityHtml = this.generateAbility();
         var heldHtml = this.generateHeld();
         var strengthHtml = this.generateStrength();
+        var imgHtml = this.generateImg();
+        this.generateImg();
 
         var html = `<div class="book_border df_jc_ac" data-order="${this.index}" data-gif="${this.apiData.sprites.other.showdown.front_default}">
             <div class="book">
                 <div class="pm_img">
-                    <img src="${this.apiData.sprites.other['official-artwork'].front_default}" alt="${this.apiData.name}">
+                    ${imgHtml}
                 </div>
                 <div class="pm_text">
                     <div class="pm_title">
@@ -77,6 +79,14 @@ class PokemonOperation {
         if (typeof this.onComplete === 'function') {
             this.onComplete();
         }
+    }
+
+    generateImg() {
+        var imgHtml = `<div class="pm_shiny bg_img"></div>
+                    <img class="pm_img_default"src="${this.apiData.sprites.other['official-artwork'].front_default}" alt="${this.apiData.name}">
+                    <img class="pm_img_shiny" src="${this.apiData.sprites.other['official-artwork'].front_shiny}" alt="${this.apiData.name}">`;
+
+        return imgHtml;
     }
 
     generateName() {
@@ -158,17 +168,18 @@ class PokemonOperation {
             })
         }
     }
-
 }
 
 let promises = [];
 let randomArray = [];
+let indices = Array.from({length: 151}, (_, i) => i + 1);
+
 
 for (let i = 1; i < 152; i++) {
     let promise = new Promise((resolve, reject) => {
         new PokemonOperation(i, resolve);
         var possibility = Math.random();
-        if (possibility < 0.16 && randomArray.length < 16) {
+        if (possibility < 0.125 && randomArray.length < 16) {
             randomArray.push(i);
         }
     });
@@ -176,6 +187,9 @@ for (let i = 1; i < 152; i++) {
 }
 
 Promise.all(promises).then(() => {
+
+
+    // 重整順序
     var allbooks = $('.book_border').toArray().sort((a, b) => {
         return $(a).data('order') - $(b).data('order');
     });
@@ -191,8 +205,14 @@ Promise.all(promises).then(() => {
         }
     });
 
-    console.log(randomArray);
     // 處理轉圈圈
+    // 檢查數量
+    while (randomArray.length < 16) {
+        let remainingIndices = indices.filter(index => !randomArray.includes(index));
+        let randomIndex = Math.floor(Math.random() * remainingIndices.length);
+        randomArray.push(remainingIndices[randomIndex]);
+    }
+
     var spinItems = $('.spin_item');
     for (let i = 0; i < randomArray.length; i++) {
         var order = randomArray[i];
@@ -204,15 +224,16 @@ Promise.all(promises).then(() => {
 
     for (let item of spinItems) {
         let index = $(item).find('img').data('order');
-        console.log(index);
         let target = ($(`.book_border[data-order="${index}"]`));
-        $(item).off('click').on('click', function() {
+        $(item).off('click').on('click', function () {
             new PopModel({
                 target: target,
                 showAnimation: true,
-                onClose: function () {
-                    console.log('Popup closed');
-                }
+                onShow: function() {
+                    $('.popout_box .pm_shiny').off().on('click', function() {
+                        $('.popout_box .pm_img').toggleClass('switch');
+                    })
+                },
             });
         })
     }
@@ -223,9 +244,11 @@ Promise.all(promises).then(() => {
         new PopModel({
             target: this,
             showAnimation: true,
-            onClose: function () {
-                console.log('Popup closed');
-            }
+            onShow: function() {
+                $('.popout_box .pm_shiny').off().on('click', function() {
+                    $('.popout_box .pm_img').toggleClass('switch');
+                })
+            },
         });
     });
 });
