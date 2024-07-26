@@ -30,7 +30,7 @@ class TypeMachine {
             }.bind(this), this.typeSpeed);
         } else if (this.inputCursor) {
             setTimeout(function () {
-                $(`${this.target}`).addClass('cursor-hidden');
+                $(`${this.target}`).addClass('cursor_hidden');
             }.bind(this), this.typeSpeed * 10);
         }
     }
@@ -39,14 +39,16 @@ class TypeMachine {
         let fontSize = $(`${this.target}`).css('font-size');
         fontSize = parseInt(fontSize.replace("px", "").trim());
 
+        let cursor = `<span class="cursor_blink">|</span>`;
+        $(`${this.target}`).append(cursor);
+
         let cssContent = `<style type="text/css">
-            ${this.target}::after {
-                content: "|";
+            ${this.target} .cursor_blink {
                 font-size: ${fontSize - 3}px;
                 animation: cursorBlink 1s infinite;
             }
             ${this.target} {
-                display: flex;
+                display: inline-block;
             }
             @keyframes cursorBlink {
                 0%, 100% {
@@ -56,7 +58,7 @@ class TypeMachine {
                     opacity: 0;
                 }
             }
-            ${this.target}.cursor-hidden::after {
+            ${this.target}.cursor_hidden .cursor_blink {
                 display: none;
             }
         </style>`;

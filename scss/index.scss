@@ -1,51 +1,20 @@
 @import "../scss/settings";
 @import "../scss/model";
 
-// 導覽列
-
-#header {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 10;
-
-    .header_box {
-        width: clamp(50vw, 100%, var(--max-width));
-        margin: 0 auto;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .nav_bar {
-            column-gap: 20px;
-        }
-
-        .nav_item {
-            font-family: var(--eng-font);
-            font-size: var(--bigger-font-size);
-            font-weight: 600;
-        }
-
-        #nav_menu {
-            font-size: var(--bigger-font-size);
-        }
-    }
-}
-
 
 // 主區域
 
 #main_body {
-    width: clamp(50vw, 100vw, var(--max-width));
+    // width: clamp(50vw, 100vw, var(--max-width));
+    width: 100%;
     margin: 0 auto;
     background: linear-gradient(135deg, #333, transparent, transparent);
     height: 100vh;
     overflow: hidden;
-    padding: 10px 40px;
+    padding: 10px 20px;
     position: relative;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
+    flex-direction: column;
 
     .linear_background {
         position: absolute;
@@ -58,165 +27,63 @@
         z-index: -1;
     }
 
-    .card_container {
-        width: clamp(calc(var(--min-width) - 50px), 60%, calc(var(--max-width) - 50px));
-        margin: 0 auto;
-        margin-top: 80px;
-        height: 80%;
-        position: relative;
 
-        .flip {
-            position: absolute;
+    .main_content {
+        column-gap: 40px;
+    }
+
+    .decoration {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        row-gap: 28px;
+        column-gap: 28px;
+
+        .color_box {
+            width: 200px;
+            height: 200px;
+            background-color: #519998a8;
+            position: relative;
             z-index: 3;
-            width: 50px;
-            height: 50px;
-            top: calc(50% - 25px);
-            // background-color: var(--grey-lightest);
+        }
+
+        .color_box_1 {
+            grid-column: span 2;
+            width: 100%;
+            border-top-right-radius: 200px;
+            border-bottom-left-radius: 200px;
+        }
+
+        .color_box_2 {
             border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .left_flip {
-            background-image: url(/img/arrow_left.svg);
-            left: -16px;
-            animation: arrow_left 2s ease-in infinite;
-
-            @keyframes arrow_left {
-                0% {
-                    transform: translateX(-10px);
-                }
-                50% {
-                    transform: translateX(0px);
-                }
-                100% {
-                    transform: translateX(-10px);
-                }
-            }
-        }
-
-        .right_flip {
-            background-image: url(/img/arrow_right.svg);
-            right: -16px;
-            animation: arrow_right 2s ease-in infinite;
-
-            @keyframes arrow_right {
-                0% {
-                    transform: translateX(0px);
-                }
-                50% {
-                    transform: translateX(-10px);
-                }
-                100% {
-                    transform: translateX(0px);
-                }
-            }
-        }
-
-        .body_card {
-            position: absolute;
-            width: 80%;
-            min-width: calc(var(--min-width) - 40px);
-            height: 80%;
-
-            &[flip="1"] {
-                animation: flip-right 1.3s linear forwards;
-                transform-style: preserve-3d;
-            }
-
-            @keyframes flip-right {
-                0% {
-                    transform: rotateY(0deg);
-                    bottom: 15%;
-                    left: 0;
-                    z-index: 2;
-                }
-
-                100% {
-                    transform: rotateY(180deg);
-                    bottom: 5%;
-                    left: 20%;
-                    z-index: 1;
-                }
-            }
-
-            &[flip="2"] {
-                animation: flip-left 1.3s linear forwards;
-                transform-style: preserve-3d;
-            }
-
-            @keyframes flip-left {
-                0% {
-                    transform: rotateY(0deg);
-                    top: 15%;
-                    right: 0;
-                    z-index: 1;
-                }
-
-                100% {
-                    transform: rotateY(180deg);
-                    top: 5%;
-                    right: 20%;
-                    z-index: 2;
-                }
-            }
-        }
-
-        .body_card_1 {
-            background-color: var(--grey-darkest);
-            z-index: 2;
-
-            &.d4stat {
-                bottom: 15%;
+            border-bottom-left-radius: unset;
+            background-color: transparent;
+            position: relative;
+            overflow: hidden;
+            .bg_filter {
+                position: absolute;
+                width: 480px;
+                height: 480px;
+                background-image: url(/img/Sunris.jpg);
+                background-attachment: fixed;
+                background-size: contain;
+                background-repeat: no-repeat;
                 left: 0;
+                z-index: 2;
             }
         }
 
-        .body_card_2 {
-            background-color: var(--grey-lightest);
-            box-shadow: 0 1px 5px 0px var(--grey-darker);
-
-            &.d4stat {
-                top: 15%;
-                right: 0;
-            }
-
-            .card_2_img {
-                width: 100%;
-                height: 80%;
-                padding: 20px;
-
-                img {
-                    background-color: lightblue;
-                    height: 100%;
-                }
-
-            }
-
-            .card_2_text {
-                font-size: var(--normal-font-size);
-                font-family: var(--eng-font);
-                display: none;
-            }
-        }
-
-        .card_overlay {
-            position: absolute;
-            z-index: 5;
-            font-size: 5rem;
-            font-family: var(--eng-font);
-            right: -50%;
-            bottom: 6%;
-            mix-blend-mode: overlay;
-            color: var(--grey-lighter);
+        .color_box_3 {
+            border-bottom-right-radius: 200px;
+            border-top-left-radius: 50%;
         }
     }
 
-    #banner_container {
-        width: 40%;
+    .banner_container {
         height: fit-content;
-        // margin-top: 80px;
-        // background-color: yellow;
+        width: 500px;
         padding: 12px 20px 28px;
+        position: relative;
 
         .banner_head {
             margin: 20px 0 32px;
@@ -233,14 +100,23 @@
         .intro_text {
             font-family: var(--eng-font);
         }
+
+        .card_overlay {
+            position: absolute;
+            z-index: 5;
+            font-size: 5rem;
+            font-family: var(--eng-font);
+            left: -25%;
+            bottom: -50%;
+            mix-blend-mode: overlay;
+            color: var(--grey-lighter);
+        }
     }
 }
 
 @media screen and (max-width: 768px) {
     #main_body {
-        flex-direction: column-reverse;
         padding: 0 20px 20px;
-        flex-wrap: nowrap;
 
         .card_container {
             width: clamp(calc(var(--min-width) - 50px), 95%, calc(var(--max-width) - 50px));
@@ -251,7 +127,7 @@
             }
         }
 
-        #banner_container {
+        .banner_container {
             width: clamp(calc(var(--min-width) - 50px), 95%, calc(var(--max-width) - 50px));
             margin-top: 72px;
 
@@ -264,61 +140,8 @@
 
 @media screen and (max-width: 480px) {
     #main_body {
-        .card_container {
-            .body_card {
-                width: 100%;
-                height: 95%;
-                transition: 0.4s all ease-in;
 
-                @keyframes flip-right {
-                    0% {
-                        transform: rotateY(0deg);
-                        bottom: 2.5%;
-                        left: 0;
-                        z-index: 2;
-                    }
-
-                    100% {
-                        transform: rotateY(180deg);
-                        bottom: 2.5%;
-                        left: 0;
-                        z-index: 1;
-                    }
-                }
-
-                @keyframes flip-left {
-                    0% {
-                        transform: rotateY(0deg);
-                        top: 2.5%;
-                        right: 0;
-                        z-index: 1;
-                    }
-
-                    100% {
-                        transform: rotateY(180deg);
-                        top: 2.5%;
-                        right: 0;
-                        z-index: 2;
-                    }
-                }
-            }
-
-            .body_card_1 {
-                &.d4stat {
-                    bottom: 2.5%;
-                    left: 0;
-                }
-            }
-
-            .body_card_2 {
-                &.d4stat {
-                    top: 2.5%;
-                    right: 0;
-                }
-            }
-        }
-
-        #banner_container {
+        .banner_container {
             .banner_head {
                 margin: 12px 0 20px;
             }
@@ -335,8 +158,6 @@
 // 地
 
 #footer {
-    // display: none;
-    // grid-area: c;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -361,7 +182,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: lightcoral;
+            background-color: #aed2d1;
             background-image: url(/img/dot.png);
             background-size: 48px;
 

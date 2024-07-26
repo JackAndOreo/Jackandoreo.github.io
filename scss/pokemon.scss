@@ -428,6 +428,12 @@
     }
 }
 
+@media screen and (max-width: 450px) {
+    .handbook_part {
+        padding: 18px;
+    }
+}
+
 .book_shadow {
     background:
         linear-gradient(to bottom left, #0a141e, transparent 50%),
@@ -492,6 +498,10 @@
 .pm_img {
     grid-area: a;
     position: relative;
+}
+
+.pm_img img {
+    user-select: none;
 }
 
 .pm_img_shiny {
@@ -646,6 +656,10 @@
 
     .book_border {
         width: 150px;
+    }
+
+    .pm_text {
+        padding: 0 6px;
     }
 
     .pm_type {

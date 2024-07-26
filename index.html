@@ -20,59 +20,28 @@
 </head>
 
 <body>
-    <div id="pop_bg"></div>
-    <div id="header">
-        <div class="header_box">
-            <div class="logo_box">
-                <a href="#" class="logo df_jc_ac">
-                    <img src="" alt="" class="logo_img">
-                    <span class="logo_text"></span>
-                </a>
-            </div>
-            <div class="nav_bar df_jc_ac">
-                <div class="nav_item">
-                    <a href="about.html">About</a>
-                </div>
-                <div class="nav_item">
-                    <a href="portfolio.html">Portfolio</a>
-                </div>
-                <div class="nav_item">
-                    <a href="#" class="pop-btn">Contact</a>
-                </div>
-                <div class="nav_item" id="nav_menu">
-                    <i class='bx bx-menu-alt-right'></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div id="main_body" class="df_jc_ac">
         <div class="linear_background"></div>
-        <div class="card_container">
-            <div class="left_flip flip bg_img"></div>
-            <div class="right_flip flip bg_img"></div>
-            <div class="body_card body_card_1 d4stat">
-            </div>
-            <div class="body_card body_card_2 d4stat">
-                <div class="card_2_img">
-                    <!-- <img src="" alt=""> -->
+        <div class="main_content df_jc_ac">
+            <div class="decoration">
+                <div class="color_box color_box_1"></div>
+                <div class="color_box color_box_2">
+                    <div class="bg_filter"></div>
                 </div>
-                <div class="card_2_text">
-                    This is some text. This is some text. This is some text. This is some text.
+                <div class="color_box color_box_3"></div>
+            </div>
+            <div class="banner_container">
+                <div class="banner_head">
+                    <h1 class="header_text"></h1>
+                    <div class="typing-text" id="typingText"></div>
                 </div>
-            </div>
-            <div class="card_overlay">
-                <p>SOME TEXTS</p>
-            </div>
-        </div>
-        <div id="banner_container">
-            <div class="banner_head">
-                <h1 class="header_text"></h1>
-                <div class="typing-text" id="typingText"></div>
-            </div>
-            <div class="banner_intro">
-                <p class="intro_text">This is some text. This is some text. This is some text. This is some text. This
-                    is some text. This is some text.</p>
+                <div class="banner_intro">
+                    <p class="intro_text">This is some text. This is some text. This is some text. This is some text. This
+                        is some text. This is some text.</p>
+                </div>
+                <div class="card_overlay">
+                    <p>SOME TEXTS</p>
+                </div>
             </div>
         </div>
         <div id="footer">
@@ -88,39 +57,23 @@
     <script src="/js/expander.js"></script>
     <script src="/js/deviceDetect.js"></script>
     <script>
-        $('.flip').off().on('click', flipCard);
 
-        function flipCard() {
-            let cards = $('.body_card');
-            for (let i = 0; i < cards.length; i++) {
-                let currentFlipValue = $(cards[i]).attr('flip');
-                if (!currentFlipValue) {
-                    $(cards[i]).attr('flip', i + 1);
-                    $(cards[i]).removeClass('d4stat');
-                } else {
-                    let newValue = currentFlipValue == 1 ? 2 : 1;
-                    $(cards[i]).attr('flip', newValue);
-                }
-            }
-        }
-
-        let fontVar = [
-            "--enormous-font-size",
-            "--biggest-font-size",
-            "--bigger-font-size",
-            "--big-font-size",
-            "--normal-font-size",
-            "--small-font-size",
-            "--smaller-font-size",
-        ]
+        // let fontVar = [
+        //     "--enormous-font-size",
+        //     "--biggest-font-size",
+        //     "--bigger-font-size",
+        //     "--big-font-size",
+        //     "--normal-font-size",
+        //     "--small-font-size",
+        //     "--smaller-font-size",
+        // ]
 
         new TypeMachine('.header_text', 'Front-End Developer', 150, 1000);
 
-        new FontCtrl(fontVar, 'rem', 0.9, 1.15, $('#nav_menu'));
+        // new FontCtrl(fontVar, 'rem', 0.9, 1.15, $('#nav_menu'));
 
         new Expander($('.expander'), ["技能", "作品", "簡介"], "url(/img/dot.png)");
 
-        new DeviceDetector();
     </script>
 </body>
 
