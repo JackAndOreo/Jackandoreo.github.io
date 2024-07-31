@@ -29,6 +29,9 @@
                     <div class="bg_filter"></div>
                 </div>
                 <div class="color_box color_box_3"></div>
+                <div class="card_overlay">
+                    <p>SOME TEXTS</p>
+                </div>
             </div>
             <div class="banner_container">
                 <div class="banner_head">
@@ -36,20 +39,68 @@
                     <div class="typing-text" id="typingText"></div>
                 </div>
                 <div class="banner_intro">
-                    <p class="intro_text">This is some text. This is some text. This is some text. This is some text. This
+                    <p class="intro_text">This is some text. This is some text. This is some text. This is some text.
+                        This
                         is some text. This is some text.</p>
                 </div>
-                <div class="card_overlay">
-                    <p>SOME TEXTS</p>
+            </div>
+        </div>
+    </div>
+    <div id="main_body_2" class="df_jc_ac">
+        <div class="skill_content df_jc_ac">
+            <div class="skill_title">
+                SKILLS
+            </div>
+            <div class="news_ticker_container">
+                <div class="news_ticker"></div>
+                <div class="floatFont floatA"></div>
+                <div class="floatFont floatB"></div>
+                <div class="floatFont floatC"></div>
+                <div class="floatFont floatD"></div>
+                <div class="floatFont floatE"></div>
+                <div class="floatFont floatF"></div>
+                <div class="floatFont floatG"></div>
+                <div class="floatFont floatH"></div>
+            </div>
+        </div>
+    </div>
+    <div id="main_body_3" class="df_jc_ac">
+        <div class="portfolio_content df_jc_ac">
+            <div class="portfolio_card_container" data-flip="2">
+                <div class="portfolio_card portfolio_card_1" data-card="1">
+                    <!-- <img src="/img/Aurora.jpg" alt="" srcset=""> -->
                 </div>
+                <div class="portfolio_card portfolio_card_2" data-card="2">
+                    <a href="/pokemon.html">
+                        <img src="/img/作品集/寶可夢圖鑑.png" alt="寶可夢圖鑑" target="_blank" srcset="">
+                    </a>
+                </div>
+                <div class="portfolio_card portfolio_card_3" data-card="3">
+                    <!-- <img src="/img/NightForest.jpg" alt="" srcset=""> -->
+                </div>
+                <div class="portfolio_card portfolio_card_4" data-card="4">
+                    <!-- <img src="/img/Sunris.jpg" alt="" srcset=""> -->
+                </div>
+                <div class="card_left_arrow bg_img"></div>
+                <div class="card_right_arrow bg_img"></div>
+            </div>
+            <div class="portfolio_text_container">
+                <div class="portfolio_intro portfolio_intro_1">
+
+                </div>
+                <div class="portfolio_intro portfolio_intro_2">
+                    利用寶可夢官方提供的API製作簡易的寶可夢圖鑑，使用者可以瀏覽並點擊查看更多詳細資訊。同時隨機抽取資料生成展示在上方的寶可夢，增添趣味性。
+                </div>
+                <div class="portfolio_intro portfolio_intro_3"></div>
+                <div class="portfolio_intro portfolio_intro_4"></div>
             </div>
         </div>
-        <div id="footer">
-            <div class="expander_container df_jc_ac">
-                <div class="expander bg_img"></div>
-            </div>
-            <div class="copyright">&copy; BY TAO ALL RIGHTS RESERVED</div>
+    </div>
+    <div id="footer">
+        <div class="expander_container df_jc_ac">
+            <div class="expander bg_img"></div>
         </div>
+        <div class="copyright">&copy; BY TAO ALL RIGHTS RESERVED</div>
     </div>
     <script src="/js/fontControl.js"></script>
     <script src="/js/typeMachine.js"></script>
@@ -68,11 +119,112 @@
         //     "--smaller-font-size",
         // ]
 
-        new TypeMachine('.header_text', 'Front-End Developer', 150, 1000);
-
         // new FontCtrl(fontVar, 'rem', 0.9, 1.15, $('#nav_menu'));
+        
 
+        new TypeMachine('.header_text', 'Front-End Developer', 150, 1000);
         new Expander($('.expander'), ["技能", "作品", "簡介"], "url(/img/dot.png)");
+
+        let putInText = [
+            "HTML",
+            "CSS",
+            "Emmet",
+            "SCSS",
+            "javaScript",
+            "jQuery",
+            "Boostrap",
+            "VUE"
+        ]
+
+        let fonts = $('.floatFont');
+        for (let i = 0; i < fonts.length; i++) {
+            $(fonts[i]).text(putInText[i]);
+        }
+
+        function changeText(i = 0) {
+            $('.news_ticker').text(putInText[i]);
+            $('.news_ticker').addClass("openIn");
+
+            setTimeout(() => {
+                $('.news_ticker').removeClass("openIn");
+                i = (i + 1) % putInText.length;
+                setTimeout(() => {
+                    changeText(i);
+                }, 500);
+            }, 2500);
+        }
+
+        $(document).ready(function () {
+            changeText();
+        })
+
+        let topFlewOption = {
+            topDistance: 150,
+            flewDistanceRatio: 0.25,
+            flewInDirection: 'top',
+            flewInDuration: 1,
+            delay: 0,
+            fadeIn: true,
+            repeat: false,
+        };
+
+        let rightFlewOption = {
+            topDistance: 150,
+            flewDistanceRatio: 0.25,
+            flewInDirection: 'right',
+            flewInDuration: 1,
+            delay: 0,
+            fadeIn: true,
+            repeat: false,
+        }
+
+        new FlewIn($('.skill_content'), ".skill_content", rightFlewOption);
+        new FlewIn($('.portfolio_card_container'), ".portfolio_card_container", topFlewOption);
+
+
+        $('.card_right_arrow').off().on('click', function () {
+            let cards = $('.portfolio_card');
+            let totalAmount = cards.length;
+
+            cards.each(function () {
+                let currentCard = $(this);
+                let currentIndex = parseInt(currentCard.data('card'));
+
+                currentCard.removeClass(`portfolio_card_${currentIndex}`);
+
+                let newIndex = currentIndex + 1;
+                if (newIndex > totalAmount) {
+                    newIndex = 1;
+                }
+
+                currentCard.data('card', newIndex);
+                currentCard.addClass(`portfolio_card_${newIndex}`);
+
+                currentCard.css('animation', `cardFlipRight${currentIndex}to${newIndex} 1s linear forwards`);
+            });
+        });
+
+        $('.card_left_arrow').off().on('click', function () {
+            let cards = $('.portfolio_card');
+            let totalAmount = cards.length;
+
+            cards.each(function () {
+                let currentCard = $(this);
+                let currentIndex = parseInt(currentCard.data('card'));
+
+                currentCard.removeClass(`portfolio_card_${currentIndex}`);
+
+                let newIndex = currentIndex - 1;
+                if (newIndex < 1) {
+                    newIndex = totalAmount;
+                }
+
+                currentCard.data('card', newIndex);
+                currentCard.addClass(`portfolio_card_${newIndex}`);
+
+                currentCard.css('animation', `cardFlipLeft${currentIndex}to${newIndex} 1s linear forwards`);
+            });
+        });
 
     </script>
 </body>

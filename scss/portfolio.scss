@@ -1,20 +1,10 @@
 @import "../scss/settings";
 @import "../scss/model";
 
-:root {
-    --z-degree-range: 700px;
-}
-
-#rotateButton {
-    position: absolute;
-    z-index: 99;
-}
 
 // START
 
-
 .portfolio_body {
-    height: 100vh;
     width: 100%;
     background-color: lightcyan;
     font-family: var(--chinese-font);
@@ -24,55 +14,28 @@
     align-items: center;
 }
 
-.portfolio_scene {
-    display: flex;
-    overflow: hidden;
-    perspective: 500000px;
-    width: 100vw;
-    height: 100vh;
-}
-
-.cube {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transform: rotateY(0deg);
-    transition: transform 1s;
-}
-
-.porfolio_container {
-    position: relative;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-}
-
 .porfolio_container_1 {
-    transform: rotateY(0deg) translateZ(var(--z-degree-range));
+    background-color: lightcoral;
 }
 
 .porfolio_container_2 {
-    transform: rotateY(72deg) translateZ(var(--z-degree-range));
+    background-color: lightgoldenrodyellow;
 }
 
 .porfolio_container_3 {
-    transform: rotateY(144deg) translateZ(var(--z-degree-range));
+    background-color: lightgreen;
 }
 
 .porfolio_container_4 {
-    transform: rotateY(216deg) translateZ(var(--z-degree-range));
+    background-color: lightblue;
 }
 
 .porfolio_container_5 {
-    transform: rotateY(288deg) translateZ(var(--z-degree-range));
+    background-color: lightgrey;
 }
 
-
-
 .pusher {
-    width: clamp(60px, 40%, 630px);
+    width: clamp(40px, 28vw, 280px);
 }
 
 // 滾動提示
@@ -171,6 +134,7 @@
     position: absolute;
     min-width: 280px;
     left: 350px;
+    font-size: var(--normal-font-size);
 }
 
 .intro_1::before,

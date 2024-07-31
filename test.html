@@ -1,37 +1,50 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JackAndOreo</title>
-    <meta property="og:title" content="Jackandoreo.github.io">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="縮圖檔">
-    <meta property="og:url" content="網頁路徑">
-    <meta property="og:site_name" content="網頁名稱">
-    <meta property="og:description" content="網頁介紹">
-    <meta property="og:locale" content="zh_TW">
-    <link rel="stylesheet" href="./css/index.min.css">
-    <link rel="stylesheet" href="./css/indexPlug.min.css">
-    <link rel="stylesheet" href="./css/spin.min.css">
-    <link rel="stylesheet" href="./css/cardbox.min.css">
-    <link rel="stylesheet" href="./css/cardbox.min.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Page Switcher</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        #page1 {
+            background-color: lightcoral;
+        }
+
+        #page2 {
+            background-color: lightblue;
+        }
+
+        #page3 {
+            background-color: lightgreen;
+        }
+    </style>
     <script src="/js/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
+    <div class="page" id="page1">Page 1</div>
+    <div class="page hidden" id="page2">Page 2</div>
+    <div class="page hidden" id="page3">Page 3</div>
 
-    <div class="cardbox_play df_jc_ac">
-        <div class="cardbox">
-        </div>
-        <div class="squareborder righttop"></div>
-        <div class="squareborder leftbtm"></div>
-        <div class="roundborder lefttop"></div>
-        <div class="roundborder rightbtm"></div>
+    <div class="scroll-indicator">
+        <div class="dot" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
     </div>
+    <script src="/js/onePage.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new OnePage('page');
+        });
     </script>
 </body>
 

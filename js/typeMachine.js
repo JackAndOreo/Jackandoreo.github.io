@@ -1,10 +1,11 @@
 class TypeMachine {
     constructor(target, textContent, typeSpeed, delay = null, inputCursor = true) {
-        this.target = target; 
-        this.textContent = textContent;  
-        this.typeSpeed = typeSpeed;  // 輸入速度毫秒
-        this.delay = delay;  // 延遲毫秒
-        this.inputCursor = inputCursor;  // 是否要有鍵號
+        this.target = target;
+        this.textContent = textContent;
+        this.typeSpeed = typeSpeed; // 輸入速度毫秒
+        this.delay = delay; // 延遲毫秒
+        this.inputCursor = inputCursor; // 是否要有鍵號
+        this.cursorGenerated = false;  // 防呆
         this.init();
     }
 
@@ -36,6 +37,9 @@ class TypeMachine {
     }
 
     generateCursor() {
+        if (this.cursorGenerated) return;
+        this.cursorGenerated = true;
+
         let fontSize = $(`${this.target}`).css('font-size');
         fontSize = parseInt(fontSize.replace("px", "").trim());
 
