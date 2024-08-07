@@ -60,8 +60,71 @@
             </div>
         </div>
     </div>
-    <div id="main_body_2" class="df_jc_ac">
-        
+    <div id="main_body_2" class="">
+        <div class="project_container">
+            <div class="sticky_part df_jc_ac">
+                <div class="project_topic">
+                    專案作品
+                </div>
+            </div>
+            <div class="scroll_part">
+                <div class="project_card_container df_jc_ac">
+                    <div class="project_card">
+                        <div class="project_image">
+                            <img src="/img/故宮圖片.avif" alt="">
+                            <div class="project_image_filter"></div>
+                        </div>
+                        <div class="project_text_bg">
+                                
+                        </div>
+                        <div class="project_text_container">
+                            <div class="project_title">
+                                故宮精品網路商城
+                            </div>
+                            <div class="project_intro">
+                                簡介簡介簡介
+                            </div>
+                            <a href="http://" target="_blank" rel="" class="project_link df_jc_ac">
+                                <p>查看專案</p>
+                                <div class="project_link_arrow bg_img"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project_card">
+                        <div class="project_image">
+                            <img src="" alt="">
+                        </div>
+                        <div class="project_text_container">
+                            <div class="project_title">
+                                故宮精品網路商城
+                            </div>
+                            <div class="project_intro">
+                                簡介簡介簡介
+                            </div>
+                            <div class="project_link">
+                                查看專案
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project_card">
+                        <div class="project_image">
+                            <img src="" alt="">
+                        </div>
+                        <div class="project_text_container">
+                            <div class="project_title">
+                                故宮精品網路商城
+                            </div>
+                            <div class="project_intro">
+                                簡介簡介簡介
+                            </div>
+                            <div class="project_link">
+                                查看專案
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="main_body_3" class="df_jc_ac">
         <div class="skill_content df_jc_ac">
@@ -126,6 +189,8 @@
     <script src="/js/deviceDetect.js"></script>
     <script>
 
+        // 字體大小控制
+
         // let fontVar = [
         //     "--enormous-font-size",
         //     "--biggest-font-size",
@@ -139,9 +204,12 @@
         // new FontCtrl(fontVar, 'rem', 0.9, 1.15, $('#nav_menu'));
 
 
+        // 打字機
         new TypeMachine('.header_text', 'Front-End Developer', 150, 1000);
+        // 懸浮按鈕列
         new Expander($('.expander'), ["技能", "作品", "簡介"], "url(/img/dot.png)");
 
+        // 技能列表
         let putInText = [
             "HTML",
             "CSS",
@@ -175,6 +243,8 @@
             changeText();
         })
 
+        // 飛入動畫控制
+
         let topFlewOption = {
             topDistance: 150,
             flewDistanceRatio: 0.25,
@@ -198,6 +268,8 @@
         new FlewIn($('.skill_content'), ".skill_content", rightFlewOption);
         new FlewIn($('.portfolio_card_container'), ".portfolio_card_container", topFlewOption);
 
+
+        // 卡片旋轉
 
         $('.card_right_arrow').off().on('click', function () {
             let cards = $('.portfolio_card');
@@ -241,6 +313,61 @@
 
                 currentCard.css('animation', `cardFlipLeft${currentIndex}to${newIndex} 1s linear forwards`);
             });
+        });
+
+
+        // 入場控制
+
+        document.querySelector('#zoomIn').addEventListener('animationend', function () {
+            document.body.classList.add('unset_overflow');
+        });
+
+
+        // 區域2滾動設置
+
+        window.addEventListener('scroll', function () {
+            const scrollSection = document.querySelector('#main_body_2');
+            const stickyContent = document.querySelector('.project_container');
+            const projectCardContainer = document.querySelector('.project_card_container');
+            const windowHeight = window.innerHeight;
+            
+            const sectionTop = scrollSection.getBoundingClientRect().top;
+            const sectionBottom = scrollSection.getBoundingClientRect().bottom;
+            let scrollDistance = window.pageYOffset;
+            // console.log("頂部邊界", sectionTop);
+            // console.log("底部邊界", sectionBottom);
+            // console.log("滾動距離", scrollDistance);
+
+            // 上下滾動控制
+            if (sectionBottom < windowHeight) {
+                scrollSection.style.alignItems = 'flex-end'; 
+            }
+            if (sectionTop > 0) {
+                scrollSection.style.alignItems = 'flex-start'; 
+            }
+
+            // 固定控制
+            const stickyHeight = stickyContent.offsetHeight;
+
+            if (sectionTop <= 0 && sectionBottom > stickyHeight) {
+                stickyContent.style.position = 'fixed';
+                stickyContent.style.top = '0';
+            } else {
+                stickyContent.style.position = 'relative'; 
+                stickyContent.style.top = 'unset'; 
+            }
+
+            // 處理橫向滾動
+
+            if (sectionTop <= 0 && sectionBottom > 0) {
+                const transDistance = scrollDistance - windowHeight; 
+                // console.log('transDistance', transDistance);
+
+                if (sectionBottom < windowHeight) {
+                    return;
+                }
+                projectCardContainer.style.transform = `translateX(-${transDistance}px)`;
+            }
         });
 
     </script>
