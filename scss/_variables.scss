@@ -6,6 +6,7 @@
 $chinese-font: var(--chinese-font);
 $second-chinese-font: var(--second-chinese-font);
 $eng-font: var(--eng-font);
+$style-font: var(--style-font);
 
 $enormous-font-size: var(--enormous-font-size);
 $biggest-font-size: var(--biggest-font-size);
@@ -43,6 +44,7 @@ $min-width: var(--min-width);
     --chinese-font: 'Noto Sans TC', sans-serif;
     --second-chinese-font: 'Noto Serif TC', serif;
     --eng-font: 'Raleway', sans-serif;
+    --style-font: "Knewave", system-ui;
 
     --enormous-font-size: 2.75rem;
     --biggest-font-size: 2.25rem;
