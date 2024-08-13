@@ -179,8 +179,8 @@
 
 .copyright_bg {
     position: relative;
-    width: 100%;
-    background: linear-gradient(90deg, #484d6a, #2d3d71, #3e3643, #c88a5c, #b5d8ec);
+    width: fit-content;
+    background: linear-gradient(90deg, #c88a5c, #b5d8ec, #2d3880, #2d3d71, #41304c, #b5d8ec);
     background-clip: text;
 }
 
@@ -453,6 +453,9 @@
         height: 250px;
         background-position: 50% 275%;
     }
+    .bottom_part .ball {
+        background-position: 50% -175%;
+    }
 }
 
 // 旋轉區 Media
@@ -502,14 +505,14 @@
     }
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 600px) {
     .spinning_container {
-        width: 780px;
-        min-width: 780px;
+        width: 720px;
+        min-width: 720px;
     }
 
     .spinning_circle {
-        width: 780px;
+        width: 720px;
         margin-bottom: -67%;
     }
 
