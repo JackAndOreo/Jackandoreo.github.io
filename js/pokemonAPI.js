@@ -258,6 +258,7 @@ Promise.all(promises).then(() => {
         $('#pokemon_body').css({
             display: 'flex',
         });
+        $('#zoomIn').show();
         // let currentHeight = $('.handbook_part').innerHeight();
         // $('.handbook_part').css('--book-height', `${currentHeight}px`);
         // let animationDuration = Math.floor(currentHeight / 600);
@@ -265,5 +266,5 @@ Promise.all(promises).then(() => {
         // console.log(currentHeight, animationDuration);
 
         // $('.handbook_part').addClass('started');
-    }, 200);
+    }, 350);
 });

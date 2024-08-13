@@ -1,5 +1,6 @@
 @import "../scss/settings";
 @import "../scss/model";
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
 
 #pokemon_body {
     display: flex;
@@ -7,6 +8,35 @@
     justify-self: center;
     align-items: center;
 }
+
+// LOGO
+
+#zoomIn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    display: none;
+}
+
+.logo_container {
+    width: fit-content;
+    margin: 0 0 0 16px;
+}
+
+.logo {
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 48px;
+}
+
+.logo_text {
+    font-family: 'Inter';
+    white-space: nowrap;
+    font-size: 13px;
+}
+
 
 // 載入頁
 
@@ -104,7 +134,6 @@
 .top_part {
     height: 420px;
     width: 100%;
-    background-color: lightcyan;
     position: relative;
     display: flex;
     align-items: flex-end;
@@ -112,13 +141,30 @@
     overflow: hidden;
 }
 
-.bottom_part {
-    height: 250px;
+.body_bg {
+    position: absolute;
     width: 100%;
-    background-color: #e0ffff;
+    height: 100%;
+    background-image: url(/img/SetSky.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 600px) {
+    .top_part {
+        height: 320px;
+    }
+}
+
+// 下半部
+
+.bottom_part {
+    height: 210px;
+    width: 100%;
     position: relative;
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: center;
 }
 
@@ -129,6 +175,38 @@
 
 .bottom_part .ball {
     background-position: 50% -110%;
+}
+
+.copyright_bg {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(90deg, #484d6a, #2d3d71, #3e3643, #c88a5c, #b5d8ec);
+    background-clip: text;
+}
+
+.copyright {
+    margin-bottom: 16px;
+    font-family: var(--eng-font);
+    color: transparent;
+}
+
+// 返回頂部
+
+.goTop {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #7387a3;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 9;
+    display: none;
+    box-shadow: 0 0 14px -3px #172127;
+    background-image: url(/img/upArrow.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
 }
 
 // 旋轉
@@ -152,6 +230,14 @@
     border-radius: 50%;
     position: relative;
     animation: spinspin 40s linear infinite;
+}
+
+.circle_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/techCircle1.png);
+    filter: invert(65%) sepia(83%) saturate(345%) hue-rotate(168deg) brightness(93%) contrast(90%);
 }
 
 @keyframes spinspin {
@@ -334,8 +420,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: radial-gradient(#649dcd, #6fafcbab, #000c12);
+    background-image: radial-gradient(#fff, rgba(111, 175, 203, 0.6705882353));
     cursor: pointer;
+    box-shadow: 0 0 16px 0px #68bce3;
 }
 
 .spin_item img {
@@ -359,6 +446,14 @@
     background-position: 50% 210%;
 }
 
+
+@media screen and (max-width: 600px) {
+    .ball {
+        width: 250px;
+        height: 250px;
+        background-position: 50% 275%;
+    }
+}
 
 // 旋轉區 Media
 
@@ -434,7 +529,7 @@
 
 .handbook_part {
     width: 100%;
-    background-color: #333;
+    background-color: #222;
     position: relative;
     padding: 40px;
     // overflow: hidden;
@@ -464,13 +559,13 @@
 
 @media screen and (max-width: 840px) {
     .handbook_part {
-        padding: 24px;
+        padding: 20px;
     }
 }
 
 @media screen and (max-width: 450px) {
     .handbook_part {
-        padding: 18px;
+        padding: 16px;
     }
 }
 
@@ -505,16 +600,16 @@
     z-index: 2;
     box-shadow: 0 0 12px -3px #fff;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
-    row-gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+    row-gap: 18px;
     column-gap: 16px;
     align-items: center;
     justify-items: center;
-    padding: 32px 12px;
+    padding: 16px 14px;
 }
 
 .book_border {
-    width: 225px;
+    // width: 225px;
     padding: 10px;
     border-radius: 20px;
     border: 1px solid #f0f0f0;
@@ -689,14 +784,14 @@
 @media screen and (max-width: 600px) {
     .book_box {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        column-gap: unset;
+        column-gap: 12px;
         row-gap: 16px;
         padding: 16px 12px;
     }
 
-    .book_border {
-        width: 150px;
-    }
+    // .book_border {
+    //     width: 150px;
+    // }
 
     .pm_text {
         padding: 0 6px;

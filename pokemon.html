@@ -18,10 +18,18 @@
 </head>
 
 <body>
+    <div id="zoomIn">
+        <div class="logo_container">
+            <div class="logo">Liam</div>
+            <div class="logo_text">Front-end Developer</div>
+        </div>
+    </div>
     <div id="pokemon_body" class="df_jc_ac">
         <div class="top_part">
+            <div class="body_bg bg_img"></div>
             <div class="spinning_container">
                 <div class="spinning_circle">
+                    <!-- <div class="circle_bg bg_img"></div> -->
                     <div class="spin_bar spin_bar_1">
                         <div class="spin_item"></div>
                         <div class="spin_item"></div>
@@ -65,12 +73,16 @@
             <div class="book_shadow"></div>
             <div class="book_shadow_2"></div>
             <div class="book_box">
-  
+
             </div>
         </div>
         <div class="bottom_part">
+            <div class="body_bg bg_img"></div>
             <div class="pokemonball df_jc_ac">
                 <div class="ball bg_img"></div>
+            </div>
+            <div class="copyright_bg df_jc_ac">
+                <div class="copyright">&copy; BY TAO ALL RIGHTS RESERVED</div>
             </div>
         </div>
     </div>
@@ -85,16 +97,17 @@
                 <span class="loading_text loading_text_4">d</span>
                 <span class="loading_text loading_text_5">i</span>
                 <span class="loading_text loading_text_6">n</span>
-                <span class="loading_text loading_text_7">g</span> 
-                <span class="loading_text loading_text_8">.</span> 
-                <span class="loading_text loading_text_9">.</span> 
-                <span class="loading_text loading_text_10">.</span> 
+                <span class="loading_text loading_text_7">g</span>
+                <span class="loading_text loading_text_8">.</span>
+                <span class="loading_text loading_text_9">.</span>
+                <span class="loading_text loading_text_10">.</span>
             </p>
         </div>
     </div>
     <script src="/js/fontControl.js"></script>
     <script src="/js/deviceDetect.js"></script>
     <script src="/js/popModel.js"></script>
+    <script src="/js/goTop.js"></script>
     <script src="/js/pokemonAPI.js"></script>
 
     <script>
@@ -160,7 +173,16 @@
             }
         }
 
-        // 滾動網頁 問題
+        // 返回最上
+
+        let goTopOption = {
+            generateHeight: 400,
+            scrollDuration: 650,
+            buttonText: '',
+        }
+        new goTop(goTopOption);
+
+        // hover的GIF球球，在滾動網頁時會有問題，如果是透過滾動來變更當前鼠標位置，背景圖片不會改
 
 
     </script>
