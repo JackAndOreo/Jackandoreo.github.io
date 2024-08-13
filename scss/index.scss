@@ -4,6 +4,12 @@
 
 // 入場動畫
 
+:root {
+    --logoFontSize1: 48px;
+    --logoFontSize2: 13px;
+    --logoFontTop2: 70px;
+}
+
 body {
     overflow: hidden;
 }
@@ -24,10 +30,14 @@ body.unset_overflow {
 @keyframes firstIn {
     0% {
         background-color: #f0f0f0;
+        width: 100%;
+        height: 100%;
     }
 
     100% {
         background-color: transparent;
+        width: auto;
+        height: auto;
     }
 }
 
@@ -55,6 +65,7 @@ body.unset_overflow {
     font-size: 84px;
     left: calc((100% - 175.65px) /2);
     top: calc((100% - 130.4px) /2);
+    // transition: font-size 1s ease-in;
     animation: fontShrink1 1s forwards 1s;
 }
 
@@ -63,6 +74,7 @@ body.unset_overflow {
     font-size: 40px;
     left: calc((100% - 391.7px) / 2);
     top: calc((100% - 48px) / 2 + 90px);
+    // transition: font-size .4s ease-in;
     animation: fontShrink2 1s forwards 1s;
 }
 
@@ -80,6 +92,7 @@ body.unset_overflow {
     font-family: 'Inter';
     transform: translateY(100%);
     width: fit-content;
+    white-space: nowrap;
     margin: 0 auto;
     animation: logoIn .6s linear forwards .4s;
 }
@@ -102,7 +115,7 @@ body.unset_overflow {
     }
 
     100% {
-        font-size: 48px;
+        font-size: var(--logoFontSize1);
         left: 16px;
         top: 0px;
     }
@@ -116,10 +129,19 @@ body.unset_overflow {
     }
 
     100% {
-        font-size: 13px;
+        font-size: var(--logoFontSize2);
         left: 16px;
-        top: 70px;
+        top: var(--logoFontTop2);
     }
+}
+
+@media screen and (max-width: 600px) {
+    :root {
+        --logoFontSize1: 36px;
+        --logoFontSize2: 12px;
+        --logoFontTop2: 52px;
+    }
+
 }
 
 // 主區域
@@ -215,7 +237,7 @@ body.unset_overflow {
 
     .banner_container {
         height: fit-content;
-        width: 500px;
+        // width: 500px;
         padding: 12px 20px 28px;
         position: relative;
 
@@ -229,6 +251,13 @@ body.unset_overflow {
             font-size: var(--enormous-font-size);
             font-weight: 700;
             text-shadow: 2px 2px 5px var(--grey-light);
+            text-align: center;
+            display: block;
+            transition: all .2s ease-in;
+        }
+
+        .banner_intro {
+            max-width: 600px;
         }
 
         .intro_text {
@@ -356,13 +385,11 @@ body.unset_overflow {
     display: flex;
     height: 100vh;
     max-height: 100vh;
-    // background-color: #aed2d1;
 }
 
 .sticky_part {
     width: 36%;
     min-width: 250px;
-    margin: 0 0 100px 0;
 }
 
 .project_topic {
@@ -371,6 +398,7 @@ body.unset_overflow {
     font-weight: 300;
     max-width: 150px;
     line-height: 80px;
+    margin: 0 0 120px 0;
 }
 
 .project_card_container {
@@ -404,6 +432,11 @@ body.unset_overflow {
     left: 0;
 }
 
+.project_image img {
+    height: 100%;
+    object-fit: cover;
+}
+
 .project_image_filter {
     position: absolute;
     width: 100%;
@@ -435,6 +468,7 @@ body.unset_overflow {
 
 .project_intro {
     font-size: 17px;
+    padding: 0 12px;
     opacity: 0;
     transform: translateX(-200%) translateY(300%);
 }
@@ -509,6 +543,7 @@ body.unset_overflow {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: .15;
     }
@@ -519,6 +554,7 @@ body.unset_overflow {
         transform: translateX(100%);
         opacity: 0;
     }
+
     100% {
         transform: translateX(0px);
         opacity: 0.95;
@@ -530,6 +566,7 @@ body.unset_overflow {
         transform: translateX(-200%) translateY(-300%);
         opacity: 0;
     }
+
     100% {
         transform: translateX(0) translateY(0);
         opacity: 1;
@@ -541,6 +578,7 @@ body.unset_overflow {
         transform: translateX(-200%) translateY(300%);
         opacity: 0;
     }
+
     100% {
         transform: translateX(0) translateY(0);
         opacity: 1;
@@ -552,6 +590,7 @@ body.unset_overflow {
         transform: translateX(200%) translateY(300%);
         opacity: 0;
     }
+
     100% {
         transform: translateX(0) translateY(0);
         opacity: 1;
@@ -564,10 +603,14 @@ body.unset_overflow {
 #main_body_3 {
     height: 100vh;
     width: 100%;
-    background-color: lightcyan;
+    background-color: #f0f0f0;
     flex-direction: column;
     row-gap: 48px;
     overflow: hidden;
+}
+
+.skill_title {
+    position: absolute;
 }
 
 .skill_content {
@@ -578,6 +621,23 @@ body.unset_overflow {
     min-width: 180px;
     text-align: center;
     column-gap: 20px;
+    flex-direction: column;
+}
+
+.skill_bg_content {
+    position: absolute;
+    height: 100%;
+    max-height: 100vh;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1;
+}
+
+.skill_bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url(/img/techCircle4.png);
 }
 
 .news_ticker_container {
@@ -596,15 +656,15 @@ body.unset_overflow {
 }
 
 .floatFont {
-    --common-transform: translateZ(147px) translateX(0px);
+    --common-transform: translateZ(146px) translateX(0px);
     --rotate-y-start: 0deg;
     --rotate-y-end: 360deg;
     transform: rotate(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg)) var(--common-transform);
-    font-size: var(--small-font-size);
+    font-size: var(--normal-font-size);
     position: absolute;
     white-space: nowrap;
     backface-visibility: hidden;
-    opacity: 0.6;
+    opacity: 0;
 }
 
 .floatA {
@@ -657,12 +717,13 @@ body.unset_overflow {
 
 @keyframes fontRotate {
     0% {
+        opacity: 0.6;
         transform: rotate(var(--rotate-x, 0deg)) rotateY(var(--rotate-y-start, 0deg)) var(--common-transform);
     }
 
     100% {
+        opacity: 0.6;
         transform: rotate(var(--rotate-x, 0deg)) rotateY(var(--rotate-y-end, 0deg)) var(--common-transform);
-        ;
     }
 }
 

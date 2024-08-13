@@ -5,7 +5,7 @@ class TypeMachine {
         this.typeSpeed = typeSpeed; // 輸入速度毫秒
         this.delay = delay; // 延遲毫秒
         this.inputCursor = inputCursor; // 是否要有鍵號
-        this.cursorGenerated = false;  // 防呆
+        this.cursorGenerated = false;  // 驗證是否有添加cursor 但忘記為甚麼加了
         this.init();
     }
 
@@ -37,18 +37,19 @@ class TypeMachine {
     }
 
     generateCursor() {
-        if (this.cursorGenerated) return;
+        // if (this.cursorGenerated) return;
         this.cursorGenerated = true;
 
         let fontSize = $(`${this.target}`).css('font-size');
         fontSize = parseInt(fontSize.replace("px", "").trim());
 
         let cursor = `<span class="cursor_blink">|</span>`;
+        console.log($(`${this.target}`));
         $(`${this.target}`).append(cursor);
 
         let cssContent = `<style type="text/css">
             ${this.target} .cursor_blink {
-                font-size: ${fontSize - 3}px;
+                font-size: ${fontSize - 4}px;
                 animation: cursorBlink 1s infinite;
             }
             ${this.target} {

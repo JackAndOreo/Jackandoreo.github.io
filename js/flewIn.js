@@ -5,11 +5,11 @@ class FlewIn {
         this.options = {
             topDistance: options.topDistance || 50,  // 觸發距離（以飛行目標再往上）
             flewDistanceRatio: options.flewDistanceRatio || 0.75,  // 飛行距離（以飛行目標為單位）
-            flewInDirection: options.flewInDirection || 'left',  
+            flewInDirection: options.flewInDirection || 'left',
             flewInDuration: options.flewInDuration || 2, // 動畫時間
             delay: options.delay || 0,
             fadeIn: options.fadeIn !== undefined ? options.fadeIn : true,  // 是否要淡入淡出
-            repeat: options.repeat || false,  // 是否重複（尚未撰寫）
+            repeat: options.repeat || false, 
         };
         this.transCss = "";
         this.transCssClass = `${this.options.flewInDirection}Flw`;
@@ -55,6 +55,8 @@ class FlewIn {
             // console.log(`上方距離:${midOffset}`, `當前位置:${scrollAt}`);
             if (scrollAt > midOffset) {
                 $(target).addClass(`${this.transCssClass}`);
+            } else if (this.options.repeat === false) {
+                return;
             } else {
                 $(target).removeClass(`${this.transCssClass}`);
             }
@@ -64,7 +66,7 @@ class FlewIn {
     inputAnimateToDom() {
         let opacity = this.options.fadeIn == true ? 0 : 1;
         let animationName = `${this.options.flewInDirection}In`;
-        let selectorText = this.selector.trim(); 
+        let selectorText = this.selector.trim();
 
         if (selectorText.startsWith('.')) {
             selectorText = selectorText.substring(1);
@@ -92,7 +94,7 @@ class FlewIn {
                     }
                 }
             </style>`;
-            
+
             $('head').append(cssAnimation);
         }
     }

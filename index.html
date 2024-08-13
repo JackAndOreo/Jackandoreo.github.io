@@ -71,11 +71,11 @@
                 <div class="project_card_container df_jc_ac">
                     <div class="project_card">
                         <div class="project_image">
-                            <img src="/img/故宮圖片.avif" alt="">
+                            <img src="/img/故宮圖片.avif" alt="故宮精品網路商城" title="故宮精品網路商城">
                             <div class="project_image_filter"></div>
                         </div>
                         <div class="project_text_bg">
-                                
+
                         </div>
                         <div class="project_text_container">
                             <div class="project_title">
@@ -96,7 +96,7 @@
                             <div class="project_image_filter"></div>
                         </div>
                         <div class="project_text_bg">
-                                
+
                         </div>
                         <div class="project_text_container">
                             <div class="project_title">
@@ -105,29 +105,31 @@
                             <div class="project_intro">
                                 簡介簡介簡介
                             </div>
-                            <div class="project_link">
-                                查看專案
-                            </div>
+                            <a href="http://" target="_blank" rel="" class="project_link df_jc_ac">
+                                <p>查看專案</p>
+                                <div class="project_link_arrow bg_img"></div>
+                            </a>
                         </div>
                     </div>
                     <div class="project_card">
                         <div class="project_image">
-                            <img src="" alt="">
+                            <img src="/img/作品集/gen-1-pokemon-kanto-header.jpg" alt="寶可夢" title="寶可夢">
                             <div class="project_image_filter"></div>
                         </div>
                         <div class="project_text_bg">
-                                
+
                         </div>
                         <div class="project_text_container">
                             <div class="project_title">
-                                故宮精品網路商城
+                                寶可夢圖鑑
                             </div>
                             <div class="project_intro">
-                                簡介簡介簡介
+                                利用官方提供的API製作簡易的寶可夢圖鑑。
                             </div>
-                            <div class="project_link">
-                                查看專案
-                            </div>
+                            <a href="/pokemon.html" target="_blank" rel="" class="project_link df_jc_ac">
+                                <p>查看作品</p>
+                                <div class="project_link_arrow bg_img"></div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -135,12 +137,15 @@
         </div>
     </div>
     <div id="main_body_3" class="df_jc_ac">
+        <div class="skill_bg_content df_jc_ac">
+            <div class="skill_bg bg_img"></div>
+        </div>
         <div class="skill_content df_jc_ac">
-            <div class="skill_title">
+            <!-- <div class="skill_title">
                 SKILLS
-            </div>
+            </div> -->
             <div class="news_ticker_container">
-                <div class="news_ticker"></div>
+                <!-- <div class="news_ticker"></div> -->
                 <div class="floatFont floatA"></div>
                 <div class="floatFont floatB"></div>
                 <div class="floatFont floatC"></div>
@@ -152,11 +157,11 @@
             </div>
         </div>
     </div>
-    <div id="main_body_4" class="df_jc_ac">
+    <!-- <div id="main_body_4" class="df_jc_ac">
         <div class="portfolio_content df_jc_ac">
             <div class="portfolio_card_container" data-flip="2">
                 <div class="portfolio_card portfolio_card_1" data-card="1">
-                    <!-- <img src="/img/Aurora.jpg" alt="" srcset=""> -->
+                    <img src="/img/Aurora.jpg" alt="" srcset="">
                 </div>
                 <div class="portfolio_card portfolio_card_2" data-card="2">
                     <a href="/pokemon.html">
@@ -164,10 +169,10 @@
                     </a>
                 </div>
                 <div class="portfolio_card portfolio_card_3" data-card="3">
-                    <!-- <img src="/img/NightForest.jpg" alt="" srcset=""> -->
+                    <img src="/img/NightForest.jpg" alt="" srcset="">
                 </div>
                 <div class="portfolio_card portfolio_card_4" data-card="4">
-                    <!-- <img src="/img/Sunris.jpg" alt="" srcset=""> -->
+                    <img src="/img/Sunris.jpg" alt="" srcset="">
                 </div>
                 <div class="card_left_arrow bg_img"></div>
                 <div class="card_right_arrow bg_img"></div>
@@ -183,7 +188,7 @@
                 <div class="portfolio_intro portfolio_intro_4"></div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div id="footer">
         <div class="expander_container df_jc_ac">
             <div class="expander bg_img"></div>
@@ -234,22 +239,22 @@
             $(fonts[i]).text(putInText[i]);
         }
 
-        function changeText(i = 0) {
-            $('.news_ticker').text(putInText[i]);
-            $('.news_ticker').addClass("openIn");
+        // function changeText(i = 0) {
+        //     $('.news_ticker').text(putInText[i]);
+        //     $('.news_ticker').addClass("openIn");
 
-            setTimeout(() => {
-                $('.news_ticker').removeClass("openIn");
-                i = (i + 1) % putInText.length;
-                setTimeout(() => {
-                    changeText(i);
-                }, 500);
-            }, 2500);
-        }
+        //     setTimeout(() => {
+        //         $('.news_ticker').removeClass("openIn");
+        //         i = (i + 1) % putInText.length;
+        //         setTimeout(() => {
+        //             changeText(i);
+        //         }, 500);
+        //     }, 2500);
+        // }
 
-        $(document).ready(function () {
-            changeText();
-        })
+        // $(document).ready(function () {
+        //     changeText();
+        // })
 
         // 飛入動畫控制
 
@@ -263,17 +268,18 @@
             repeat: false,
         };
 
-        let rightFlewOption = {
+        let skillFlewOption = {
             topDistance: 150,
             flewDistanceRatio: 0.25,
-            flewInDirection: 'right',
+            flewInDirection: 'bottom',
             flewInDuration: 1,
             delay: 0,
             fadeIn: true,
             repeat: false,
         }
 
-        new FlewIn($('.skill_content'), ".skill_content", rightFlewOption);
+        new FlewIn($('.skill_content'), ".skill_content", skillFlewOption);
+        new FlewIn($('.skill_bg'), ".skill_bg", skillFlewOption);
         new FlewIn($('.portfolio_card_container'), ".portfolio_card_container", topFlewOption);
 
 
@@ -333,12 +339,15 @@
 
         // 區域2滾動設置
 
-        window.addEventListener('scroll', function () {
+
+        window.addEventListener('scroll', transformControl);
+        window.addEventListener('resize', transformControl);
+        function transformControl()  {
             const scrollSection = document.querySelector('#main_body_2');
             const stickyContent = document.querySelector('.project_container');
             const projectCardContainer = document.querySelector('.project_card_container');
             const windowHeight = window.innerHeight;
-            
+
             const sectionTop = scrollSection.getBoundingClientRect().top;
             const sectionBottom = scrollSection.getBoundingClientRect().bottom;
             let scrollDistance = window.pageYOffset;
@@ -348,10 +357,10 @@
 
             // 上下滾動控制
             if (sectionBottom < windowHeight) {
-                scrollSection.style.alignItems = 'flex-end'; 
+                scrollSection.style.alignItems = 'flex-end';
             }
             if (sectionTop > 0) {
-                scrollSection.style.alignItems = 'flex-start'; 
+                scrollSection.style.alignItems = 'flex-start';
             }
 
             // 固定控制
@@ -361,22 +370,23 @@
                 stickyContent.style.position = 'fixed';
                 stickyContent.style.top = '0';
             } else {
-                stickyContent.style.position = 'relative'; 
-                stickyContent.style.top = 'unset'; 
+                stickyContent.style.position = 'relative';
+                stickyContent.style.top = 'unset';
             }
 
             // 處理橫向滾動
-
+            const windowWidth = window.innerWidth;
+            const scaleFactor = Math.min(1, windowWidth / 1280);
             if (sectionTop <= 0 && sectionBottom > 0) {
-                const transDistance = scrollDistance - windowHeight; 
+                const transDistance = scrollDistance - windowHeight;
                 // console.log('transDistance', transDistance);
 
                 if (sectionBottom < windowHeight) {
                     return;
                 }
-                projectCardContainer.style.transform = `translateX(-${transDistance}px)`;
+                projectCardContainer.style.transform = `translateX(-${transDistance}px) scale(${scaleFactor})`;
             }
-        });
+        };
 
     </script>
 </body>
