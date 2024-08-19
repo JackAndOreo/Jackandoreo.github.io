@@ -44,7 +44,7 @@ class TypeMachine {
         fontSize = parseInt(fontSize.replace("px", "").trim());
 
         let cursor = `<span class="cursor_blink">|</span>`;
-        console.log($(`${this.target}`));
+        // console.log($(`${this.target}`));
         $(`${this.target}`).append(cursor);
 
         let cssContent = `<style type="text/css">

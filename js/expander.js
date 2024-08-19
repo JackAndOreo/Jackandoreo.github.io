@@ -1,7 +1,8 @@
 class Expander {
-    constructor(target, expandOptions, bgImage) {
+    constructor(target, expandOptions, expandOptionsLink, bgImage) {
         this.target = target; // jQuery 物件
         this.expandOptions = expandOptions; // 字串陣列
+        this.expandOptionsLink = expandOptionsLink; // 字串陣列
         this.originalWidth = this.target.width();
         this.newTargetWidth = 0;
         this.optionLength = this.expandOptions.length;
@@ -35,8 +36,8 @@ class Expander {
 
     generateHtml() {
         let html = '';
-        for (let option of this.expandOptions) {
-            html += `<div class="option">${option}</div>`;
+        for (let i = 0; i < this.expandOptions.length; i++) {
+            html += `<div class="option" data-link="${this.expandOptionsLink[i]}">${this.expandOptions[i]}</div>`;
         }
         return `<div class="optionBox">${html}</div>`;
     }
@@ -49,7 +50,7 @@ class Expander {
         let html = this.generateHtml();
         this.target.append(html);
 
-        console.log(this.newTargetWidth);
+        this.setUpOnclick();
         this.animateWidth(this.newTargetWidth);
     }
 
@@ -70,6 +71,21 @@ class Expander {
             width: `${width}px`,
         }, 75 * this.optionLength, () => {
             this.animationInProgress = false;
+        });
+    }
+
+    setUpOnclick() {
+        let options = this.target.find('.option');
+
+        options.off('click').on('click', (e) => {
+            let targetLink = $(e.target).data('link');
+            let targetElement = $(targetLink);
+
+            if (targetElement.length) {
+                $('html, body').animate({
+                    scrollTop: targetElement.offset().top
+                }, 800);
+            }
         });
     }
 }

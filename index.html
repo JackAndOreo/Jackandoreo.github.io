@@ -220,7 +220,7 @@
         // 打字機
         new TypeMachine('.header_text', 'Front-End Developer', 150, 1000);
         // 懸浮按鈕列
-        new Expander($('.expander'), ["技能", "作品", "簡介"], "url(/img/dot.png)");
+        new Expander($('.expander'), ["作品", "技能", "簡介"], ["#main_body_2", "#main_body_3", "#main_body_4"], "url(/img/dot.png)");
 
         // 技能列表
         let putInText = [
@@ -375,10 +375,13 @@
             }
 
             // 處理橫向滾動
-            const windowWidth = window.innerWidth;
+            const windowWidth = Math.max(768, window.innerWidth);
             const scaleFactor = Math.min(1, windowWidth / 1280);
             if (sectionTop <= 0 && sectionBottom > 0) {
-                const transDistance = scrollDistance - windowHeight;
+                let transDistance = scrollDistance - windowHeight;
+                let scaleTransDistance = (1 - scaleFactor) * $('.scroll_part').width() * 0.3;
+
+                transDistance = transDistance + scaleTransDistance;
                 // console.log('transDistance', transDistance);
 
                 if (sectionBottom < windowHeight) {
