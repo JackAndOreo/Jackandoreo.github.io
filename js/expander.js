@@ -26,18 +26,26 @@ class Expander {
     }
 
     mouselistener() {
+        if ($('body').hasClass('isMobile')) {
+            this.expansion();
+            return;
+        }
+
         this.target.on('mouseover', () => this.expansion());
         this.target.on('mouseleave', () => this.collapse());
 
         this.target[0].addEventListener('touchstart', () => this.expansion(), { passive: true });
         this.target[0].addEventListener('touchend', () => this.collapse(), { passive: true });
-
     }
 
     generateHtml() {
         let html = '';
         for (let i = 0; i < this.expandOptions.length; i++) {
-            html += `<div class="option" data-link="${this.expandOptionsLink[i]}">${this.expandOptions[i]}</div>`;
+            if (this.expandOptionsLink[i].includes('https')) {
+                html += `<div class="option"><a href="${this.expandOptionsLink[i]}" target="_blank" rel="">${this.expandOptions[i]}</a></div>`;
+            } else {
+                html += `<div class="option" data-link="${this.expandOptionsLink[i]}">${this.expandOptions[i]}</div>`;
+            }
         }
         return `<div class="optionBox">${html}</div>`;
     }

@@ -24,7 +24,6 @@
 
 <body>
     <div id="zoomIn">
-        <div class="white_space"></div>
         <div class="logo_container">
             <div class="logo_box logo_box_1">
                 <div class="logo">Liam</div>
@@ -220,7 +219,7 @@
         // 打字機
         new TypeMachine('.header_text', 'Front-End Developer', 150, 1000);
         // 懸浮按鈕列
-        new Expander($('.expander'), ["作品", "技能", "簡介"], ["#main_body_2", "#main_body_3", "#main_body_4"], "url(/img/dot.png)");
+        new Expander($('.expander'), ["專案", "技能", "履歷"], ["#main_body_2", "#main_body_3", "https://www.cakeresume.com/s--34M3ZqUe3cKvoehIYp-Kpg--/Tao_web"], "url(/img/dot.png)");
 
         // 技能列表
         let putInText = [
@@ -342,7 +341,8 @@
 
         window.addEventListener('scroll', transformControl);
         window.addEventListener('resize', transformControl);
-        function transformControl()  {
+
+        function transformControl() {
             const scrollSection = document.querySelector('#main_body_2');
             const stickyContent = document.querySelector('.project_container');
             const projectCardContainer = document.querySelector('.project_card_container');
@@ -376,7 +376,7 @@
 
             // 處理橫向滾動
             const windowWidth = Math.max(768, window.innerWidth);
-            const scaleFactor = Math.min(1, windowWidth / 1280);
+            const scaleFactor = Math.min(1, (windowWidth + 128) / 1280);
             if (sectionTop <= 0 && sectionBottom > 0) {
                 let transDistance = scrollDistance - windowHeight;
                 let scaleTransDistance = (1 - scaleFactor) * $('.scroll_part').width() * 0.3;
@@ -391,6 +391,9 @@
             }
         };
 
+        $(document).ready(function () {
+            setTimeout(transformControl(), 2000);
+        })
     </script>
 </body>
 

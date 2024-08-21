@@ -5,8 +5,14 @@
 // 入場動畫
 
 :root {
+    --logoFontOrigSize1: 84px;
+    --logoFontOrigSize2: 40px;
     --logoFontSize1: 48px;
     --logoFontSize2: 13px;
+    --logoFontWidth1: 175.65px;
+    --logoFontWidth2: 391.7px;
+    --logoFontHeight1: 130.4px;
+    --logoFontHeight2: 48px;
     --logoFontTop2: 70px;
 }
 
@@ -24,8 +30,8 @@ body.unset_overflow {
     width: 100%;
     height: 100%;
     background-color: #f0f0f0;
-    z-index: 99;
-    animation: firstIn .5s linear 1.5s forwards;
+    z-index: 50;
+    animation: firstIn .5s linear 2s forwards;
 }
 
 @keyframes firstIn {
@@ -63,18 +69,18 @@ body.unset_overflow {
 
 .logo_box_1 {
     position: absolute;
-    font-size: 84px;
-    left: calc((100% - 175.65px) /2);
-    top: calc((100% - 130.4px) /2);
+    font-size: var(--logoFontOrigSize1);
+    left: calc((100% - var(--logoFontWidth1)) /2);
+    top: calc((100% - var(--logoFontHeight1)) /2);
     // transition: font-size 1s ease-in;
     animation: fontShrink1 1s forwards 1s;
 }
 
 .logo_box_2 {
     position: absolute;
-    font-size: 40px;
-    left: calc((100% - 391.7px) / 2);
-    top: calc((100% - 48px) / 2 + 90px);
+    font-size: var(--logoFontOrigSize2);
+    left: calc((100% - var(--logoFontWidth2)) / 2);
+    top: calc((100% - var(--logoFontHeight2)) / 2 + 90px);
     // transition: font-size .4s ease-in;
     animation: fontShrink2 1s forwards 1s;
 }
@@ -110,9 +116,9 @@ body.unset_overflow {
 
 @keyframes fontShrink1 {
     0% {
-        font-size: 84px;
-        left: calc((100% - 175.65px) /2);
-        top: calc((100% - 130.4px) /2);
+        font-size: var(--logoFontOrigSize1);
+        left: calc((100% - var(--logoFontWidth1)) /2);
+        top: calc((100% - var(--logoFontHeight1)) /2);
     }
 
     100% {
@@ -124,9 +130,9 @@ body.unset_overflow {
 
 @keyframes fontShrink2 {
     0% {
-        font-size: 40px;
-        left: calc((100% - 391.7px) / 2);
-        top: calc((100% - 48px) / 2 + 90px);
+        font-size: var(--logoFontOrigSize2);
+        left: calc((100% - var(--logoFontWidth2)) / 2);
+        top: calc((100% - var(--logoFontHeight2)) / 2 + 90px);
     }
 
     100% {
@@ -138,11 +144,16 @@ body.unset_overflow {
 
 @media screen and (max-width: 600px) {
     :root {
+        --logoFontOrigSize1: 72px;
+        --logoFontOrigSize2: 36px;
         --logoFontSize1: 36px;
         --logoFontSize2: 12px;
+        --logoFontWidth1: 150.562px;
+        --logoFontWidth2: 352.538px;
+        --logoFontHeight1: 112px;
+        --logoFontHeight2: 44px;
         --logoFontTop2: 52px;
     }
-
 }
 
 // 主區域
@@ -601,11 +612,12 @@ body.unset_overflow {
 
 @media screen and (max-width: 900px) {
     #main_body_2 {
-        height: 1800px;
+        height: 1880px;
     }
     .sticky_part {
         min-width: 200px;
     }
+
     .project_topic {
         font-size: 54px;
         line-height: 60px;
@@ -614,11 +626,20 @@ body.unset_overflow {
 }
 
 @media screen and (max-width: 768px) {
-    #main_body_2 {
-        height: 1680px;
-    }
     .project_card_container {
         column-gap: 90px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #main_body_2 {
+        height: 1980px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #main_body_2 {
+        height: 2180px;
     }
 }
 

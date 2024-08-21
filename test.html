@@ -31,7 +31,9 @@
 </head>
 
 <body>
-    <div class="page" id="page1">Page 1</div>
+    <div class="page" id="page1">
+        <canvas id="rippleCanvas" width="800" height="600" style="background-color: lightblue;"></canvas>
+    </div>
     <div class="page hidden" id="page2">Page 2</div>
     <div class="page hidden" id="page3">Page 3</div>
 
@@ -45,6 +47,67 @@
         document.addEventListener('DOMContentLoaded', () => {
             new OnePage('page');
         });
+
+        const canvas = document.getElementById('rippleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const ripples = []; // 儲存所有漣漪
+
+        function drawRipple(x, y) {
+            const ripple = {
+                x: x, // 水滴的 x 坐標
+                y: y, // 水滴的 y 坐標
+                radius: 0, // 漣漪的初始半徑
+                alpha: 1.0 // 漣漪的初始透明度
+            };
+            ripples.push(ripple);
+        }
+
+        function animateRipples() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // 清除畫布
+
+            for (let i = 0; i < ripples.length; i++) {
+                const ripple = ripples[i];
+
+                // 創建圓形漸變
+                const gradient = ctx.createRadialGradient(ripple.x, ripple.y, ripple.radius * 0.5, ripple.x, ripple.y, ripple.radius);
+                gradient.addColorStop(0, `rgba(255, 255, 255, ${ripple.alpha})`);
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                // 設置漸變為填充樣式
+                ctx.fillStyle = gradient;
+
+                // 繪製漣漪
+                ctx.beginPath();
+                ctx.arc(ripple.x, ripple.y, ripple.radius, 0, 2 * Math.PI);
+                ctx.fill();
+
+                // 更新漣漪的半徑和透明度
+                ripple.radius += 2; // 漣漪半徑增長
+                ripple.alpha -= 0.01; // 漣漪逐漸消失
+
+                // 如果漣漪完全消失，從陣列中移除
+                if (ripple.alpha <= 0) {
+                    ripples.splice(i, 1);
+                    i--; // 調整索引以處理移除元素後的陣列
+                }
+            }
+
+            // 隨機生成新水滴
+            if (Math.random() < 0.025) { // 2.5% 的機率生成一個水滴
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                drawRipple(x, y);
+            }
+
+            // 請求下一幀動畫
+            requestAnimationFrame(animateRipples);
+        }
+
+        // 開始動畫
+        animateRipples();
+
+
     </script>
 </body>
 
