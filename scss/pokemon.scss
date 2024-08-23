@@ -208,6 +208,13 @@
     .top_part {
         height: 320px;
     }
+    .body_bg {
+        background-size: 600px;
+        background-position: 0% 0%;
+    }
+    .bottom_part .body_bg {
+        background-position: 0% 100%;
+    }
 }
 
 // 下半部
