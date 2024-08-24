@@ -152,8 +152,9 @@ body.unset_overflow {
         --logoFontWidth2: 352.538px;
         --logoFontHeight1: 112px;
         --logoFontHeight2: 44px;
-        --logoFontTop2: 52px;
+        --logoFontTop2: 56px;
     }
+    
 }
 
 // 主區域
@@ -480,14 +481,14 @@ body.unset_overflow {
 }
 
 .project_intro {
-    font-size: 17px;
+    font-size: 16px;
     padding: 0 12px;
     opacity: 0;
     transform: translateX(-200%) translateY(300%);
 }
 
 .project_link {
-    font-size: 12px;
+    font-size: 13px;
     padding: 8px 12px;
     background-color: #000;
     border-radius: 30px;
@@ -510,9 +511,10 @@ body.unset_overflow {
 }
 
 .project_link_arrow {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background-image: url(/img/arrow_right.svg);
+    background-size: auto;
     animation: projectLinkArrow 2s linear infinite;
 }
 

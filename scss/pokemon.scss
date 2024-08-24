@@ -46,6 +46,16 @@
     font-size: 13px;
 }
 
+@media screen and (max-width: 600px) {
+    .logo {
+        font-size: 36px;
+    }
+    
+    .logo_text {
+        font-size: 12px;
+    }
+}
+
 
 // 載入頁
 

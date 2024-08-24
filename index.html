@@ -81,9 +81,10 @@
                                 故宮精品網路商城
                             </div>
                             <div class="project_intro">
-                                簡介簡介簡介
+                                全網CSS撰寫、客製化功能製作（進階搜尋、訂單進度條、字體大小控制）、多個後台頁面製作、社群媒體分享串接。
                             </div>
-                            <a href="http://" target="_blank" rel="" class="project_link df_jc_ac">
+                            <a href="https://www.npmshops.com/mainssl/modules/MySpace/index.php?" target="_blank" rel=""
+                                class="project_link df_jc_ac">
                                 <p>查看專案</p>
                                 <div class="project_link_arrow bg_img"></div>
                             </a>
@@ -338,6 +339,8 @@
         window.addEventListener('scroll', transformControl);
         window.addEventListener('resize', transformControl);
 
+        let currentTranslateX = 0;
+
         function transformControl() {
             const scrollSection = document.querySelector('#main_body_2');
             const stickyContent = document.querySelector('.project_container');
@@ -347,11 +350,8 @@
             const sectionTop = scrollSection.getBoundingClientRect().top;
             const sectionBottom = scrollSection.getBoundingClientRect().bottom;
             let scrollDistance = window.pageYOffset;
-            // console.log("頂部邊界", sectionTop);
-            // console.log("底部邊界", sectionBottom);
-            // console.log("滾動距離", scrollDistance);
 
-            // 上下滾動控制
+            // 上下滾動
             if (sectionBottom < windowHeight) {
                 scrollSection.style.alignItems = 'flex-end';
             }
@@ -370,25 +370,29 @@
                 stickyContent.style.top = 'unset';
             }
 
-            // 處理橫向滾動
+            // 橫向滾動
             const windowWidth = Math.max(768, window.innerWidth);
             const scaleFactor = Math.min(1, (windowWidth + 128) / 1280);
+
             if (sectionTop <= 0 && sectionBottom > 0) {
                 let transDistance = scrollDistance - windowHeight;
                 let scaleTransDistance = (1 - scaleFactor) * $('.scroll_part').width() * 0.3;
 
                 transDistance = transDistance + scaleTransDistance;
-                // console.log('transDistance', transDistance);
+                currentTranslateX = -transDistance;
 
-                if (sectionBottom < windowHeight) {
-                    return;
-                }
-                projectCardContainer.style.transform = `translateX(-${transDistance}px) scale(${scaleFactor})`;
+                // if (sectionBottom < windowHeight) {
+                //     return;
+                // }
+
+                projectCardContainer.style.transform = `translateX(${currentTranslateX}px) scale(${scaleFactor})`;
+            } else {
+                projectCardContainer.style.transform = `translateX(${currentTranslateX}px) scale(${scaleFactor})`;
             }
-        };
+        }
 
         $(document).ready(function () {
-            setTimeout(transformControl(), 2000);
+            transformControl();
         })
     </script>
 </body>
