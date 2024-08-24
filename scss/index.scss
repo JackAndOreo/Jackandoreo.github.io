@@ -464,7 +464,7 @@ body.unset_overflow {
 .project_text_container {
     position: relative;
     height: calc(100% - 24px);
-    width: 200px;
+    width: 220px;
     margin: 12px;
     display: flex;
     justify-content: center;
@@ -504,7 +504,7 @@ body.unset_overflow {
     right: 12px;
     top: 12px;
     height: calc(100% - 24px);
-    width: 200px;
+    width: 220px;
     background-color: #fff;
     opacity: 0;
     transform: translateX(100%);
@@ -516,6 +516,28 @@ body.unset_overflow {
     background-image: url(/img/arrow_right.svg);
     background-size: auto;
     animation: projectLinkArrow 2s linear infinite;
+}
+
+.isMobile {
+    .project_title {
+        opacity: 1;
+        transform: unset;
+    }
+    
+    .project_intro {
+        opacity: 1;
+        transform: unset;
+    }
+    
+    .project_link {
+        opacity: 1;
+        transform: unset;
+    }
+    
+    .project_text_bg {
+        opacity: 1;
+        transform: unset;
+    }
 }
 
 @keyframes projectLinkArrow {
