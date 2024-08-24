@@ -518,27 +518,29 @@ body.unset_overflow {
     animation: projectLinkArrow 2s linear infinite;
 }
 
-.isMobile {
-    .project_title {
-        opacity: 1;
-        transform: unset;
-    }
-    
-    .project_intro {
-        opacity: 1;
-        transform: unset;
-    }
-    
-    .project_link {
-        opacity: 1;
-        transform: unset;
-    }
-    
-    .project_text_bg {
-        opacity: 1;
-        transform: unset;
-    }
-}
+// @media screen and (max-width: 600px) {
+//     .isMobile {
+//         .project_title {
+//             opacity: 1;
+//             transform: unset;
+//         }
+        
+//         .project_intro {
+//             opacity: 1;
+//             transform: unset;
+//         }
+        
+//         .project_link {
+//             opacity: 1;
+//             transform: unset;
+//         }
+        
+//         .project_text_bg {
+//             opacity: 1;
+//             transform: unset;
+//         }
+//     }
+// }
 
 @keyframes projectLinkArrow {
     0% {
@@ -555,6 +557,28 @@ body.unset_overflow {
 }
 
 .project_card:hover {
+    .project_image_filter {
+        animation: cardFilterIn .2s linear forwards;
+    }
+
+    .project_text_bg {
+        animation: cardWhiteBgIn .2s linear forwards;
+    }
+
+    .project_title {
+        animation: projectTitleIn .2s linear forwards;
+    }
+
+    .project_intro {
+        animation: projectIntroIn .2s linear forwards;
+    }
+
+    .project_link {
+        animation: projectLinkIn .2s linear forwards;
+    }
+}
+
+.isMobile .project_card:active {
     .project_image_filter {
         animation: cardFilterIn .2s linear forwards;
     }
