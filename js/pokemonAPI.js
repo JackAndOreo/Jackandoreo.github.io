@@ -172,10 +172,20 @@ class PokemonOperation {
 
 let promises = [];
 let randomArray = [];
-let indices = Array.from({ length: 151 }, (_, i) => i + 1);
+
+let ranges = [
+    [1, 151],
+    [152, 251],
+    [252, 386],
+    [387, 493],
+    [494, 649]
+];
+
+let selectedRange = ranges[Math.floor(Math.random() * ranges.length)];
+let indices = Array.from({ length: selectedRange[1] - selectedRange[0] + 1 }, (_, i) => i + selectedRange[0]);
 
 
-for (let i = 1; i < 152; i++) {
+for (let i = selectedRange[0]; i <= selectedRange[1]; i++) {
     let promise = new Promise((resolve, reject) => {
         new PokemonOperation(i, resolve);
         var possibility = Math.random();
@@ -259,6 +269,7 @@ Promise.all(promises).then(() => {
             display: 'flex',
         });
         $('#zoomIn').show();
+        // 原本想要製作圖鑑展開動畫，捨棄
         // let currentHeight = $('.handbook_part').innerHeight();
         // $('.handbook_part').css('--book-height', `${currentHeight}px`);
         // let animationDuration = Math.floor(currentHeight / 600);
@@ -266,5 +277,5 @@ Promise.all(promises).then(() => {
         // console.log(currentHeight, animationDuration);
 
         // $('.handbook_part').addClass('started');
-    }, 350);
+    }, 500);
 });
