@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liam's game center</title>
+    <link rel="icon" href="https://jackandoreo.github.io/img/Logo.png" type="image/png">
+    <meta property="og:title" content="Jackandoreo.github.io">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://jackandoreo.github.io/img/Liam.png">
+    <meta property="og:url" content="https://jackandoreo.github.io">
+    <meta property="og:site_name" content="Liam's game center">
+    <meta property="og:description" content="歡迎來到 Liam 的前端開發作品集，這裡呈現了我的網頁設計與開發作品，希望您會喜歡。">
+    <meta property="og:locale" content="zh_TW">
+    <link rel="stylesheet" href="./css/newGame.min.css">
+    <link rel="stylesheet" href="./css/spin.min.css">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="/js/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <div id="main_body_4" class="df_jc_ac">
+        <div class="portfolio_content df_jc_ac">
+            <div class="portfolio_card_container" data-flip="2">
+                <div class="portfolio_card portfolio_card_1" data-card="1">
+                    <img src="/img/Aurora.jpg" alt="" srcset="">
+                </div>
+                <div class="portfolio_card portfolio_card_2" data-card="2">
+                    <a href="/pokemon.html">
+                        <img src="/img/作品集/寶可夢圖鑑.png" alt="寶可夢圖鑑" target="_blank" srcset="">
+                    </a>
+                </div>
+                <div class="portfolio_card portfolio_card_3" data-card="3">
+                    <img src="/img/NightForest.jpg" alt="" srcset="">
+                </div>
+                <div class="portfolio_card portfolio_card_4" data-card="4">
+                    <img src="/img/Sunris.jpg" alt="" srcset="">
+                </div>
+                <div class="card_left_arrow bg_img"></div>
+                <div class="card_right_arrow bg_img"></div>
+            </div>
+            <div class="portfolio_text_container">
+                <div class="portfolio_intro portfolio_intro_1">
+
+                </div>
+                <div class="portfolio_intro portfolio_intro_2">
+                    利用寶可夢官方提供的API製作簡易的寶可夢圖鑑，使用者可以瀏覽並點擊查看更多詳細資訊。同時隨機抽取資料生成展示在上方的寶可夢，增添趣味性。
+                </div>
+                <div class="portfolio_intro portfolio_intro_3"></div>
+                <div class="portfolio_intro portfolio_intro_4"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/fontControl.js"></script>
+    <script src="/js/deviceDetect.js"></script>
+    <script>
+        $('.card_right_arrow').off().on('click', function () {
+            let cards = $('.portfolio_card');
+            let totalAmount = cards.length;
+
+            cards.each(function () {
+                let currentCard = $(this);
+                let currentIndex = parseInt(currentCard.data('card'));
+
+                currentCard.removeClass(`portfolio_card_${currentIndex}`);
+
+                let newIndex = currentIndex + 1;
+                if (newIndex > totalAmount) {
+                    newIndex = 1;
+                }
+
+                currentCard.data('card', newIndex);
+                currentCard.addClass(`portfolio_card_${newIndex}`);
+
+                currentCard.css('animation', `cardFlipRight${currentIndex}to${newIndex} .8s linear forwards`);
+            });
+        });
+
+        $('.card_left_arrow').off().on('click', function () {
+            let cards = $('.portfolio_card');
+            let totalAmount = cards.length;
+
+            cards.each(function () {
+                let currentCard = $(this);
+                let currentIndex = parseInt(currentCard.data('card'));
+
+                currentCard.removeClass(`portfolio_card_${currentIndex}`);
+
+                let newIndex = currentIndex - 1;
+                if (newIndex < 1) {
+                    newIndex = totalAmount;
+                }
+
+                currentCard.data('card', newIndex);
+                currentCard.addClass(`portfolio_card_${newIndex}`);
+
+                currentCard.css('animation', `cardFlipLeft${currentIndex}to${newIndex} .8s linear forwards`);
+            });
+        });
+    </script>
+</body>
+
+</html>
