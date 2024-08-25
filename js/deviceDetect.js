@@ -23,6 +23,14 @@ class DeviceDetector {
         let isTouch = 'ontouchstart' in window || navigator.maxTouchPoints;
         $("body").addClass(isTouch ? 'isTouch' : 'notTouch');
     }
+
+    safariViewHeight(selector) {
+        let windowsVH = window.innerHeight / 100;
+        document.querySelector(`${selector}`).style.setProperty('--vh', windowsVH + 'px');
+        window.addEventListener('resize', function() {
+            document.querySelector(`${selector}`).style.setProperty('--vh', windowsVH + 'px');
+        });
+    }
 }
 
-new DeviceDetector();
+const detector = new DeviceDetector();

@@ -714,6 +714,7 @@ body.unset_overflow {
     font-family: var(--eng-font);
     font-size: var(--bigger-font-size);
     font-weight: bold;
+    height: 38px;
     // text-shadow: 0 0 3px #333;
     // padding-bottom: 8px;
     width: fit-content;
@@ -727,149 +728,28 @@ body.unset_overflow {
 .skill_card_title::after {
     content: "";
     width: 30px;
-    height: 36.8px;
+    height: 38px;
     right: -28px;
     top: 0;
     display: block;
     position: absolute;
     background-color: #333;
+    margin-bottom: 8px;
     clip-path: polygon(0 0, 100% 0, 25% 100%, 0% 100%);
 }
 
-// .skill_content {
-//     font-family: var(--eng-font);
-//     font-size: var(--biggest-font-size);
-//     font-weight: bold;
-//     text-shadow: 0 0 2px #333;
-//     min-width: 180px;
-//     text-align: center;
-//     column-gap: 20px;
-//     flex-direction: column;
-// }
+.skill_card_text ul {
+    display: flex;
+    margin: 16px 0;
+    flex-direction: column;
+    row-gap: 6px;
+    font-family: var(--eng-font);
+    font-size: var(--normal-font-size);
+}
 
-// .skill_bg_content {
-//     position: absolute;
-//     height: 100%;
-//     max-height: 100vh;
-//     width: 100%;
-//     max-width: 420px;
-//     aspect-ratio: 1;
-// }
-
-// .skill_bg {
-//     position: absolute;
-//     height: 100%;
-//     width: 100%;
-//     background-image: url(/img/techCircle4.png);
-// }
-
-// .news_ticker_container {
-//     width: 300px;
-//     height: 300px;
-//     background: radial-gradient(circle at 30% 30%, #fff, #9696966b);
-//     border-radius: 50%;
-//     box-shadow: inset -20px -20px 33px rgba(0, 0, 0, 0.125),
-//         10px 10px 24px rgba(0, 0, 0, 0.2);
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     margin: 0 40px;
-//     transform-style: preserve-3d;
-//     perspective: 800px;
-// }
-
-// .floatFont {
-//     --common-transform: translateZ(146px) translateX(0px);
-//     --rotate-y-start: 0deg;
-//     --rotate-y-end: 360deg;
-//     transform: rotate(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg)) var(--common-transform);
-//     font-size: 1rem;
-//     position: absolute;
-//     white-space: nowrap;
-//     backface-visibility: hidden;
-//     opacity: 0;
-// }
-
-// .floatA {
-//     --rotate-x: -10deg;
-//     animation: fontRotate 8s linear infinite;
-//     animation-delay: 1s;
-// }
-
-// .floatB {
-//     --rotate-x: 20deg;
-//     animation: fontRotate 8s linear infinite;
-// }
-
-// .floatC {
-//     --rotate-x: 25deg;
-//     animation: fontRotate 8s linear infinite;
-//     animation-delay: 3s;
-// }
-
-// .floatD {
-//     --rotate-x: 50deg;
-//     animation: fontRotate 8s linear infinite;
-// }
-
-// .floatE {
-//     --rotate-x: -40deg;
-//     animation: fontRotate 8s linear infinite;
-//     animation-delay: 3s;
-// }
-
-// .floatF {
-//     --rotate-x: 65deg;
-//     animation: fontRotate 8s linear infinite;
-//     animation-delay: 4s;
-// }
-
-// .floatG {
-//     --rotate-x: 25deg;
-//     animation: fontRotate 8s linear infinite;
-//     animation-delay: 5s;
-// }
-
-// .floatH {
-//     --rotate-x: -50deg;
-//     animation: fontRotate 8s linear infinite;
-//     animation-delay: 6s;
-// }
-
-
-
-// @keyframes fontRotate {
-//     0% {
-//         opacity: 0.6;
-//         transform: rotate(var(--rotate-x, 0deg)) rotateY(var(--rotate-y-start, 0deg)) var(--common-transform);
-//     }
-
-//     100% {
-//         opacity: 0.6;
-//         transform: rotate(var(--rotate-x, 0deg)) rotateY(var(--rotate-y-end, 0deg)) var(--common-transform);
-//     }
-// }
-
-// .news_ticker {
-//     position: relative;
-//     z-index: 10;
-// }
-
-// .news_ticker.openIn {
-//     animation: openIn 1s ease-in;
-// }
-
-// @keyframes openIn {
-//     0% {
-//         opacity: 0;
-//         transform: translateY(16px);
-//     }
-
-//     100% {
-//         opacity: 1;
-//         transform: translateY(0px);
-//     }
-// }
+.skill_card_text li {
+    list-style: inside;
+}
 
 // Footer 版權 按鈕
 
