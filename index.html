@@ -35,7 +35,6 @@
         </div>
     </div>
     <div id="main_body" class="df_jc_ac">
-        <!-- <div class="linear_background"></div> -->
         <div class="main_content df_jc_ac">
             <!-- <div class="decoration">
                 <div class="color_box color_box_1"></div>
@@ -137,23 +136,75 @@
             </div>
         </div>
     </div>
-    <!-- <div id="main_body_3" class="df_jc_ac">
-        <div class="skill_bg_content df_jc_ac">
-        </div>
+    <div id="main_body_3">
         <div class="skill_content df_jc_ac">
-            <div class="news_ticker_container">
-                <div class="news_ticker"></div>
-                <div class="floatFont floatA"></div>
-                <div class="floatFont floatB"></div>
-                <div class="floatFont floatC"></div>
-                <div class="floatFont floatD"></div>
-                <div class="floatFont floatE"></div>
-                <div class="floatFont floatF"></div>
-                <div class="floatFont floatG"></div>
-                <div class="floatFont floatH"></div>
+            <div class="skill_title title_line">
+                SKILL
+            </div>
+            <div class="skill_container">
+                <div class="skill_card skill_card_1">
+                    <div class="skill_card_title">
+                        HTML
+                    </div>
+                    <div class="skill_card_text">
+                        <ul>
+                            <li>HTML5</li>
+                            <li>Emmet</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skill_card skill_card_2">
+                    <div class="skill_card_title">
+                        CSS
+                    </div>
+                    <div class="skill_card_text">
+                        <ul>
+                            <li>CSS3</li>
+                            <li>CSS Animation</li>
+                            <li>SCSS</li>
+                            <li>Tailwind</li>
+                            <li>RWD</li>
+                            <li>Boostrap</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skill_card skill_card_3">
+                    <div class="skill_card_title">
+                        JavaScript
+                    </div>
+                    <div class="skill_card_text">
+                        <ul>
+                            <li>JavaScript</li>
+                            <li>jQuery</li>
+                            <li>Promise</li>
+                            <li>Async/Await</li>
+                            <li>Class-based Modules</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skill_card skill_card_4">
+                    <div class="skill_card_title">
+                        Frame
+                    </div>
+                    <div class="skill_card_text">
+                        <ul>
+                            <li>VUE</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skill_card skill_card_5">
+                    <div class="skill_card_title">
+                        Others
+                    </div>
+                    <div class="skill_card_text">
+                        <ul>
+                            <li>English</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <div id="footer">
         <div class="expander_container df_jc_ac">
             <div class="expander bg_img"></div>
@@ -240,11 +291,15 @@
             flewInDuration: 1,
             delay: 0,
             fadeIn: true,
-            repeat: false,
+            repeat: true,
         }
 
-        new FlewIn($('.skill_content'), ".skill_content", skillFlewOption);
-        new FlewIn($('.skill_bg'), ".skill_bg", skillFlewOption);
+        new FlewIn($('.skill_title'), ".skill_title", skillFlewOption);
+        new FlewIn($('.skill_card_1'), ".skill_card_1", skillFlewOption);
+        new FlewIn($('.skill_card_2'), ".skill_card_2", skillFlewOption);
+        new FlewIn($('.skill_card_3'), ".skill_card_3", skillFlewOption);
+        new FlewIn($('.skill_card_4'), ".skill_card_4", skillFlewOption);
+        new FlewIn($('.skill_card_5'), ".skill_card_5", skillFlewOption);
         new FlewIn($('.portfolio_card_container'), ".portfolio_card_container", topFlewOption);
 
 

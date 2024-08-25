@@ -17,3 +17,27 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+.title_line {
+    position: relative;
+}
+
+.title_line::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #787878;
+    left: -150%;
+    top: calc(50% - 1px);
+}
+
+.title_line::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #787878;
+    right: -150%;
+    top: calc(50% - 1px);
+}
