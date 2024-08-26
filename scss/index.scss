@@ -470,6 +470,7 @@ body.unset_overflow {
 }
 
 .project_intro {
+    width: 100%;
     font-size: 16px;
     padding: 0 12px;
     opacity: 0;
@@ -545,49 +546,49 @@ body.unset_overflow {
     }
 }
 
-.project_card:hover {
+.project_card.visible {
     .project_image_filter {
-        animation: cardFilterIn .2s linear forwards;
+        animation: cardFilterIn .25s linear forwards;
     }
 
     .project_text_bg {
-        animation: cardWhiteBgIn .2s linear forwards;
+        animation: cardWhiteBgIn .25s linear forwards;
     }
 
     .project_title {
-        animation: projectTitleIn .2s linear forwards;
+        animation: projectTitleIn .25s linear forwards;
     }
 
     .project_intro {
-        animation: projectIntroIn .2s linear forwards;
+        animation: projectIntroIn .25s linear forwards;
     }
 
     .project_link {
-        animation: projectLinkIn .2s linear forwards;
+        animation: projectLinkIn .25s linear forwards;
     }
 }
 
-.isMobile .project_card:active {
-    .project_image_filter {
-        animation: cardFilterIn .2s linear forwards;
-    }
+// .isMobile .project_card:active {
+//     .project_image_filter {
+//         animation: cardFilterIn .2s linear forwards;
+//     }
 
-    .project_text_bg {
-        animation: cardWhiteBgIn .2s linear forwards;
-    }
+//     .project_text_bg {
+//         animation: cardWhiteBgIn .2s linear forwards;
+//     }
 
-    .project_title {
-        animation: projectTitleIn .2s linear forwards;
-    }
+//     .project_title {
+//         animation: projectTitleIn .2s linear forwards;
+//     }
 
-    .project_intro {
-        animation: projectIntroIn .2s linear forwards;
-    }
+//     .project_intro {
+//         animation: projectIntroIn .2s linear forwards;
+//     }
 
-    .project_link {
-        animation: projectLinkIn .2s linear forwards;
-    }
-}
+//     .project_link {
+//         animation: projectLinkIn .2s linear forwards;
+//     }
+// }
 
 @keyframes cardFilterIn {
     0% {
@@ -666,6 +667,21 @@ body.unset_overflow {
     .project_card_container {
         column-gap: 90px;
     }
+    .project_card {
+        width: 495px;
+        height: 360px;
+    }
+    .project_title {
+        font-size: 24px;
+    }
+    .project_intro {
+        font-size: 18px;
+    }
+    .project_link {
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        padding: 9px 13px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -704,7 +720,7 @@ body.unset_overflow {
 .skill_container {
     display: grid;
     width: 100%;
-    padding: 60px 32px;
+    padding: 60px 40px 120px;
     column-gap: 28px;
     row-gap: 40px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

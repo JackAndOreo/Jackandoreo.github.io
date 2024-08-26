@@ -100,12 +100,12 @@
                         </div>
                         <div class="project_text_container">
                             <div class="project_title">
-                                故宮精品網路商城
+                                遊戲中心
                             </div>
                             <div class="project_intro">
-                                簡介簡介簡介
+                                自製遊戲中心。
                             </div>
-                            <a href="http://" target="_blank" rel="" class="project_link df_jc_ac">
+                            <a href="/gamecenter.html" target="_blank" rel="" class="project_link df_jc_ac">
                                 <p>查看專案</p>
                                 <div class="project_link_arrow bg_img"></div>
                             </a>
@@ -369,6 +369,7 @@
             const scrollSection = document.querySelector('#main_body_2');
             const stickyContent = document.querySelector('.project_container');
             const projectCardContainer = document.querySelector('.project_card_container');
+            const projectCards = document.querySelectorAll('.project_card');
             const windowHeight = window.innerHeight;
 
             const sectionTop = scrollSection.getBoundingClientRect().top;
@@ -405,6 +406,7 @@
                 transDistance = transDistance + scaleTransDistance;
                 currentTranslateX = -transDistance;
 
+                // 限制在區域2
                 // if (sectionBottom < windowHeight) {
                 //     return;
                 // }
@@ -413,6 +415,26 @@
             } else {
                 projectCardContainer.style.transform = `translateX(${currentTranslateX}px) scale(${scaleFactor})`;
             }
+
+            // 處理project_card文字
+            projectCards.forEach(card => {
+                const cardRect = card.getBoundingClientRect();
+                const cardWidth = cardRect.width;
+                // const cardLeft = cardRect.left;
+                // const cardRight = cardRect.right;
+
+                const cardLeft = cardRect.left * (1 / scaleFactor);
+                const cardRight = (cardRect.left + cardWidth * scaleFactor) * (1 / scaleFactor);
+
+                console.log("左",cardLeft);
+                console.log("右",cardRight);
+
+                if (cardLeft >= -80 && cardRight <= (windowWidth + 80)) {
+                    card.classList.add('visible');
+                } else {
+                    card.classList.remove('visible');
+                }
+            });
         }
 
         $(document).ready(function () {

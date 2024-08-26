@@ -41,3 +41,15 @@
     right: -150%;
     top: calc(50% - 1px);
 }
+
+@media screen and (max-width: 768px) {
+    .title_line::before {
+        width: 60%;
+        left: -100%;
+    }
+    
+    .title_line::after {
+        width: 60%;
+        right: -100%;
+    }
+}
