@@ -39,17 +39,81 @@
                 </div>
                 <div class="game_menu_option">
                     <p>OPTIONS</p>
-                </div> 
+                </div>
                 <div class="game_menu_option">
                     <p>LEAVE</p>
                 </div>
             </div>
         </div>
     </div>
+    <div id="loading_page" class="df_jc_ac">
+        <div class="loading_box">
+            <div class="loading_img bg_img">
+            </div>
+            <p class="loading_text_box">
+                <span class="loading_text loading_text_1">L</span>
+                <span class="loading_text loading_text_2">o</span>
+                <span class="loading_text loading_text_3">a</span>
+                <span class="loading_text loading_text_4">d</span>
+                <span class="loading_text loading_text_5">i</span>
+                <span class="loading_text loading_text_6">n</span>
+                <span class="loading_text loading_text_7">g</span>
+                <span class="loading_text loading_text_8">.</span>
+                <span class="loading_text loading_text_9">.</span>
+                <span class="loading_text loading_text_10">.</span>
+            </p>
+        </div>
+    </div>
     <script src="/js/fontControl.js"></script>
     <script src="/js/deviceDetect.js"></script>
     <script>
         detector.safariViewHeight('#main_body');
+
+
+        function getBackgroundImageUrl(element) {
+            const backgroundImage = window.getComputedStyle(element).backgroundImage;
+            const urlMatch = backgroundImage.match(/url\(["']?([^"']*)["']?\)/);
+
+            return urlMatch ? urlMatch[1] : null;
+        }
+
+        function preloadBackgroundImage(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = url;
+
+                img.onload = () => resolve(url);
+                img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
+            });
+        }
+
+        const element = document.querySelector('#game_bg');
+        const imageUrl = getBackgroundImageUrl(element);
+
+        if (imageUrl) {
+            preloadBackgroundImage(imageUrl)
+                .then(() => {
+                    $('#loading_page').hide();
+                    $('#main_body').css({
+                        display: 'flex',
+                    });
+                    $('#zoomIn').show();
+                })
+                .catch((error) => {
+
+                });
+        }
+
+        // $(document).ready(function () {
+        //     setTimeout(() => {
+        //         $('#loading_page').hide();
+        //         $('#main_body').css({
+        //             display: 'flex',
+        //         });
+        //         $('#zoomIn').show();
+        //     }, 500);
+        // })
+
     </script>
 </body>
 
