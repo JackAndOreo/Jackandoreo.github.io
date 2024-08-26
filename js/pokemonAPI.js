@@ -162,7 +162,7 @@ class PokemonOperation {
         let strengths = $(`.book_border[data-order="${this.index}"] .strength`);
         for (let strength of strengths) {
             var bar = $(strength).find('.strength_bar');
-            var width = parseInt($(strength).data('strength'));
+            var width = parseInt($(strength).data('strength')) * 0.8;
             bar.css({
                 width: `${width}px`,
             })
@@ -262,20 +262,31 @@ Promise.all(promises).then(() => {
         });
     });
 
-    // LOADING完成
-    setTimeout(() => {
-        $('#loading_page').hide();
-        $('#pokemon_body').css({
-            display: 'flex',
-        });
-        $('#zoomIn').show();
-        // 原本想要製作圖鑑展開動畫，捨棄
-        // let currentHeight = $('.handbook_part').innerHeight();
-        // $('.handbook_part').css('--book-height', `${currentHeight}px`);
-        // let animationDuration = Math.floor(currentHeight / 600);
-        // $('.handbook_part').css('--animation-duration', `${animationDuration}s`);
-        // console.log(currentHeight, animationDuration);
+    // LOADING完成 
+    // 確保圖片都下載完成
+    const images = document.querySelectorAll('img');
+    console.log(images);
+    let loadedImagesCount = 0;
 
-        // $('.handbook_part').addClass('started');
-    }, 500);
+    images.forEach((img) => {
+        img.addEventListener('load', () => {
+            loadedImagesCount++;
+
+            if (loadedImagesCount >= (images.length - 30)) {
+                $('#loading_page').hide();
+                $('#pokemon_body').css({
+                    display: 'flex',
+                });
+                $('#zoomIn').show();
+                // 原本想要製作圖鑑展開動畫，捨棄
+                // let currentHeight = $('.handbook_part').innerHeight();
+                // $('.handbook_part').css('--book-height', `${currentHeight}px`);
+                // let animationDuration = Math.floor(currentHeight / 600);
+                // $('.handbook_part').css('--animation-duration', `${animationDuration}s`);
+                // console.log(currentHeight, animationDuration);
+
+                // $('.handbook_part').addClass('started');
+            }
+        });
+    });
 });

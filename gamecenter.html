@@ -30,22 +30,55 @@
     <div id="main_body" class="df_jc_ac">
         <div id="game_bg" class="bg_img"></div>
         <div class="game_menu_container">
-            <div class="game_menu">
+            <div class="game_menu_title_container">
                 <div class="game_menu_title">GAME CENTER</div>
             </div>
-            <div class="game_menu_options">
+            <div class="game_menu_option_container">
                 <div class="game_menu_option">
-                    <p>GAMES</p>
+                    <p class="option_btn" data-value="game">GAMES</p>
                 </div>
                 <div class="game_menu_option">
-                    <p>OPTIONS</p>
+                    <p class="option_btn" data-value="options">OPTIONS</p>
                 </div>
                 <div class="game_menu_option">
-                    <p>LEAVE</p>
+                    <p class="option_btn" data-value="leave">LEAVE</p>
+                </div>
+            </div>
+        </div>
+        <div class="games_container df_jc_ac">
+            <div class="games_body">
+                <div class="games_card">
+                    <div class="games_img">
+                        <img src="/img/作品集/gen-1-pokemon-kanto-header.jpg" alt="">
+                    </div>
+                    <div class="games_title_bg"></div>
+                    <div class="games_title">猜數字遊戲</div>
+                </div>
+                <div class="games_card">
+                    <div class="games_img">
+                        <img src="/img/作品集/寶可夢圖鑑.png" alt="">
+                    </div>
+                    <div class="games_title_bg"></div>
+                    <div class="games_title">拉霸機</div>
+                </div>
+                <div class="games_card">
+                    <div class="games_img">
+                        <img src="/img/作品集/神奇寶貝海報.jpg" alt="">
+                    </div>
+                    <div class="games_title_bg"></div>
+                    <div class="games_title">吹牛</div>
+                </div>
+                <div class="games_card">
+                    <div class="games_img">
+                        <img src="/img/bg1.png" alt="">
+                    </div>
+                    <div class="games_title_bg"></div>
+                    <div class="games_title">數獨</div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- LOADING PAGE -->
     <div id="loading_page" class="df_jc_ac">
         <div class="loading_box">
             <div class="loading_img bg_img">
@@ -69,50 +102,74 @@
     <script>
         detector.safariViewHeight('#main_body');
 
+        // 預先載圖 避免動畫失效
+        const imagesToPreload = [
+            '/img/作品集/gen-1-pokemon-kanto-header.jpg',
+            '/img/作品集/寶可夢圖鑑.png',
+            '/img/作品集/神奇寶貝海報.jpg',
+            '/img/bg1.png',
+            '/img/Technic2.jpg',
+        ];
 
-        function getBackgroundImageUrl(element) {
-            const backgroundImage = window.getComputedStyle(element).backgroundImage;
-            const urlMatch = backgroundImage.match(/url\(["']?([^"']*)["']?\)/);
+        function preloadImages(urls) {
+            const promises = urls.map(url => {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.src = url;
 
-            return urlMatch ? urlMatch[1] : null;
-        }
-
-        function preloadBackgroundImage(url) {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                img.src = url;
-
-                img.onload = () => resolve(url);
-                img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
+                    img.onload = () => resolve(url); 
+                    img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
+                });
             });
+
+            return Promise.all(promises);  
         }
 
-        const element = document.querySelector('#game_bg');
-        const imageUrl = getBackgroundImageUrl(element);
+        preloadImages(imagesToPreload)
+            .then(() => {
+                $('#loading_page').hide();
+                $('#main_body').css({
+                    display: 'flex',
+                });
+                $('#zoomIn').show();
+            })
+            .catch(error => {
+                console.error(error);  
+            });
 
-        if (imageUrl) {
-            preloadBackgroundImage(imageUrl)
-                .then(() => {
-                    $('#loading_page').hide();
-                    $('#main_body').css({
+
+
+        // 處理目錄功能
+
+        function menuSelect(e) {
+            $('.option_btn').removeClass('active');
+            let em = e.currentTarget;
+            $(em).addClass('active');
+            let menuContainer = $(em).closest('.game_menu_container');
+            if (!menuContainer.hasClass('activated')) {
+                menuContainer.addClass('activated');
+            }
+            let value = $(em).data('value');
+            console.log(value);
+            switch (value) {
+                case ('game'):
+                    $('.games_container').css({
                         display: 'flex',
                     });
-                    $('#zoomIn').show();
-                })
-                .catch((error) => {
-
-                });
+                    break;
+                case ('options'):
+                    $('.options_container').show();
+                    $('.games_container').hide();
+                    break;
+                case ('leave'):
+                    $('.games_container').hide();
+                    break;
+            }
         }
 
-        // $(document).ready(function () {
-        //     setTimeout(() => {
-        //         $('#loading_page').hide();
-        //         $('#main_body').css({
-        //             display: 'flex',
-        //         });
-        //         $('#zoomIn').show();
-        //     }, 500);
-        // })
+        let menuBtns = $('.option_btn');
+
+        menuBtns.off('click').on('click', menuSelect);
 
     </script>
 </body>

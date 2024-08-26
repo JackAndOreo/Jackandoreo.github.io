@@ -548,23 +548,23 @@ body.unset_overflow {
 
 .project_card.visible {
     .project_image_filter {
-        animation: cardFilterIn .25s linear forwards;
+        animation: cardFilterIn .25s linear forwards .2s;
     }
 
     .project_text_bg {
-        animation: cardWhiteBgIn .25s linear forwards;
+        animation: cardWhiteBgIn .25s linear forwards .2s;
     }
 
     .project_title {
-        animation: projectTitleIn .25s linear forwards;
+        animation: projectTitleIn .25s linear forwards .2s;
     }
 
     .project_intro {
-        animation: projectIntroIn .25s linear forwards;
+        animation: projectIntroIn .25s linear forwards .2s;
     }
 
     .project_link {
-        animation: projectLinkIn .25s linear forwards;
+        animation: projectLinkIn .25s linear forwards .2s;
     }
 }
 
@@ -720,7 +720,7 @@ body.unset_overflow {
 .skill_container {
     display: grid;
     width: 100%;
-    padding: 60px 40px 120px;
+    padding: 60px 40px 140px;
     column-gap: 28px;
     row-gap: 40px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
