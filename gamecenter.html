@@ -47,14 +47,14 @@
         </div>
         <div class="games_container df_jc_ac">
             <div class="games_body">
-                <div class="games_card">
+                <div class="games_card" data-value="numbers">
                     <div class="games_img">
                         <img src="/img/作品集/gen-1-pokemon-kanto-header.jpg" alt="">
                     </div>
                     <div class="games_title_bg"></div>
                     <div class="games_title">猜數字遊戲</div>
                 </div>
-                <div class="games_card">
+                <div class="games_card" data-value="slot">
                     <div class="games_img">
                         <img src="/img/作品集/寶可夢圖鑑.png" alt="">
                     </div>
@@ -74,6 +74,19 @@
                     </div>
                     <div class="games_title_bg"></div>
                     <div class="games_title">數獨</div>
+                </div>
+                <div class="number_game_body">
+                    <h3>猜數字遊戲</h3>
+                    <div class="game_intro_container">
+                        <p>猜一個四位數字，四位數中不會有重複的數字。</p>
+                        <p>每猜一次都可以獲得提示，提示以XAXB的方式進行，</p>
+                        <p>X表示位置正確的數的個數，Y表示數字正確而位置不對的數的個數。</p>
+                    </div>
+                    <input class="number_game_input" type="text">
+                    <div class="number_button_container">
+                        <button class="number_guess_button">猜猜看</button>
+                        <button class="number_clear_button">再一次</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,12 +130,12 @@
                     const img = new Image();
                     img.src = url;
 
-                    img.onload = () => resolve(url); 
+                    img.onload = () => resolve(url);
                     img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
                 });
             });
 
-            return Promise.all(promises);  
+            return Promise.all(promises);
         }
 
         preloadImages(imagesToPreload)
@@ -134,7 +147,7 @@
                 $('#zoomIn').show();
             })
             .catch(error => {
-                console.error(error);  
+                console.error(error);
             });
 
 
@@ -170,6 +183,20 @@
         let menuBtns = $('.option_btn');
 
         menuBtns.off('click').on('click', menuSelect);
+
+        // 處理遊戲選中
+
+        function gameSelect(e) {
+            $('.games_card').removeClass('active');
+            let em = e.currentTarget;
+            $(em).addClass('active');
+            $('.games_card:not(.active)').hide();
+        }
+
+        let gameCards = $('.games_card');
+
+        gameCards.off('click').on('click', gameSelect);
+
 
     </script>
 </body>

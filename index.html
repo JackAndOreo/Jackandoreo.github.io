@@ -164,7 +164,7 @@
                     </div>
                     <div class="skill_card_text">
                         <ul>
-                            <li>JavaScript</li>
+                            <li>JavaScript ES6</li>
                             <li>jQuery</li>
                             <li>Promise</li>
                             <li>Async/Await</li>
@@ -416,8 +416,8 @@
                 const cardLeft = cardRect.left * (1 / scaleFactor);
                 const cardRight = (cardRect.left + cardWidth * scaleFactor) * (1 / scaleFactor);
 
-                console.log("左",cardLeft);
-                console.log("右",cardRight);
+                console.log("左", cardLeft);
+                console.log("右", cardRight);
 
                 if (cardLeft >= -80 && cardRight <= (windowWidth + 90)) {
                     card.classList.add('visible');
@@ -430,6 +430,27 @@
         $(document).ready(function () {
             transformControl();
         })
+
+        // 區塊2手機板滾動設置
+
+        const mobileBody2 = $('#main_body_2');
+        let startX = 0;
+        let startY = 0;
+
+        mobileBody2.on('touchstart', function (e) {
+            startX = e.originalEvent.touches[0].clientX;
+            startY = e.originalEvent.touches[0].clientY;
+        });
+
+        mobileBody2.on('touchmove', function (e) {
+            e.preventDefault();
+            let moveX = e.originalEvent.touches[0].clientX - startX;
+            let moveY = e.originalEvent.touches[0].clientY - startY;
+
+            if (Math.abs(moveX) > Math.abs(moveY)) {
+                mobileBody2.scrollTop(mobileBody2.scrollTop() - moveX);
+            }
+        });
     </script>
 </body>
 

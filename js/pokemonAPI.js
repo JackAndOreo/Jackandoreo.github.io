@@ -35,15 +35,15 @@ class PokemonOperation {
             return;
         }
 
-        var nameHtml = this.generateName();
-        var typeHtml = this.generateType();
-        var abilityHtml = this.generateAbility();
-        var heldHtml = this.generateHeld();
-        var strengthHtml = this.generateStrength();
-        var imgHtml = this.generateImg();
+        let nameHtml = this.generateName();
+        let typeHtml = this.generateType();
+        let abilityHtml = this.generateAbility();
+        let heldHtml = this.generateHeld();
+        let strengthHtml = this.generateStrength();
+        let imgHtml = this.generateImg();
         this.generateImg();
 
-        var html = `<div class="book_border df_jc_ac" data-order="${this.index}" data-gif="${this.apiData.sprites.other.showdown.front_default}">
+        let html = `<div class="book_border df_jc_ac" data-order="${this.index}" data-gif="${this.apiData.sprites.other.showdown.front_default}">
             <div class="book">
                 <div class="pm_img">
                     ${imgHtml}
@@ -82,7 +82,7 @@ class PokemonOperation {
     }
 
     generateImg() {
-        var imgHtml = `<div class="pm_shiny bg_img"></div>
+        let imgHtml = `<div class="pm_shiny bg_img"></div>
                     <img class="pm_img_default"src="${this.apiData.sprites.other['official-artwork'].front_default}" alt="${this.apiData.name}">
                     <img class="pm_img_shiny" src="${this.apiData.sprites.other['official-artwork'].front_shiny}" alt="${this.apiData.name}">`;
 
@@ -90,24 +90,24 @@ class PokemonOperation {
     }
 
     generateName() {
-        var name = this.apiData.name;
-        var id = this.apiData.id;
+        let name = this.apiData.name;
+        let id = this.apiData.id;
 
-        var newName = name.charAt(0).toUpperCase() + name.slice(1);
-        var newId = id.toString().padStart(3, '0');
+        let newName = name.charAt(0).toUpperCase() + name.slice(1);
+        let newId = id.toString().padStart(3, '0');
 
-        var nameHtml = `<div class="pm_order">${newId}</div>
+        let nameHtml = `<div class="pm_order">${newId}</div>
                         <div class="pm_name">${newName}</div>`
 
         return nameHtml;
     }
 
     generateType() {
-        var types = this.apiData.types;
-        var typeHtml = "";
+        let types = this.apiData.types;
+        let typeHtml = "";
 
         for (let type of types) {
-            var typeName = type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1);
+            let typeName = type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1);
             typeHtml += `<div class="type" data-pmtype="${typeName}">${typeName}</div>`;
         }
 
@@ -115,12 +115,12 @@ class PokemonOperation {
     }
 
     generateAbility() {
-        var abilities = this.apiData.abilities;
-        var abilityHtml = "";
+        let abilities = this.apiData.abilities;
+        let abilityHtml = "";
 
         for (let ability of abilities) {
             if (!ability.is_hidden) {
-                var abilityName = ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1);
+                let abilityName = ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1);
                 abilityHtml += `<div class="extension_value" data-ability="${abilityName}">${abilityName}</div>`
             }
         }
@@ -129,10 +129,10 @@ class PokemonOperation {
     }
 
     generateHeld() {
-        var held = this.apiData.held_items;
-        var heldHtml = "";
+        let held = this.apiData.held_items;
+        let heldHtml = "";
         if (held.length > 0) {
-            var heldName = held[0].item.name.charAt(0).toUpperCase() + held[0].item.name.slice(1);
+            let heldName = held[0].item.name.charAt(0).toUpperCase() + held[0].item.name.slice(1);
             heldHtml = `<div class="extension_value" data-held="${heldName}">${heldName}</div>`;
         } else {
             heldHtml = `<div class="extension_value">-</div>`;
@@ -142,11 +142,11 @@ class PokemonOperation {
     }
 
     generateStrength() {
-        var strengths = this.apiData.stats;
-        var strengthHtml = ``;
+        let strengths = this.apiData.stats;
+        let strengthHtml = ``;
 
         for (let strength of strengths) {
-            var statName = strength.stat.name.charAt(0).toUpperCase() + strength.stat.name.slice(1);
+            let statName = strength.stat.name.charAt(0).toUpperCase() + strength.stat.name.slice(1);
 
             strengthHtml += `<div class="strength" data-strength="${strength.base_stat}">
                                 <div class="strength_title">${statName}</div>
@@ -161,8 +161,8 @@ class PokemonOperation {
     setStatLength() {
         let strengths = $(`.book_border[data-order="${this.index}"] .strength`);
         for (let strength of strengths) {
-            var bar = $(strength).find('.strength_bar');
-            var width = parseInt($(strength).data('strength')) * 0.8;
+            let bar = $(strength).find('.strength_bar');
+            let width = parseInt($(strength).data('strength')) * 0.8;
             bar.css({
                 width: `${width}px`,
             })
@@ -188,7 +188,7 @@ let indices = Array.from({ length: selectedRange[1] - selectedRange[0] + 1 }, (_
 for (let i = selectedRange[0]; i <= selectedRange[1]; i++) {
     let promise = new Promise((resolve, reject) => {
         new PokemonOperation(i, resolve);
-        var possibility = Math.random();
+        let possibility = Math.random();
         if (possibility < 0.125 && randomArray.length < 16) {
             randomArray.push(i);
         }
@@ -200,7 +200,7 @@ Promise.all(promises).then(() => {
 
 
     // 重整順序
-    var allbooks = $('.book_border').toArray().sort((a, b) => {
+    let allbooks = $('.book_border').toArray().sort((a, b) => {
         return $(a).data('order') - $(b).data('order');
     });
 
@@ -223,12 +223,12 @@ Promise.all(promises).then(() => {
         randomArray.push(remainingIndices[randomIndex]);
     }
 
-    var spinItems = $('.spin_item');
+    let spinItems = $('.spin_item');
     for (let i = 0; i < randomArray.length; i++) {
-        var order = randomArray[i];
-        var img = $(`.book_border[data-order="${order}"] .pm_img img`).attr('src');
-        var name = $(`.book_border[data-order="${order}"] .pm_name`).text();
-        var imgHtml = `<img src="${img}" alt="${name}" data-order="${order}">`;
+        let order = randomArray[i];
+        let img = $(`.book_border[data-order="${order}"] .pm_img img`).attr('src');
+        let name = $(`.book_border[data-order="${order}"] .pm_name`).text();
+        let imgHtml = `<img src="${img}" alt="${name}" data-order="${order}">`;
         $(spinItems[i]).append(imgHtml);
     }
 
@@ -264,15 +264,15 @@ Promise.all(promises).then(() => {
 
     // LOADING完成 
     // 確保圖片都下載完成
-    const images = document.querySelectorAll('img');
-    console.log(images);
+    let pmImgs = $('.pm_img img');
+    console.log(pmImgs);
     let loadedImagesCount = 0;
 
-    images.forEach((img) => {
-        img.addEventListener('load', () => {
+    pmImgs.each((index, img) => {
+        $(img).on('load', () => {
             loadedImagesCount++;
 
-            if (loadedImagesCount >= (images.length - 30)) {
+            if (loadedImagesCount >= (pmImgs.length - 50)) {
                 $('#loading_page').hide();
                 $('#pokemon_body').css({
                     display: 'flex',
@@ -289,4 +289,12 @@ Promise.all(promises).then(() => {
             }
         });
     });
+    // 單純延遲Loading時長
+    // setTimeout(function () {
+    //     $('#loading_page').hide();
+    //     $('#pokemon_body').css({
+    //         display: 'flex',
+    //     });
+    //     $('#zoomIn').show();
+    // }, 400);
 });
