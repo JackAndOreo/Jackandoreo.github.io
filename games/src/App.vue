@@ -49,28 +49,28 @@
                     <div v-if="selectedGame === ''" class="games_body container_body">
                         <div class="games_card" @click="gameSelect('numbers')">
                             <div class="games_img">
-                                <img src="../img/Technic2.jpg" alt="">
+                                <img src="/img/Technic2.jpg" alt="">
                             </div>
                             <div class="games_title_bg"></div>
                             <div class="games_title">猜數字遊戲</div>
                         </div>
                         <div class="games_card" @click="gameSelect('slot')">
                             <div class="games_img">
-                                <img src="../img/Technic2.jpg" alt="">
+                                <img src="/img/Technic2.jpg" alt="">
                             </div>
                             <div class="games_title_bg"></div>
                             <div class="games_title">拉霸機</div>
                         </div>
                         <div class="games_card" @click="gameSelect('dice')">
                             <div class="games_img">
-                                <img src="../img/Technic2.jpg" alt="">
+                                <img src="/img/Technic2.jpg" alt="">
                             </div>
                             <div class="games_title_bg"></div>
                             <div class="games_title">吹牛</div>
                         </div>
                         <div class="games_card" @click="gameSelect('soduku')">
                             <div class="games_img">
-                                <img src="../img/Technic2.jpg" alt="">
+                                <img src="/img/Technic2.jpg" alt="">
                             </div>
                             <div class="games_title_bg"></div>
                             <div class="games_title">數獨</div>
@@ -92,7 +92,7 @@ import numberGame from './components/numberGame.vue';
 
 // 預加載的圖片路徑
 const imagesToPreload = [
-    '../img/Technic2.jpg', // 确保图片路径正确
+    '/games/public/img/Technic2.jpg', // 确保图片路径正确
 ];
 
 // 確認加載狀態
@@ -203,7 +203,7 @@ function gameSelect(value) {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(../img/Technic2.jpg);
+    background-image: url(/img/Technic2.jpg);
     background-size: cover;
     filter: blur(0.3px) contrast(0.9);
     opacity: 0.92;
@@ -425,7 +425,7 @@ function gameSelect(value) {
 .loading_img {
     width: 48px;
     height: 48px;
-    background-image: url(../img/ballGif.gif);
+    background-image: url(/img/ballGif.gif);
     background-position: 50% 160%;
 }
 
