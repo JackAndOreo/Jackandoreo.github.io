@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { ref, watch, onUnmounted } from 'vue';
+import { ref, watch, onUnmounted, defineExpose, nextTick } from 'vue';
 
 const props = defineProps({
     width: {
@@ -53,46 +53,67 @@ const handleBackgroundClick = () => {
     }
 };
 
-watch(isVisible, (newValue) => {
+watch(isVisible, async (newValue) => {
     if (newValue) {
+        // 等待 DOM 更新完成
+        await nextTick();
+
+        const container = document.querySelector('.popout_container');
+        const background = document.querySelector('.popout_background');
+
         document.body.style.overflow = 'hidden';
         if (props.showAnimation) {
-            const container = document.querySelector('.popout_container');
-            const background = document.querySelector('.popout_background');
-            container.style.opacity = 0;
-            background.style.opacity = 0;
-            container.style.display = 'flex';
-            background.style.display = 'block';
-            requestAnimationFrame(() => {
-                container.style.transition = 'opacity 0.3s';
-                background.style.transition = 'opacity 0.3s';
-                container.style.opacity = 1;
-                background.style.opacity = 1;
-            });
+            if (container && background) {
+                container.style.opacity = 0;
+                background.style.opacity = 0;
+                container.style.display = 'flex';
+                background.style.display = 'block';
+                requestAnimationFrame(() => {
+                    container.style.transition = 'opacity 0.3s';
+                    background.style.transition = 'opacity 0.3s';
+                    container.style.opacity = 1;
+                    background.style.opacity = 1;
+                });
+            }
         } else {
-            document.querySelector('.popout_container').style.display = 'flex';
-            document.querySelector('.popout_background').style.display = 'block';
+            if (container && background) {
+                container.style.display = 'flex';
+                background.style.display = 'block';
+            }
         }
     } else {
         document.body.style.overflow = 'unset';
         if (props.showAnimation) {
             const container = document.querySelector('.popout_container');
             const background = document.querySelector('.popout_background');
-            container.style.opacity = 0;
-            background.style.opacity = 0;
-            setTimeout(() => {
+
+            if (container && background) {
+                container.style.opacity = 0;
+                background.style.opacity = 0;
+                setTimeout(() => {
+                    container.style.display = 'none';
+                    background.style.display = 'none';
+                }, 300);
+            }
+        } else {
+            const container = document.querySelector('.popout_container');
+            const background = document.querySelector('.popout_background');
+
+            if (container && background) {
                 container.style.display = 'none';
                 background.style.display = 'none';
-            }, 300);
-        } else {
-            document.querySelector('.popout_container').style.display = 'none';
-            document.querySelector('.popout_background').style.display = 'none';
+            }
         }
     }
 });
 
 onUnmounted(() => {
     document.body.style.overflow = 'unset';
+});
+
+defineExpose({
+    show,
+    close
 });
 </script>
 
@@ -106,6 +127,7 @@ onUnmounted(() => {
     justify-content: center;
     align-items: center;
     display: none;
+    z-index: 99;
 }
 
 .popout_background {
@@ -121,5 +143,6 @@ onUnmounted(() => {
 .popout_box {
     position: relative;
     z-index: 100;
+    background: #f0f0f0;
 }
 </style>

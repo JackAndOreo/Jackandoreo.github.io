@@ -23,7 +23,7 @@
             <!-- LOGO -->
             <div id="zoomIn">
                 <div class="logo_container">
-                    <a href="../index.html" rel="noopener noreferrer">
+                    <a href="/../Jackandoreo.github.io/index.html" rel="noopener noreferrer">
                         <div class="logo">Liam</div>
                         <div class="logo_text">Front-end Developer</div>
                     </a>
