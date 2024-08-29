@@ -272,7 +272,7 @@ Promise.all(promises).then(() => {
         $(img).on('load', () => {
             loadedImagesCount++;
 
-            if (loadedImagesCount >= (pmImgs.length - 50)) {
+            if (loadedImagesCount >= (pmImgs.length - 80)) {
                 $('#loading_page').hide();
                 $('#pokemon_body').css({
                     display: 'flex',

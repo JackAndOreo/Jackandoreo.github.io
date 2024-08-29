@@ -1,345 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* FONTS */
+  --chinese-font: 'Noto Sans TC', sans-serif;
+  --second-chinese-font: 'Noto Serif TC', serif;
+  --eng-font: 'Raleway', sans-serif;
+  --style-font: "Knewave", system-ui;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --enormous-font-size: 2.75rem;
+  --biggest-font-size: 2.25rem;
+  --bigger-font-size: 1.75em;
+  --big-font-size: 1.4rem;
+  --normal-font-size: 1.2rem;
+  --small-font-size: .9rem;
+  --smaller-font-size: .8rem;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --font-light: 100;
+  --font-regular: 300;
+  --font-medium: 500;
+  --font-bold: 900;
+
+  /* COLORS */
+  --bg-color: #F3F2ED;
+  --font-color: #1D1E22;
+
+  /* GRAYS */
+  --black: #1c1c1c;
+  --grey-darkest: #535353;
+  --grey-darker: #787878;
+  --grey-dark: #969696;
+  --grey-light: #ababab;
+  --grey-lighter: #c0c0c0;
+  --grey-lightest: #D9D9D9;
+
+  /* WIDTH */
+  --max-width: 1520px;
+  --min-width: 350px;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
+*, *::after, *::before {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background-color: #f0f0f0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+a {
+  text-decoration: none;
+  color: #000;
 }
 
-button:hover {
-  border-color: #646cff;
+p, h1, h2, h3, h4  {
+  margin: 0;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-  padding: 2em;
+img {
+  width: 100%;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-
-/* LOGO */
-
-#zoomIn {
-  position: absolute;
-  z-index: 99;
-}
-
-.logo_container {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 0 0 0 16px;
-  filter: invert(100%) sepia(4%) saturate(214%) hue-rotate(292deg) brightness(112%) contrast(88%);
-}
-
-.logo {
-  font-family: "Knewave", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 48px;
-  transition: all 0.25s ease-in;
-}
-
-.logo_text {
-  font-family: 'Inter';
-  white-space: nowrap;
-  font-size: 13px;
-  transition: all 0.25s ease-in;
-}
-
-@media screen and (max-width: 600px) {
-  .logo {
-    font-size: 36px;
-  }
-
-  .logo_text {
-    font-size: 12px;
-  }
-}
-
-
-/* 主區塊 MENU */
-
-#main_body {
-  width: 100%;
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
-  flex-direction: column;
-  position: relative;
-  /* background-color: #6ba9f1; */
-  background-color: #f16bd7;
   overflow: hidden;
-  padding: 40px;
 }
 
-#game_bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: url(/img/Technic2.jpg);
-  background-size: cover;
-  filter: blur(0.3px) contrast(0.9);
-  opacity: 0.92;
+.df_jc_ac {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.game_menu_title_container {
-  transform-style: preserve-3d;
-  perspective: 320px;
+.bg_img {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.game_menu_title {
-  font-size: 5.8rem;
-  font-family: "New Amsterdam", sans-serif;
-  transform: rotateY(15deg) translateX(5px) translateZ(95px);
-  text-shadow: 5px 5px 3px #1e1e1e;
-  color: #e5e5e5;
-  user-select: none;
-  margin-bottom: 80%;
-}
-
-
-.game_menu_option_container {
-  position: absolute;
-  left: calc((100% - 350px) / 2);
-  top: calc((100% - 224px) / 2 + 50px);
-  max-width: 350px;
-  font-size: 3.35rem;
-  font-family: "New Amsterdam", sans-serif;
-}
-
-.game_menu_option {
-  margin: 20px 0;
-  letter-spacing: 1px;
-}
-
-.game_menu_option p {
-  cursor: pointer;
-  width: fit-content;
-  color: #e5e5e5;
-  text-shadow: 0 0 6px black;
-}
-
-.game_menu_option p:hover {
-  font-weight: 600;
-  text-shadow: 3px 3px 3px #33333347;
-}
-
-.game_menu_option p:active {
-  font-weight: 600;
-  text-shadow: 3px 3px 3px #33333347;
-}
-
-@media screen and (max-width: 600px) {
-  .game_menu_title {
-    font-size: 3.6rem;
-    transition: all 0.25s ease-in;
-    transform: rotateY(15deg) translateX(-10px) translateZ(90px);
-  }
-
-  .game_menu_option {
-    font-size: 2.25rem;
-    transition: all 0.25s ease-in;
-  }
-
-  .game_menu_option p {
-    padding-left: 40px;
-  }
-}
-
-/* 處理按鈕點擊後 */
-
-.game_menu_container.activated .game_menu_title_container {
-  display: none;
-}
-
-.game_menu_container.activated .game_menu_option_container {
-  animation: menuActivated .45s linear forwards;
-}
-
-@keyframes menuActivated {
-  0% {
-    left: calc((100% - 350px) / 2);
-    top: calc((100% - 224px) / 2 + 50px);
-    /* transform: scale(1); */
-    font-size: 3.35rem;
-  }
-
-  100% {
-    left: 20px;
-    top: 125px;
-    /* transform: scale(0.7); */
-    font-size: 1.85rem;
-  }
-}
-
-.option_btn.active {
+.title_line {
   position: relative;
-  font-weight: bold;
-  animation: optionActivated .3s forwards .45s;
 }
 
-@keyframes optionActivated {
-  0% {
-    text-indent: 0px;
-  }
-
-  100% {
-    text-indent: 20px;
-  }
-}
-
-.option_btn.active::before {
+.title_line::before {
   content: "";
   position: absolute;
+  width: 100%;
   height: 1px;
-  width: 0px;
-  left: 2px;
-  background-color: #fff;
-  top: calc(50% - .5px);
-  animation: optionActivatedLine .3s forwards .45s;
+  background-color: #787878;
+  left: -150%;
+  top: calc(50% - 1px);
 }
 
-@keyframes optionActivatedLine {
-  0% {
-    width: 0px;
-  }
-
-  100% {
-    width: 14px;
-  }
-}
-
-/* 遊戲頁 */
-
-.games_container {
-  width: calc(90% - 90px);
-  height: 100%;
-  background-color: #ffffff70;
-  position: relative;
-  align-self: flex-end;
-  border-radius: 25px;
-  padding: 16px;
-  display: none;
-}
-
-.games_body {
-  width: 100%;
-  height: 100%;
-  background-color: #cbcacac2;
-  border-radius: 20px;
-  box-shadow: 0px 0px 11px -2px #6e6e6e;
-  display: grid;
-  row-gap: 20px;
-  column-gap: 20px;
-  padding: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
-}
-
-.games_card {
-  position: relative;
-  aspect-ratio: 1;
-  border-radius: 15px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  cursor: pointer;
-}
-
-.games_img {
+.title_line::after {
+  content: "";
   position: absolute;
-  left: 0;
-  top: 0;
   width: 100%;
-  height: 100%;
+  height: 1px;
+  background-color: #787878;
+  right: -150%;
+  top: calc(50% - 1px);
 }
 
-.games_img img {
-  height: 100%;
-  object-fit: cover;
-}
-
-.games_title_bg {
-  background-image: linear-gradient(0deg, #1b1b1b 33%, #1b1b1b, transparent);
-  width: 100%;
-  position: relative;
-  height: 64px;
-}
-
-.games_title {
-  position: absolute;
-  font-size: 1.25rem;
-  font-family: var(--chinese-font);
-  font-weight: 500;
-  color: #f0f0f0;
-  left: 12px;
-  bottom: 12px;
-  letter-spacing: 0.5px;
+@media screen and (max-width: 768px) {
+  .title_line::before {
+      width: 60%;
+      left: -100%;
+  }
+  
+  .title_line::after {
+      width: 60%;
+      right: -100%;
+  }
 }
