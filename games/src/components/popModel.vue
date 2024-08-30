@@ -144,5 +144,8 @@ defineExpose({
     position: relative;
     z-index: 100;
     background: #f0f0f0;
+    border-radius: 12px;
+    padding: 16px;
 }
+
 </style>

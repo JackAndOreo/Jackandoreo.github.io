@@ -92,7 +92,7 @@ import numberGame from './components/numberGame.vue';
 
 // 預加載的圖片路徑
 const imagesToPreload = [
-    '/games/public/img/Technic2.jpg', // 确保图片路径正确
+    '/games/public/img/Technic2.jpg',
 ];
 
 // 確認加載狀態
