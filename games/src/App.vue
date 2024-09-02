@@ -56,7 +56,7 @@
                         </div>
                         <div class="games_card" @click="gameSelect('slot')">
                             <div class="games_img">
-                                <img src="/img/Technic2.jpg" alt="">
+                                <img src="/img/slot.png" alt="">
                             </div>
                             <div class="games_title_bg"></div>
                             <div class="games_title">拉霸機</div>
@@ -77,6 +77,7 @@
                         </div>
                     </div>
                     <numberGame v-if="selectedGame === 'numbers'" class="container_body"></numberGame>
+                    <slotGame v-if="selectedGame === 'slot'" class="container_body"></slotGame>
                 </div>
                 <div v-if="selectedMenu === 'options'" class="options_container">
                     <!-- Option -->
@@ -89,10 +90,13 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import numberGame from './components/numberGame.vue';
+import slotGame from './components/slotGame.vue';
 
 // 預加載的圖片路徑
 const imagesToPreload = [
-    '/games/public/img/Technic2.jpg',
+    // '/games/public/img/Technic2.jpg',
+    // '../vuegame/games/public/img/Technic2.jpg',
+    '/img/Technic2.jpg',
 ];
 
 // 確認加載狀態
@@ -113,15 +117,19 @@ function preloadImages(urls) {
 }
 
 // 在組件掛載時預加載圖片
-onMounted(() => {
-    preloadImages(imagesToPreload)
-        .then(() => {
-            isLoading.value = false; // 圖片加載完成，顯示主內容
-        })
-        .catch(error => {
-            console.error(error);
-        });
-});
+// onMounted(() => {
+//     preloadImages(imagesToPreload)
+//         .then(() => {
+//             isLoading.value = false; // 圖片加載完成，顯示主內容
+//         })
+//         .catch(error => {
+//             console.error(error);
+//         });
+// });
+
+setTimeout(() => {
+    isLoading.value = false;
+}, 2000);
 
 // 處理目錄選擇功能
 
@@ -131,6 +139,7 @@ const activatedMenu = ref(false);
 function menuSelect(value) {
     selectedMenu.value = value;
     activatedMenu.value = true;
+    selectedGame.value = "";    
 }
 
 // 處理遊戲選擇功能
@@ -139,6 +148,7 @@ const selectedGame = ref('');
 
 function gameSelect(value) {
     selectedGame.value = value;
+    console.log(selectedGame.value);
 }
 
 </script>

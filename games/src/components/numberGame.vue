@@ -1,9 +1,10 @@
 <template>
     <div class="number_game_body">
         <h2>猜數字遊戲</h2>
-        <button @click="showPopup">遊戲說明</button>
-        <popModel ref="popup" width="400" height="300" backgroundClose showAnimation @onShow="handleShow" @onClose="handleClose">
+        <button class="intro_btn" @click="showPopup">遊戲說明</button>
+        <popModel ref="popup" backgroundClose showAnimation @onShow="handleShow" @onClose="handleClose">
             <div class="game_intro_container">
+            <h3>遊戲說明</h3>
             <p>＊猜一個四位數字，四位數中不會有重複的數字。</p>
             <p>＊每猜一次都可以獲得提示，提示以XAXB的方式進行，</p>
             <p>＊X表示位置正確的數的個數，Y表示數字正確而位置不對的數的個數。</p>
@@ -73,7 +74,7 @@ function validateInput(event) {
 function generateAnswer() {
     numArray.sort(() => 0.5 - Math.random());
     correctAnswer = numArray.slice(0, 4).join('');
-    console.log('Correct Answer:', correctAnswer);
+    // console.log('Correct Answer:', correctAnswer);
 }
 
 generateAnswer();
@@ -137,8 +138,25 @@ h2 {
     margin: 18px 0;
 }
 
+.intro_btn {
+    display: block;
+    margin: 0 auto;
+    font-size: 1.25rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #262689;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
 .game_intro_container {
-    padding: 0 20px;
+    padding: 0 12px;
+}
+
+.game_intro_container h3 {
+    text-align: center;
+    margin: 4px 0 16px;
 }
 
 .number_game_input {

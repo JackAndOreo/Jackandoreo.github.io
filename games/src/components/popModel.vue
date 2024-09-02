@@ -145,7 +145,8 @@ defineExpose({
     z-index: 100;
     background: #f0f0f0;
     border-radius: 12px;
-    padding: 16px;
+    padding: 16px 16px 24px;
+    max-width: 400px;
 }
 
 </style>
