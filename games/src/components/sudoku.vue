@@ -5,7 +5,10 @@
         <popModel ref="popup" backgroundClose showAnimation @onShow="handleShow" @onClose="handleClose">
             <div class="game_intro_container">
                 <h3>遊戲說明</h3>
-                <p>＊</p>
+                <p>＊遊戲難度分為初級、中級、高級。</p>
+                <p>＊預設難度為［初級］。</p>
+                <p>＊可以使用［提示］按鈕獲得隨機一個位置的正確數字，最多可以使用 3 次。</p>
+                <p>＊全部位置的數字皆填寫正確則成功。</p>
             </div>
         </popModel>
         <div class="sudoku_setting_container">
@@ -19,15 +22,15 @@
                 <label for="medium">中级</label>
                 <input type="radio" id="hard" value="hard" v-model="difficulty">
                 <label for="hard">高级</label>
-                <button @click="hint">提示</button>
+                <button v-if="hasSudoku" @click="hint">提示</button>
             </div>
             <!-- 數獨 -->
             <div class="sudoku_grid">
                 <div v-for="(row, rowIndex) in grid" :key="rowIndex" class="sudoku_row">
                     <input v-for="(cell, colIndex) in row" :key="colIndex" type="text"
                         v-model="grid[rowIndex][colIndex]" :disabled="isGivenCell(rowIndex, colIndex)" maxlength="1"
-                        :class="{ 'hint': hintCell && hintCell[0] === rowIndex && hintCell[1] === colIndex }"
-                        class="sudoku_cell" />
+                        :class="{ 'hint': hintCells.some(([r, c]) => r === rowIndex && c === colIndex) }"
+                        class="sudoku_cell" @input="validateInput($event, rowIndex, colIndex)" />
                 </div>
             </div>
         </div>
@@ -133,6 +136,8 @@ const grid = ref([]);
 const givenCells = ref([]);
 const difficulty = ref('easy');
 let thisSudoku = null;
+const hasSudoku = ref(false);
+let sudokuCompleted = false;
 
 const createEmptyGrid = () => {
     let grid = Array.from({ length: 9 }, () => {
@@ -147,8 +152,14 @@ const generateSudoku = () => {
     thisSudoku = new Sudoku();
     console.timeEnd('Sudoku Generation Time');
     grid.value = thisSudoku.grid;
+
+    // 清空提示紀錄
     hintNum.value = 0;
+    hintCells.value = [];
+
     applyDifficulty();
+    hasSudoku.value = true;
+    sudokuCompleted = false;
 };
 
 const applyDifficulty = () => {
@@ -190,11 +201,12 @@ const randomInt = (min, max) => {
     return num;
 }
 
-const hintCell = ref(null);
+// 提示功能
+
+const hintCells = ref([]);
 const hintNum = ref(0);
 
 const hint = () => {
-
     if (hintNum.value >= 3) {
         alert('已達提示上限！');
         return;
@@ -214,10 +226,36 @@ const hint = () => {
         const [row, col] = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
         grid.value[row][col] = thisSudoku.grid[row][col];
-
-        hintCell.value = [row, col];
+        hintCells.value.push([row, col]);
     }
 };
+
+const validateInput = (event, row, col) => {
+    const input = event.target;
+    const value = input.value;
+
+    if (!/^[1-9]$/.test(value)) {
+        input.value = "";
+        grid.value[row][col] = "";
+        return;
+    }
+
+    grid.value[row][col] = value;
+
+    if (!sudokuCompleted && isSudokuCompleted()) {
+        sudokuCompleted = true;
+        setTimeout(() => {
+            alert('恭喜，成功完成！');
+        }, 150);
+    }
+};
+
+const isSudokuCompleted = () => {
+    return grid.value.flat().every(cell => cell !== "");
+};
+
+// 直接先生成一個簡單的
+generateSudoku();
 
 </script>
 
@@ -256,16 +294,41 @@ h2 {
     margin: 4px 0 16px;
 }
 
+.sudoku_button_container {
+    margin: 16px 0;
+}
+
+.sudoku_button_container button {
+    margin: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #f0f0f0;
+    background: #333;
+    border: 0;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
 
 /* 數獨 */
 
 .sudoku_grid {
     display: grid;
     grid-template-rows: repeat(9, 1fr);
+    justify-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    border: 2px solid #333;
 }
 
 .sudoku_row {
     display: flex;
+}
+
+.sudoku_row:nth-child(3) input,
+.sudoku_row:nth-child(6) input {
+    border-bottom: 2px solid #333;
 }
 
 .sudoku_cell {
@@ -273,5 +336,24 @@ h2 {
     height: 40px;
     text-align: center;
     font-size: 1.5rem;
+    border: 1px solid #999;
+    border-bottom: 0px;
+    color: #3434f4;
 }
+
+.sudoku_cell:nth-child(3),
+.sudoku_cell:nth-child(6) {
+    border-right: 2px solid #333;
+}
+
+.sudoku_cell.hint {
+    color: #359f9f;
+}
+
+.sudoku_cell:disabled {
+    background-color: #d5e3ee;
+    color: rgb(84, 84, 84);
+}
+
+
 </style>

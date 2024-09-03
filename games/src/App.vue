@@ -61,13 +61,13 @@
                             <div class="games_title_bg"></div>
                             <div class="games_title">拉霸機</div>
                         </div>
-                        <div class="games_card" @click="gameSelect('dice')">
+                        <!-- <div class="games_card" @click="gameSelect('dice')">
                             <div class="games_img">
                                 <img src="/img/Technic2.jpg" alt="">
                             </div>
                             <div class="games_title_bg"></div>
                             <div class="games_title">吹牛</div>
-                        </div>
+                        </div> -->
                         <div class="games_card" @click="gameSelect('sudoku')">
                             <div class="games_img">
                                 <img src="/img/sudoku.png" alt="">
@@ -82,6 +82,8 @@
                 </div>
                 <div v-if="selectedMenu === 'options'" class="options_container">
                     <!-- Option -->
+                    <div class="options_body container_body">
+                    </div>
                 </div>
             </div>
         </div>
