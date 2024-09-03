@@ -49,7 +49,7 @@
                     <div v-if="selectedGame === ''" class="games_body container_body">
                         <div class="games_card" @click="gameSelect('numbers')">
                             <div class="games_img">
-                                <img src="/img/Technic2.jpg" alt="">
+                                <img src="/img/1A2BFORNOW.png" alt="">
                             </div>
                             <div class="games_title_bg"></div>
                             <div class="games_title">猜數字遊戲</div>
@@ -68,9 +68,9 @@
                             <div class="games_title_bg"></div>
                             <div class="games_title">吹牛</div>
                         </div>
-                        <div class="games_card" @click="gameSelect('soduku')">
+                        <div class="games_card" @click="gameSelect('sudoku')">
                             <div class="games_img">
-                                <img src="/img/Technic2.jpg" alt="">
+                                <img src="/img/sudoku.png" alt="">
                             </div>
                             <div class="games_title_bg"></div>
                             <div class="games_title">數獨</div>
@@ -78,6 +78,7 @@
                     </div>
                     <numberGame v-if="selectedGame === 'numbers'" class="container_body"></numberGame>
                     <slotGame v-if="selectedGame === 'slot'" class="container_body"></slotGame>
+                    <sudoku v-if="selectedGame === 'sudoku'" class="container_body"></sudoku>
                 </div>
                 <div v-if="selectedMenu === 'options'" class="options_container">
                     <!-- Option -->
@@ -91,6 +92,7 @@
 import { ref, onMounted } from 'vue';
 import numberGame from './components/numberGame.vue';
 import slotGame from './components/slotGame.vue';
+import sudoku from './components/sudoku.vue';
 
 // 預加載的圖片路徑
 const imagesToPreload = [
@@ -148,7 +150,7 @@ const selectedGame = ref('');
 
 function gameSelect(value) {
     selectedGame.value = value;
-    console.log(selectedGame.value);
+    // console.log(selectedGame.value);
 }
 
 </script>
@@ -399,7 +401,7 @@ function gameSelect(value) {
 }
 
 .games_title_bg {
-    background-image: linear-gradient(0deg, #1b1b1b 33%, #1b1b1b, transparent);
+    background-image: linear-gradient(0deg, #1b1b1b 48%, #1b1b1b, transparent, transparent);
     width: 100%;
     position: relative;
     height: 64px;

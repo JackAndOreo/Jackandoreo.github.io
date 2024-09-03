@@ -59,7 +59,7 @@ const handleClose = () => {
 
 // 拉霸機功能
 
-const maxValue = ref(999);
+const maxValue = ref('');
 const slots = ref([0, 0, 0]); // 初始三個slot
 const isSpinning = ref(false); // 控制動畫
 const numbers = Array.from({ length: 10 }, (_, i) => i); // 0到9的數字
@@ -80,6 +80,8 @@ const startSlotMachine = () => {
 };
 
 const validateMaxValue = () => {
+    maxValue.value = maxValue.value.replace(/\D/g, '');
+
     if (maxValue.value > 999) {
         maxValue.value = 999;
     }
@@ -98,11 +100,11 @@ const updateSlots = (result) => {
 const getSlotStyle = (index) => {
     if (isSpinning.value) {
         return {
-            transform: `translateY(-400%)`, 
+            transform: `translateY(-400%)`,
         };
     }
     return {
-        transform: `translateY(-${slots.value[index] * 10}%)`, 
+        transform: `translateY(-${slots.value[index] * 10}%)`,
     };
 };
 

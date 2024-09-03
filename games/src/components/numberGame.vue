@@ -12,7 +12,7 @@
         </div>
         </popModel>
         <input type="text" class="number_game_input" v-model="inputValue" @input="validateInput" placeholder="請輸入數字"
-            maxlength="4" :disabled="isGameOver" />
+            maxlength="4" :disabled="isGameOver" @keydown.enter="makeGuess"/>
         <div class="number_button_container df_jc_ac">
             <button class="number_button guess_btn" @click="makeGuess" :disabled="isGameOver">猜猜看</button>
             <button class="number_button again_btn" @click="resetGame">再玩一次</button>
@@ -63,7 +63,7 @@ let maxGuesses = 8;
 let isGameOver = ref(false);
 let numArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-function validateInput(event) {
+const validateInput = (event) => {
     let value = event.target.value;
 
     let uniqueDigits = [...new Set(value.replace(/\D/g, ''))];
@@ -71,7 +71,7 @@ function validateInput(event) {
     inputValue.value = uniqueDigits.join('');
 }
 
-function generateAnswer() {
+const generateAnswer = () => {
     numArray.sort(() => 0.5 - Math.random());
     correctAnswer = numArray.slice(0, 4).join('');
     // console.log('Correct Answer:', correctAnswer);
@@ -79,7 +79,7 @@ function generateAnswer() {
 
 generateAnswer();
 
-function makeGuess() {
+const makeGuess = () => {
     let guess = inputValue.value;
     if (guess.length !== 4) {
         resultMessage.value = '請輸入4位數字!';
@@ -113,7 +113,7 @@ function makeGuess() {
 
 }
 
-function resetGame() {
+const resetGame = () => {
     inputValue.value = '';
     resultMessage.value = '';
     guesses.value = [];
