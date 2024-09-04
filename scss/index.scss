@@ -2,7 +2,7 @@
 @import "../scss/model";
 @import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
 
-// 入場動畫
+// 入場動畫 總計2s
 
 :root {
     --logoFontOrigSize1: 84px;
@@ -154,7 +154,6 @@ body.unset_overflow {
         --logoFontHeight2: 44px;
         --logoFontTop2: 56px;
     }
-    
 }
 
 // 主區域
@@ -264,6 +263,18 @@ body.unset_overflow {
 
         .intro_text {
             font-family: var(--eng-font);
+            text-indent: 2rem;
+            opacity: 0;
+            animation: introFadeIn 1.2s linear forwards 2.2s;
+        }
+
+        @keyframes introFadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
     }
 }
@@ -659,7 +670,7 @@ body.unset_overflow {
     .project_topic {
         font-size: 54px;
         line-height: 60px;
-        max-width: 110px;
+        max-width: 90px;
     }
 }
 

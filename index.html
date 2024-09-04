@@ -41,9 +41,7 @@
                     <div class="typing-text" id="typingText"></div>
                 </div>
                 <div class="banner_intro">
-                    <p class="intro_text">This is some text. This is some text. This is some text. This is some text.
-                        This
-                        is some text. This is some text.</p>
+                    <p class="intro_text">I am a self-learning front-end developer proficient in HTML, CSS, SCSS, JavaScript, jQuery, and the Vue framework. I have hands-on experience with web page slicing, schedule management, and member center features. Below are my projects.</p>
                 </div>
             </div>
         </div>
@@ -224,7 +222,7 @@
 
 
         // 打字機
-        new TypeMachine('.header_text', 'Front-End Developer', 150, 1000);
+        new TypeMachine('.header_text', 'Front-End Developer', 170, 1800);
         // 懸浮按鈕列
         new Expander($('.expander'), ["專案", "技能", "履歷"], ["#main_body_2", "#main_body_3", "https://www.cakeresume.com/s--34M3ZqUe3cKvoehIYp-Kpg--/Tao_web"], "url(/img/dot.png)");
 
@@ -292,63 +290,14 @@
         new FlewIn($('.skill_card_5'), ".skill_card_5", skillFlewOption);
         new FlewIn($('.portfolio_card_container'), ".portfolio_card_container", topFlewOption);
 
-
-        // 卡片旋轉
-
-        $('.card_right_arrow').off().on('click', function () {
-            let cards = $('.portfolio_card');
-            let totalAmount = cards.length;
-
-            cards.each(function () {
-                let currentCard = $(this);
-                let currentIndex = parseInt(currentCard.data('card'));
-
-                currentCard.removeClass(`portfolio_card_${currentIndex}`);
-
-                let newIndex = currentIndex + 1;
-                if (newIndex > totalAmount) {
-                    newIndex = 1;
-                }
-
-                currentCard.data('card', newIndex);
-                currentCard.addClass(`portfolio_card_${newIndex}`);
-
-                currentCard.css('animation', `cardFlipRight${currentIndex}to${newIndex} 1s linear forwards`);
-            });
-        });
-
-        $('.card_left_arrow').off().on('click', function () {
-            let cards = $('.portfolio_card');
-            let totalAmount = cards.length;
-
-            cards.each(function () {
-                let currentCard = $(this);
-                let currentIndex = parseInt(currentCard.data('card'));
-
-                currentCard.removeClass(`portfolio_card_${currentIndex}`);
-
-                let newIndex = currentIndex - 1;
-                if (newIndex < 1) {
-                    newIndex = totalAmount;
-                }
-
-                currentCard.data('card', newIndex);
-                currentCard.addClass(`portfolio_card_${newIndex}`);
-
-                currentCard.css('animation', `cardFlipLeft${currentIndex}to${newIndex} 1s linear forwards`);
-            });
-        });
-
-
         // 入場控制
 
-        document.querySelector('#zoomIn').addEventListener('animationend', function () {
+        document.querySelector('.intro_text').addEventListener('animationend', function () {
             document.body.classList.add('unset_overflow');
         });
 
 
         // 區域2滾動設置
-
 
         window.addEventListener('scroll', transformControl);
         window.addEventListener('resize', transformControl);

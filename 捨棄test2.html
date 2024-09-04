@@ -201,6 +201,55 @@
         // console.time('Sudoku Generation Time');
         // const sudoku = new Sudoku();
         // console.timeEnd('Sudoku Generation Time');
+
+        
+        // 卡片旋轉 棄用
+
+        $('.card_right_arrow').off().on('click', function () {
+            let cards = $('.portfolio_card');
+            let totalAmount = cards.length;
+
+            cards.each(function () {
+                let currentCard = $(this);
+                let currentIndex = parseInt(currentCard.data('card'));
+
+                currentCard.removeClass(`portfolio_card_${currentIndex}`);
+
+                let newIndex = currentIndex + 1;
+                if (newIndex > totalAmount) {
+                    newIndex = 1;
+                }
+
+                currentCard.data('card', newIndex);
+                currentCard.addClass(`portfolio_card_${newIndex}`);
+
+                currentCard.css('animation', `cardFlipRight${currentIndex}to${newIndex} 1s linear forwards`);
+            });
+        });
+
+        $('.card_left_arrow').off().on('click', function () {
+            let cards = $('.portfolio_card');
+            let totalAmount = cards.length;
+
+            cards.each(function () {
+                let currentCard = $(this);
+                let currentIndex = parseInt(currentCard.data('card'));
+
+                currentCard.removeClass(`portfolio_card_${currentIndex}`);
+
+                let newIndex = currentIndex - 1;
+                if (newIndex < 1) {
+                    newIndex = totalAmount;
+                }
+
+                currentCard.data('card', newIndex);
+                currentCard.addClass(`portfolio_card_${newIndex}`);
+
+                currentCard.css('animation', `cardFlipLeft${currentIndex}to${newIndex} 1s linear forwards`);
+            });
+        });
+
+
     </script>
 </body>
 

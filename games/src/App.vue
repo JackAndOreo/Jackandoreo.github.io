@@ -293,7 +293,7 @@ function gameSelect(value) {
 }
 
 .game_menu_container.activated .game_menu_option_container {
-    animation: menuActivated .4s linear forwards;
+    animation: menuActivated .33s linear forwards;
 }
 
 @keyframes menuActivated {
@@ -315,7 +315,7 @@ function gameSelect(value) {
 .option_btn.active {
     position: relative;
     font-weight: bold;
-    animation: optionActivated .3s forwards .4s;
+    animation: optionActivated .3s forwards .33s;
 }
 
 @keyframes optionActivated {
