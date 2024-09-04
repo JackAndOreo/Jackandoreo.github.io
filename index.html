@@ -41,7 +41,9 @@
                     <div class="typing-text" id="typingText"></div>
                 </div>
                 <div class="banner_intro">
-                    <p class="intro_text">I am a self-learning front-end developer proficient in HTML, CSS, SCSS, JavaScript, jQuery, and the Vue framework. I have hands-on experience with web page slicing, schedule management, and member center features. Below are my projects.</p>
+                    <p class="intro_text">I am a self-learning front-end developer proficient in HTML, CSS, SCSS,
+                        JavaScript, jQuery, and the Vue framework. I have hands-on experience with web page slicing,
+                        schedule management, and member center features. Below are my projects.</p>
                 </div>
             </div>
         </div>
@@ -201,10 +203,13 @@
     <!-- 引用 -->
     <script src="/js/fontControl.js"></script>
     <script src="/js/typeMachine.js"></script>
+    <script src="/js/fontByIn.js"></script>
     <script src="/js/flewIn.js"></script>
     <script src="/js/expander.js"></script>
     <script src="/js/deviceDetect.js"></script>
     <script>
+
+        detector.safariViewHeight('#main_body');
 
         // 字體大小控制
 
@@ -221,8 +226,10 @@
         // new FontCtrl(fontVar, 'rem', 0.9, 1.15, $('#nav_menu'));
 
 
-        // 打字機
+        // 打字機動畫＋文字動畫
         new TypeMachine('.header_text', 'Front-End Developer', 170, 1800);
+        // new FontByIn('.intro_text', 'I am a self-learning front-end developer proficient in HTML, CSS, SCSS, JavaScript, jQuery, and the Vue framework. I have hands-on experience with web page slicing, schedule management, and member center features. Below are my projects.', '16');
+
         // 懸浮按鈕列
         new Expander($('.expander'), ["專案", "技能", "履歷"], ["#main_body_2", "#main_body_3", "https://www.cakeresume.com/s--34M3ZqUe3cKvoehIYp-Kpg--/Tao_web"], "url(/img/dot.png)");
 
