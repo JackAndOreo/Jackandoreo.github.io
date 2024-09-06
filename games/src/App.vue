@@ -32,10 +32,24 @@
             <!-- MAIN BODY -->
             <div id="main_body" class="df_jc_ac">
                 <div id="game_bg" class="bg_img"></div>
-                <div class="game_menu_container" :class="{ activated: activatedMenu }">
+                <div class="game_menu_container" :class="{ activated: activatedMenu, firstActivated: firstActivated }">>
                     <div class="game_menu_title_container">
                         <div class="game_menu_title">GAME CENTER</div>
                     </div>
+                    <!-- 手機板 -->
+                    <div class="game_menu_option_container_mobile bg_img" :class="{ leftMenuActive: isLeftMenuActive }"
+                        @click="toggleMenu()">
+                        <div class="mobile_menu_container">
+                            <div class="option_btn" :class="{ active: selectedMenu === 'game' }"
+                                @click="menuSelect('game')">GAMES</div>
+                            <div class="option_btn" :class="{ active: selectedMenu === 'options' }"
+                                @click="menuSelect('options')">OPTIONS</div>
+                            <div class="option_btn" :class="{ active: selectedMenu === 'leave' }"
+                                @click="menuSelect('leave')">LEAVE</div>
+                        </div>
+                        <div class="mobile_menu_shadow"></div>
+                    </div>
+                    <!-- 一般目錄 -->
                     <div class="game_menu_option_container">
                         <div class="option_btn" :class="{ active: selectedMenu === 'game' }"
                             @click="menuSelect('game')">GAMES</div>
@@ -83,6 +97,7 @@
                 <div v-if="selectedMenu === 'options'" class="options_container">
                     <!-- Option -->
                     <div class="options_body container_body">
+                        <p>There is nothing here yet.</p>
                     </div>
                 </div>
             </div>
@@ -120,17 +135,6 @@ function preloadImages(urls) {
     return Promise.all(promises);
 }
 
-// 在組件掛載時預加載圖片
-// onMounted(() => {
-//     preloadImages(imagesToPreload)
-//         .then(() => {
-//             isLoading.value = false; // 圖片加載完成，顯示主內容
-//         })
-//         .catch(error => {
-//             console.error(error);
-//         });
-// });
-
 setTimeout(() => {
     isLoading.value = false;
 }, 2000);
@@ -138,13 +142,70 @@ setTimeout(() => {
 // 處理目錄選擇功能
 
 const selectedMenu = ref('');
+const firstActivated = ref(false);
 const activatedMenu = ref(false);
 
 function menuSelect(value) {
-    selectedMenu.value = value;
-    activatedMenu.value = true;
-    selectedGame.value = "";    
+    const isMobile = window.innerWidth <= 600 ? true : false;
+    if (value === "leave") {
+        if (selectedMenu.value === "") {
+            // 返回LIAM首頁
+            window.location.href = 'https://jackandoreo.github.io/index.html';
+        } else {
+            // 返回遊戲中心首頁
+            resetState();
+        }
+    } else {
+        if (selectedMenu.value !== "") {
+            // 進入菜單頁
+            selectedMenu.value = value;
+            selectedGame.value = "";
+        } else if (isMobile) {
+            // 手機版直接套用手機板菜單class
+            selectedMenu.value = value;
+            activatedMenu.value = true;
+            firstActivated.value = false;
+            selectedGame.value = "";
+        } else {
+            // 一般情況（動畫）
+            selectedMenu.value = value;
+            firstActivated.value = true;
+            selectedGame.value = "";
+            setTimeout(() => {
+                firstActivated.value = false;
+                activatedMenu.value = true;
+            }, 500);
+        }
+    }
 }
+
+function resetState() {
+    selectedMenu.value = '';
+    activatedMenu.value = false;
+    selectedGame.value = '';
+}
+
+// 處理手機板側邊欄
+
+// const isMobile = ref(window.innerWidth <= 600);
+
+// function checkScreenWidth() {
+//     isMobile.value = window.innerWidth <= 600 ? true : false;
+// }
+
+// onMounted(() => {
+//     checkScreenWidth();
+
+//     window.addEventListener('resize', checkScreenWidth);
+// });
+
+const isLeftMenuActive = ref(false);
+
+function toggleMenu() {
+    isLeftMenuActive.value = !isLeftMenuActive.value;
+}
+
+
 
 // 處理遊戲選擇功能
 
@@ -284,17 +345,33 @@ function gameSelect(value) {
     .game_menu_option p {
         padding-left: 40px;
     }
+
+    .game_menu_option_container {
+        left: calc((100% - 350px) / 2 + 28px);
+        transition: all .25s ease-in;
+    }
 }
 
 /* 處理按鈕點擊後 */
+
+.game_menu_container.firstActivated .game_menu_title_container {
+    display: none;
+}
 
 .game_menu_container.activated .game_menu_title_container {
     display: none;
 }
 
-.game_menu_container.activated .game_menu_option_container {
+.game_menu_container.firstActivated .game_menu_option_container {
     animation: menuActivated .33s linear forwards;
 }
+
+.game_menu_container.activated .game_menu_option_container {
+    left: 20px;
+    top: 125px;
+    font-size: 1.85rem;
+}
+
 
 @keyframes menuActivated {
     0% {
@@ -348,6 +425,112 @@ function gameSelect(value) {
         width: 14px;
     }
 }
+
+/* 處理手機板目錄 */
+
+.game_menu_option_container_mobile {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .game_menu_option_container:has(.active) {
+        display: none;
+    }
+
+    .game_menu_container.activated .game_menu_option_container_mobile {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 30vh;
+        height: 40vh;
+        width: 20px;
+        background-color: #d9d9d9;
+        cursor: pointer;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background-image: url(/img/arrow_right.svg);
+        background-size: 30px;
+    }
+
+    /* 
+    .game_menu_container.activated .game_menu_option_container_mobile.leftMenuActive {
+        
+    } */
+    .mobile_menu_container {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+        width: 190px;
+        background-color: #d9d9d9;
+        z-index: 101;
+        box-shadow: 0 0 13px -4px #333;
+        transform: translateX(-200px);
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .leftMenuActive .mobile_menu_container {
+        animation: leftMobMenuIn .5s ease-in-out forwards;
+    }
+
+    @keyframes leftMobMenuIn {
+        0% {
+            transform: translateX(-200px);
+        }
+
+        100% {
+            transform: translateX(0px);
+        }
+    }
+
+    .mobile_menu_container .option_btn {
+        color: #333;
+        text-shadow: unset;
+        font-family: "New Amsterdam", sans-serif;
+        font-size: 1.75rem;
+        padding-left: 24px;
+    }
+
+    .mobile_menu_container .option_btn.active::before {
+        left: 24px;
+        background-color: #333;
+    }
+
+    .mobile_menu_shadow {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+        width: 100vw;
+        background-color: #333;
+        z-index: 100;
+        transform: translateX(-100%);
+        opacity: 0.75;
+    }
+
+    .leftMenuActive .mobile_menu_shadow {
+        animation: leftMobMenuBgIn .5s ease-in-out forwards;
+    }
+
+    @keyframes leftMobMenuBgIn {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0.75;
+        }
+
+        100% {
+            transform: translateX(0%);
+            opacity: 0.525;
+        }
+    }
+}
+
 
 /* 遊戲頁 */
 
@@ -418,6 +601,55 @@ function gameSelect(value) {
     left: 12px;
     bottom: 12px;
     letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: 768px) {
+    #main_body {
+        padding: 40px 28px;
+    }
+
+    .games_container {
+        width: calc(90% - 64px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .games_container {
+        width: 100%;
+    }
+}
+
+/* Option 選項頁 */
+
+.options_container {
+    width: calc(90% - 90px);
+    height: 100%;
+    background-color: #ffffff70;
+    position: relative;
+    align-self: flex-end;
+    border-radius: 25px;
+    padding: 16px;
+}
+
+.options_body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #333;
+    font-family: "New Amsterdam", sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+    .options_container {
+        width: calc(90% - 64px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .options_container {
+        width: 100%;
+    }
 }
 
 /* 載入頁 */

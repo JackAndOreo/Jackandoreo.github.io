@@ -4,15 +4,15 @@
         <button class="intro_btn" @click="showPopup">遊戲說明</button>
         <popModel ref="popup" backgroundClose showAnimation @onShow="handleShow" @onClose="handleClose">
             <div class="game_intro_container">
-            <h3>遊戲說明</h3>
-            <p>＊猜一個四位數字，四位數中不會有重複的數字。</p>
-            <p>＊每猜一次都可以獲得提示，提示以XAXB的方式進行，</p>
-            <p>＊X表示位置正確的數的個數，Y表示數字正確而位置不對的數的個數。</p>
-            <p>＊最多猜測8次，否則遊戲失敗。</p>
-        </div>
+                <h3>遊戲說明</h3>
+                <p>＊猜一個四位數字，四位數中不會有重複的數字。</p>
+                <p>＊每猜一次都可以獲得提示，提示以XAXB的方式進行，</p>
+                <p>＊X表示位置正確的數的個數，Y表示數字正確而位置不對的數的個數。</p>
+                <p>＊最多猜測8次，否則遊戲失敗。</p>
+            </div>
         </popModel>
         <input type="text" class="number_game_input" v-model="inputValue" @input="validateInput" placeholder="請輸入數字"
-            maxlength="4" :disabled="isGameOver" @keydown.enter="makeGuess"/>
+            maxlength="4" :disabled="isGameOver" @keydown.enter="makeGuess" />
         <div class="number_button_container df_jc_ac">
             <button class="number_button guess_btn" @click="makeGuess" :disabled="isGameOver">猜猜看</button>
             <button class="number_button again_btn" @click="resetGame">再玩一次</button>
@@ -225,5 +225,30 @@ h2 {
     font-size: 1.1rem;
     letter-spacing: 1px;
     margin: 4px 0;
+}
+
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 22px;
+        transition: all .25s ease-in;
+    }
+    
+    .intro_btn {
+        font-size: 1.15rem;
+        transition: all .25s ease-in;
+    }
+
+    .number_game_input {
+        font-size: 1.15rem;
+        height: 36px;
+        min-width: 150px;
+        max-width: 150px;
+        transition: all .25s ease-in;
+    }
+
+    .number_button {
+        font-size: 1rem;
+        transition: all .25s ease-in;
+    }
 }
 </style>

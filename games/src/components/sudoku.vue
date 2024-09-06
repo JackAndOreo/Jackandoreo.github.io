@@ -15,13 +15,13 @@
             <!-- 數獨控制 -->
             <div class="sudoku_button_container df_jc_ac">
                 <button @click="generateSudoku">生成數獨</button>
-                <p>難度選擇</p>
+                <p>難度</p>
                 <input type="radio" id="easy" value="easy" v-model="difficulty">
-                <label for="easy">初级</label>
+                <label for="easy">初</label>
                 <input type="radio" id="medium" value="medium" v-model="difficulty">
-                <label for="medium">中级</label>
+                <label for="medium">中</label>
                 <input type="radio" id="hard" value="hard" v-model="difficulty">
-                <label for="hard">高级</label>
+                <label for="hard">高</label>
                 <button v-if="hasSudoku" @click="hint">提示</button>
             </div>
             <!-- 數獨 -->
@@ -168,8 +168,8 @@ const applyDifficulty = () => {
         cellsToFill = randomInt(36, 40);
     } else if (difficulty.value === 'medium') {
         cellsToFill = randomInt(31, 35);
-    } else {
-        cellsToFill = randomInt(29, 30);
+    } else if (difficulty.value === 'hard') {
+        cellsToFill = randomInt(27, 30);
     }
 
     grid.value = createEmptyGrid();
@@ -298,6 +298,14 @@ h2 {
     margin: 16px 0;
 }
 
+.sudoku_button_container p::after {
+    content: "選擇";
+}
+
+.sudoku_button_container label::after {
+    content: "級";
+}
+
 .sudoku_button_container button {
     margin: 10px;
     font-size: 1.1rem;
@@ -355,5 +363,28 @@ h2 {
     color: rgb(84, 84, 84);
 }
 
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 22px;
+        transition: all .25s ease-in;
+    }
 
+    .intro_btn {
+        font-size: 1.15rem;
+        transition: all .25s ease-in;
+    }
+
+    .sudoku_button_container p::after {
+        display: none;
+    }
+
+    .sudoku_button_container label::after {
+        display: none
+    }
+
+    .sudoku_button_container button {
+        font-size: 1rem;
+        transition: all .25s ease-in;
+    }
+}
 </style>

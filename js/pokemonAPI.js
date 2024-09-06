@@ -265,13 +265,13 @@ Promise.all(promises).then(() => {
     // LOADING完成 
     // 確保圖片都下載完成
     let pmImgs = $('.pm_img img');
-    // console.log(pmImgs.length);
+    console.log(pmImgs.length);
     let loadedImagesCount = 0;
 
     pmImgs.each((index, img) => {
         $(img).on('load', () => {
             loadedImagesCount++;
-            // console.log(loadedImagesCount);
+            console.log(loadedImagesCount);
 
             if (loadedImagesCount >= (pmImgs.length / 2)) {
                 $('#loading_page').hide();

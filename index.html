@@ -201,10 +201,10 @@
         <div class="copyright">&copy; BY TAO ALL RIGHTS RESERVED</div>
     </div>
     <!-- 引用 -->
-    <script src="/js/fontControl.js"></script>
+    <!-- <script src="/js/fontControl.js"></script> -->
     <script src="/js/typeMachine.js"></script>
-    <script src="/js/fontByIn.js"></script>
     <script src="/js/flewIn.js"></script>
+    <!-- <script src="/js/fontByIn.js"></script> -->
     <script src="/js/expander.js"></script>
     <script src="/js/deviceDetect.js"></script>
     <script>
@@ -250,34 +250,7 @@
             $(fonts[i]).text(putInText[i]);
         }
 
-        // function changeText(i = 0) {
-        //     $('.news_ticker').text(putInText[i]);
-        //     $('.news_ticker').addClass("openIn");
-
-        //     setTimeout(() => {
-        //         $('.news_ticker').removeClass("openIn");
-        //         i = (i + 1) % putInText.length;
-        //         setTimeout(() => {
-        //             changeText(i);
-        //         }, 500);
-        //     }, 2500);
-        // }
-
-        // $(document).ready(function () {
-        //     changeText();
-        // })
-
         // 飛入動畫控制
-
-        let topFlewOption = {
-            topDistance: 150,
-            flewDistanceRatio: 0.25,
-            flewInDirection: 'top',
-            flewInDuration: 1,
-            delay: 0,
-            fadeIn: true,
-            repeat: false,
-        };
 
         let skillFlewOption = {
             topDistance: 150,
@@ -295,7 +268,6 @@
         new FlewIn($('.skill_card_3'), ".skill_card_3", skillFlewOption);
         new FlewIn($('.skill_card_4'), ".skill_card_4", skillFlewOption);
         new FlewIn($('.skill_card_5'), ".skill_card_5", skillFlewOption);
-        new FlewIn($('.portfolio_card_container'), ".portfolio_card_container", topFlewOption);
 
         // 入場控制
 
@@ -364,13 +336,13 @@
 
             // 處理project_card文字
             projectCards.forEach(card => {
-                const cardRect = card.getBoundingClientRect();
-                const cardWidth = cardRect.width;
-                // const cardLeft = cardRect.left;
-                // const cardRight = cardRect.right;
+                let cardRect = card.getBoundingClientRect();
+                let cardWidth = cardRect.width;
+                // let cardLeft = cardRect.left;
+                // let cardRight = cardRect.right;
 
-                const cardLeft = cardRect.left * (1 / scaleFactor);
-                const cardRight = (cardRect.left + cardWidth * scaleFactor) * (1 / scaleFactor);
+                let cardLeft = cardRect.left * (1 / scaleFactor);
+                let cardRight = (cardRect.left + cardWidth * scaleFactor) * (1 / scaleFactor);
 
                 if (cardLeft >= -80 && cardRight <= (windowWidth + 90)) {
                     card.classList.add('visible');
@@ -383,28 +355,6 @@
         $(document).ready(function () {
             transformControl();
         })
-
-        // 區塊2手機板滾動設置
-
-        // const mobileBody2 = $('#main_body_2');
-        // let startX = 0;
-        // let startY = 0;
-
-        // mobileBody2.on('touchstart', function (e) {
-        //     startX = e.originalEvent.touches[0].clientX;
-        //     startY = e.originalEvent.touches[0].clientY;
-        // });
-
-        // mobileBody2.on('touchmove', function (e) {
-        //     e.preventDefault();
-        //     let moveX = e.originalEvent.touches[0].clientX - startX;
-        //     let moveY = e.originalEvent.touches[0].clientY - startY;
-        //     console.log(moveX, moveY);
-
-        //     if (Math.abs(moveX) > Math.abs(moveY)) {
-        //         mobileBody2.scrollTop(mobileBody2.scrollTop() - moveX);
-        //     }
-        // });
     </script>
 </body>
 

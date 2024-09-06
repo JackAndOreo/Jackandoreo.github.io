@@ -283,4 +283,27 @@ h2 {
         transform: translateY(-100%);
     }
 }
+
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 22px;
+        transition: all .25s ease-in;
+    }
+
+    .intro_btn {
+        font-size: 1.15rem;
+        transition: all .25s ease-in;
+    }
+
+    .slot_setting_container input[type="text"] {
+        font-size: 1.15rem;
+        height: 36px;
+        transition: all .25s ease-in;
+    }
+
+    .slot_button_container button {
+        font-size: 1rem;
+        transition: all .25s ease-in;
+    }
+}
 </style>

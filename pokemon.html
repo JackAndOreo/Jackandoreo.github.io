@@ -108,13 +108,15 @@
         </div>
     </div>
     <!-- 引用 -->
-    <script src="/js/fontControl.js"></script>
+    <!-- <script src="/js/fontControl.js"></script> -->
     <script src="/js/deviceDetect.js"></script>
     <script src="/js/popModel.js"></script>
     <script src="/js/goTop.js"></script>
     <script src="/js/pokemonAPI.js"></script>
 
     <script>
+
+        detector.safariViewHeight('#loading_page');
 
         class FollowImg {
             constructor(element, mouseX = 10, mouseY = 10, width = 50, height = 50) {
@@ -187,7 +189,6 @@
         new goTop(goTopOption);
 
         // hover的GIF球球，在滾動網頁時會有問題，如果是透過滾動來變更當前鼠標位置，背景圖片不會改
-
 
     </script>
 </body>

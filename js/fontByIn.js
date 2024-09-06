@@ -15,12 +15,15 @@ class FontByIn {
     processText() {
         let textArr = this.texts.split('');
         this.textsLength = textArr.length;
-        let newTextHtml = ``;
+        let newTextHtml = `<div class="single_text_container">`;
 
         for (let i = 0; i < textArr.length; i++) {
-            let textHtml = `<span class="single_text single_text_${i}">${textArr[i]}</span>`;
+            let spaceClass = (textArr[i] === ' ') ? ' space' : '';
+            let textHtml = `<span class="single_text single_text_${i} ${spaceClass}">${textArr[i]}</span>`;
             newTextHtml += textHtml;
         }
+
+        newTextHtml += `</div>`;
 
         return newTextHtml;
     }
