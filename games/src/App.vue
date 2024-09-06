@@ -605,7 +605,7 @@ function gameSelect(value) {
 
 @media screen and (max-width: 768px) {
     #main_body {
-        padding: 40px 28px;
+        padding: 40px 26px;
     }
 
     .games_container {
@@ -614,8 +614,12 @@ function gameSelect(value) {
 }
 
 @media screen and (max-width: 600px) {
+    #main_body {
+        padding: 40px 20px;
+    }
     .games_container {
         width: 100%;
+        padding: 12px;
     }
 }
 

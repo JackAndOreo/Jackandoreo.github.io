@@ -387,4 +387,20 @@ h2 {
         transition: all .25s ease-in;
     }
 }
+
+@media screen and (max-width: 580px) {
+    .sudoku_grid {
+        margin-top: 40px;
+    }
+    .sudoku_cell {
+        width: 32px;
+        height: 32px;
+        font-size: 1.35rem;
+    }
+    .sudoku_setting_container {
+        height: calc(100% - 112px);
+        display: flex;
+        flex-direction: column;
+    }
+}
 </style>
