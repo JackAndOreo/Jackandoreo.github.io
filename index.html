@@ -38,7 +38,7 @@
             <div class="banner_container">
                 <div class="banner_head">
                     <h1 class="header_text"></h1>
-                    <div class="typing-text" id="typingText"></div>
+                    <div class="typing_text" id="typingText"></div>
                 </div>
                 <div class="banner_intro">
                     <p class="intro_text">I am a self-learning front-end developer proficient in HTML, CSS, SCSS,
@@ -53,6 +53,11 @@
             <div class="sticky_part df_jc_ac">
                 <div class="project_topic">
                     專案作品
+                </div>
+                <div class="scroll_hint df_jc_ac">
+                    <div class="scroll_arrow scroll_up bg_img"></div>
+                    <div class="finger bg_img"></div>
+                    <div class="scroll_arrow scroll_down bg_img"></div>
                 </div>
             </div>
             <div class="scroll_part">
@@ -92,10 +97,10 @@
                                 遊戲中心
                             </div>
                             <div class="project_intro">
-                                自製遊戲中心。
+                                使用 Vue 框架自製的遊戲中心，內含猜數字、數獨等經典遊戲！
                             </div>
                             <a href="/vuegame/" target="_blank" rel="" class="project_link df_jc_ac">
-                                <p>查看專案</p>
+                                <p>查看作品</p>
                                 <div class="project_link_arrow bg_img"></div>
                             </a>
                         </div>
@@ -208,6 +213,17 @@
     <script src="/js/expander.js"></script>
     <script src="/js/deviceDetect.js"></script>
     <script>
+        // 永遠返回最頂
+        // window.addEventListener('load', () => {
+        //     const targetElement = document.querySelector('#main_body'); 
+        //     if (targetElement) {
+        //         const targetOffsetTop = targetElement.offsetTop; 
+        //         window.scrollTo({
+        //             top: targetOffsetTop,
+        //             behavior: 'smooth'
+        //         });
+        //     }
+        // });
 
         detector.safariViewHeight('#main_body');
 
@@ -231,7 +247,20 @@
         // new FontByIn('.intro_text', 'I am a self-learning front-end developer proficient in HTML, CSS, SCSS, JavaScript, jQuery, and the Vue framework. I have hands-on experience with web page slicing, schedule management, and member center features. Below are my projects.', '16');
 
         // 懸浮按鈕列
-        new Expander($('.expander'), ["專案", "技能", "履歷"], ["#main_body_2", "#main_body_3", "https://www.cakeresume.com/s--34M3ZqUe3cKvoehIYp-Kpg--/Tao_web"], "url(/img/dot.png)");
+        new Expander(
+            $('.expander'),
+            ["專案", "技能", "履歷"],
+            ["#main_body_2", "#main_body_3", "https://www.cakeresume.com/s--34M3ZqUe3cKvoehIYp-Kpg--/Tao_web"],
+            [delayeTransformControl, null, null],
+            true,
+            "url(/img/dot.png)"
+        );
+
+        function delayeTransformControl() {
+            setTimeout(() => {
+                transformControl();
+            }, 1200);
+        }
 
         // 技能列表
         let putInText = [
@@ -275,15 +304,33 @@
             document.body.classList.add('unset_overflow');
         });
 
+        window.addEventListener('load', () => {
+            requestAnimationFrame(() => {
+                let targetElement = document.querySelector('#main_body');
 
+                if (targetElement) {
+                    let rect = targetElement.getBoundingClientRect();
+
+                    let isVisible = (rect.top >= 0 && rect.left >= 0) &&
+                        (rect.bottom <= window.innerHeight) &&
+                        (rect.right <= window.innerWidth);
+
+                    if (!isVisible) {
+                        document.body.classList.add('unset_overflow');
+                    }
+                }
+            });
+        });
         // 區域2滾動設置
 
         window.addEventListener('scroll', transformControl);
         window.addEventListener('resize', transformControl);
 
+
         let currentTranslateX = 0;
 
         function transformControl() {
+            // console.log(1);
             const scrollSection = document.querySelector('#main_body_2');
             const stickyContent = document.querySelector('.project_container');
             const projectCardContainer = document.querySelector('.project_card_container');
@@ -338,8 +385,6 @@
             projectCards.forEach(card => {
                 let cardRect = card.getBoundingClientRect();
                 let cardWidth = cardRect.width;
-                // let cardLeft = cardRect.left;
-                // let cardRight = cardRect.right;
 
                 let cardLeft = cardRect.left * (1 / scaleFactor);
                 let cardRight = (cardRect.left + cardWidth * scaleFactor) * (1 / scaleFactor);

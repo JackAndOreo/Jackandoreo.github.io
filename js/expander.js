@@ -1,8 +1,10 @@
 class Expander {
-    constructor(target, expandOptions, expandOptionsLink, bgImage) {
+    constructor(target, expandOptions, expandOptionsLink, expadnOptionsFunction = [], requireDefaulFunction = true, bgImage) {
         this.target = target; // jQuery 物件
         this.expandOptions = expandOptions; // 字串陣列
         this.expandOptionsLink = expandOptionsLink; // 字串陣列
+        this.expadnOptionsFunction = expadnOptionsFunction; // 函數陣列
+        this.requireDefaulFunction = requireDefaulFunction; // 是否需要預設功能
         this.originalWidth = this.target.width();
         this.newTargetWidth = 0;
         this.optionLength = this.expandOptions.length;
@@ -85,15 +87,28 @@ class Expander {
     setUpOnclick() {
         let options = this.target.find('.option');
 
-        options.off('click').on('click', (e) => {
-            let targetLink = $(e.target).data('link');
-            let targetElement = $(targetLink);
+        options.each((index, element) => {
+            $(element).off('click').on('click', (e) => {
+                // 如果傳入的函數存在，並且不需要執行預設功能
+                if (this.expadnOptionsFunction[index] && !this.requireDefaulFunction) {
+                    this.expadnOptionsFunction[index]();
+                } else {
+                    // 執行預設的點擊功能
+                    let targetLink = $(e.target).data('link');
+                    let targetElement = $(targetLink);
 
-            if (targetElement.length) {
-                $('html, body').animate({
-                    scrollTop: targetElement.offset().top
-                }, 800);
-            }
+                    if (targetElement.length) {
+                        $('html, body').animate({
+                            scrollTop: targetElement.offset().top
+                        }, 800);
+                    }
+
+                    if (this.expadnOptionsFunction[index]) {
+                        console.log(this.expadnOptionsFunction[index]);
+                        this.expadnOptionsFunction[index]();
+                    }
+                }
+            });
         });
     }
 }

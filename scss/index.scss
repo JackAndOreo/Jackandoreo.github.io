@@ -404,6 +404,7 @@ body.unset_overflow {
 .sticky_part {
     width: 36%;
     min-width: 250px;
+    position: relative;
 }
 
 .project_topic {
@@ -520,30 +521,6 @@ body.unset_overflow {
     animation: projectLinkArrow 2s linear infinite;
 }
 
-// @media screen and (max-width: 600px) {
-//     .isMobile {
-//         .project_title {
-//             opacity: 1;
-//             transform: unset;
-//         }
-        
-//         .project_intro {
-//             opacity: 1;
-//             transform: unset;
-//         }
-        
-//         .project_link {
-//             opacity: 1;
-//             transform: unset;
-//         }
-        
-//         .project_text_bg {
-//             opacity: 1;
-//             transform: unset;
-//         }
-//     }
-// }
-
 @keyframes projectLinkArrow {
     0% {
         transform: translateX(0px);
@@ -579,28 +556,6 @@ body.unset_overflow {
         animation: projectLinkIn .25s linear forwards .2s;
     }
 }
-
-// .isMobile .project_card:active {
-//     .project_image_filter {
-//         animation: cardFilterIn .2s linear forwards;
-//     }
-
-//     .project_text_bg {
-//         animation: cardWhiteBgIn .2s linear forwards;
-//     }
-
-//     .project_title {
-//         animation: projectTitleIn .2s linear forwards;
-//     }
-
-//     .project_intro {
-//         animation: projectIntroIn .2s linear forwards;
-//     }
-
-//     .project_link {
-//         animation: projectLinkIn .2s linear forwards;
-//     }
-// }
 
 @keyframes cardFilterIn {
     0% {
@@ -714,8 +669,54 @@ body.unset_overflow {
     }
 }
 
+/* 區域2手機板新增滑動提示 */
 
-// 區域3
+.isMobile .scroll_hint {
+    position: absolute;
+    flex-direction: column;
+    left: 45px;
+    bottom: 175px;
+
+    .scroll_arrow {
+        width: 32px;
+        height: 32px;
+    }
+
+    .scroll_up {
+        background-image: url(/img/upArrow.png);
+    }
+
+    .scroll_down {
+        background-image: url(/img/upArrow.png);
+        transform: rotate(180deg);
+    }
+
+    .finger {
+        width: 38px;
+        height: 38px;
+        background-image: url(/img/finger.png);
+        transform: rotate(342deg);
+        animation: scrollUpDown 1.75s infinite;
+    }
+
+    @keyframes scrollUpDown {
+        0% {
+            transform: translateY(-4px);
+        }
+
+        50% {
+            transform: translateY(4px);
+        }
+
+        100% {
+            transform: translateY(-4px);
+        }
+    }
+}
+
+
+
+/* 區域3 */
 
 #main_body_3 {
     height: 600px;
@@ -738,7 +739,7 @@ body.unset_overflow {
 .skill_container {
     display: grid;
     width: 100%;
-    padding: 60px 40px 140px;
+    padding: 60px 40px 150px;
     column-gap: 28px;
     row-gap: 40px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
