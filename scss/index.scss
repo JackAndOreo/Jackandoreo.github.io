@@ -319,6 +319,10 @@ body.unset_overflow {
     }
 }
 
+.isSafari #main_body .banner_container {
+    margin: 0 10px 20px;
+}
+
 @media screen and (max-width: 1080px) {
     #main_body {
 
