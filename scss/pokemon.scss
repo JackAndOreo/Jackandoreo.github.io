@@ -18,7 +18,7 @@
             align-items: center;
 }
 
-// LOGO
+/* LOGO */
 
 #zoomIn {
     position: absolute;
@@ -57,7 +57,7 @@
 }
 
 
-// 載入頁
+/* 載入頁 */
 
 #pokemon_body {
     display: none;
@@ -187,7 +187,7 @@
 
 }
 
-// 上半部
+/* 上半部 */
 
 .top_part {
     height: 420px;
@@ -228,7 +228,7 @@
     }
 }
 
-// 下半部
+/* 下半部 */
 
 .bottom_part {
     height: 210px;
@@ -272,7 +272,7 @@
     color: transparent;
 }
 
-// 返回頂部
+/* 返回頂部 */
 
 .goTop {
     position: fixed;
@@ -292,7 +292,7 @@
     cursor: pointer;
 }
 
-// 旋轉
+/* 旋轉 */
 
 .spinning_container {
     position: relative;
@@ -730,7 +730,7 @@
     }
 }
 
-// 旋轉區 Media
+/* 旋轉區 Media */
 
 
 @media screen and (max-width: 1120px) {
@@ -792,7 +792,7 @@
 }
 
 
-// 圖鑑區塊
+/* 圖鑑區塊 */
 
 
 :root {
@@ -1166,7 +1166,7 @@
 
 }
 
-// 擴充資訊
+/* 擴充資訊 */
 
 .pm_extension {
     -ms-grid-row: 1;
@@ -1241,8 +1241,8 @@
     border-radius: 15px;
 }
 
-
-// 彈出控制
+ 
+/* 彈出控制 */
 
 .popout_box {
 
@@ -1402,7 +1402,7 @@
 }
 
 
-// 跟隨動圖
+/* 跟隨動圖 */
 
 .hover_ball {
     -webkit-box-shadow: 0 0 14px -3px #71c0e8;

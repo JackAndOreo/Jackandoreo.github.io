@@ -225,22 +225,10 @@
         //     }
         // });
 
-        detector.safariViewHeight('#main_body');
-
-        // 字體大小控制
-
-        // let fontVar = [
-        //     "--enormous-font-size",
-        //     "--biggest-font-size",
-        //     "--bigger-font-size",
-        //     "--big-font-size",
-        //     "--normal-font-size",
-        //     "--small-font-size",
-        //     "--smaller-font-size",
-        // ]
-
-        // new FontCtrl(fontVar, 'rem', 0.9, 1.15, $('#nav_menu'));
-
+        // SAFARI VH問題
+        if ($('body').hasClass('isSafari')) {
+            detector.safariViewHeight('#main_body');
+        }
 
         // 打字機動畫＋文字動畫
         new TypeMachine('.header_text', 'Front-End Developer', 170, 1800);

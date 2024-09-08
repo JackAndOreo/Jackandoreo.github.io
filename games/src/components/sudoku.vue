@@ -395,7 +395,7 @@ h2 {
     .sudoku_cell {
         width: 32px;
         height: 32px;
-        font-size: 1.35rem;
+        font-size: 1.2rem;
     }
     .sudoku_setting_container {
         height: calc(100% - 112px);
@@ -403,4 +403,5 @@ h2 {
         flex-direction: column;
     }
 }
+
 </style>

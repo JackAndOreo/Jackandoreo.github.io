@@ -2,20 +2,22 @@
     <div id="game_center_body">
         <!-- Loading page -->
         <div v-if="isLoading" id="loading_page" class="df_jc_ac">
-            <div class="loading_box">
-                <div class="loading_img bg_img"></div>
-                <p class="loading_text_box">
-                    <span class="loading_text loading_text_1">L</span>
-                    <span class="loading_text loading_text_2">o</span>
-                    <span class="loading_text loading_text_3">a</span>
-                    <span class="loading_text loading_text_4">d</span>
-                    <span class="loading_text loading_text_5">i</span>
-                    <span class="loading_text loading_text_6">n</span>
-                    <span class="loading_text loading_text_7">g</span>
-                    <span class="loading_text loading_text_8">.</span>
-                    <span class="loading_text loading_text_9">.</span>
-                    <span class="loading_text loading_text_10">.</span>
-                </p>
+            <div class="loading_layer"></div>
+            <div class="loading_box df_jc_ac">
+                <div class="loading_border loading_top_border"></div>
+                <div class="loading_border loading_btm_border"></div>
+                <div class="loading_text_container df_jc_ac">
+                    <div class="loading_text">
+                        Loading...
+                    </div>
+                </div>
+                <div class="loading_bar_container df_jc_ac">
+                    <div class="loading_bar df_jc_ac">
+                        <div v-for="n in displayedCubes" :key="n"
+                            :class="['loading_bar_cube', { loaded: n < displayedCubes }]"></div>
+                    </div>
+                    <div class="loading_bar_layor"></div>
+                </div>
             </div>
         </div>
         <!-- GAME BODY START -->
@@ -111,33 +113,56 @@ import numberGame from './components/numberGame.vue';
 import slotGame from './components/slotGame.vue';
 import sudoku from './components/sudoku.vue';
 
-// 預加載的圖片路徑
-const imagesToPreload = [
-    // '/games/public/img/Technic2.jpg',
-    // '../vuegame/games/public/img/Technic2.jpg',
-    '/img/Technic2.jpg',
-];
-
 // 確認加載狀態
+// 預先加載背景圖片
 const isLoading = ref(true);
+const progress = ref(0); // 加載進度(0 - 100)
+const totalCubes = 10; // 總共顯示的 cube 數量
+const displayedCubes = ref(0);
 
-function preloadImages(urls) {
-    const promises = urls.map(url => {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.src = url;
+const imagesToPreload = ['/img/Technic2.jpg', '/vuegame/img/Technic2.jpg'];
 
-            img.onload = () => resolve(url);
-            img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
-        });
+const preloadImage = (src) => {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = resolve;
+        img.onerror = () => reject(src); // 當加載失敗時，reject 並傳回圖片路徑
     });
+};
 
-    return Promise.all(promises);
-}
+const updateLoadingProgress = () => {
+    // 計算顯示的 cube 數量
+    displayedCubes.value = Math.round((progress.value / 100) * totalCubes);
+};
 
-setTimeout(() => {
-    isLoading.value = false;
-}, 2000);
+const simulateLoading = (loadingDuration = 2000) => {
+    const interval = 100; // 每次進度更新的間隔
+    const step = (100 / (loadingDuration / interval)); // 每次更新的進度步長
+
+    const loadingInterval = setInterval(() => {
+        if (progress.value < 100) {
+            progress.value += step;
+            updateLoadingProgress();
+        } else {
+            clearInterval(loadingInterval);
+            isLoading.value = false;
+        }
+    }, interval);
+};
+
+onMounted(async () => {
+    for (const imagePath of imagesToPreload) {
+        try {
+            await preloadImage(imagePath); // 預加載圖片
+            simulateLoading(); // 開始模擬加載
+            break; // 成功加載一張圖片後退出循環
+        } catch (errorPath) {
+            console.error(`圖片加載失敗，路徑: ${errorPath}`); // 打印失敗的圖片路徑
+        }
+    }
+    simulateLoading(3000);
+});
 
 // 處理目錄選擇功能
 
@@ -206,7 +231,6 @@ function toggleMenu() {
 }
 
 
-
 // 處理遊戲選擇功能
 
 const selectedGame = ref('');
@@ -215,6 +239,33 @@ function gameSelect(value) {
     selectedGame.value = value;
     // console.log(selectedGame.value);
 }
+
+// 處理Safari 100vh相關問題
+
+function detectBrowser() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isSafari = /^((?!chrome|android).)*safari/i.test(userAgent);
+    const isChrome = /chrome/i.test(userAgent) && !isSafari;
+
+    return { isSafari, isChrome };
+}
+
+function setVHProperty() {
+    const windowsVH = window.innerHeight / 100;
+    document.documentElement.style.setProperty('--vh', `${windowsVH}px`);
+}
+
+onMounted(() => {
+    const { isSafari, isChrome } = detectBrowser();
+
+    if (isSafari || isChrome) {
+        setVHProperty();
+    }
+
+    if (isSafari) {
+        document.body.classList.add('isSafari');
+    }
+});
 
 </script>
 
@@ -617,6 +668,7 @@ function gameSelect(value) {
     #main_body {
         padding: 40px 20px;
     }
+
     .games_container {
         width: 100%;
         padding: 12px;
@@ -661,6 +713,19 @@ function gameSelect(value) {
 #loading_page {
     width: 100%;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    position: relative;
+    background-color: #031221;
+}
+
+.loading_layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+    /* background-image: linear-gradient(45deg, #333, #888, #444, #777, #333); */
 }
 
 .loading_box {
@@ -670,113 +735,66 @@ function gameSelect(value) {
     -webkit-column-gap: 16px;
     -moz-column-gap: 16px;
     column-gap: 16px;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
 }
 
-.loading_img {
-    width: 48px;
+.loading_border {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    box-shadow: 0 0px 37px 1px #03e9e7;
+    background: #03e9e7;
+}
+
+.loading_top_border {
+    top: 0;
+    left: 0;
+}
+
+.loading_btm_border {
+    bottom: 0;
+    left: 0;
+}
+
+.loading_bar_container {
+    width: 285px;
     height: 48px;
-    background-image: url(/img/ballGif.gif);
-    background-position: 50% 160%;
+    background: #888;
+    clip-path: polygon(11% 0, 100% 0%, 89% 100%, 0% 100%);
+    position: relative;
+    z-index: 2;
 }
 
-.loading_text_box {
-    font-family: var(--eng-font);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
-    -webkit-column-gap: 6px;
-    -moz-column-gap: 6px;
-    column-gap: 6px;
-    padding-bottom: 8px;
+.loading_bar {
+    width: calc(100% - 20px);
+    height: calc(100% - 8px);
+    background: #333;
+    clip-path: polygon(12% 0, 100% 0%, 88% 100%, 0% 100%);
+    column-gap: 2px;
+    justify-content: flex-start;
+}
+
+.loading_bar_cube {
+    width: calc((100% - 28px) / 10);
+    height: calc(100% - 8px);
+    background-color: #40c3c2;
+    filter: contrast(0.2);
+}
+
+.loading_bar_cube.loaded {
+    filter: unset;
 }
 
 .loading_text {
-    display: block;
-    -webkit-animation: textUpDown 2s infinite;
-    animation: textUpDown 2s infinite;
-}
-
-@-webkit-keyframes textUpDown {
-    0% {
-        line-height: 18px;
-    }
-
-    18% {
-        line-height: 13px;
-    }
-
-    67% {
-        line-height: 30px;
-    }
-
-    100% {
-        line-height: 18px;
-    }
-}
-
-@keyframes textUpDown {
-    0% {
-        line-height: 18px;
-    }
-
-    18% {
-        line-height: 13px;
-    }
-
-    67% {
-        line-height: 30px;
-    }
-
-    100% {
-        line-height: 18px;
-    }
-}
-
-.loading_text_2 {
-    -webkit-animation-delay: 0.2s;
-    animation-delay: 0.2s;
-}
-
-.loading_text_3 {
-    -webkit-animation-delay: 0.4s;
-    animation-delay: 0.4s;
-}
-
-.loading_text_4 {
-    -webkit-animation-delay: 0.6s;
-    animation-delay: 0.6s;
-}
-
-.loading_text_5 {
-    -webkit-animation-delay: 0.8s;
-    animation-delay: 0.8s;
-}
-
-.loading_text_6 {
-    -webkit-animation-delay: 1s;
-    animation-delay: 1s;
-}
-
-.loading_text_7 {
-    -webkit-animation-delay: 1.2s;
-    animation-delay: 1.2s;
-}
-
-.loading_text_8 {
-    -webkit-animation-delay: 1.4s;
-    animation-delay: 1.4s;
-}
-
-.loading_text_9 {
-    -webkit-animation-delay: 1.6s;
-    animation-delay: 1.6s;
-}
-
-.loading_text_10 {
-    -webkit-animation-delay: 1.8s;
-    animation-delay: 1.8s;
+    color: #fff;
+    font-size: 2.1rem;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    margin-bottom: 8px;
 }
 </style>
