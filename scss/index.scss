@@ -971,7 +971,7 @@ body.unset_overflow {
 }
 
 .isMobile .skill_container {
-    padding: 60px 40px 175px;
+    padding: 60px 40px 185px;
 }
 
 .skill_card_title {
@@ -1115,4 +1115,67 @@ body.unset_overflow {
     padding: 0 16px;
     white-space: nowrap;
     font-weight: var(--font-bold);
+}
+
+
+// 聯絡我
+
+#contact_box {
+    width: 40%;
+    min-width: 320px;
+    background-color: #f0f0f0;
+    padding: 30px 24px; 
+    border-radius: 20px;
+    box-shadow: 0 0 11px -3px #333;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    column-gap: 28px;
+    display: none;
+}
+
+.popout_box #contact_box {
+    display: flex;
+}
+
+.contact_text_container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    padding: 8px 0;
+}
+
+.contact_text_container p {
+    font-size: 1.6rem;
+    font-family: "Knewave", system-ui;
+    width: fit-content;
+    margin: 0 auto; 
+}
+
+.contact_btn {
+    border: 1px solid #888;
+    border-radius: 30px;
+    width: fit-content;
+    padding: 8px 16px;
+    font-size: 1.1rem;
+    font-family: var(--chinese-font);
+    margin: 0 auto;
+}
+
+.contact_btn:hover {
+    background-color: #888;
+}
+
+.contact_btn:hover a {
+    color: #fff;
+}
+
+.contact_img_container {
+    border-radius: 50%; 
+    overflow: hidden;
+}
+
+.contact_img_container img {
+    max-width: 900px;
+    aspect-ratio: 1;
 }

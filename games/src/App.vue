@@ -493,7 +493,7 @@ onMounted(() => {
         position: absolute;
         left: 0;
         top: 30vh;
-        height: 40vh;
+        height: 33vh;
         width: 20px;
         background-color: #d9d9d9;
         cursor: pointer;

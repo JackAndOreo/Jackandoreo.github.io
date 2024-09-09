@@ -250,5 +250,9 @@ h2 {
         font-size: 1rem;
         transition: all .25s ease-in;
     }
+
+    .message {
+        font-size: 1rem;
+    }
 }
 </style>

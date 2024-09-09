@@ -33,6 +33,19 @@
             </div>
         </div>
     </div>
+    <div id="contact_box">
+        <div class="contact_text_container">
+            <p>CONTACT ME</p>
+            <div class="contact_btn">
+                <a href="mailto:jackh0517@gmail.com">
+                    jackh0517@gmail.com
+                </a>
+            </div>
+        </div>
+        <div class="contact_img_container df_jc_ac">
+            <img src="./img/Oreo.png" alt="Oreo">
+        </div>
+    </div>
     <div id="main_body" class="df_jc_ac">
         <div class="main_content df_jc_ac">
             <div class="banner_container">
@@ -133,7 +146,7 @@
     <div id="main_body_3">
         <div class="skill_content df_jc_ac">
             <div class="skill_title title_line">
-                SKILL
+                SKILLS
             </div>
             <div class="skill_container">
                 <div class="skill_card skill_card_1">
@@ -212,6 +225,7 @@
     <!-- <script src="/js/fontByIn.js"></script> -->
     <script src="/js/expander.js"></script>
     <script src="/js/deviceDetect.js"></script>
+    <script src="/js/popModel.js"></script>
     <script>
         // 永遠返回最頂
         // window.addEventListener('load', () => {
@@ -237,9 +251,9 @@
         // 懸浮按鈕列
         new Expander(
             $('.expander'),
-            ["專案", "技能", "履歷"],
-            ["#main_body_2", "#main_body_3", "https://www.cakeresume.com/s--34M3ZqUe3cKvoehIYp-Kpg--/Tao_web"],
-            [delayeTransformControl, null, null],
+            ["專案", "技能", "履歷", "聯絡我"],
+            ["#main_body_2", "#main_body_3", "https://www.cakeresume.com/s--34M3ZqUe3cKvoehIYp-Kpg--/Tao_web", ""],
+            [delayeTransformControl, null, null, contactMe],
             true,
             "url(/img/dot.png)"
         );
@@ -248,6 +262,13 @@
             setTimeout(() => {
                 transformControl();
             }, 1200);
+        }
+
+        function contactMe() {
+            let contactMe = new PopModel({
+                target: $("#contact_box"),
+                showAnimation: true
+            });
         }
 
         // 技能列表

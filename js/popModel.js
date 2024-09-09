@@ -1,6 +1,6 @@
 class PopModel {
     constructor({  // positionX Y暫捨棄 // X按鈕待補
-        target,
+        target, 
         width = "auto",
         height = "auto",
         backgroundClose = true,
@@ -9,7 +9,7 @@ class PopModel {
         onShow = null,
         onClose = null,
     }) {
-        this.target = target;
+        this.target = target;  //jQ
         this.width = width;  // 彈出視縮是否要自訂大小
         this.height = height;
         this.backgroundClose = backgroundClose;
@@ -54,7 +54,7 @@ class PopModel {
             left: 0,
             top: 0,
             background: this.bgColor,
-            zIndex: 99,
+            zIndex: 102,
         });
 
         $popoutContainer.css({
@@ -63,7 +63,7 @@ class PopModel {
             height: '100%',
             left: 0,
             top: 0,
-            zIndex: 90,
+            zIndex: 101,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -73,7 +73,7 @@ class PopModel {
             position: 'relative',
             width: `${this.width}px`,
             height: `${this.height}px`,
-            zIndex: 100,
+            zIndex: 103,
         });
 
         $('body').css('overflow', 'hidden');  // 鎖定滾動
