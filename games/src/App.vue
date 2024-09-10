@@ -32,7 +32,7 @@
                 </div>
             </div>
             <!-- MAIN BODY -->
-            <div id="main_body" class="df_jc_ac">
+            <div id="main_body" class="df_jc_ac" :class="{ ready_filter: !isLoading }">
                 <div id="game_bg" class="bg_img"></div>
                 <div class="game_menu_container" :class="{ activated: activatedMenu, firstActivated: firstActivated }">>
                     <div class="game_menu_title_container">
@@ -65,14 +65,14 @@
                     <div v-if="selectedGame === ''" class="games_body container_body">
                         <div class="games_card" @click="gameSelect('numbers')">
                             <div class="games_img">
-                                <img src="/img/1A2BFORNOW.png" alt="">
+                                <img src="/img/smallGameBg1.jpg" alt="">
                             </div>
                             <div class="games_title_bg"></div>
                             <div class="games_title">猜數字遊戲</div>
                         </div>
                         <div class="games_card" @click="gameSelect('slot')">
                             <div class="games_img">
-                                <img src="/img/slot.png" alt="">
+                                <img src="/img/smallGameBg1.jpg" alt="">
                             </div>
                             <div class="games_title_bg"></div>
                             <div class="games_title">拉霸機</div>
@@ -86,7 +86,7 @@
                         </div> -->
                         <div class="games_card" @click="gameSelect('sudoku')">
                             <div class="games_img">
-                                <img src="/img/sudoku.png" alt="">
+                                <img src="/img/smallGameBg1.jpg" alt="">
                             </div>
                             <div class="games_title_bg"></div>
                             <div class="games_title">數獨</div>
@@ -319,10 +319,12 @@ onMounted(() => {
     height: calc(var(--vh, 1vh) * 100);
     flex-direction: column;
     position: relative;
-    /* background-color: #6ba9f1; */
-    background-color: #f16bd7;
     overflow: hidden;
     padding: 40px;
+}
+
+#main_body.ready_filter {
+    background-color: #f16bd7;
 }
 
 #game_bg {
@@ -334,6 +336,8 @@ onMounted(() => {
     filter: blur(0.3px) contrast(0.9);
     opacity: 0.92;
     user-select: none;
+    left: 0;
+    top: 0;
 }
 
 .game_menu_title_container {
@@ -634,6 +638,7 @@ onMounted(() => {
 .games_img img {
     height: 100%;
     object-fit: cover;
+    filter: hue-rotate(48deg);
 }
 
 .games_title_bg {
@@ -666,7 +671,7 @@ onMounted(() => {
 
 @media screen and (max-width: 600px) {
     #main_body {
-        padding: 40px 20px;
+        padding: 65px 20px 40px;
     }
 
     .games_container {
