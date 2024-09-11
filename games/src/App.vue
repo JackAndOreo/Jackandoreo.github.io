@@ -390,6 +390,7 @@ onMounted(() => {
         font-size: 3.6rem;
         transition: all 0.25s ease-in;
         transform: rotateY(15deg) translateX(-10px) translateZ(90px);
+        margin-bottom: 105%;
     }
 
     .game_menu_option {

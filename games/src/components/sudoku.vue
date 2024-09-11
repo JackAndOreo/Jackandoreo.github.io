@@ -28,9 +28,12 @@
             <div class="sudoku_grid">
                 <div v-for="(row, rowIndex) in grid" :key="rowIndex" class="sudoku_row">
                     <input v-for="(cell, colIndex) in row" :key="colIndex" type="text"
-                        v-model="grid[rowIndex][colIndex]" :disabled="isGivenCell(rowIndex, colIndex)" maxlength="1"
-                        :class="{ 'hint': hintCells.some(([r, c]) => r === rowIndex && c === colIndex) }"
-                        class="sudoku_cell" @input="validateInput($event, rowIndex, colIndex)" />
+                        v-model="grid[rowIndex][colIndex]" maxlength="1" :class="{
+                            'hint': hintCells.some(([r, c]) => r === rowIndex && c === colIndex),
+                            'highlight': highlightCells.some(([r, c]) => r === rowIndex && c === colIndex),
+                            'disabled': isGivenCell(rowIndex, colIndex)
+                        }" class="sudoku_cell" @input="validateInput($event, rowIndex, colIndex)"
+                        @click="selectCell(rowIndex, colIndex)" />
                 </div>
             </div>
         </div>
@@ -160,7 +163,12 @@ const generateSudoku = () => {
     applyDifficulty();
     hasSudoku.value = true;
     sudokuCompleted = false;
+
+    // 清空數字提示器
+    highlightCells.value = [];
 };
+
+// 套用難度
 
 const applyDifficulty = () => {
     let cellsToFill;
@@ -186,7 +194,7 @@ const applyDifficulty = () => {
     }
 
     cellsToKeep.forEach(([row, col]) => {
-        grid.value[row][col] = thisSudoku.grid[row][col];
+        grid.value[row][col] = Number(thisSudoku.grid[row][col]);
     });
 
     givenCells.value = cellsToKeep;
@@ -230,6 +238,37 @@ const hint = () => {
     }
 };
 
+
+// 輸入框選中的提示功能
+
+const selectedNumber = ref(null);
+const highlightCells = ref([]);
+
+const selectCell = (row, col) => {
+    const value = grid.value[row][col];
+    if (value) {
+        selectedNumber.value = value;
+        highlightCells.value = [];
+
+        console.log(`Selected number: ${value}`);
+
+        for (let i = 0; i < 9; i++) {
+            for (let j = 0; j < 9; j++) {
+                if (grid.value[i][j] === selectedNumber.value) {
+                    highlightCells.value.push([i, j]);
+                }
+            }
+        }
+
+        console.log(`Highlight cells: ${JSON.stringify(highlightCells.value)}`);
+    } else {
+        selectedNumber.value = null;
+        highlightCells.value = [];
+    }
+};
+
+
+// 輸入框驗證
 const validateInput = (event, row, col) => {
     const input = event.target;
     const value = input.value;
@@ -240,7 +279,9 @@ const validateInput = (event, row, col) => {
         return;
     }
 
-    grid.value[row][col] = value;
+    grid.value[row][col] = Number(value);
+
+    selectCell(row, col);
 
     if (!sudokuCompleted && isSudokuCompleted()) {
         sudokuCompleted = true;
@@ -358,9 +399,15 @@ h2 {
     color: #359f9f;
 }
 
-.sudoku_cell:disabled {
+.sudoku_cell.disabled {
     background-color: #d5e3ee;
     color: rgb(84, 84, 84);
+    user-select: none;
+    pointer-events: none;
+}
+
+.sudoku_cell.highlight {
+    color: rgb(145, 32, 32);
 }
 
 @media screen and (max-width: 768px) {
@@ -392,16 +439,17 @@ h2 {
     .sudoku_grid {
         margin-top: 40px;
     }
+
     .sudoku_cell {
         width: 32px;
         height: 32px;
         font-size: 1.15rem;
     }
+
     .sudoku_setting_container {
         height: calc(100% - 112px);
         display: flex;
         flex-direction: column;
     }
 }
-
 </style>

@@ -976,14 +976,14 @@ body.unset_overflow {
 
     /* 自訂滾動條 */
     .scroll_part::-webkit-scrollbar {
-        background-color: transparent;
+        background-color: #fefefe;
     }
 
     /*.scroll_part::-webkit-scrollbar-track {
     } */
 
     .scroll_part::-webkit-scrollbar-thumb {
-        background-color: transparent;
+        background-color: #fefefe;
     }
 }
 
@@ -1157,9 +1157,9 @@ body.unset_overflow {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-column-gap: 20px;
-    -moz-column-gap: 20px;
-    column-gap: 20px;
+    -webkit-column-gap: 24px;
+    -moz-column-gap: 24px;
+    column-gap: 24px;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
