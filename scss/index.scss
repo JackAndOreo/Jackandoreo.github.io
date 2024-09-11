@@ -698,7 +698,6 @@ body.unset_overflow {
     }
 }
 
-
 @-webkit-keyframes cardFilterIn {
     0% {
         opacity: 0;
@@ -890,82 +889,103 @@ body.unset_overflow {
     }
 }
 
-/* 區域2手機板新增滑動提示 */
+/* 區域針對手機板調整 */
 
-.isMobile .scroll_hint {
-    position: absolute;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    /* left: 45px; */
-    /* bottom: 160px; */
-    left: 260px;
-    top: -120px;
+// .isMobile .scroll_hint {
+//     position: absolute;
+//     -webkit-box-orient: vertical;
+//     -webkit-box-direction: normal;
+//     -ms-flex-direction: column;
+//     flex-direction: column;
+//     /* left: 45px; */
+//     /* bottom: 160px; */
+//     left: 260px;
+//     top: -120px;
 
-    .scroll_arrow {
-        width: 32px;
-        height: 32px;
+//     .scroll_arrow {
+//         width: 32px;
+//         height: 32px;
+//     }
+
+//     .scroll_up {
+//         background-image: url(/img/upArrow.png);
+//     }
+
+//     .scroll_down {
+//         background-image: url(/img/upArrow.png);
+//         -webkit-transform: rotate(180deg);
+//         -ms-transform: rotate(180deg);
+//         transform: rotate(180deg);
+//     }
+
+//     .finger {
+//         width: 38px;
+//         height: 38px;
+//         background-image: url(/img/finger.png);
+//         -webkit-transform: rotate(342deg);
+//         -ms-transform: rotate(342deg);
+//         transform: rotate(342deg);
+//         -webkit-animation: scrollUpDown 1.75s infinite;
+//         animation: scrollUpDown 1.75s infinite;
+//     }
+
+//     @-webkit-keyframes scrollUpDown {
+//         0% {
+//             -webkit-transform: translateY(-4px);
+//             transform: translateY(-4px);
+//         }
+
+//         50% {
+//             -webkit-transform: translateY(4px);
+//             transform: translateY(4px);
+//         }
+
+//         100% {
+//             -webkit-transform: translateY(-4px);
+//             transform: translateY(-4px);
+//         }
+//     }
+
+//     @keyframes scrollUpDown {
+//         0% {
+//             -webkit-transform: translateY(-4px);
+//             transform: translateY(-4px);
+//         }
+
+//         50% {
+//             -webkit-transform: translateY(4px);
+//             transform: translateY(4px);
+//         }
+
+//         100% {
+//             -webkit-transform: translateY(-4px);
+//             transform: translateY(-4px);
+//         }
+//     }
+// } 
+
+.isMobile #main_body_2 {
+    height: auto;
+
+    .scroll_part {
+        width: 100%;
+        overflow-x: scroll;
+        position: absolute;
+        top: calc((100% - 360px) / 2);
     }
 
-    .scroll_up {
-        background-image: url(/img/upArrow.png);
+    /* 自訂滾動條 */
+    .scroll_part::-webkit-scrollbar {
+        background-color: transparent;
     }
 
-    .scroll_down {
-        background-image: url(/img/upArrow.png);
-        -webkit-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-        transform: rotate(180deg);
-    }
+    /*.scroll_part::-webkit-scrollbar-track {
+    } */
 
-    .finger {
-        width: 38px;
-        height: 38px;
-        background-image: url(/img/finger.png);
-        -webkit-transform: rotate(342deg);
-        -ms-transform: rotate(342deg);
-        transform: rotate(342deg);
-        -webkit-animation: scrollUpDown 1.75s infinite;
-        animation: scrollUpDown 1.75s infinite;
-    }
-
-    @-webkit-keyframes scrollUpDown {
-        0% {
-            -webkit-transform: translateY(-4px);
-            transform: translateY(-4px);
-        }
-
-        50% {
-            -webkit-transform: translateY(4px);
-            transform: translateY(4px);
-        }
-
-        100% {
-            -webkit-transform: translateY(-4px);
-            transform: translateY(-4px);
-        }
-    }
-
-    @keyframes scrollUpDown {
-        0% {
-            -webkit-transform: translateY(-4px);
-            transform: translateY(-4px);
-        }
-
-        50% {
-            -webkit-transform: translateY(4px);
-            transform: translateY(4px);
-        }
-
-        100% {
-            -webkit-transform: translateY(-4px);
-            transform: translateY(-4px);
-        }
+    .scroll_part::-webkit-scrollbar-thumb {
+        background-color: transparent;
     }
 }
-
-
 
 /* 區域3 */
 

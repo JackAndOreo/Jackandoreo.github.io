@@ -66,11 +66,11 @@
             <div class="sticky_part df_jc_ac">
                 <div class="project_topic">
                     專案作品
-                    <div class="scroll_hint df_jc_ac">
+                    <!-- <div class="scroll_hint df_jc_ac">
                         <div class="scroll_arrow scroll_up bg_img"></div>
                         <div class="finger bg_img"></div>
                         <div class="scroll_arrow scroll_down bg_img"></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="scroll_part">
@@ -227,18 +227,6 @@
     <script src="/js/deviceDetect.js"></script>
     <script src="/js/popModel.js"></script>
     <script>
-        // 永遠返回最頂
-        // window.addEventListener('load', () => {
-        //     const targetElement = document.querySelector('#main_body'); 
-        //     if (targetElement) {
-        //         const targetOffsetTop = targetElement.offsetTop; 
-        //         window.scrollTo({
-        //             top: targetOffsetTop,
-        //             behavior: 'smooth'
-        //         });
-        //     }
-        // });
-
         // SAFARI VH問題
         if ($('body').hasClass('isSafari')) {
             detector.safariViewHeight('#zoomIn');
@@ -246,7 +234,6 @@
 
         // 打字機動畫＋文字動畫
         new TypeMachine('.header_text', 'Front-End Developer', 170, 1800);
-        // new FontByIn('.intro_text', 'I am a self-learning front-end developer proficient in HTML, CSS, SCSS, JavaScript, jQuery, and the Vue framework. I have hands-on experience with web page slicing, schedule management, and member center features. Below are my projects.', '16');
 
         // 懸浮按鈕列
         new Expander(
@@ -269,23 +256,6 @@
                 target: $("#contact_box"),
                 showAnimation: true
             });
-        }
-
-        // 技能列表
-        let putInText = [
-            "HTML",
-            "CSS",
-            "Emmet",
-            "SCSS",
-            "javaScript",
-            "jQuery",
-            "Boostrap",
-            "VUE"
-        ]
-
-        let fonts = $('.floatFont');
-        for (let i = 0; i < fonts.length; i++) {
-            $(fonts[i]).text(putInText[i]);
         }
 
         // 飛入動畫控制
@@ -332,10 +302,6 @@
         });
         // 區域2滾動設置
 
-        window.addEventListener('scroll', transformControl);
-        window.addEventListener('resize', transformControl);
-
-
         let currentTranslateX = 0;
 
         function transformControl() {
@@ -380,23 +346,33 @@
                 transDistance = transDistance + scaleTransDistance;
                 currentTranslateX = -transDistance;
 
-                // 限制在區域2
-                // if (sectionBottom < windowHeight) {
-                //     return;
-                // }
-
-                projectCardContainer.style.transform = `translateX(${currentTranslateX}px) scale(${scaleFactor})`;
+                if ($('body').hasClass('isMobile')) {
+                    projectCardContainer.style.transform = `scale(${scaleFactor})`;
+                } else {
+                    projectCardContainer.style.transform = `translateX(${currentTranslateX}px) scale(${scaleFactor})`;
+                }
             } else {
-                projectCardContainer.style.transform = `translateX(${currentTranslateX}px) scale(${scaleFactor})`;
+                if ($('body').hasClass('isMobile')) {
+                    projectCardContainer.style.transform = `scale(${scaleFactor})`;
+                } else {
+                    projectCardContainer.style.transform = `translateX(${currentTranslateX}px) scale(${scaleFactor})`;
+                }
             }
+            checkCardVisibility();
+        }
 
-            // 處理project_card文字
+        // 處理project_card文字 
+        function checkCardVisibility() {
+            const projectCards = document.querySelectorAll('.project_card');
+            const windowWidth = Math.max(768, window.innerWidth);
+            const scaleFactor = Math.min(1, (windowWidth + 128) / 1280);
+
             projectCards.forEach(card => {
-                let cardRect = card.getBoundingClientRect();
-                let cardWidth = cardRect.width;
+                const cardRect = card.getBoundingClientRect();
+                const cardWidth = cardRect.width;
 
-                let cardLeft = cardRect.left * (1 / scaleFactor);
-                let cardRight = (cardRect.left + cardWidth * scaleFactor) * (1 / scaleFactor);
+                const cardLeft = cardRect.left * (1 / scaleFactor);
+                const cardRight = (cardRect.left + cardWidth * scaleFactor) * (1 / scaleFactor);
 
                 if (cardLeft >= -80 && cardRight <= (windowWidth + 90)) {
                     card.classList.add('visible');
@@ -408,6 +384,16 @@
 
         $(document).ready(function () {
             transformControl();
+
+            // 整個網頁監聽，區域2反應
+            window.addEventListener('scroll', transformControl);
+            window.addEventListener('resize', transformControl);
+
+            // 手機板區域2
+            const scrollPart = document.querySelector('.scroll_part');
+            if ($('body').hasClass('isMobile')) {
+                scrollPart.addEventListener('scroll', checkCardVisibility);
+            }
         })
     </script>
 </body>
