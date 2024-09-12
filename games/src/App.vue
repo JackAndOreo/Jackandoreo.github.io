@@ -75,7 +75,7 @@
                                 <img src="/img/smallGameBg1.jpg" alt="">
                             </div>
                             <div class="games_title_bg"></div>
-                            <div class="games_title">拉霸機</div>
+                            <div class="games_title">抽獎機</div>
                         </div>
                         <!-- <div class="games_card" @click="gameSelect('dice')">
                             <div class="games_img">

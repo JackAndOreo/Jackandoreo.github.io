@@ -1,13 +1,13 @@
 <template>
     <div class="slot_game_body">
-        <h2>拉霸機</h2>
+        <h2>抽獎機</h2>
         <button class="intro_btn" @click="showPopup">遊戲說明</button>
         <popModel ref="popup" backgroundClose showAnimation @onShow="handleShow" @onClose="handleClose">
             <div class="game_intro_container">
                 <h3>遊戲說明</h3>
-                <p>＊請輸入一個最大值來啟動拉霸機。</p>
+                <p>＊請輸入一個最大值來啟動拉霸抽獎機。</p>
                 <p>＊最高可以輸入 999 。</p>
-                <p>＊拉霸機將隨機從 1 到設定的數字中抽取一個數字。</p>
+                <p>＊抽獎機將隨機從 1 到設定的數字中抽取一個數字。</p>
                 <p>＊可以用作抽獎活動使用。</p>
                 <!-- <p>＊可以開啟連續抽取模式，並設定抽取次數，以達到自動連續抽取的效果。</p> -->
             </div>
@@ -22,12 +22,12 @@
             </div>
             <input type="text" v-model="drawCount" v-if="isNonStop" placeholder="請輸入次數" /> -->
 
-            <!-- 拉霸機控制 -->
+            <!-- 抽獎拉霸機控制 -->
             <div class="slot_button_container df_jc_ac">
-                <button @click="startSlotMachine">啟動拉霸機</button>
-                <button @click="resetSlotMachine">重置拉霸機</button>
+                <button @click="startSlotMachine">啟動</button>
+                <button @click="resetSlotMachine">重置</button>
             </div>
-            <!-- 拉霸機 -->
+            <!-- 抽獎拉霸機 -->
             <div class="slot_machine df_jc_ac">
                 <div v-for="(slot, index) in slots" :key="index" class="slot_card_container">
                     <div class="slot_card df_jc_ac" :class="{ spin: isSpinning }" :style="getSlotStyle(index)">
@@ -58,7 +58,7 @@ const handleClose = () => {
     console.log('彈出層關閉');
 };
 
-// 拉霸機功能
+// 抽獎機功能
 
 const maxValue = ref('');
 const slots = ref([0, 0, 0]); // 初始三個slot
@@ -240,7 +240,7 @@ h2 {
     background: #262689;
 }
 
-/* 拉霸機 */
+/* 抽獎拉霸機 */
 
 .slot_machine {
     display: flex;

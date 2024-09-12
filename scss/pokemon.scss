@@ -1,4 +1,3 @@
-
 @import "../scss/settings";
 @import "../scss/model";
 @import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
@@ -9,13 +8,13 @@
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -ms-grid-column-align: center;
-        justify-self: center;
+    justify-self: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 /* LOGO */
@@ -50,7 +49,7 @@
     .logo {
         font-size: 36px;
     }
-    
+
     .logo_text {
         font-size: 12px;
     }
@@ -73,8 +72,8 @@
         display: -ms-flexbox;
         display: flex;
         -webkit-column-gap: 16px;
-           -moz-column-gap: 16px;
-                column-gap: 16px;
+        -moz-column-gap: 16px;
+        column-gap: 16px;
 
         .loading_img {
             width: 48px;
@@ -89,17 +88,17 @@
             display: -ms-flexbox;
             display: flex;
             -webkit-box-align: end;
-                -ms-flex-align: end;
-                    align-items: flex-end;
+            -ms-flex-align: end;
+            align-items: flex-end;
             -webkit-column-gap: 6px;
-               -moz-column-gap: 6px;
-                    column-gap: 6px;
+            -moz-column-gap: 6px;
+            column-gap: 6px;
             padding-bottom: 8px;
 
             .loading_text {
                 display: block;
                 -webkit-animation: textUpDown 2s infinite;
-                        animation: textUpDown 2s infinite;
+                animation: textUpDown 2s infinite;
             }
 
             @-webkit-keyframes textUpDown {
@@ -140,47 +139,47 @@
 
             .loading_text_2 {
                 -webkit-animation-delay: 0.2s;
-                        animation-delay: 0.2s;
+                animation-delay: 0.2s;
             }
 
             .loading_text_3 {
                 -webkit-animation-delay: 0.4s;
-                        animation-delay: 0.4s;
+                animation-delay: 0.4s;
             }
 
             .loading_text_4 {
                 -webkit-animation-delay: 0.6s;
-                        animation-delay: 0.6s;
+                animation-delay: 0.6s;
             }
 
             .loading_text_5 {
                 -webkit-animation-delay: 0.8s;
-                        animation-delay: 0.8s;
+                animation-delay: 0.8s;
             }
 
             .loading_text_6 {
                 -webkit-animation-delay: 1s;
-                        animation-delay: 1s;
+                animation-delay: 1s;
             }
 
             .loading_text_7 {
                 -webkit-animation-delay: 1.2s;
-                        animation-delay: 1.2s;
+                animation-delay: 1.2s;
             }
 
             .loading_text_8 {
                 -webkit-animation-delay: 1.4s;
-                        animation-delay: 1.4s;
+                animation-delay: 1.4s;
             }
 
             .loading_text_9 {
                 -webkit-animation-delay: 1.6s;
-                        animation-delay: 1.6s;
+                animation-delay: 1.6s;
             }
 
             .loading_text_10 {
                 -webkit-animation-delay: 1.8s;
-                        animation-delay: 1.8s;
+                animation-delay: 1.8s;
             }
         }
     }
@@ -197,11 +196,11 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     overflow: hidden;
 }
 
@@ -219,10 +218,12 @@
     .top_part {
         height: 320px;
     }
+
     .body_bg {
         background-size: 600px;
         background-position: 0% 0%;
     }
+
     .bottom_part .body_bg {
         background-position: 0% 100%;
     }
@@ -238,11 +239,11 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
 .bottom_part .pokemonball {
@@ -263,13 +264,77 @@
     background: -o-linear-gradient(left, #c88a5c, #b5d8ec, #2d3880, #2d3d71, #41304c, #b5d8ec);
     background: linear-gradient(90deg, #c88a5c, #b5d8ec, #2d3880, #2d3d71, #41304c, #b5d8ec);
     -webkit-background-clip: text;
-            background-clip: text;
+    background-clip: text;
 }
 
 .copyright {
     margin-bottom: 16px;
     font-family: var(--eng-font);
     color: transparent;
+}
+
+/* 搜尋區塊 */
+
+.pokemon_search_container {
+    position: absolute;
+    bottom: 36px;
+    height: 80px;
+    padding: 16px 32px;
+    background-color: #0a141ee6;
+    border-radius: 50px;
+    box-shadow: 0 0 13px 1px #71c0e8;
+    column-gap: 24px;
+    display: none;
+}
+
+.pokemon_srch_input {
+    border: none;
+    font-size: 1.4rem;
+    padding: 8px 20px;
+    height: 40px;
+    background-color: #f0f0f0;
+    max-width: 300px;   
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.pokemon_srch_input:focus, .pokemon_srch_input:focus-visible, .pokemon_srch_input:focus-within {
+    border: none;
+    background-color: #f0f0f0;
+    outline: none;
+}
+
+.pokemon_srch_btn {
+    height: 40px;
+    width: 48px;
+    display: block;
+    cursor: pointer;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: none;
+    background-color: #8cc3db;
+    background-image: url(/img/search.png);
+    background-size: 22px;
+    background-position: 47% 50%;
+}
+
+.pokemon_srch_reset_btn {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    background-image: url(/img/undo.png);
+    background-size: 24px;
+    border: none;
+    cursor: pointer;
+    filter: contrast(0) brightness(10);
+}
+
+.pokemon_srch_hint {
+    width: 32px;
+    height: 32px;
+    background-image: url(/img/caution.png);
+    cursor: pointer;
+    filter: contrast(0) brightness(1.25);
 }
 
 /* 返回頂部 */
@@ -285,7 +350,7 @@
     z-index: 9;
     display: none;
     -webkit-box-shadow: 0 0 11px 1px #172127;
-            box-shadow: 0 0 11px 1px #172127;
+    box-shadow: 0 0 11px 1px #172127;
     background-image: url(/img/upArrow.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -304,11 +369,11 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: end;
+    -ms-flex-align: end;
+    align-items: end;
     overflow: hidden;
 }
 
@@ -319,7 +384,7 @@
     border-radius: 50%;
     position: relative;
     -webkit-animation: spinspin 40s linear infinite;
-            animation: spinspin 40s linear infinite;
+    animation: spinspin 40s linear infinite;
 }
 
 .circle_bg {
@@ -328,30 +393,30 @@
     height: 100%;
     background-image: url(/img/techCircle1.png);
     -webkit-filter: invert(65%) sepia(83%) saturate(345%) hue-rotate(168deg) brightness(93%) contrast(90%);
-            filter: invert(65%) sepia(83%) saturate(345%) hue-rotate(168deg) brightness(93%) contrast(90%);
+    filter: invert(65%) sepia(83%) saturate(345%) hue-rotate(168deg) brightness(93%) contrast(90%);
 }
 
 @-webkit-keyframes spinspin {
     0% {
         -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
+        transform: rotate(0deg);
     }
 
     100% {
         -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
 @keyframes spinspin {
     0% {
         -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
+        transform: rotate(0deg);
     }
 
     100% {
         -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -362,317 +427,317 @@
     top: 45%;
     left: 0;
     -webkit-transform-origin: center center;
-        -ms-transform-origin: center center;
-            transform-origin: center center;
+    -ms-transform-origin: center center;
+    transform-origin: center center;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 .spin_bar_1 {
     -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
 }
 
 .spin_bar_1 .spin_item {
     -webkit-animation: spinContrast 40s linear infinite;
-            animation: spinContrast 40s linear infinite;
+    animation: spinContrast 40s linear infinite;
 }
 
 @-webkit-keyframes spinContrast {
     0% {
         -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
+        transform: rotate(0deg);
     }
 
     100% {
         -webkit-transform: rotate(-360deg);
-                transform: rotate(-360deg);
+        transform: rotate(-360deg);
     }
 }
 
 @keyframes spinContrast {
     0% {
         -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
+        transform: rotate(0deg);
     }
 
     100% {
         -webkit-transform: rotate(-360deg);
-                transform: rotate(-360deg);
+        transform: rotate(-360deg);
     }
 }
 
 .spin_bar_2 {
     -webkit-transform: rotate(22.5deg);
-        -ms-transform: rotate(22.5deg);
-            transform: rotate(22.5deg);
+    -ms-transform: rotate(22.5deg);
+    transform: rotate(22.5deg);
 }
 
 .spin_bar_2 .spin_item {
     -webkit-transform: rotate(-22.5deg);
-        -ms-transform: rotate(-22.5deg);
-            transform: rotate(-22.5deg);
+    -ms-transform: rotate(-22.5deg);
+    transform: rotate(-22.5deg);
     -webkit-animation: spinContrast2 40s linear infinite;
-            animation: spinContrast2 40s linear infinite;
+    animation: spinContrast2 40s linear infinite;
 }
 
 @-webkit-keyframes spinContrast2 {
     0% {
         -webkit-transform: rotate(-22.5deg);
-                transform: rotate(-22.5deg);
+        transform: rotate(-22.5deg);
     }
 
     100% {
         -webkit-transform: rotate(-382.5deg);
-                transform: rotate(-382.5deg);
+        transform: rotate(-382.5deg);
     }
 }
 
 @keyframes spinContrast2 {
     0% {
         -webkit-transform: rotate(-22.5deg);
-                transform: rotate(-22.5deg);
+        transform: rotate(-22.5deg);
     }
 
     100% {
         -webkit-transform: rotate(-382.5deg);
-                transform: rotate(-382.5deg);
+        transform: rotate(-382.5deg);
     }
 }
 
 .spin_bar_3 {
     -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .spin_bar_3 .spin_item {
     -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
     -webkit-animation: spinContrast3 40s linear infinite;
-            animation: spinContrast3 40s linear infinite;
+    animation: spinContrast3 40s linear infinite;
 }
 
 @-webkit-keyframes spinContrast3 {
     0% {
         -webkit-transform: rotate(-45deg);
-                transform: rotate(-45deg);
+        transform: rotate(-45deg);
     }
 
     100% {
         -webkit-transform: rotate(-405deg);
-                transform: rotate(-405deg);
+        transform: rotate(-405deg);
     }
 }
 
 @keyframes spinContrast3 {
     0% {
         -webkit-transform: rotate(-45deg);
-                transform: rotate(-45deg);
+        transform: rotate(-45deg);
     }
 
     100% {
         -webkit-transform: rotate(-405deg);
-                transform: rotate(-405deg);
+        transform: rotate(-405deg);
     }
 }
 
 .spin_bar_4 {
     -webkit-transform: rotate(67.5deg);
-        -ms-transform: rotate(67.5deg);
-            transform: rotate(67.5deg);
+    -ms-transform: rotate(67.5deg);
+    transform: rotate(67.5deg);
 }
 
 .spin_bar_4 .spin_item {
     -webkit-transform: rotate(-67.5deg);
-        -ms-transform: rotate(-67.5deg);
-            transform: rotate(-67.5deg);
+    -ms-transform: rotate(-67.5deg);
+    transform: rotate(-67.5deg);
     -webkit-animation: spinContrast4 40s linear infinite;
-            animation: spinContrast4 40s linear infinite;
+    animation: spinContrast4 40s linear infinite;
 }
 
 @-webkit-keyframes spinContrast4 {
     0% {
         -webkit-transform: rotate(-67.5deg);
-                transform: rotate(-67.5deg);
+        transform: rotate(-67.5deg);
     }
 
     100% {
         -webkit-transform: rotate(-427.5deg);
-                transform: rotate(-427.5deg);
+        transform: rotate(-427.5deg);
     }
 }
 
 @keyframes spinContrast4 {
     0% {
         -webkit-transform: rotate(-67.5deg);
-                transform: rotate(-67.5deg);
+        transform: rotate(-67.5deg);
     }
 
     100% {
         -webkit-transform: rotate(-427.5deg);
-                transform: rotate(-427.5deg);
+        transform: rotate(-427.5deg);
     }
 }
 
 .spin_bar_5 {
     -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-            transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
 }
 
 .spin_bar_5 .spin_item {
     -webkit-transform: rotate(-90deg);
-        -ms-transform: rotate(-90deg);
-            transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
     -webkit-animation: spinContrast5 40s linear infinite;
-            animation: spinContrast5 40s linear infinite;
+    animation: spinContrast5 40s linear infinite;
 }
 
 @-webkit-keyframes spinContrast5 {
     0% {
         -webkit-transform: rotate(-90deg);
-                transform: rotate(-90deg);
+        transform: rotate(-90deg);
     }
 
     100% {
         -webkit-transform: rotate(-450deg);
-                transform: rotate(-450deg);
+        transform: rotate(-450deg);
     }
 }
 
 @keyframes spinContrast5 {
     0% {
         -webkit-transform: rotate(-90deg);
-                transform: rotate(-90deg);
+        transform: rotate(-90deg);
     }
 
     100% {
         -webkit-transform: rotate(-450deg);
-                transform: rotate(-450deg);
+        transform: rotate(-450deg);
     }
 }
 
 .spin_bar_6 {
     -webkit-transform: rotate(112.5deg);
-        -ms-transform: rotate(112.5deg);
-            transform: rotate(112.5deg);
+    -ms-transform: rotate(112.5deg);
+    transform: rotate(112.5deg);
 }
 
 .spin_bar_6 .spin_item {
     -webkit-transform: rotate(-112.5deg);
-        -ms-transform: rotate(-112.5deg);
-            transform: rotate(-112.5deg);
+    -ms-transform: rotate(-112.5deg);
+    transform: rotate(-112.5deg);
     -webkit-animation: spinContrast6 40s linear infinite;
-            animation: spinContrast6 40s linear infinite;
+    animation: spinContrast6 40s linear infinite;
 }
 
 @-webkit-keyframes spinContrast6 {
     0% {
         -webkit-transform: rotate(-112.5deg);
-                transform: rotate(-112.5deg);
+        transform: rotate(-112.5deg);
     }
 
     100% {
         -webkit-transform: rotate(-472.5deg);
-                transform: rotate(-472.5deg);
+        transform: rotate(-472.5deg);
     }
 }
 
 @keyframes spinContrast6 {
     0% {
         -webkit-transform: rotate(-112.5deg);
-                transform: rotate(-112.5deg);
+        transform: rotate(-112.5deg);
     }
 
     100% {
         -webkit-transform: rotate(-472.5deg);
-                transform: rotate(-472.5deg);
+        transform: rotate(-472.5deg);
     }
 }
 
 .spin_bar_7 {
     -webkit-transform: rotate(135deg);
-        -ms-transform: rotate(135deg);
-            transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
 }
 
 .spin_bar_7 .spin_item {
     -webkit-transform: rotate(-135deg);
-        -ms-transform: rotate(-135deg);
-            transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    transform: rotate(-135deg);
     -webkit-animation: spinContrast7 40s linear infinite;
-            animation: spinContrast7 40s linear infinite;
+    animation: spinContrast7 40s linear infinite;
 }
 
 @-webkit-keyframes spinContrast7 {
     0% {
         -webkit-transform: rotate(-135deg);
-                transform: rotate(-135deg);
+        transform: rotate(-135deg);
     }
 
     100% {
         -webkit-transform: rotate(-495deg);
-                transform: rotate(-495deg);
+        transform: rotate(-495deg);
     }
 }
 
 @keyframes spinContrast7 {
     0% {
         -webkit-transform: rotate(-135deg);
-                transform: rotate(-135deg);
+        transform: rotate(-135deg);
     }
 
     100% {
         -webkit-transform: rotate(-495deg);
-                transform: rotate(-495deg);
+        transform: rotate(-495deg);
     }
 }
 
 .spin_bar_8 {
     -webkit-transform: rotate(157.5deg);
-        -ms-transform: rotate(157.5deg);
-            transform: rotate(157.5deg);
+    -ms-transform: rotate(157.5deg);
+    transform: rotate(157.5deg);
 }
 
 .spin_bar_8 .spin_item {
     -webkit-transform: rotate(-157.5deg);
-        -ms-transform: rotate(-157.5deg);
-            transform: rotate(-157.5deg);
+    -ms-transform: rotate(-157.5deg);
+    transform: rotate(-157.5deg);
     -webkit-animation: spinContrast8 40s linear infinite;
-            animation: spinContrast8 40s linear infinite;
+    animation: spinContrast8 40s linear infinite;
 }
 
 @-webkit-keyframes spinContrast8 {
     0% {
         -webkit-transform: rotate(-157.5deg);
-                transform: rotate(-157.5deg);
+        transform: rotate(-157.5deg);
     }
 
     100% {
         -webkit-transform: rotate(-517.5deg);
-                transform: rotate(-517.5deg);
+        transform: rotate(-517.5deg);
     }
 }
 
 @keyframes spinContrast8 {
     0% {
         -webkit-transform: rotate(-157.5deg);
-                transform: rotate(-157.5deg);
+        transform: rotate(-157.5deg);
     }
 
     100% {
         -webkit-transform: rotate(-517.5deg);
-                transform: rotate(-517.5deg);
+        transform: rotate(-517.5deg);
     }
 }
 
@@ -684,21 +749,21 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     background-image: -o-radial-gradient(transparent, rgba(111, 175, 203, 0.6705882353));
     background-image: radial-gradient(transparent, rgba(111, 175, 203, 0.6705882353));
     cursor: pointer;
     -webkit-box-shadow: 0 0 16px 0px #68bce3;
-            box-shadow: 0 0 16px 0px #68bce3;
+    box-shadow: 0 0 16px 0px #68bce3;
 }
 
 .spin_item img {
     -o-object-fit: contain;
-       object-fit: contain;
+    object-fit: contain;
     width: 80%;
 }
 
@@ -725,6 +790,7 @@
         height: 250px;
         background-position: 50% 275%;
     }
+
     .bottom_part .ball {
         background-position: 50% -175%;
     }
@@ -884,17 +950,17 @@
     position: relative;
     z-index: 2;
     -webkit-box-shadow: 0 0 12px -3px #fff;
-            box-shadow: 0 0 12px -3px #fff;
+    box-shadow: 0 0 12px -3px #fff;
     display: -ms-grid;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
     row-gap: 18px;
     -webkit-column-gap: 16px;
-       -moz-column-gap: 16px;
-            column-gap: 16px;
+    -moz-column-gap: 16px;
+    column-gap: 16px;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     justify-items: center;
     padding: 16px 14px;
 }
@@ -914,18 +980,18 @@
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     border-radius: 16px;
     background-color: #0a141e;
     -webkit-box-shadow: 0 0 18px -3px #71c0e8;
-            box-shadow: 0 0 18px -3px #71c0e8;
+    box-shadow: 0 0 18px -3px #71c0e8;
     cursor: pointer;
     color: #f0f0f0;
     font-family: var(--chinese-font);
@@ -940,9 +1006,9 @@
 
 .pm_img img {
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .pm_img_shiny {
@@ -970,15 +1036,15 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     padding: 0 10px;
     grid-area: b;
 }
@@ -989,15 +1055,15 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     padding-left: 6px;
     row-gap: 2px;
 }
@@ -1022,11 +1088,11 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     margin: 14px 0 12px;
 }
 
@@ -1039,7 +1105,7 @@
     background-color: #333;
     border-radius: 15px;
     -webkit-box-shadow: 0 0 6px -2px #333;
-            box-shadow: 0 0 6px -2px #333;
+    box-shadow: 0 0 6px -2px #333;
     text-shadow: 0 0 5px rgba(0, 0, 0, .85);
 }
 
@@ -1119,8 +1185,8 @@
     .book_box {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         -webkit-column-gap: 12px;
-           -moz-column-gap: 12px;
-                column-gap: 12px;
+        -moz-column-gap: 12px;
+        column-gap: 12px;
         row-gap: 16px;
         padding: 16px 12px;
     }
@@ -1146,11 +1212,11 @@
         display: -ms-flexbox;
         display: flex;
         -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
         -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
     }
 
     .pm_img img {
@@ -1179,14 +1245,14 @@
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     row-gap: 6px;
     grid-area: c;
     padding: 8px;
@@ -1202,7 +1268,7 @@
     background-color: rgb(56 94 113);
     border-radius: 12px;
     -webkit-box-shadow: 0 0 6px -3px #fff;
-            box-shadow: 0 0 6px -3px #fff;
+    box-shadow: 0 0 6px -3px #fff;
 }
 
 .extension_value {
@@ -1221,8 +1287,8 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-column-gap: 4px;
-       -moz-column-gap: 4px;
-            column-gap: 4px;
+    -moz-column-gap: 4px;
+    column-gap: 4px;
     margin-bottom: 20px;
     position: relative;
 }
@@ -1241,14 +1307,14 @@
     border-radius: 15px;
 }
 
- 
+
 /* 彈出控制 */
 
 .popout_box {
 
     .book_border {
         -webkit-animation: extend 1s forwards;
-                animation: extend 1s forwards;
+        animation: extend 1s forwards;
 
         @-webkit-keyframes extend {
             0% {
@@ -1274,13 +1340,13 @@
     .book {
         display: -ms-grid;
         display: grid;
-            grid-template-areas: "a c"
+        grid-template-areas: "a c"
             "b c";
         -ms-grid-columns: 225px auto;
         grid-template-columns: 225px auto;
         -webkit-box-pack: unset;
-            -ms-flex-pack: unset;
-                justify-content: unset;
+        -ms-flex-pack: unset;
+        justify-content: unset;
         cursor: unset;
     }
 
@@ -1290,7 +1356,7 @@
 
     .pm_shiny {
         -webkit-animation: pmBtnFade 1s forwards;
-                animation: pmBtnFade 1s forwards;
+        animation: pmBtnFade 1s forwards;
 
         @-webkit-keyframes pmBtnFade {
             0% {
@@ -1331,9 +1397,9 @@
         display: flex;
         opacity: 0;
         -webkit-animation: fadeIn 1s forwards;
-                animation: fadeIn 1s forwards;
+        animation: fadeIn 1s forwards;
         -webkit-animation-delay: 0.2s;
-                animation-delay: 0.2s;
+        animation-delay: 0.2s;
 
         @-webkit-keyframes fadeIn {
             0% {
@@ -1362,7 +1428,7 @@
 
         .book_border {
             -webkit-animation: extend 1s forwards;
-                    animation: extend 1s forwards;
+            animation: extend 1s forwards;
 
             @-webkit-keyframes extend {
                 0% {
@@ -1406,71 +1472,71 @@
 
 .hover_ball {
     -webkit-box-shadow: 0 0 14px -3px #71c0e8;
-            box-shadow: 0 0 14px -3px #71c0e8;
+    box-shadow: 0 0 14px -3px #71c0e8;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-animation: shine 2s ease-in-out infinite;
-            animation: shine 2s ease-in-out infinite;
+    animation: shine 2s ease-in-out infinite;
 }
 
 @-webkit-keyframes shine {
     0% {
         -webkit-box-shadow: 0 0 14px -3px #71c0e8;
-                box-shadow: 0 0 14px -3px #71c0e8;
+        box-shadow: 0 0 14px -3px #71c0e8;
     }
 
     30% {
         -webkit-box-shadow: 0 0 21px -2px #71c0e8;
-                box-shadow: 0 0 21px -2px #71c0e8;
+        box-shadow: 0 0 21px -2px #71c0e8;
     }
 
     50% {
         -webkit-box-shadow: 0 0 25px -2px #71c0e8;
-                box-shadow: 0 0 25px -2px #71c0e8;
+        box-shadow: 0 0 25px -2px #71c0e8;
     }
 
     65% {
         -webkit-box-shadow: 0 0 34px -4px #71c0e8;
-                box-shadow: 0 0 34px -4px #71c0e8;
+        box-shadow: 0 0 34px -4px #71c0e8;
     }
 
     100% {
         -webkit-box-shadow: 0 0 14px -3px #71c0e8;
-                box-shadow: 0 0 14px -3px #71c0e8;
+        box-shadow: 0 0 14px -3px #71c0e8;
     }
 }
 
 @keyframes shine {
     0% {
         -webkit-box-shadow: 0 0 14px -3px #71c0e8;
-                box-shadow: 0 0 14px -3px #71c0e8;
+        box-shadow: 0 0 14px -3px #71c0e8;
     }
 
     30% {
         -webkit-box-shadow: 0 0 21px -2px #71c0e8;
-                box-shadow: 0 0 21px -2px #71c0e8;
+        box-shadow: 0 0 21px -2px #71c0e8;
     }
 
     50% {
         -webkit-box-shadow: 0 0 25px -2px #71c0e8;
-                box-shadow: 0 0 25px -2px #71c0e8;
+        box-shadow: 0 0 25px -2px #71c0e8;
     }
 
     65% {
         -webkit-box-shadow: 0 0 34px -4px #71c0e8;
-                box-shadow: 0 0 34px -4px #71c0e8;
+        box-shadow: 0 0 34px -4px #71c0e8;
     }
 
     100% {
         -webkit-box-shadow: 0 0 14px -3px #71c0e8;
-                box-shadow: 0 0 14px -3px #71c0e8;
+        box-shadow: 0 0 14px -3px #71c0e8;
     }
 }
 
@@ -1478,5 +1544,5 @@
     width: 80%;
     height: 80%;
     -o-object-fit: contain;
-       object-fit: contain;
+    object-fit: contain;
 }

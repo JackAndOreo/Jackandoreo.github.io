@@ -183,7 +183,7 @@ let ranges = [
 
 let selectedRange = ranges[Math.floor(Math.random() * ranges.length)];
 let indices = Array.from({ length: selectedRange[1] - selectedRange[0] + 1 }, (_, i) => i + selectedRange[0]);
-
+console.log(selectedRange);
 
 for (let i = selectedRange[0]; i <= selectedRange[1]; i++) {
     let promise = new Promise((resolve, reject) => {
@@ -265,13 +265,13 @@ Promise.all(promises).then(() => {
     // LOADING完成 
     // 確保圖片都下載完成
     let pmImgs = $('.pm_img img');
-    console.log(pmImgs.length);
+    // console.log(pmImgs.length);
     let loadedImagesCount = 0;
 
     pmImgs.each((index, img) => {
         $(img).on('load', () => {
             loadedImagesCount++;
-            console.log(loadedImagesCount);
+            // console.log(loadedImagesCount);
 
             if (loadedImagesCount >= (pmImgs.length / 2)) {
                 $('#loading_page').hide();
@@ -290,12 +290,8 @@ Promise.all(promises).then(() => {
             }
         });
     });
-    // 單純延遲Loading時長
-    // setTimeout(function () {
-    //     $('#loading_page').hide();
-    //     $('#pokemon_body').css({
-    //         display: 'flex',
-    //     });
-    //     $('#zoomIn').show();
-    // }, 400);
 });
+
+
+// 可以使用/generation/1/，但回傳後仍要用裡面的資料逐一去跑API。
+// 可以使用/type/water，但與上面的篩選沒辦法同時使用。

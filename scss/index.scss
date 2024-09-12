@@ -976,14 +976,14 @@ body.unset_overflow {
 
     /* 自訂滾動條 */
     .scroll_part::-webkit-scrollbar {
-        background-color: #fefefe;
+        background-color: #f0f0f0;
     }
 
-    /*.scroll_part::-webkit-scrollbar-track {
+    /* .scroll_part::-webkit-scrollbar-track {
     } */
 
     .scroll_part::-webkit-scrollbar-thumb {
-        background-color: #fefefe;
+        background-color: #f0f0f0;
     }
 }
 
