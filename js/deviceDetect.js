@@ -6,6 +6,7 @@ class DeviceDetector {
     init() {
         this.checkSafari();
         this.checkMobile();
+        this.checkChrome();
         this.checkTouch();
     }
 
@@ -17,6 +18,11 @@ class DeviceDetector {
     checkMobile() {
         let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         $("body").addClass(isMobile ? "isMobile" : "notMobile");
+    }
+
+    checkChrome() {
+        let isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        $("body").addClass(isChrome ? "isChrome" : "notChrome");
     }
 
     checkTouch() {

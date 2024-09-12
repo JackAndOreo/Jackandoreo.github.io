@@ -987,6 +987,12 @@ body.unset_overflow {
     }
 }
 
+.isMobile.isSafari #main_body_2, .isMobile.isChrome #main_body_2 {
+    .project_card_container {
+        padding-right: 56px;
+    }
+}
+
 /* 區域3 */
 
 #main_body_3 {
