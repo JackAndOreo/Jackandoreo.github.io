@@ -972,11 +972,15 @@ body.unset_overflow {
         overflow-x: scroll;
         position: absolute;
         top: calc((100% - 360px) / 2);
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
     /* 自訂滾動條 */
     .scroll_part::-webkit-scrollbar {
         background-color: #f0f0f0;
+        width: 0px;
+        height: 0px;
     }
 
     /* .scroll_part::-webkit-scrollbar-track {
@@ -987,7 +991,8 @@ body.unset_overflow {
     }
 }
 
-.isMobile.isSafari #main_body_2, .isMobile.isChrome #main_body_2 {
+.isMobile.isSafari #main_body_2,
+.isMobile.isChrome #main_body_2 {
     .project_card_container {
         padding-right: 56px;
     }
