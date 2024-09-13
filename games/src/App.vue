@@ -324,7 +324,16 @@ onMounted(() => {
 }
 
 #main_body.ready_filter {
-    background-color: #f16bd7;
+    animation: bodyFilter .2s ease-in forwards .75s;
+}
+
+@keyframes bodyFilter {
+    0% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: #f16bd7;
+    }
 }
 
 #game_bg {
@@ -340,6 +349,10 @@ onMounted(() => {
     top: 0;
 }
 
+.game_menu_container {
+    height: clamp(45vh, 380px, 60vh);
+}
+
 .game_menu_title_container {
     transform-style: preserve-3d;
     perspective: 320px;
@@ -352,7 +365,7 @@ onMounted(() => {
     text-shadow: 5px 5px 3px #1e1e1e;
     color: #e5e5e5;
     user-select: none;
-    margin-bottom: 80%;
+    /* margin-bottom: 80%; */
 }
 
 
@@ -386,11 +399,15 @@ onMounted(() => {
 }
 
 @media screen and (max-width: 600px) {
+    .game_menu_container {
+        height: clamp(42vh, 360px, 56vh);
+    }
+
     .game_menu_title {
         font-size: 3.6rem;
         transition: all 0.25s ease-in;
         transform: rotateY(15deg) translateX(-10px) translateZ(90px);
-        margin-bottom: 105%;
+        /* margin-bottom: 105%; */
     }
 
     .game_menu_option {
