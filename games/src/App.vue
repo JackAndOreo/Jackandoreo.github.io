@@ -353,6 +353,10 @@ onMounted(() => {
     height: clamp(45vh, 380px, 60vh);
 }
 
+.game_menu_container.activated {
+    height: unset;
+}
+
 .game_menu_title_container {
     transform-style: preserve-3d;
     perspective: 320px;
@@ -401,6 +405,10 @@ onMounted(() => {
 @media screen and (max-width: 600px) {
     .game_menu_container {
         height: clamp(42vh, 360px, 56vh);
+    }
+
+    .game_menu_container.activated {
+        height: unset;
     }
 
     .game_menu_title {

@@ -31,7 +31,8 @@
                         v-model="grid[rowIndex][colIndex]" maxlength="1" :class="{
                             'hint': hintCells.some(([r, c]) => r === rowIndex && c === colIndex),
                             'highlight': highlightCells.some(([r, c]) => r === rowIndex && c === colIndex),
-                            'disabled': isGivenCell(rowIndex, colIndex)
+                            'disabled': isGivenCell(rowIndex, colIndex),
+                            'line': lineCells.some(([r, c]) => r === rowIndex && c === colIndex)
                         }" class="sudoku_cell" @input="validateInput($event, rowIndex, colIndex)"
                         @click="selectCell(rowIndex, colIndex)" />
                 </div>
@@ -164,8 +165,9 @@ const generateSudoku = () => {
     hasSudoku.value = true;
     sudokuCompleted = false;
 
-    // 清空數字提示器
+    // 清空提示器
     highlightCells.value = [];
+    lineCells.value = [];
 };
 
 // 套用難度
@@ -243,14 +245,25 @@ const hint = () => {
 
 const selectedNumber = ref(null);
 const highlightCells = ref([]);
+const lineCells = ref([]);
 
 const selectCell = (row, col) => {
+    lineCells.value = [];
+
+    // 同行同列
+    for (let j = 0; j < 9; j++) {
+        lineCells.value.push([row, j]);
+    }
+    for (let i = 0; i < 9; i++) {
+        lineCells.value.push([i, col]);
+    }
+
+    // 同數字
     const value = grid.value[row][col];
+
     if (value) {
         selectedNumber.value = value;
         highlightCells.value = [];
-
-        console.log(`Selected number: ${value}`);
 
         for (let i = 0; i < 9; i++) {
             for (let j = 0; j < 9; j++) {
@@ -259,8 +272,6 @@ const selectCell = (row, col) => {
                 }
             }
         }
-
-        console.log(`Highlight cells: ${JSON.stringify(highlightCells.value)}`);
     } else {
         selectedNumber.value = null;
         highlightCells.value = [];
@@ -407,7 +418,11 @@ h2 {
 }
 
 .sudoku_cell.highlight {
-    color: rgb(145, 32, 32);
+    color: rgb(212, 75, 75);
+}
+
+.sudoku_cell.line {
+    background-color: #c7efdc;
 }
 
 @media screen and (max-width: 768px) {
