@@ -284,7 +284,7 @@
     border-radius: 50px;
     box-shadow: 0 0 13px 1px #71c0e8;
     column-gap: 24px;
-    display: none;
+    // display: none;
 }
 
 .pokemon_srch_input {
@@ -293,12 +293,14 @@
     padding: 8px 20px;
     height: 40px;
     background-color: #f0f0f0;
-    max-width: 300px;   
+    max-width: 300px;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
 }
 
-.pokemon_srch_input:focus, .pokemon_srch_input:focus-visible, .pokemon_srch_input:focus-within {
+.pokemon_srch_input:focus,
+.pokemon_srch_input:focus-visible,
+.pokemon_srch_input:focus-within {
     border: none;
     background-color: #f0f0f0;
     outline: none;
@@ -335,6 +337,74 @@
     background-image: url(/img/caution.png);
     cursor: pointer;
     filter: contrast(0) brightness(1.25);
+}
+
+.pokemon_srch_hint_box {
+    display: none;
+    min-width: 350px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    padding: 18px;
+    line-height: 155%;
+    font-family: var(--chinese-font);
+}
+
+.pokemon_srch_hint_box b {
+    font-size: 1.15rem;
+}
+
+.popout_box .pokemon_srch_hint_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 12px;
+}
+
+.book_border.notSrch {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .pokemon_search_container {
+        padding: 12px 20px;
+        column-gap: 12px;
+        height: 64px;
+    }
+
+    .pokemon_srch_input {
+        max-width: 240px;
+        height: 32px;
+        font-size: 1.2rem;
+    }
+
+    .pokemon_srch_btn {
+        height: 32px;
+        width: 44px;
+        background-size: 20px;
+    }
+
+    .pokemon_srch_reset_btn {
+        background-size: 20px;
+        width: 26px;
+        height: 26px;
+    }
+
+    .pokemon_srch_hint {
+        width: 26px;
+        height: 26px;
+        background-size: 24px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .pokemon_search_container {
+        padding: 12px 16px;
+        column-gap: 8px;
+    }
+
+    .pokemon_srch_input {
+        max-width: 210px;
+    }
 }
 
 /* 返回頂部 */

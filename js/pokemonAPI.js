@@ -295,3 +295,199 @@ Promise.all(promises).then(() => {
 
 // 可以使用/generation/1/，但回傳後仍要用裡面的資料逐一去跑API。
 // 可以使用/type/water，但與上面的篩選沒辦法同時使用。
+
+
+class pokemonSearchCtrl {
+    constructor() {
+        this.srchinput = $('.pokemon_srch_input');
+        this.srchBtn = $('.pokemon_srch_btn');
+        this.resetBtn = $('.pokemon_srch_reset_btn');
+        this.srchInfoBtn = $('.pokemon_srch_hint');
+        this.srchPokeMon = [];
+        this.ranges = selectedRange;
+        this.init();
+    }
+
+    init() {
+        this.bindEvent();
+    }
+
+    bindEvent() {
+        this.srchBtn.off().on('click', () => this.totalSearch());
+        this.srchinput.on('keypress', (event) => {
+            if (event.which === 13) {
+                this.totalSearch();
+            }
+        });
+
+        this.srchInfoBtn.off().on('click', () => this.srchHint());
+
+        this.resetBtn.off().on('click', () => this.resetSearch());
+    }
+
+    totalSearch() {
+        let srchValue = this.srchinput.val();
+        if (!srchValue) {
+            alert('請先輸入搜尋內容，可參考搜尋指南。');
+            return;
+        }
+
+
+        this.textSearch(srchValue);
+        this.typeSearch(srchValue);
+
+    }
+
+    textSearch(value) {
+        value = value.toLowerCase();
+        console.log(value);
+        console.log(value.length);
+
+        if (value && value.length >= 3) {
+            let cards = $('.book_border');
+            cards.each((index, card) => {
+                let pmCard = $(card);
+                let pmName = pmCard.find('.pm_name').text();
+                pmName = pmName.toLowerCase();
+                console.log(pmName);
+                if (!pmName.includes(value)) {
+                    pmCard.addClass('notSrch');
+                } else {
+                    pmCard.removeClass('notSrch');
+                }
+            });
+        }
+    }
+
+    typeSearch(value) {
+        value = value.toLowerCase();
+
+        let types = [
+            "normal",
+            "fire",
+            "water",
+            "grass",
+            "electric",
+            "ice",
+            "fighting",
+            "poison",
+            "ground",
+            "flying",
+            "psychic",
+            "bug",
+            "rock",
+            "ghost",
+            "dragon",
+            "dark",
+            "steel",
+            "fairy",
+        ]
+
+        if (!types.includes(value)) {
+            return;
+        }
+
+        let url = `https://pokeapi.co/api/v2/type/${value}/`;
+
+        axios.get(url)
+            .then(response => {
+                console.log(response.data);
+
+                let pokeMon = response.data.pokemon;
+                let promises = [];
+
+                pokeMon.forEach((pm) => {
+                    let pokemonURL = pm.pokemon.url;
+                    let pokemonID = pokemonURL.split('https://pokeapi.co/api/v2/pokemon/')[1].replace('/', '');
+
+                    if (pokemonID <= this.ranges[1] && pokemonID >= this.ranges[0]) {
+                        this.srchPokeMon.push(pokemonID);
+                    }
+                });
+
+                // 先清空
+                $('.book_box').empty();
+                console.log(this.srchPokeMon);
+
+                for (let pokemon of this.srchPokeMon) {
+                    let operationPromise = new Promise((resolve, reject) => {
+                        new PokemonOperation(pokemon, resolve);
+                    });
+                    promises.push(operationPromise);
+                }
+
+                return Promise.all(promises);
+            })
+            .then(() => {
+                this.reorderCard();
+                this.bindCardClickEvent();
+            })
+            .catch(error => {
+                console.error(error.response);
+            });
+    }
+
+    srchHint() {
+        new PopModel({
+            target: $('.pokemon_srch_hint_box'),
+            showAnimation: true,
+        });
+    }
+
+    resetSearch() {
+        this.srchinput.val('');
+        this.srchPokeMon = [];
+        $('.book_box').empty();
+
+        let promises = [];
+
+        for (let i = this.ranges[0]; i <= this.ranges[1]; i++) {
+            let operationPromise = new Promise((resolve, reject) => {
+                new PokemonOperation(i, resolve);
+            });
+            promises.push(operationPromise);
+        }
+
+        Promise.all(promises)
+            .then(() => {
+                this.reorderCard();
+                this.bindCardClickEvent();
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+    bindCardClickEvent() {
+        $('.book_border').off('click').on('click', function () {
+            new PopModel({
+                target: this,
+                showAnimation: true,
+                onShow: function () {
+                    $('.popout_box .pm_shiny').off().on('click', function () {
+                        $('.popout_box .pm_img').toggleClass('switch');
+                    });
+                },
+            });
+        });
+    }
+
+    reorderCard() {
+        let allbooks = $('.book_border').toArray().sort((a, b) => {
+            return $(a).data('order') - $(b).data('order');
+        });
+    
+        $('#pokemon_body .book_box').empty();
+    
+        allbooks.forEach(book => {
+            $('#pokemon_body .book_box').append(book);
+            if ($('body').hasClass('isMobile')) {
+    
+            } else {
+                new FollowImg($(book), 8, 8, 54, 54);
+            }
+        });
+    }
+}
+
+new pokemonSearchCtrl;
