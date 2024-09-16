@@ -44,11 +44,11 @@ const showPopup = () => {
 };
 
 const handleShow = () => {
-    console.log('彈出層顯示');
+    
 };
 
 const handleClose = () => {
-    console.log('彈出層關閉');
+    
 };
 
 // 處理猜數字
@@ -74,7 +74,6 @@ const validateInput = (event) => {
 const generateAnswer = () => {
     numArray.sort(() => 0.5 - Math.random());
     correctAnswer = numArray.slice(0, 4).join('');
-    // console.log('Correct Answer:', correctAnswer);
 }
 
 generateAnswer();

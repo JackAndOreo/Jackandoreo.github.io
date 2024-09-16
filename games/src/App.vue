@@ -82,7 +82,7 @@
                                 <img src="/img/Technic2.jpg" alt="">
                             </div>
                             <div class="games_title_bg"></div>
-                            <div class="games_title">吹牛</div>
+                            <div class="games_title">骰盅</div>
                         </div> -->
                         <div class="games_card" @click="gameSelect('sudoku')">
                             <div class="games_img">
@@ -127,18 +127,17 @@ const preloadImage = (src) => {
         const img = new Image();
         img.src = src;
         img.onload = resolve;
-        img.onerror = () => reject(src); // 當加載失敗時，reject 並傳回圖片路徑
+        img.onerror = () => reject(src); // 失敗時，reject 並傳回圖片路徑
     });
 };
 
 const updateLoadingProgress = () => {
-    // 計算顯示的 cube 數量
     displayedCubes.value = Math.round((progress.value / 100) * totalCubes);
 };
 
 const simulateLoading = (loadingDuration = 2000) => {
     const interval = 100; // 每次進度更新的間隔
-    const step = (100 / (loadingDuration / interval)); // 每次更新的進度步長
+    const step = (100 / (loadingDuration / interval));
 
     const loadingInterval = setInterval(() => {
         if (progress.value < 100) {
@@ -154,9 +153,9 @@ const simulateLoading = (loadingDuration = 2000) => {
 onMounted(async () => {
     for (const imagePath of imagesToPreload) {
         try {
-            await preloadImage(imagePath); // 預加載圖片
-            simulateLoading(); // 開始模擬加載
-            break; // 成功加載一張圖片後退出循環
+            await preloadImage(imagePath);
+            simulateLoading(); 
+            break; // 成功加載一張圖片就退出
         } catch (errorPath) {
             console.error(`圖片加載失敗，路徑: ${errorPath}`); // 打印失敗的圖片路徑
         }
@@ -211,18 +210,6 @@ function resetState() {
 }
 
 // 處理手機板側邊欄
-
-// const isMobile = ref(window.innerWidth <= 600);
-
-// function checkScreenWidth() {
-//     isMobile.value = window.innerWidth <= 600 ? true : false;
-// }
-
-// onMounted(() => {
-//     checkScreenWidth();
-
-//     window.addEventListener('resize', checkScreenWidth);
-// });
 
 const isLeftMenuActive = ref(false);
 
@@ -458,14 +445,12 @@ onMounted(() => {
     0% {
         left: calc((100% - 350px) / 2);
         top: calc((100% - 224px) / 2 + 50px);
-        /* transform: scale(1); */
         font-size: 3.35rem;
     }
 
     100% {
         left: 20px;
         top: 125px;
-        /* transform: scale(0.7); */
         font-size: 1.85rem;
     }
 }
@@ -533,10 +518,6 @@ onMounted(() => {
         background-size: 30px;
     }
 
-    /* 
-    .game_menu_container.activated .game_menu_option_container_mobile.leftMenuActive {
-        
-    } */
     .mobile_menu_container {
         position: fixed;
         left: 0;

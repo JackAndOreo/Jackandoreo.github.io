@@ -183,7 +183,7 @@ let ranges = [
 
 let selectedRange = ranges[Math.floor(Math.random() * ranges.length)];
 let indices = Array.from({ length: selectedRange[1] - selectedRange[0] + 1 }, (_, i) => i + selectedRange[0]);
-console.log(selectedRange);
+// console.log(selectedRange);
 
 for (let i = selectedRange[0]; i <= selectedRange[1]; i++) {
     let promise = new Promise((resolve, reject) => {

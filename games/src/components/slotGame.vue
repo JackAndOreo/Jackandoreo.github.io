@@ -51,11 +51,11 @@ const showPopup = () => {
 };
 
 const handleShow = () => {
-    console.log('彈出層顯示');
+    
 };
 
 const handleClose = () => {
-    console.log('彈出層關閉');
+    
 };
 
 // 抽獎機功能
@@ -93,8 +93,7 @@ const getRandomNumber = (max) => {
 };
 
 const updateSlots = (result) => {
-    const resultStr = result.toString().padStart(3, '0'); // 確保結果有3位數
-    console.log(resultStr);
+    const resultStr = result.toString().padStart(3, '0');
     slots.value = resultStr.split('').map(Number);
 };
 

@@ -53,11 +53,11 @@ const showPopup = () => {
 };
 
 const handleShow = () => {
-    console.log('彈出層顯示');
+    
 };
 
 const handleClose = () => {
-    console.log('彈出層關閉');
+    
 };
 
 // 數獨處理
@@ -152,9 +152,9 @@ const createEmptyGrid = () => {
 
 const generateSudoku = () => {
     grid.value = createEmptyGrid();
-    console.time('Sudoku Generation Time');
+    // console.time('Sudoku Generation Time');
     thisSudoku = new Sudoku();
-    console.timeEnd('Sudoku Generation Time');
+    // console.timeEnd('Sudoku Generation Time');
     grid.value = thisSudoku.grid;
 
     // 清空提示紀錄
