@@ -364,6 +364,10 @@
     display: none;
 }
 
+.popout_box .book_border.notSrch {
+    display: flex;
+}
+
 @media screen and (max-width: 600px) {
     .pokemon_search_container {
         padding: 12px 20px;

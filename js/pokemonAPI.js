@@ -305,6 +305,26 @@ class pokemonSearchCtrl {
         this.srchInfoBtn = $('.pokemon_srch_hint');
         this.srchPokeMon = [];
         this.ranges = selectedRange;
+        this.pokemonTypes = [
+            "normal",
+            "fire",
+            "water",
+            "grass",
+            "electric",
+            "ice",
+            "fighting",
+            "poison",
+            "ground",
+            "flying",
+            "psychic",
+            "bug",
+            "rock",
+            "ghost",
+            "dragon",
+            "dark",
+            "steel",
+            "fairy",
+        ];
         this.init();
     }
 
@@ -332,7 +352,6 @@ class pokemonSearchCtrl {
             return;
         }
 
-
         this.textSearch(srchValue);
         this.typeSearch(srchValue);
 
@@ -340,11 +359,10 @@ class pokemonSearchCtrl {
 
     textSearch(value) {
         value = value.toLowerCase();
-        console.log(value);
-        console.log(value.length);
 
         if (value && value.length >= 3) {
             let cards = $('.book_border');
+            let matchCount = 0;
             cards.each((index, card) => {
                 let pmCard = $(card);
                 let pmName = pmCard.find('.pm_name').text();
@@ -354,36 +372,22 @@ class pokemonSearchCtrl {
                     pmCard.addClass('notSrch');
                 } else {
                     pmCard.removeClass('notSrch');
+                    matchCount++;
                 }
             });
+
+
+            if (matchCount === 0 && !this.pokemonTypes.includes(value)) {   
+                $('.notSrch').removeClass('notSrch');
+                alert("查無搜尋結果。");
+            }
         }
     }
 
     typeSearch(value) {
         value = value.toLowerCase();
 
-        let types = [
-            "normal",
-            "fire",
-            "water",
-            "grass",
-            "electric",
-            "ice",
-            "fighting",
-            "poison",
-            "ground",
-            "flying",
-            "psychic",
-            "bug",
-            "rock",
-            "ghost",
-            "dragon",
-            "dark",
-            "steel",
-            "fairy",
-        ]
-
-        if (!types.includes(value)) {
+        if (!this.pokemonTypes.includes(value)) {
             return;
         }
 

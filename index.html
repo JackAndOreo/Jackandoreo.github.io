@@ -64,14 +64,7 @@
     <div id="main_body_2" class="">
         <div class="project_container">
             <div class="sticky_part df_jc_ac">
-                <div class="project_topic">
-                    專案作品
-                    <!-- <div class="scroll_hint df_jc_ac">
-                        <div class="scroll_arrow scroll_up bg_img"></div>
-                        <div class="finger bg_img"></div>
-                        <div class="scroll_arrow scroll_down bg_img"></div>
-                    </div> -->
-                </div>
+                <div class="project_topic">專案作品</div>
             </div>
             <div class="scroll_part">
                 <div class="project_card_container df_jc_ac">
@@ -219,7 +212,6 @@
         <div class="copyright">&copy; BY TAO ALL RIGHTS RESERVED</div>
     </div>
     <!-- 引用 -->
-    <!-- <script src="/js/fontControl.js"></script> -->
     <script src="/js/typeMachine.js"></script>
     <script src="/js/flewIn.js"></script>
     <!-- <script src="/js/fontByIn.js"></script> -->
@@ -277,7 +269,7 @@
         new FlewIn($('.skill_card_4'), ".skill_card_4", skillFlewOption);
         new FlewIn($('.skill_card_5'), ".skill_card_5", skillFlewOption);
 
-        // 入場控制
+        // 入場動畫控制
 
         document.querySelector('.intro_text').addEventListener('animationend', function () {
             document.body.classList.add('unset_overflow');
@@ -300,12 +292,13 @@
                 }
             });
         });
+
+    
         // 區域2滾動設置
 
         let currentTranslateX = 0;
 
         function transformControl() {
-            // console.log(1);
             const scrollSection = document.querySelector('#main_body_2');
             const stickyContent = document.querySelector('.project_container');
             const projectCardContainer = document.querySelector('.project_card_container');
@@ -385,7 +378,7 @@
         $(document).ready(function () {
             transformControl();
 
-            // 整個網頁監聽，區域2反應
+            // 整個網頁監聽 // 區域2
             window.addEventListener('scroll', transformControl);
             window.addEventListener('resize', transformControl);
 
