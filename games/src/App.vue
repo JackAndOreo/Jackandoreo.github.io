@@ -340,6 +340,10 @@ onMounted(() => {
     height: clamp(45vh, 380px, 60vh);
 }
 
+.game_menu_container.firstActivated {
+    height: unset;
+}
+
 .game_menu_container.activated {
     height: unset;
 }
