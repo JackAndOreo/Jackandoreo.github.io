@@ -15,7 +15,7 @@
         <input id="shot_button" type="file" accept="image/*" /> <!-- capture="environment" -->
     </div>
     <img src="" alt="" id="shot">
-    <p>測試4</p>
+    <p>測試5</p>
 
     <div class="center">
         <video id="videoElement" class="videoElement" autoplay muted playsinline></video>
@@ -23,9 +23,11 @@
         <button onclick="switchCamera()">切換鏡頭</button>
     </div>
     <script>
+        // 測試版本1　(跳去相機頁面)
+
         $('#shot_button').on('change', function (event) {
             const file = event.target.files[0];
-
+            alert("不能使用此暱稱");
             const confirmAction = confirm('是否允許取用［相機］？');
 
             if (confirmAction) {
@@ -42,7 +44,7 @@
         });
 
 
-        // 測試版本2
+        // 測試版本2 （在網頁上真的使用相機，但實際上是繪製到canvas中）
 
         const videoElement = document.getElementById("videoElement");
 
