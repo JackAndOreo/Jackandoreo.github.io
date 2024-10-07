@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+img {
+    width: 100%;
+}
+
+/* START */
+
+label {
+    color: rgb(97, 158, 179);
+    border: 1px solid;
+    border-radius: 12px;
+    width: 150px;
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+}
+
+#shot_button {
+    display: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}

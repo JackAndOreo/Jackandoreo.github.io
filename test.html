@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Test</title>
+    <link rel="stylesheet" type="text/css" href="css/test.css">
+    <script src="/js/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <div class="center">
+        <label for="shot_button" class="new_shot_button">開啟前相機拍攝</label>
+        <input id="shot_button" type="file" capture="environment" accept="image/*" style="display:none" />
+    </div>
+    <img src="" alt="" id="shot">
+
+    <script>
+        $('.new_shot_button').on('click', function () {
+            $('#shot_button').trigger('click');
+        });
+
+        $('#shot_button').on('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#shot').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+
+</html>
