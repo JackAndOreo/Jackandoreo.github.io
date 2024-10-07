@@ -12,17 +12,13 @@
 <body>
     <div class="center">
         <label for="shot_button" class="new_shot_button">開啟前相機拍攝</label>
-        <input id="shot_button" type="file" capture="environment" accept="image/*" style="display:none" />
+        <input id="shot_button" type="file" accept="image/*" style="display:none" /> <!-- capture="environment" -->
     </div>
     <img src="" alt="" id="shot">
     <p>測試3</p>
     <script>
-        // $('.new_shot_button').on('click', function () {
-            
-        //     $('#shot_button').trigger('click');
-        // });
-
         $('#shot_button').on('change', function (event) {
+            confirm('是否允許取用［相機］？');
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
