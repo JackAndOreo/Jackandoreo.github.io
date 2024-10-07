@@ -15,11 +15,12 @@
         <input id="shot_button" type="file" capture="environment" accept="image/*" style="display:none" />
     </div>
     <img src="" alt="" id="shot">
-
+    <p>測試3</p>
     <script>
-        $('.new_shot_button').on('click', function () {
-            $('#shot_button').trigger('click');
-        });
+        // $('.new_shot_button').on('click', function () {
+            
+        //     $('#shot_button').trigger('click');
+        // });
 
         $('#shot_button').on('change', function (event) {
             const file = event.target.files[0];
