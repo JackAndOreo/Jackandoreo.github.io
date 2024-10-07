@@ -7,29 +7,85 @@
     <title>For Test</title>
     <link rel="stylesheet" type="text/css" href="css/test.css">
     <script src="/js/jquery-3.7.1.min.js"></script>
+    <style>
+        /* Action Sheet 樣式 */
+        .action-sheet {
+            display: none;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* 顯示 Action Sheet */
+        .action-sheet.active {
+            display: block;
+        }
+
+        /* Action Sheet 的按鈕 */
+        .action-sheet button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            background-color: #f1f1f1;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .action-sheet button.cancel {
+            background-color: #ff3b30;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
     <div class="center">
         <label for="shot_button" class="new_shot_button">開啟前相機拍攝</label>
-        <input type="button" value="" id="shot_button" style="display: none;" >
-        <!-- <input id="shot_button" type="file" accept="image/*" />  -->
-        <!-- capture="environment" -->
+        <input type="button" value="" id="shot_button" style="display: none;">
+        <input id="image_button" type="file" accept="image/*" style="display: none;" />
         <video id="videoElement" class="videoElement" autoplay muted playsinline></video>
         <div id="imageContainer"></div>
         <button onclick="switchCamera()">切換鏡頭</button>
     </div>
     <p>測試6</p>
+    <div class="action-sheet" id="actionSheet">
+        <button id="shoot">拍攝照片</button>
+        <button id="images">從圖庫中選擇</button>
+        <button class="cancel" id="cancelActionSheet">取消</button>
+    </div>
     <script>
+        const actionSheet = document.getElementById("actionSheet");
+        const cancelActionSheetBtn = document.getElementById("cancelActionSheet");
 
         $('#shot_button').on('click', function () {
-            // alert("不能使用此暱稱");
-            const confirmAction = confirm('是否允許取用［相機］？');
+            actionSheet.classList.add("active");
+        });
 
-            if (confirmAction) {
-                startCam();
-            }
-        })
+        // 拍攝照片
+        $('#shoot').on('click', function () {
+            startCam();
+            actionSheet.classList.remove("active"); // 隱藏 action sheet
+        });
+
+        // 從圖庫中選擇
+        $('#images').on('click', function () {
+            $('#image_button').trigger('click');
+            actionSheet.classList.remove("active"); // 隱藏 action sheet
+        });
+
+        // 取消 action sheet
+        $('#cancelActionSheet').on('click', function () {
+            actionSheet.classList.remove("active");
+        });
 
         const videoElement = document.getElementById("videoElement");
 
@@ -63,14 +119,10 @@
                             })
                             .catch(function (error) {
                                 console.error("無法取得視訊串流:", error);
-                                alert(
-                                    "您使用的瀏覽器不支援視訊串流，請使用其他瀏覽器，再重新開啟頁面！"
-                                );
+                                alert("您使用的瀏覽器不支援視訊串流，請使用其他瀏覽器，再重新開啟頁面！");
                             });
                     } else {
-                        alert(
-                            "您使用的瀏覽器不支援視訊串流，請使用其他瀏覽器，再重新開啟頁面！"
-                        );
+                        alert("您使用的瀏覽器不支援視訊串流，請使用其他瀏覽器，再重新開啟頁面！");
                     }
                 }
             }
@@ -97,9 +149,7 @@
                             let canvas = document.createElement("canvas");
                             canvas.width = videoElement.videoWidth;
                             canvas.height = videoElement.videoHeight;
-                            canvas
-                                .getContext("2d")
-                                .drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                            canvas.getContext("2d").drawImage(videoElement, 0, 0, canvas.width, canvas.height);
 
                             // 改變圖片解析度
                             let scaleFactor = 2; // 調整這個數值以增加解析度
@@ -108,19 +158,10 @@
                             offscreenCanvas.width = canvas.width * scaleFactor;
                             offscreenCanvas.height = canvas.height * scaleFactor;
                             let offscreenCtx = offscreenCanvas.getContext("2d");
-                            offscreenCtx.drawImage(
-                                canvas,
-                                0,
-                                0,
-                                offscreenCanvas.width,
-                                offscreenCanvas.height
-                            );
+                            offscreenCtx.drawImage(canvas, 0, 0, offscreenCanvas.width, offscreenCanvas.height);
 
                             // 直接顯示在前端
-                            // 需要動態創建 <img> 元素，因為手機版可能會無法讀取
                             let imageElement = document.createElement("img");
-
-                            // 將 <img> 元素添加到 HTML 中的指定元素上
                             let containerElement = document.getElementById("imageContainer");
                             containerElement.innerHTML = "";
                             imageElement.setAttribute("style", "width:100%");
@@ -130,9 +171,7 @@
                     })
                     .catch(function (error) {
                         console.log("無法取得視訊串流：", error);
-                        alert(
-                            "您使用的瀏覽器不支援視訊串流，請使用其他瀏覽器，再重新開啟頁面！"
-                        );
+                        alert("您使用的瀏覽器不支援視訊串流，請使用其他瀏覽器，再重新開啟頁面！");
                     });
             } else {
                 alert("您使用的瀏覽器不支援視訊串流，請使用其他瀏覽器，再重新開啟頁面！");
