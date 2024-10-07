@@ -61,4 +61,11 @@ label {
 #shot {
     width: 400px;
     height: 400px;
+    margin: 0 auto;
+    display: block;
+}
+
+p {
+    width: 100%;
+    text-align: center;
 }
